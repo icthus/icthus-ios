@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C99F2FC417CCDC01008AF602 /* BooksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C99F2FC317CCDC01008AF602 /* BooksViewController.m */; };
+		C99F2FC717CCE714008AF602 /* ReadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C99F2FC617CCE714008AF602 /* ReadingViewController.m */; };
 		C9FF50F317CBB54700BA526E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9FF50F217CBB54700BA526E /* Foundation.framework */; };
 		C9FF50F517CBB54700BA526E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9FF50F417CBB54700BA526E /* CoreGraphics.framework */; };
 		C9FF50F717CBB54700BA526E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9FF50F617CBB54700BA526E /* UIKit.framework */; };
@@ -51,6 +52,8 @@
 /* Begin PBXFileReference section */
 		C99F2FC217CCDC01008AF602 /* BooksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BooksViewController.h; sourceTree = "<group>"; };
 		C99F2FC317CCDC01008AF602 /* BooksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BooksViewController.m; sourceTree = "<group>"; };
+		C99F2FC517CCE714008AF602 /* ReadingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadingViewController.h; sourceTree = "<group>"; };
+		C99F2FC617CCE714008AF602 /* ReadingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadingViewController.m; sourceTree = "<group>"; };
 		C9FF50EF17CBB54700BA526E /* Bible.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bible.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9FF50F217CBB54700BA526E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C9FF50F417CBB54700BA526E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -152,6 +155,8 @@
 				C9FF510417CBB54700BA526E /* AppDelegate.m */,
 				C9FF510917CBB54700BA526E /* Main_iPad.storyboard */,
 				C9FF510617CBB54700BA526E /* Main_iPhone.storyboard */,
+				C99F2FC517CCE714008AF602 /* ReadingViewController.h */,
+				C99F2FC617CCE714008AF602 /* ReadingViewController.m */,
 				C99F2FC217CCDC01008AF602 /* BooksViewController.h */,
 				C99F2FC317CCDC01008AF602 /* BooksViewController.m */,
 				C9FF510F17CBB54800BA526E /* MasterViewController.h */,
@@ -323,6 +328,7 @@
 				C9FF511117CBB54800BA526E /* MasterViewController.m in Sources */,
 				C9FF510517CBB54700BA526E /* AppDelegate.m in Sources */,
 				C9FF510117CBB54700BA526E /* main.m in Sources */,
+				C99F2FC717CCE714008AF602 /* ReadingViewController.m in Sources */,
 				C99F2FC417CCDC01008AF602 /* BooksViewController.m in Sources */,
 				C9FF514717CC04B500BA526E /* Book.m in Sources */,
 				C9FF510E17CBB54800BA526E /* Bible.xcdatamodeld in Sources */,
