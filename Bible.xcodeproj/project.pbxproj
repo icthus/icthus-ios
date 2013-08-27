@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C99F2FC417CCDC01008AF602 /* BooksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C99F2FC317CCDC01008AF602 /* BooksViewController.m */; };
 		C9FF50F317CBB54700BA526E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9FF50F217CBB54700BA526E /* Foundation.framework */; };
 		C9FF50F517CBB54700BA526E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9FF50F417CBB54700BA526E /* CoreGraphics.framework */; };
 		C9FF50F717CBB54700BA526E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9FF50F617CBB54700BA526E /* UIKit.framework */; };
@@ -26,6 +27,15 @@
 		C9FF512017CBB54800BA526E /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9FF50F817CBB54700BA526E /* CoreData.framework */; };
 		C9FF512817CBB54800BA526E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C9FF512617CBB54800BA526E /* InfoPlist.strings */; };
 		C9FF512A17CBB54800BA526E /* BibleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C9FF512917CBB54800BA526E /* BibleTests.m */; };
+		C9FF513B17CBFEA300BA526E /* BookNames.xml in Resources */ = {isa = PBXBuildFile; fileRef = C9FF513417CBFEA300BA526E /* BookNames.xml */; };
+		C9FF513C17CBFEA300BA526E /* copr.htm in Resources */ = {isa = PBXBuildFile; fileRef = C9FF513517CBFEA300BA526E /* copr.htm */; };
+		C9FF513D17CBFEA300BA526E /* eng-web_usfx.xml in Resources */ = {isa = PBXBuildFile; fileRef = C9FF513617CBFEA300BA526E /* eng-web_usfx.xml */; };
+		C9FF513E17CBFEA300BA526E /* eng-web-VernacularAdditional.xml in Resources */ = {isa = PBXBuildFile; fileRef = C9FF513717CBFEA300BA526E /* eng-web-VernacularAdditional.xml */; };
+		C9FF513F17CBFEA300BA526E /* eng-web-VernacularParms.xml in Resources */ = {isa = PBXBuildFile; fileRef = C9FF513817CBFEA300BA526E /* eng-web-VernacularParms.xml */; };
+		C9FF514017CBFEA300BA526E /* keys.asc in Resources */ = {isa = PBXBuildFile; fileRef = C9FF513917CBFEA300BA526E /* keys.asc */; };
+		C9FF514117CBFEA300BA526E /* signature.txt.asc in Resources */ = {isa = PBXBuildFile; fileRef = C9FF513A17CBFEA300BA526E /* signature.txt.asc */; };
+		C9FF514417CC030700BA526E /* WEBXMLParserDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C9FF514317CC030700BA526E /* WEBXMLParserDelegate.m */; };
+		C9FF514717CC04B500BA526E /* Book.m in Sources */ = {isa = PBXBuildFile; fileRef = C9FF514617CC04B500BA526E /* Book.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +49,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C99F2FC217CCDC01008AF602 /* BooksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BooksViewController.h; sourceTree = "<group>"; };
+		C99F2FC317CCDC01008AF602 /* BooksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BooksViewController.m; sourceTree = "<group>"; };
 		C9FF50EF17CBB54700BA526E /* Bible.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bible.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9FF50F217CBB54700BA526E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C9FF50F417CBB54700BA526E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -63,6 +75,17 @@
 		C9FF512517CBB54800BA526E /* BibleTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BibleTests-Info.plist"; sourceTree = "<group>"; };
 		C9FF512717CBB54800BA526E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C9FF512917CBB54800BA526E /* BibleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BibleTests.m; sourceTree = "<group>"; };
+		C9FF513417CBFEA300BA526E /* BookNames.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = BookNames.xml; sourceTree = "<group>"; };
+		C9FF513517CBFEA300BA526E /* copr.htm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = copr.htm; sourceTree = "<group>"; };
+		C9FF513617CBFEA300BA526E /* eng-web_usfx.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "eng-web_usfx.xml"; sourceTree = "<group>"; };
+		C9FF513717CBFEA300BA526E /* eng-web-VernacularAdditional.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "eng-web-VernacularAdditional.xml"; sourceTree = "<group>"; };
+		C9FF513817CBFEA300BA526E /* eng-web-VernacularParms.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "eng-web-VernacularParms.xml"; sourceTree = "<group>"; };
+		C9FF513917CBFEA300BA526E /* keys.asc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = keys.asc; sourceTree = "<group>"; };
+		C9FF513A17CBFEA300BA526E /* signature.txt.asc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = signature.txt.asc; sourceTree = "<group>"; };
+		C9FF514217CC030700BA526E /* WEBXMLParserDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEBXMLParserDelegate.h; sourceTree = "<group>"; };
+		C9FF514317CC030700BA526E /* WEBXMLParserDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEBXMLParserDelegate.m; sourceTree = "<group>"; };
+		C9FF514517CC04B500BA526E /* Book.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Book.h; sourceTree = "<group>"; };
+		C9FF514617CC04B500BA526E /* Book.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Book.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,15 +150,22 @@
 			children = (
 				C9FF510317CBB54700BA526E /* AppDelegate.h */,
 				C9FF510417CBB54700BA526E /* AppDelegate.m */,
-				C9FF510617CBB54700BA526E /* Main_iPhone.storyboard */,
 				C9FF510917CBB54700BA526E /* Main_iPad.storyboard */,
+				C9FF510617CBB54700BA526E /* Main_iPhone.storyboard */,
+				C99F2FC217CCDC01008AF602 /* BooksViewController.h */,
+				C99F2FC317CCDC01008AF602 /* BooksViewController.m */,
 				C9FF510F17CBB54800BA526E /* MasterViewController.h */,
 				C9FF511017CBB54800BA526E /* MasterViewController.m */,
 				C9FF511217CBB54800BA526E /* DetailViewController.h */,
 				C9FF511317CBB54800BA526E /* DetailViewController.m */,
 				C9FF511517CBB54800BA526E /* Images.xcassets */,
 				C9FF510C17CBB54800BA526E /* Bible.xcdatamodeld */,
+				C9FF514517CC04B500BA526E /* Book.h */,
+				C9FF514617CC04B500BA526E /* Book.m */,
 				C9FF50FB17CBB54700BA526E /* Supporting Files */,
+				C9FF513317CBFBE900BA526E /* Core Data Source Files */,
+				C9FF514217CC030700BA526E /* WEBXMLParserDelegate.h */,
+				C9FF514317CC030700BA526E /* WEBXMLParserDelegate.m */,
 			);
 			path = Bible;
 			sourceTree = "<group>";
@@ -167,6 +197,20 @@
 				C9FF512617CBB54800BA526E /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C9FF513317CBFBE900BA526E /* Core Data Source Files */ = {
+			isa = PBXGroup;
+			children = (
+				C9FF513417CBFEA300BA526E /* BookNames.xml */,
+				C9FF513517CBFEA300BA526E /* copr.htm */,
+				C9FF513617CBFEA300BA526E /* eng-web_usfx.xml */,
+				C9FF513717CBFEA300BA526E /* eng-web-VernacularAdditional.xml */,
+				C9FF513817CBFEA300BA526E /* eng-web-VernacularParms.xml */,
+				C9FF513917CBFEA300BA526E /* keys.asc */,
+				C9FF513A17CBFEA300BA526E /* signature.txt.asc */,
+			);
+			name = "Core Data Source Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -246,9 +290,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				C9FF510B17CBB54700BA526E /* Main_iPad.storyboard in Resources */,
+				C9FF514117CBFEA300BA526E /* signature.txt.asc in Resources */,
+				C9FF513C17CBFEA300BA526E /* copr.htm in Resources */,
+				C9FF513E17CBFEA300BA526E /* eng-web-VernacularAdditional.xml in Resources */,
+				C9FF514017CBFEA300BA526E /* keys.asc in Resources */,
 				C9FF511617CBB54800BA526E /* Images.xcassets in Resources */,
+				C9FF513D17CBFEA300BA526E /* eng-web_usfx.xml in Resources */,
 				C9FF510817CBB54700BA526E /* Main_iPhone.storyboard in Resources */,
+				C9FF513B17CBFEA300BA526E /* BookNames.xml in Resources */,
 				C9FF50FF17CBB54700BA526E /* InfoPlist.strings in Resources */,
+				C9FF513F17CBFEA300BA526E /* eng-web-VernacularParms.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,10 +318,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9FF514417CC030700BA526E /* WEBXMLParserDelegate.m in Sources */,
 				C9FF511417CBB54800BA526E /* DetailViewController.m in Sources */,
 				C9FF511117CBB54800BA526E /* MasterViewController.m in Sources */,
 				C9FF510517CBB54700BA526E /* AppDelegate.m in Sources */,
 				C9FF510117CBB54700BA526E /* main.m in Sources */,
+				C99F2FC417CCDC01008AF602 /* BooksViewController.m in Sources */,
+				C9FF514717CC04B500BA526E /* Book.m in Sources */,
 				C9FF510E17CBB54800BA526E /* Bible.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -484,6 +538,7 @@
 				C9FF512F17CBB54800BA526E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C9FF513017CBB54800BA526E /* Build configuration list for PBXNativeTarget "BibleTests" */ = {
 			isa = XCConfigurationList;
@@ -492,6 +547,7 @@
 				C9FF513217CBB54800BA526E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

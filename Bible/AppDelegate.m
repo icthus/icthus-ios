@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 
 #import "MasterViewController.h"
+#import "WEBXMLParserDelegate.h"
 
 @implementation AppDelegate
 
@@ -18,7 +19,12 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    if ([prefs objectForKey:@"appHasLaunchedBefore"] == nil) {
+        [[[WEBXMLParserDelegate alloc] init] instantiateBooks: [self managedObjectContext]];
+        [prefs setBool:YES forKey:@"appHasLaunchedBefore"];
+    }    
+    
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
         UISplitViewController *splitViewController = (UISplitViewController *)self.window.rootViewController;
         UINavigationController *navigationController = [splitViewController.viewControllers lastObject];
