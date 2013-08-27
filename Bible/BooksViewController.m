@@ -8,6 +8,7 @@
 
 #import "BooksViewController.h"
 #import "Book.h"
+#import "ReadingViewController.h"
 
 @interface BooksViewController ()
 
@@ -65,15 +66,20 @@
 {
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
-    }
     
     // Configure the cell...
     Book *book = [self.fetchedResultsController objectAtIndexPath:indexPath];
     cell.textLabel.text = [book shortName];
     
     return cell;
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([[segue identifier] isEqualToString:@"showBook"]) {
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        NSManagedObject *object = [[self fetchedResultsController] objectAtIndexPath:indexPath];
+        [(ReadingViewController *)[segue destinationViewController] setBook:(Book *)object];
+    }
 }
 
 /*

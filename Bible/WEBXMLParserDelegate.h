@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Book.h"
 
 @interface WEBXMLParserDelegate : NSObject  <NSXMLParserDelegate>
 
@@ -21,5 +22,6 @@
 @property (nonatomic, strong) NSXMLParser *bookParser;
 @property (nonatomic, strong) NSManagedObjectContext *context;
 @property (nonatomic, strong) NSMutableDictionary *booksByCode;
+@property (nonatomic, strong) Book *currentBook;
 
 @end

@@ -2,7 +2,7 @@
 //  Book.m
 //  Bible
 //
-//  Created by Matthew Lorentz on 8/26/13.
+//  Created by Matthew Lorentz on 8/27/13.
 //  Copyright (c) 2013 Matthew Lorentz. All rights reserved.
 //
 
@@ -11,11 +11,11 @@
 
 @implementation Book
 
-@dynamic shortName;
-@dynamic text;
-@dynamic longName;
 @dynamic abbr;
 @dynamic code;
+@dynamic longName;
+@dynamic shortName;
+@dynamic text;
 @dynamic translation;
 @dynamic reading;
 
