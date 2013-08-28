@@ -55,6 +55,7 @@ bool shouldParseCharacters;
         [book setTranslation:@"WEB"];
         [book setReading:NO];
         [book setText:@""];
+        [book setPosition:0];
         [_booksByCode setValue:book forKey:[book code]];
     } else if ([elementName isEqualToString:@"book"]) {
         _currentBook = [_booksByCode valueForKey:[attributeDict valueForKey:@"id"]];

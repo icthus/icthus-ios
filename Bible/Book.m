@@ -14,9 +14,10 @@
 @dynamic abbr;
 @dynamic code;
 @dynamic longName;
+@dynamic reading;
 @dynamic shortName;
 @dynamic text;
 @dynamic translation;
-@dynamic reading;
+@dynamic position;
 
 @end

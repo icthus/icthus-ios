@@ -47,7 +47,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="qht-c0-i04" kind="push" id="n2y-Og-6WS"/>
+                                            <segue destination="qht-c0-i04" kind="push" identifier="" id="n2y-Og-6WS"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="GX7-Ys-Aqi" style="IBUITableViewCellStyleDefault" id="v6r-Pj-Hct">
@@ -235,7 +235,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="ibv-lJ-hHP" kind="push" id="1y6-yb-AVY"/>
+                                    <segue destination="ibv-lJ-hHP" kind="push" identifier="showBook" id="1y6-yb-AVY"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

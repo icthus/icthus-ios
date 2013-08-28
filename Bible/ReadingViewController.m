@@ -60,7 +60,7 @@
     
     if (_book) {
         [self.textView setText:[_book text]];
-        NSLog(@"Text for book %@", [_book text]);
+        [self.textView setContentOffset:CGPointMake(0.0, [[_book position] floatValue])];
     }
 }
 
@@ -78,6 +78,18 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [self configureView];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [_book setPosition:[NSNumber numberWithFloat:[self.textView contentOffset].y]];
+    NSManagedObjectContext *context = [(NSManagedObject *)_book managedObjectContext];
+    NSError *error;
+    [context save:&error];
+    if (error != nil) {
+        NSLog(@"An error occured during save");
+        NSLog(@"%@", [error localizedDescription]);
+    }
+
 }
 
 @end
