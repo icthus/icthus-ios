@@ -10,6 +10,7 @@
 		C99F2FC417CCDC01008AF602 /* BooksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C99F2FC317CCDC01008AF602 /* BooksViewController.m */; };
 		C99F2FC717CCE714008AF602 /* ReadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C99F2FC617CCE714008AF602 /* ReadingViewController.m */; };
 		C99F2FCD17CD0F07008AF602 /* Book.m in Sources */ = {isa = PBXBuildFile; fileRef = C99F2FCC17CD0F07008AF602 /* Book.m */; };
+		C9BCA00A17CD3FEC00196DA8 /* ReadingListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BCA00917CD3FEC00196DA8 /* ReadingListViewController.m */; };
 		C9FF50F317CBB54700BA526E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9FF50F217CBB54700BA526E /* Foundation.framework */; };
 		C9FF50F517CBB54700BA526E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9FF50F417CBB54700BA526E /* CoreGraphics.framework */; };
 		C9FF50F717CBB54700BA526E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9FF50F617CBB54700BA526E /* UIKit.framework */; };
@@ -56,6 +57,8 @@
 		C99F2FC617CCE714008AF602 /* ReadingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadingViewController.m; sourceTree = "<group>"; };
 		C99F2FCB17CD0F07008AF602 /* Book.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Book.h; path = ../Book.h; sourceTree = "<group>"; };
 		C99F2FCC17CD0F07008AF602 /* Book.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Book.m; path = ../Book.m; sourceTree = "<group>"; };
+		C9BCA00817CD3FEC00196DA8 /* ReadingListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReadingListViewController.h; path = ../ReadingListViewController.h; sourceTree = "<group>"; };
+		C9BCA00917CD3FEC00196DA8 /* ReadingListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ReadingListViewController.m; path = ../ReadingListViewController.m; sourceTree = "<group>"; };
 		C9FF50EF17CBB54700BA526E /* Bible.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bible.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9FF50F217CBB54700BA526E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C9FF50F417CBB54700BA526E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -159,6 +162,8 @@
 				C99F2FC617CCE714008AF602 /* ReadingViewController.m */,
 				C99F2FC217CCDC01008AF602 /* BooksViewController.h */,
 				C99F2FC317CCDC01008AF602 /* BooksViewController.m */,
+				C9BCA00817CD3FEC00196DA8 /* ReadingListViewController.h */,
+				C9BCA00917CD3FEC00196DA8 /* ReadingListViewController.m */,
 				C9FF510F17CBB54800BA526E /* MasterViewController.h */,
 				C9FF511017CBB54800BA526E /* MasterViewController.m */,
 				C9FF511217CBB54800BA526E /* DetailViewController.h */,
@@ -332,6 +337,7 @@
 				C99F2FC717CCE714008AF602 /* ReadingViewController.m in Sources */,
 				C99F2FC417CCDC01008AF602 /* BooksViewController.m in Sources */,
 				C9FF510E17CBB54800BA526E /* Bible.xcdatamodeld in Sources */,
+				C9BCA00A17CD3FEC00196DA8 /* ReadingListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
