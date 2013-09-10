@@ -7,6 +7,7 @@
 //
 
 #import "ReadingViewController.h"
+#import "ReadingView.h"
 
 @interface ReadingViewController ()
 
@@ -14,23 +15,24 @@
 
 @implementation ReadingViewController
 
-@synthesize textView;
+@synthesize readingView;
 @synthesize book = _book;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
     }
     return self;
+}
+
+-(void)awakeFromNib {
 }
 
 - (id)initWithBook:(Book *)book {
     self = [super init];
     if (self) {
         _book = book;
-        [[self textView] setText:[book text]];
     }
     return self;
 }
@@ -57,17 +59,15 @@
 - (void)configureView
 {
     // Update the user interface for the detail item.
-    
     if (_book) {
-        [self.textView setText:[_book text]];
-        [self.textView setContentOffset:CGPointMake(0.0, [[_book position] floatValue])];
+        [self.readingView setText:[_book text]];
+        [self.readingView setContentOffset:CGPointMake(0.0, [[_book position] floatValue])];
     }
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning
@@ -81,7 +81,7 @@
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
-    [_book setPosition:[NSNumber numberWithFloat:[self.textView contentOffset].y]];
+    [_book setPosition:[NSNumber numberWithFloat:[self.readingView contentOffset].y]];
     NSManagedObjectContext *context = [(NSManagedObject *)_book managedObjectContext];
     NSError *error;
     [context save:&error];

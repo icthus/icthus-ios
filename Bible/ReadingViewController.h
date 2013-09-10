@@ -8,11 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "Book.h"
+#import "ReadingView.h"
 
-@interface ReadingViewController : UIViewController
+@interface ReadingViewController : UIViewController <UIScrollViewDelegate>
 -(id)initWithBook:(Book *)book;
 
+@property (strong, nonatomic) IBOutlet ReadingView *readingView;
 @property (nonatomic, strong) Book *book;
-@property (nonatomic, retain) IBOutlet UITextView *textView;
 
 @end
