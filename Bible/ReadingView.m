@@ -25,7 +25,14 @@
 }
 
 -(void)setText:(NSString *)text {
-    self.attString = [[NSAttributedString alloc] initWithString:text];
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle defaultParagraphStyle] mutableCopy];
+    [paragraphStyle setLineSpacing:4];
+    NSDictionary *attributesDict = [[NSDictionary alloc] initWithObjectsAndKeys:
+        [UIFont fontWithName:@"Helvetica" size:19], NSFontAttributeName,
+        paragraphStyle, NSParagraphStyleAttributeName,
+        nil
+    ];
+    self.attString = [[NSAttributedString alloc] initWithString:text attributes:attributesDict];
     [self buildFrames];
 }
 
@@ -34,7 +41,7 @@
     
     CGMutablePathRef path = CGPathCreateMutable();
     CGPathAddRect(path, NULL, self.bounds);
-    
+    CGRect textFrame = CGRectInset(self.bounds, 10, 0);
     CTFramesetterRef framesetter = CTFramesetterCreateWithAttributedString((CFAttributedStringRef)attString);
     
     int textPos = 0;
@@ -43,7 +50,7 @@
     
     while (textPos < [attString length]) {
         CGMutablePathRef path = CGPathCreateMutable();
-        CGPathAddRect(path, NULL, self.bounds);
+        CGPathAddRect(path, NULL, textFrame);
         CTFrameRef frame = CTFramesetterCreateFrame(framesetter, CFRangeMake(textPos, 0), path, NULL);
         CFRange frameRange = CTFrameGetVisibleStringRange(frame);
         
