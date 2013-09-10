@@ -8,6 +8,7 @@
 
 #import "ReadingView.h"
 #import "BibleTextView.h"
+#import "BibleMarkupParser.h"
 #import <CoreText/CoreText.h>
 
 @implementation ReadingView
@@ -25,6 +26,12 @@
 }
 
 -(void)setText:(NSString *)text {
+    _text = text;
+    
+    // parse the markup
+    NSString *displayString = [[BibleMarkupParser alloc] displayStringFromMarkup:text];
+
+    // set up the formatting
     NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle defaultParagraphStyle] mutableCopy];
     [paragraphStyle setLineSpacing:4];
     NSDictionary *attributesDict = [[NSDictionary alloc] initWithObjectsAndKeys:
@@ -32,7 +39,9 @@
         paragraphStyle, NSParagraphStyleAttributeName,
         nil
     ];
-    self.attString = [[NSAttributedString alloc] initWithString:text attributes:attributesDict];
+    self.attString = [[NSAttributedString alloc] initWithString:displayString attributes:attributesDict];
+    
+    // build the subviews
     [self buildFrames];
 }
 

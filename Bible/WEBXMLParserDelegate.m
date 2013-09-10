@@ -18,7 +18,7 @@
 @synthesize currentBook = _currentBook;
 
 NSMutableString *mutableBookText;
-int verseIndex;
+int chapterIndex;
 bool shouldParseCharacters;
 
 - (void) instantiateBooks:(NSManagedObjectContext *)context {
@@ -60,26 +60,27 @@ bool shouldParseCharacters;
         [_booksByCode setValue:book forKey:[book code]];
     } else if ([elementName isEqualToString:@"book"]) {
         _currentBook = [_booksByCode valueForKey:[attributeDict valueForKey:@"id"]];
-        mutableBookText = [[NSMutableString alloc] initWithString:@""];
+        mutableBookText = [[NSMutableString alloc] initWithString:@"<book>"];
+        chapterIndex = 0;
     } else if ([elementName isEqualToString:@"p"]) {
         shouldParseCharacters = YES;
     } else if ([elementName isEqualToString:@"f"]) {
         shouldParseCharacters = NO;
     } else if ([elementName isEqualToString:@"v"]) {
         shouldParseCharacters = YES;
-        verseIndex = [(NSString *)[attributeDict objectForKey:@"id"] intValue];
-        [mutableBookText appendString:[NSString stringWithFormat:@"<v i=\"%d\">", verseIndex]];
+        [mutableBookText appendString:[NSString stringWithFormat:@"<v i=\"%d\">", chapterIndex]];
     } else if ([elementName isEqualToString:@"c"]) {
-        if (verseIndex != 0) {
+        if (chapterIndex != 0) {
             [mutableBookText appendString:@"</c>"];
         }
+        chapterIndex = [(NSString *)[attributeDict objectForKey:@"id"] intValue];
         [mutableBookText appendString:[NSString stringWithFormat:@"<c i=\"%@\">", [attributeDict objectForKey:@"id"]]];
     }
 }
 
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qualifiedName {
     if (parser == _bookParser && [elementName isEqualToString:@"book"]) {
-        [mutableBookText appendString:@"</c>"];
+        [mutableBookText appendString:@"</c></book>"];
         [_currentBook setText:mutableBookText];
     }
     else if ([elementName isEqualToString:@"p"]) {
@@ -100,7 +101,6 @@ bool shouldParseCharacters;
 - (void)parser:(NSXMLParser *)parser parseErrorOccurred:(NSError *)parseError {
     NSLog(@"A parsing error occured");
     NSLog(@"%@", [parseError localizedDescription]);
-    
 }
 
 - (void)parserDidEndDocument:(NSXMLParser *)parser {
