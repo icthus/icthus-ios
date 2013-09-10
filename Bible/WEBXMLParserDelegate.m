@@ -18,6 +18,7 @@
 @synthesize currentBook = _currentBook;
 
 NSMutableString *mutableBookText;
+int verseIndex;
 bool shouldParseCharacters;
 
 - (void) instantiateBooks:(NSManagedObjectContext *)context {
@@ -64,17 +65,29 @@ bool shouldParseCharacters;
         shouldParseCharacters = YES;
     } else if ([elementName isEqualToString:@"f"]) {
         shouldParseCharacters = NO;
+    } else if ([elementName isEqualToString:@"v"]) {
+        shouldParseCharacters = YES;
+        verseIndex = [(NSString *)[attributeDict objectForKey:@"id"] intValue];
+        [mutableBookText appendString:[NSString stringWithFormat:@"<v i=\"%d\">", verseIndex]];
+    } else if ([elementName isEqualToString:@"c"]) {
+        if (verseIndex != 0) {
+            [mutableBookText appendString:@"</c>"];
+        }
+        [mutableBookText appendString:[NSString stringWithFormat:@"<c i=\"%@\">", [attributeDict objectForKey:@"id"]]];
     }
 }
 
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qualifiedName {
     if (parser == _bookParser && [elementName isEqualToString:@"book"]) {
+        [mutableBookText appendString:@"</c>"];
         [_currentBook setText:mutableBookText];
     }
     else if ([elementName isEqualToString:@"p"]) {
         shouldParseCharacters = NO;
     } else if ([elementName isEqualToString:@"f"]) {
         shouldParseCharacters = YES;
+    } else if ([elementName isEqualToString:@"ve"]) {
+        [mutableBookText appendString:@"</v>"];
     }
 }
 
