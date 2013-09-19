@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
+#import "BookLocation.h"
 
 
 @interface Book : NSManagedObject
@@ -19,6 +20,6 @@
 @property (nonatomic, retain) NSString * shortName;
 @property (nonatomic, retain) NSString * text;
 @property (nonatomic, retain) NSString * translation;
-@property (nonatomic, retain) NSNumber * position;
+@property (nonatomic, retain) BookLocation * position;
 
 @end

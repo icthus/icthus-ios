@@ -14,6 +14,7 @@
 @synthesize text;
 @synthesize view;
 @synthesize ctFrame;
+@synthesize textPos;
 
 - (id)initWithFrame:(CGRect)frame
 {

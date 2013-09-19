@@ -9,6 +9,7 @@
 #import "ReadingView.h"
 #import "BibleTextView.h"
 #import "BibleMarkupParser.h"
+#import "BookLocation.h"
 #import <CoreText/CoreText.h>
 
 @implementation ReadingView
@@ -29,7 +30,7 @@
     _text = text;
     
     // parse the markup
-    NSString *displayString = [[BibleMarkupParser alloc] displayStringFromMarkup:text];
+    NSString *displayString = [[[BibleMarkupParser alloc] init] displayStringFromMarkup:text];
 
     // set up the formatting
     NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle defaultParagraphStyle] mutableCopy];
@@ -39,7 +40,7 @@
         paragraphStyle, NSParagraphStyleAttributeName,
         nil
     ];
-    self.attString = [[NSAttributedString alloc] initWithString:displayString attributes:attributesDict];
+    [self setAttString:[[NSAttributedString alloc] initWithString:displayString attributes:attributesDict]];
     
     // build the subviews
     [self buildFrames];
@@ -67,6 +68,7 @@
         BibleTextView *content = [[BibleTextView alloc] initWithFrame:tmpFrame];
 
 		//set the column view contents and add it as subview
+        [content setTextPos:textPos];
         [content setCTFrame:frame];
         [self.frames addObject:content];
         [self addSubview:content];
@@ -80,6 +82,102 @@
     
     //set the total width of the scroll view
     self.contentSize = CGSizeMake(self.bounds.size.width, (pageIndex + 1) * self.bounds.size.height);
+}
+
+- (void)getTouchedLocation {
+    int frameHeight = self.frame.size.height;
+    int offset = self.contentOffset.y;
+    int frameOffset = offset % frameHeight;
+    BibleTextView *currentView = [self.frames objectAtIndex: offset / frameHeight];
+    CTFrameRef currentFrame = currentView.ctFrame;
+    
+    NSArray *lines = (NSArray *) CTFrameGetLines(currentFrame);
+    CGPoint origins[lines.count];
+    CTFrameGetLineOrigins(currentFrame, CFRangeMake(0, 0), origins);
+    
+    int i;
+    for (i = 0; i < [lines count]; i++) {
+        CGPoint currentLineOrigin = origins[i];
+        if (currentLineOrigin.y > frameOffset) {
+            i -= 1;
+            break;
+        }
+    }
+    
+    CTLineRef currentLine = (__bridge CTLineRef)[lines objectAtIndex:i];
+}
+
+- (BookLocation *)getCurrentLocation {
+    // find the current view
+    BibleTextView *lastView = [self.frames objectAtIndex:0];
+    for (BibleTextView *view in self.frames) {
+        if (view.frame.origin.y > self.contentOffset.y) {
+            break;
+        }
+        lastView = view;
+    }
+
+    // find the origin of the current line
+    CFArrayRef lines = CTFrameGetLines(lastView.ctFrame);
+    int originsLength = CFArrayGetCount(lines);
+    CGPoint origins[originsLength];
+    CTFrameGetLineOrigins(lastView.ctFrame, CFRangeMake(0, 0), origins);
+    int i = 0;
+    if (originsLength > 0) {
+        int lastOrigin = origins[0].y;
+        for (i = 1; i < originsLength; i++) {
+            int offset = lastView.frame.origin.y + lastView.frame.size.height - lastOrigin;
+            if (offset > self.contentOffset.y) {
+                i -= 1;
+                break;
+            }
+            lastOrigin = origins[i].y;
+        }
+    }
+    
+    CTLineRef line = CFArrayGetValueAtIndex(lines, i);
+    CFRange range = CTLineGetStringRange(line);
+    
+    return [[[BibleMarkupParser alloc] init] getLocationForCharAtIndex:range.location forText:self.text andBookCode:nil];
+}
+
+- (void)setCurrentLocation:(BookLocation *)location {
+    if ([self.frames count]) {
+        int targetTextPos = [[[BibleMarkupParser alloc] init] getTextPositionForLocation:location inMarkup:self.text];
+
+        // find the view with the given location
+        BibleTextView *lastView = [self.frames objectAtIndex:0];
+        for (BibleTextView *view in self.frames) {
+            if (view.textPos > targetTextPos) {
+                break;
+            }
+            lastView = view;
+        }
+
+        int contentOffset = lastView.frame.origin.y;
+
+        // find the correct line in the view
+        CFArrayRef lines = CTFrameGetLines(lastView.ctFrame);
+        if (CFArrayGetCount(lines)) {
+            CTLineRef line = CFArrayGetValueAtIndex(lines, 0);
+            int i;
+            for (i = 0; i < CFArrayGetCount(lines); i++) {
+                CFRange range = CTLineGetStringRange(line);
+                if (targetTextPos <= range.location + range.length) {
+                    break;
+                }
+                line = CFArrayGetValueAtIndex(lines, i);
+            }
+            
+            int originLength = CFArrayGetCount(lines);
+            CGPoint origins[originLength];
+            CTFrameGetLineOrigins(lastView.ctFrame, CFRangeMake(0, 0), origins);
+            CGPoint origin = origins[i];
+            contentOffset += lastView.frame.size.height - origin.y;
+        }
+        
+        [self setContentOffset:CGPointMake(0, contentOffset)];
+    }
 }
 
 @end

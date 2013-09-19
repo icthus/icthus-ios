@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		C902F4EF17DA26410077504A /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C902F4EE17DA26410077504A /* CoreText.framework */; };
 		C9198AFE17D94B2000077726 /* BibleTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9198AFD17D94B2000077726 /* BibleTextView.m */; };
+		C9256B0717DFC5D400646198 /* BookLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = C9256B0617DFC5D400646198 /* BookLocation.m */; };
 		C99C73FA17DFA61B00DBF0E2 /* BibleMarkupParser.m in Sources */ = {isa = PBXBuildFile; fileRef = C99C73F917DFA61B00DBF0E2 /* BibleMarkupParser.m */; };
 		C99F2FC417CCDC01008AF602 /* BooksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C99F2FC317CCDC01008AF602 /* BooksViewController.m */; };
 		C99F2FC717CCE714008AF602 /* ReadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C99F2FC617CCE714008AF602 /* ReadingViewController.m */; };
@@ -58,6 +59,8 @@
 		C902F4EE17DA26410077504A /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		C9198AFC17D94B2000077726 /* BibleTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BibleTextView.h; sourceTree = "<group>"; };
 		C9198AFD17D94B2000077726 /* BibleTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BibleTextView.m; sourceTree = "<group>"; };
+		C9256B0517DFC5D400646198 /* BookLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookLocation.h; sourceTree = "<group>"; };
+		C9256B0617DFC5D400646198 /* BookLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookLocation.m; sourceTree = "<group>"; };
 		C99C73F817DFA61B00DBF0E2 /* BibleMarkupParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BibleMarkupParser.h; sourceTree = "<group>"; };
 		C99C73F917DFA61B00DBF0E2 /* BibleMarkupParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BibleMarkupParser.m; sourceTree = "<group>"; };
 		C99F2FC217CCDC01008AF602 /* BooksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BooksViewController.h; sourceTree = "<group>"; };
@@ -177,6 +180,8 @@
 				C9D071DB17DE8C2000B535ED /* ReadingView.m */,
 				C99F2FC517CCE714008AF602 /* ReadingViewController.h */,
 				C99F2FC617CCE714008AF602 /* ReadingViewController.m */,
+				C9256B0517DFC5D400646198 /* BookLocation.h */,
+				C9256B0617DFC5D400646198 /* BookLocation.m */,
 				C99F2FC217CCDC01008AF602 /* BooksViewController.h */,
 				C99F2FC317CCDC01008AF602 /* BooksViewController.m */,
 				C9BCA00817CD3FEC00196DA8 /* ReadingListViewController.h */,
@@ -360,6 +365,7 @@
 				C9D071DC17DE8C2000B535ED /* ReadingView.m in Sources */,
 				C9FF510E17CBB54800BA526E /* Bible.xcdatamodeld in Sources */,
 				C9BCA00A17CD3FEC00196DA8 /* ReadingListViewController.m in Sources */,
+				C9256B0717DFC5D400646198 /* BookLocation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

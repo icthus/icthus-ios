@@ -8,6 +8,7 @@
 
 #import "WEBXMLParserDelegate.h"
 #import "Book.h"
+#import "BookLocation.h"
 
 @implementation WEBXMLParserDelegate
 
@@ -56,7 +57,7 @@ bool shouldParseCharacters;
         [book setTranslation:@"WEB"];
         [book setReading:NO];
         [book setText:@""];
-        [book setPosition:0];
+        [book setPosition:[[BookLocation alloc] initWithBookCode:[attributeDict valueForKey:@"code"] chapter:0 verse:0]];
         [_booksByCode setValue:book forKey:[book code]];
     } else if ([elementName isEqualToString:@"book"]) {
         _currentBook = [_booksByCode valueForKey:[attributeDict valueForKey:@"id"]];
@@ -68,7 +69,7 @@ bool shouldParseCharacters;
         shouldParseCharacters = NO;
     } else if ([elementName isEqualToString:@"v"]) {
         shouldParseCharacters = YES;
-        [mutableBookText appendString:[NSString stringWithFormat:@"<v i=\"%d\">", chapterIndex]];
+        [mutableBookText appendString:[NSString stringWithFormat:@"<v i=\"%d\">", [[attributeDict objectForKey:@"id"] intValue]]];
     } else if ([elementName isEqualToString:@"c"]) {
         if (chapterIndex != 0) {
             [mutableBookText appendString:@"</c>"];

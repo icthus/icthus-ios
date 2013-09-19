@@ -7,8 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BookLocation.h"
 
 @interface ReadingView : UIScrollView <UIScrollViewDelegate>
+
+- (BookLocation *)getCurrentLocation;
+- (void)setCurrentLocation:(BookLocation *)location;
 
 @property (retain, nonatomic) NSAttributedString* attString;
 @property (retain, nonatomic) NSString *text;

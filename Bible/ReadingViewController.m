@@ -8,6 +8,7 @@
 
 #import "ReadingViewController.h"
 #import "ReadingView.h"
+#import "BookLocation.h"
 
 @interface ReadingViewController ()
 
@@ -61,7 +62,7 @@
     // Update the user interface for the detail item.
     if (_book) {
         [self.readingView setText:[_book text]];
-        [self.readingView setContentOffset:CGPointMake(0.0, [[_book position] floatValue])];
+        [self.readingView setCurrentLocation:[_book position]];
     }
 }
 
@@ -81,7 +82,7 @@
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
-    [_book setPosition:[NSNumber numberWithFloat:[self.readingView contentOffset].y]];
+    [_book setPosition:[self.readingView getCurrentLocation]];
     NSManagedObjectContext *context = [(NSManagedObject *)_book managedObjectContext];
     NSError *error;
     [context save:&error];

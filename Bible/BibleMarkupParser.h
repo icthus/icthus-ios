@@ -7,9 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "BookLocation.h"
 
 @interface BibleMarkupParser : NSObject <NSXMLParserDelegate>
 
 - (NSString *)displayStringFromMarkup:(NSString *)markupText;
+- (BookLocation *)getLocationForCharAtIndex:(int)index forText:(NSString *)markupText andBookCode:(NSString *)code;
+- (int)getTextPositionForLocation:(BookLocation *)location inMarkup:(NSString *)markupText;
 
 @end

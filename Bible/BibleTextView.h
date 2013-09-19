@@ -14,6 +14,7 @@
 @property (nonatomic, strong) NSString *text;
 @property (nonatomic, strong) UIView *view;
 @property CTFrameRef ctFrame;
+@property int textPos;
 
 -(void)setCTFrame:(CTFrameRef)f;
 
