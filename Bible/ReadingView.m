@@ -124,21 +124,20 @@
     CTFrameGetLineOrigins(lastView.ctFrame, CFRangeMake(0, 0), origins);
     int i = 0;
     if (originsLength > 0) {
-        int lastOrigin = origins[0].y;
-        for (i = 1; i < originsLength; i++) {
-            int offset = lastView.frame.origin.y + lastView.frame.size.height - lastOrigin;
-            if (offset > self.contentOffset.y) {
-                i -= 1;
+        for (i = 0; i < originsLength - 1; i++) {
+            int origin = origins[i].y;
+            int offset = lastView.frame.origin.y + lastView.frame.size.height - origin;
+            int contentOffset = self.contentOffset.y;
+            if (offset > contentOffset) {
                 break;
             }
-            lastOrigin = origins[i].y;
         }
     }
     
     CTLineRef line = CFArrayGetValueAtIndex(lines, i);
     CFRange range = CTLineGetStringRange(line);
     
-    return [[[BibleMarkupParser alloc] init] getLocationForCharAtIndex:range.location forText:self.text andBookCode:nil];
+    return [[[BibleMarkupParser alloc] init] getLocationForCharAtIndex:(range.location + range.length) forText:self.text andBookCode:nil];
 }
 
 - (void)setCurrentLocation:(BookLocation *)location {
@@ -148,7 +147,7 @@
         // find the view with the given location
         BibleTextView *lastView = [self.frames objectAtIndex:0];
         for (BibleTextView *view in self.frames) {
-            if (view.textPos > targetTextPos) {
+            if (view.textPos >= targetTextPos) {
                 break;
             }
             lastView = view;
@@ -161,19 +160,25 @@
         if (CFArrayGetCount(lines)) {
             CTLineRef line = CFArrayGetValueAtIndex(lines, 0);
             int i;
-            for (i = 0; i < CFArrayGetCount(lines); i++) {
+            for (i = 0; i < CFArrayGetCount(lines) - 1; i++) {
+                line = CFArrayGetValueAtIndex(lines, i);
                 CFRange range = CTLineGetStringRange(line);
                 if (targetTextPos <= range.location + range.length) {
                     break;
                 }
-                line = CFArrayGetValueAtIndex(lines, i);
             }
             
             int originLength = CFArrayGetCount(lines);
             CGPoint origins[originLength];
             CTFrameGetLineOrigins(lastView.ctFrame, CFRangeMake(0, 0), origins);
-            CGPoint origin = origins[i];
-            contentOffset += lastView.frame.size.height - origin.y;
+            // get the origin of the line just above the line we want to show because CoreText origins are on a Cartesian plane.
+            if (i == 0) {
+                CGPoint origin = lastView.frame.origin;
+                contentOffset += origin.y;
+            } else {
+                CGPoint origin = origins[i + 1]; // I don't understand why this is i + 1 but it works
+                contentOffset += lastView.frame.size.height - origin.y;
+            }
         }
         
         [self setContentOffset:CGPointMake(0, contentOffset)];

@@ -88,6 +88,8 @@
     if (gettingTextPos) {
         if (currentChapter == neededChapter && currentVerse == neededVerse) {
             [parser abortParsing];
+            // we need to bump the text position onto the current verse
+            textPos += 1;
         }
     }
 }
