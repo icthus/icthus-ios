@@ -10,6 +10,7 @@
 
 #import "MasterViewController.h"
 #import "WEBXMLParserDelegate.h"
+#import "ASVXMLParserDelegate.h"
 
 @implementation AppDelegate
 
@@ -22,6 +23,7 @@
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     if ([prefs objectForKey:@"appHasLaunchedBefore"] == nil) {
         [[[WEBXMLParserDelegate alloc] init] instantiateBooks: [self managedObjectContext]];
+        [[[ASVXMLParserDelegate alloc] init] instantiateBooks: [self managedObjectContext]];
         [prefs setBool:YES forKey:@"appHasLaunchedBefore"];
     }    
     

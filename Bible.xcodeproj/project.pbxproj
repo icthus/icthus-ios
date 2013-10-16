@@ -10,6 +10,16 @@
 		C902F4EF17DA26410077504A /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C902F4EE17DA26410077504A /* CoreText.framework */; };
 		C9198AFE17D94B2000077726 /* BibleTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9198AFD17D94B2000077726 /* BibleTextView.m */; };
 		C9256B0717DFC5D400646198 /* BookLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = C9256B0617DFC5D400646198 /* BookLocation.m */; };
+		C93B50E9180EB5F300C07D98 /* BookNames.xml in Resources */ = {isa = PBXBuildFile; fileRef = C93B50E2180EB5F300C07D98 /* BookNames.xml */; };
+		C93B50EA180EB5F300C07D98 /* copr.htm in Resources */ = {isa = PBXBuildFile; fileRef = C93B50E3180EB5F300C07D98 /* copr.htm */; };
+		C93B50EB180EB5F300C07D98 /* eng-asv-VernacularAdditional.xml in Resources */ = {isa = PBXBuildFile; fileRef = C93B50E4180EB5F300C07D98 /* eng-asv-VernacularAdditional.xml */; };
+		C93B50EC180EB5F300C07D98 /* eng-asv-VernacularParms.xml in Resources */ = {isa = PBXBuildFile; fileRef = C93B50E5180EB5F300C07D98 /* eng-asv-VernacularParms.xml */; };
+		C93B50ED180EB5F300C07D98 /* eng-asv_usfx.xml in Resources */ = {isa = PBXBuildFile; fileRef = C93B50E6180EB5F300C07D98 /* eng-asv_usfx.xml */; };
+		C93B50EE180EB5F300C07D98 /* keys.asc in Resources */ = {isa = PBXBuildFile; fileRef = C93B50E7180EB5F300C07D98 /* keys.asc */; };
+		C93B50EF180EB5F300C07D98 /* signature.txt.asc in Resources */ = {isa = PBXBuildFile; fileRef = C93B50E8180EB5F300C07D98 /* signature.txt.asc */; };
+		C93B50F1180EB65200C07D98 /* ASVXMLParserDelegate.m in Resources */ = {isa = PBXBuildFile; fileRef = C93B50F0180EB65200C07D98 /* ASVXMLParserDelegate.m */; };
+		C93B50F3180EB87A00C07D98 /* ASVXMLParserDelegate.h in Sources */ = {isa = PBXBuildFile; fileRef = C93B50F2180EB66900C07D98 /* ASVXMLParserDelegate.h */; };
+		C93B50F4180EB87A00C07D98 /* ASVXMLParserDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C93B50F0180EB65200C07D98 /* ASVXMLParserDelegate.m */; };
 		C99C73FA17DFA61B00DBF0E2 /* BibleMarkupParser.m in Sources */ = {isa = PBXBuildFile; fileRef = C99C73F917DFA61B00DBF0E2 /* BibleMarkupParser.m */; };
 		C99F2FC417CCDC01008AF602 /* BooksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C99F2FC317CCDC01008AF602 /* BooksViewController.m */; };
 		C99F2FC717CCE714008AF602 /* ReadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C99F2FC617CCE714008AF602 /* ReadingViewController.m */; };
@@ -61,6 +71,15 @@
 		C9198AFD17D94B2000077726 /* BibleTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BibleTextView.m; sourceTree = "<group>"; };
 		C9256B0517DFC5D400646198 /* BookLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookLocation.h; sourceTree = "<group>"; };
 		C9256B0617DFC5D400646198 /* BookLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookLocation.m; sourceTree = "<group>"; };
+		C93B50E2180EB5F300C07D98 /* BookNames.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = BookNames.xml; sourceTree = "<group>"; };
+		C93B50E3180EB5F300C07D98 /* copr.htm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = copr.htm; sourceTree = "<group>"; };
+		C93B50E4180EB5F300C07D98 /* eng-asv-VernacularAdditional.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "eng-asv-VernacularAdditional.xml"; sourceTree = "<group>"; };
+		C93B50E5180EB5F300C07D98 /* eng-asv-VernacularParms.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "eng-asv-VernacularParms.xml"; sourceTree = "<group>"; };
+		C93B50E6180EB5F300C07D98 /* eng-asv_usfx.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "eng-asv_usfx.xml"; sourceTree = "<group>"; };
+		C93B50E7180EB5F300C07D98 /* keys.asc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = keys.asc; sourceTree = "<group>"; };
+		C93B50E8180EB5F300C07D98 /* signature.txt.asc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = signature.txt.asc; sourceTree = "<group>"; };
+		C93B50F0180EB65200C07D98 /* ASVXMLParserDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASVXMLParserDelegate.m; sourceTree = "<group>"; };
+		C93B50F2180EB66900C07D98 /* ASVXMLParserDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASVXMLParserDelegate.h; sourceTree = "<group>"; };
 		C99C73F817DFA61B00DBF0E2 /* BibleMarkupParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BibleMarkupParser.h; sourceTree = "<group>"; };
 		C99C73F917DFA61B00DBF0E2 /* BibleMarkupParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BibleMarkupParser.m; sourceTree = "<group>"; };
 		C99F2FC217CCDC01008AF602 /* BooksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BooksViewController.h; sourceTree = "<group>"; };
@@ -159,6 +178,35 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
+		C93B50E0180EB5D700C07D98 /* WEB */ = {
+			isa = PBXGroup;
+			children = (
+				C9FF513417CBFEA300BA526E /* BookNames.xml */,
+				C9FF513517CBFEA300BA526E /* copr.htm */,
+				C9FF513617CBFEA300BA526E /* eng-web_usfx.xml */,
+				C9FF513717CBFEA300BA526E /* eng-web-VernacularAdditional.xml */,
+				C9FF513817CBFEA300BA526E /* eng-web-VernacularParms.xml */,
+				C9FF513917CBFEA300BA526E /* keys.asc */,
+				C9FF513A17CBFEA300BA526E /* signature.txt.asc */,
+			);
+			name = WEB;
+			sourceTree = "<group>";
+		};
+		C93B50E1180EB5F300C07D98 /* ASV */ = {
+			isa = PBXGroup;
+			children = (
+				C93B50E2180EB5F300C07D98 /* BookNames.xml */,
+				C93B50E3180EB5F300C07D98 /* copr.htm */,
+				C93B50E4180EB5F300C07D98 /* eng-asv-VernacularAdditional.xml */,
+				C93B50E5180EB5F300C07D98 /* eng-asv-VernacularParms.xml */,
+				C93B50E6180EB5F300C07D98 /* eng-asv_usfx.xml */,
+				C93B50E7180EB5F300C07D98 /* keys.asc */,
+				C93B50E8180EB5F300C07D98 /* signature.txt.asc */,
+			);
+			name = ASV;
+			path = "../../../Downloads/eng-asv_usfx";
+			sourceTree = "<group>";
+		};
 		C9FF50E617CBB54700BA526E = {
 			isa = PBXGroup;
 			children = (
@@ -213,7 +261,9 @@
 				C9FF50FB17CBB54700BA526E /* Supporting Files */,
 				C9FF513317CBFBE900BA526E /* Core Data Source Files */,
 				C9FF514217CC030700BA526E /* WEBXMLParserDelegate.h */,
+				C93B50F2180EB66900C07D98 /* ASVXMLParserDelegate.h */,
 				C9FF514317CC030700BA526E /* WEBXMLParserDelegate.m */,
+				C93B50F0180EB65200C07D98 /* ASVXMLParserDelegate.m */,
 				C99C73F817DFA61B00DBF0E2 /* BibleMarkupParser.h */,
 				C99C73F917DFA61B00DBF0E2 /* BibleMarkupParser.m */,
 			);
@@ -252,13 +302,8 @@
 		C9FF513317CBFBE900BA526E /* Core Data Source Files */ = {
 			isa = PBXGroup;
 			children = (
-				C9FF513417CBFEA300BA526E /* BookNames.xml */,
-				C9FF513517CBFEA300BA526E /* copr.htm */,
-				C9FF513617CBFEA300BA526E /* eng-web_usfx.xml */,
-				C9FF513717CBFEA300BA526E /* eng-web-VernacularAdditional.xml */,
-				C9FF513817CBFEA300BA526E /* eng-web-VernacularParms.xml */,
-				C9FF513917CBFEA300BA526E /* keys.asc */,
-				C9FF513A17CBFEA300BA526E /* signature.txt.asc */,
+				C93B50E1180EB5F300C07D98 /* ASV */,
+				C93B50E0180EB5D700C07D98 /* WEB */,
 			);
 			name = "Core Data Source Files";
 			sourceTree = "<group>";
@@ -339,17 +384,25 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C93B50EF180EB5F300C07D98 /* signature.txt.asc in Resources */,
 				C9FF510B17CBB54700BA526E /* Main_iPad.storyboard in Resources */,
+				C93B50EC180EB5F300C07D98 /* eng-asv-VernacularParms.xml in Resources */,
 				C9FF514117CBFEA300BA526E /* signature.txt.asc in Resources */,
 				C9FF513C17CBFEA300BA526E /* copr.htm in Resources */,
+				C93B50F1180EB65200C07D98 /* ASVXMLParserDelegate.m in Resources */,
 				C9FF513E17CBFEA300BA526E /* eng-web-VernacularAdditional.xml in Resources */,
+				C93B50ED180EB5F300C07D98 /* eng-asv_usfx.xml in Resources */,
+				C93B50EB180EB5F300C07D98 /* eng-asv-VernacularAdditional.xml in Resources */,
 				C9FF514017CBFEA300BA526E /* keys.asc in Resources */,
 				C9FF511617CBB54800BA526E /* Images.xcassets in Resources */,
 				C9FF513D17CBFEA300BA526E /* eng-web_usfx.xml in Resources */,
 				C9FF510817CBB54700BA526E /* Main_iPhone.storyboard in Resources */,
+				C93B50EA180EB5F300C07D98 /* copr.htm in Resources */,
 				C9FF513B17CBFEA300BA526E /* BookNames.xml in Resources */,
 				C9FF50FF17CBB54700BA526E /* InfoPlist.strings in Resources */,
+				C93B50EE180EB5F300C07D98 /* keys.asc in Resources */,
 				C9FF513F17CBFEA300BA526E /* eng-web-VernacularParms.xml in Resources */,
+				C93B50E9180EB5F300C07D98 /* BookNames.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -368,6 +421,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C93B50F3180EB87A00C07D98 /* ASVXMLParserDelegate.h in Sources */,
+				C93B50F4180EB87A00C07D98 /* ASVXMLParserDelegate.m in Sources */,
 				C9FF514417CC030700BA526E /* WEBXMLParserDelegate.m in Sources */,
 				C9FF511417CBB54800BA526E /* DetailViewController.m in Sources */,
 				C9FF511117CBB54800BA526E /* MasterViewController.m in Sources */,
