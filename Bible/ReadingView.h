@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "BookLocation.h"
+#import "Book.h"
 
 @interface ReadingView : UIScrollView <UIScrollViewDelegate>
 
@@ -17,5 +18,6 @@
 @property (retain, nonatomic) NSAttributedString* attString;
 @property (retain, nonatomic) NSString *text;
 @property (retain, nonatomic) NSMutableArray* frames;
+@property (retain, nonatomic) Book *book;
 
 @end

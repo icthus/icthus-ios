@@ -7,17 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
 
-NSString *const BookLocationBookCode;
-NSString *const BookLocationChapterKey;
-NSString *const BookLocationVerseKey;
+@interface BookLocation : NSManagedObject
 
-@interface BookLocation : NSObject <NSCoding>
-
-- (id)initWithBookCode:(NSString *)code chapter:(int)chapterNumber verse:(int)verseNumber;
+- (void)setBookCode:(NSString *)code chapter:(int)chapterNumber verse:(int)verseNumber;
+- (id)initWithEntity:(NSEntityDescription *)entity insertIntoManagedObjectContext:(NSManagedObjectContext *)context;
 
 @property NSString *bookCode;
-@property int chapter;
-@property int verse;
+@property NSNumber *chapter;
+@property NSNumber *verse;
 
 @end

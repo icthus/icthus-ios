@@ -16,6 +16,7 @@
 
 @synthesize frames;
 @synthesize attString;
+@synthesize book;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -136,8 +137,13 @@
     
     CTLineRef line = CFArrayGetValueAtIndex(lines, i);
     CFRange range = CTLineGetStringRange(line);
+
+    NSString *bookCode;
+    if (self.book != nil) {
+        bookCode = self.book.code;
+    }
     
-    return [[[BibleMarkupParser alloc] init] getLocationForCharAtIndex:(range.location + range.length) forText:self.text andBookCode:nil];
+    return [[[BibleMarkupParser alloc] init] getLocationForCharAtIndex:(range.location + range.length) forText:self.text andBookCode:bookCode];
 }
 
 - (void)setCurrentLocation:(BookLocation *)location {

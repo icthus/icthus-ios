@@ -20,6 +20,8 @@
 @property (nonatomic, retain) NSString * shortName;
 @property (nonatomic, retain) NSString * text;
 @property (nonatomic, retain) NSString * translation;
-@property (nonatomic, retain) BookLocation * position;
+
+-(BookLocation *)getLocation;
+-(void)setLocation:(BookLocation *)location;
 
 @end

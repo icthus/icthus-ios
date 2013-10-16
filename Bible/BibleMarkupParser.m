@@ -8,6 +8,8 @@
 
 #import "BibleMarkupParser.h"
 #import "BookLocation.h"
+#import "AppDelegate.h"
+
 
 @implementation BibleMarkupParser
 {
@@ -59,13 +61,17 @@
     [parser setDelegate:self];
     gettingLocationForChar = YES;
     [parser parse];
-    return [[BookLocation alloc] initWithBookCode:code chapter:currentChapter verse:currentVerse];
+    AppDelegate *appDel = [[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *managedObjectContext = [appDel managedObjectContext];
+    BookLocation *location = [NSEntityDescription insertNewObjectForEntityForName:@"BookLocation" inManagedObjectContext:managedObjectContext];
+    [location setBookCode:code chapter:currentChapter verse:currentVerse];
+    return location;
 }
 
 - (int)getTextPositionForLocation:(BookLocation *)location inMarkup:(NSString *)markupText {
     textPos = 0;
-    neededChapter = [location chapter];
-    neededVerse = [location verse];
+    neededChapter = [[location chapter] intValue];
+    neededVerse = [[location verse] intValue];
     gettingTextPos = YES;
     
     NSData *data = [markupText dataUsingEncoding:NSUTF8StringEncoding];

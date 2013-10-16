@@ -61,8 +61,9 @@
 {
     // Update the user interface for the detail item.
     if (_book) {
+        [self.readingView setBook:_book];
         [self.readingView setText:[_book text]];
-        [self.readingView setCurrentLocation:[_book position]];
+        [self.readingView setCurrentLocation:[_book getLocation]];
     }
 }
 
@@ -82,7 +83,7 @@
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
-    [_book setPosition:[self.readingView getCurrentLocation]];
+    [_book setLocation:[self.readingView getCurrentLocation]];
     NSManagedObjectContext *context = [(NSManagedObject *)_book managedObjectContext];
     NSError *error;
     [context save:&error];

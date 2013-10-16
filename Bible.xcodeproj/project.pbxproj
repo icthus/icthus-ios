@@ -135,6 +135,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C91EB47617FDB2DE00645EFD /* Reading */ = {
+			isa = PBXGroup;
+			children = (
+				C9198AFC17D94B2000077726 /* BibleTextView.h */,
+				C9198AFD17D94B2000077726 /* BibleTextView.m */,
+				C9D071DA17DE8C2000B535ED /* ReadingView.h */,
+				C9D071DB17DE8C2000B535ED /* ReadingView.m */,
+				C99F2FC517CCE714008AF602 /* ReadingViewController.h */,
+				C99F2FC617CCE714008AF602 /* ReadingViewController.m */,
+			);
+			name = Reading;
+			sourceTree = "<group>";
+		};
+		C91EB47717FDB2F400645EFD /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C9BCA00E17CD933500196DA8 /* Book.h */,
+				C9BCA00F17CD933500196DA8 /* Book.m */,
+				C9256B0517DFC5D400646198 /* BookLocation.h */,
+				C9256B0617DFC5D400646198 /* BookLocation.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		C9FF50E617CBB54700BA526E = {
 			isa = PBXGroup;
 			children = (
@@ -170,18 +194,11 @@
 		C9FF50FA17CBB54700BA526E /* Bible */ = {
 			isa = PBXGroup;
 			children = (
-				C9FF510317CBB54700BA526E /* AppDelegate.h */,
-				C9FF510417CBB54700BA526E /* AppDelegate.m */,
 				C9FF510917CBB54700BA526E /* Main_iPad.storyboard */,
 				C9FF510617CBB54700BA526E /* Main_iPhone.storyboard */,
-				C9198AFC17D94B2000077726 /* BibleTextView.h */,
-				C9198AFD17D94B2000077726 /* BibleTextView.m */,
-				C9D071DA17DE8C2000B535ED /* ReadingView.h */,
-				C9D071DB17DE8C2000B535ED /* ReadingView.m */,
-				C99F2FC517CCE714008AF602 /* ReadingViewController.h */,
-				C99F2FC617CCE714008AF602 /* ReadingViewController.m */,
-				C9256B0517DFC5D400646198 /* BookLocation.h */,
-				C9256B0617DFC5D400646198 /* BookLocation.m */,
+				C91EB47617FDB2DE00645EFD /* Reading */,
+				C9FF510317CBB54700BA526E /* AppDelegate.h */,
+				C9FF510417CBB54700BA526E /* AppDelegate.m */,
 				C99F2FC217CCDC01008AF602 /* BooksViewController.h */,
 				C99F2FC317CCDC01008AF602 /* BooksViewController.m */,
 				C9BCA00817CD3FEC00196DA8 /* ReadingListViewController.h */,
@@ -191,9 +208,8 @@
 				C9FF511217CBB54800BA526E /* DetailViewController.h */,
 				C9FF511317CBB54800BA526E /* DetailViewController.m */,
 				C9FF511517CBB54800BA526E /* Images.xcassets */,
-				C9BCA00E17CD933500196DA8 /* Book.h */,
-				C9BCA00F17CD933500196DA8 /* Book.m */,
 				C9FF510C17CBB54800BA526E /* Bible.xcdatamodeld */,
+				C91EB47717FDB2F400645EFD /* Models */,
 				C9FF50FB17CBB54700BA526E /* Supporting Files */,
 				C9FF513317CBFBE900BA526E /* Core Data Source Files */,
 				C9FF514217CC030700BA526E /* WEBXMLParserDelegate.h */,

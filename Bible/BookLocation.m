@@ -7,42 +7,27 @@
 //
 
 #import "BookLocation.h"
-NSString *const BookLocationBookCode = @"bookCode";
-NSString *const BookLocationChapterKey = @"chapter";
-NSString *const BookLocationVerseKey = @"verse";
 
 @implementation BookLocation
 
-@synthesize bookCode;
-@synthesize chapter;
-@synthesize verse;
+@dynamic bookCode;
+@dynamic chapter;
+@dynamic verse;
 
-- (void)encodeWithCoder:(NSCoder *)encoder {
-    [encoder encodeObject:self.bookCode forKey:BookLocationBookCode];
-    [encoder encodeObject:[[NSNumber alloc] initWithInt:self.chapter] forKey:BookLocationChapterKey];
-    [encoder encodeObject:[[NSNumber alloc] initWithInt:self.verse] forKey:BookLocationVerseKey];
-}
-
-- (id)initWithCoder:(NSCoder *)decoder {
-    self = [super init];
+- (id)initWithEntity:(NSEntityDescription *)entity insertIntoManagedObjectContext:(NSManagedObjectContext *)context {
+    self = [super initWithEntity:entity insertIntoManagedObjectContext:context];
     if (self) {
-        [self setBookCode:[decoder decodeObjectForKey:BookLocationBookCode]];
-        [self setChapter:[(NSNumber *)[decoder decodeObjectForKey:BookLocationChapterKey] intValue]];
-        [self setVerse:[(NSNumber *)[decoder decodeObjectForKey:BookLocationVerseKey] intValue]];
-    }
-    return self;
-}
 
-
-- (id)initWithBookCode:(NSString *)code chapter:(int)chapterNumber verse:(int)verseNumber {
-    self = [super init];
-    if (self) {
-        [self setBookCode:code];
-        [self setChapter:chapterNumber];
-        [self setVerse:verseNumber];
     }
     
     return self;
+}
+
+- (void)setBookCode:(NSString *)code chapter:(int)chapterNumber verse:(int)verseNumber {
+
+    [self setBookCode:code];
+    [self setChapter:[NSNumber numberWithInt:chapterNumber]];
+    [self setVerse:[NSNumber numberWithInt:verseNumber]];
 }
 
 @end

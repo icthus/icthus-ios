@@ -1,16 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3394" systemVersion="12E3067" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3396" systemVersion="12F37" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Book" representedClassName="Book" syncable="YES">
         <attribute name="abbr" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="code" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="longName" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="position" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="reading" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="shortName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="translation" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="BookLocation" representedClassName="BookLocation" syncable="YES">
+        <attribute name="bookCode" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="chapter" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="verse" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+    </entity>
     <elements>
-        <element name="Book" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Book" positionX="0" positionY="0" width="128" height="150"/>
+        <element name="BookLocation" positionX="0" positionY="0" width="128" height="88"/>
     </elements>
 </model>
