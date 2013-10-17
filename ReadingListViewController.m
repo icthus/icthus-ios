@@ -88,7 +88,9 @@
     // Edit the entity name as appropriate.
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Book" inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
-    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"reading == YES"]];
+    
+    NSString *translationCode = [[NSUserDefaults standardUserDefaults] objectForKey:@"selectedTranslation"];
+    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"(reading == YES) AND (translation == %@)", translationCode]];
     
     // Set the batch size to a suitable number.
     [fetchRequest setFetchBatchSize:20];

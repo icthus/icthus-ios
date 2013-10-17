@@ -1,4 +1,4 @@
-    //
+//
 //  WEBXMLParserDelegate.m
 //  Bible
 //
@@ -8,6 +8,7 @@
 
 #import "WEBXMLParserDelegate.h"
 #import "Book.h"
+#import "Translation.h"
 
 @implementation WEBXMLParserDelegate
 
@@ -20,10 +21,16 @@
 NSMutableString *mutableBookText;
 int chapterIndex;
 bool shouldParseCharacters;
+static NSString *translationCode = @"WEB";
+static NSString *translationDisplayName = @"World English Bible";
 
 - (void) instantiateBooks:(NSManagedObjectContext *)context {
     _context = context;
     _booksByCode = [[NSMutableDictionary alloc] init];
+    
+    Translation *trans = [NSEntityDescription insertNewObjectForEntityForName:@"Translation" inManagedObjectContext:_context];
+    [trans setCode:translationCode];
+    [trans setDisplayName:translationDisplayName];
     
     NSString* path = [[NSBundle mainBundle] pathForResource:@"BookNames" ofType:@"xml"];
     _nameParser = [[NSXMLParser alloc] initWithData:[[NSData alloc] initWithContentsOfFile:path]];
@@ -44,6 +51,11 @@ bool shouldParseCharacters;
     } else {
         NSLog(@"An error occured parsing books");
     }
+    
+    NSError *error;
+    if (![_context save:&error]) {
+        NSLog(@"Error saving books: %@", [error localizedDescription]);
+    }
 }
 
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qualifiedName attributes:(NSDictionary *)attributeDict {
@@ -53,7 +65,7 @@ bool shouldParseCharacters;
         [book setLongName:[attributeDict valueForKey:@"long"]];
         [book setShortName:[attributeDict valueForKey:@"short"]];
         [book setAbbr:[attributeDict valueForKey:@"abbr"]];
-        [book setTranslation:@"WEB"];
+        [book setTranslation:translationCode];
         [book setReading:NO];
         [book setText:@""];
         [_booksByCode setValue:book forKey:[book code]];
@@ -103,12 +115,7 @@ bool shouldParseCharacters;
 }
 
 - (void)parserDidEndDocument:(NSXMLParser *)parser {
-    if (parser == _bookParser) {
-        NSError *error;
-        if (![_context save:&error]) {
-            NSLog(@"Error saving books: %@", [error localizedDescription]);
-        }
-    }
+
 }
 
 

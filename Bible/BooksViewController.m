@@ -144,6 +144,10 @@
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Book" inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
     
+    // Find only Books for the current translation
+    NSString *translationCode = [[NSUserDefaults standardUserDefaults] objectForKey:@"selectedTranslation"];
+    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:[NSString stringWithFormat:@"translation == '%@'", translationCode]]];
+    
     // Set the batch size to a suitable number.
     [fetchRequest setFetchBatchSize:20];
     

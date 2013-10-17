@@ -7,7 +7,6 @@
 //
 
 #import "AppDelegate.h"
-
 #import "MasterViewController.h"
 #import "WEBXMLParserDelegate.h"
 #import "ASVXMLParserDelegate.h"
@@ -24,6 +23,7 @@
     if ([prefs objectForKey:@"appHasLaunchedBefore"] == nil) {
         [[[WEBXMLParserDelegate alloc] init] instantiateBooks: [self managedObjectContext]];
         [[[ASVXMLParserDelegate alloc] init] instantiateBooks: [self managedObjectContext]];
+        [prefs setObject:@"WEB" forKey:@"selectedTranslation"];
         [prefs setBool:YES forKey:@"appHasLaunchedBefore"];
     }    
     

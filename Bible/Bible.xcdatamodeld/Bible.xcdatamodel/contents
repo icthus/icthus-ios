@@ -14,8 +14,13 @@
         <attribute name="chapter" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="verse" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
     </entity>
+    <entity name="Translation" representedClassName="Translation" syncable="YES">
+        <attribute name="code" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="displayName" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <elements>
-        <element name="Book" positionX="0" positionY="0" width="128" height="150"/>
-        <element name="BookLocation" positionX="0" positionY="0" width="128" height="88"/>
+        <element name="Book" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="BookLocation" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Translation" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>
