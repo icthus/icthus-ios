@@ -34,15 +34,22 @@
     NSString *displayString = [[[BibleMarkupParser alloc] init] displayStringFromMarkup:text];
 
     // set up the formatting
-    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle defaultParagraphStyle] mutableCopy];
-    [paragraphStyle setLineSpacing:4];
-    NSDictionary *attributesDict = [[NSDictionary alloc] initWithObjectsAndKeys:
-        [UIFont fontWithName:@"Helvetica" size:19], NSFontAttributeName,
-        paragraphStyle, NSParagraphStyleAttributeName,
-        nil
-    ];
-    [self setAttString:[[NSAttributedString alloc] initWithString:displayString attributes:attributesDict]];
-    
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+        NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle defaultParagraphStyle] mutableCopy];
+        [paragraphStyle setLineSpacing:14];
+        NSDictionary *attributesDict = [[NSDictionary alloc] initWithObjectsAndKeys:[UIFont fontWithName:@"Helvetica"size:24], NSFontAttributeName, paragraphStyle, NSParagraphStyleAttributeName, nil];
+        [self setAttString:[[NSAttributedString alloc] initWithString:displayString attributes:attributesDict]];
+    } else {
+        NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle defaultParagraphStyle] mutableCopy];
+        [paragraphStyle setLineSpacing:4];
+        NSDictionary *attributesDict = [[NSDictionary alloc] initWithObjectsAndKeys:
+            [UIFont fontWithName:@"Helvetica" size:19], NSFontAttributeName,
+            paragraphStyle, NSParagraphStyleAttributeName,
+            nil
+        ];
+        [self setAttString:[[NSAttributedString alloc] initWithString:displayString attributes:attributesDict]];
+    }
+        
     // build the subviews
     [self buildFrames];
 }
@@ -52,7 +59,13 @@
     
     CGMutablePathRef path = CGPathCreateMutable();
     CGPathAddRect(path, NULL, self.bounds);
-    CGRect textFrame = CGRectInset(self.bounds, 10, 0);
+    
+    CGRect textFrame;
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+        textFrame = CGRectInset(self.bounds, 50, 0);
+    } else {
+        textFrame = CGRectInset(self.bounds, 10, 0);
+    }
     CTFramesetterRef framesetter = CTFramesetterCreateWithAttributedString((CFAttributedStringRef)attString);
     
     int textPos = 0;
