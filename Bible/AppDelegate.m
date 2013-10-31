@@ -11,7 +11,7 @@
 #import "WEBXMLParserDelegate.h"
 #import "ASVXMLParserDelegate.h"
 
-@implementation AppDelegate
+@implementation AppDelegate 
 
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize managedObjectModel = _managedObjectModel;
@@ -19,14 +19,34 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-    if ([prefs objectForKey:@"appHasLaunchedBefore"] == nil) {
-        [[[WEBXMLParserDelegate alloc] init] instantiateBooks: [self managedObjectContext]];
-        [[[ASVXMLParserDelegate alloc] init] instantiateBooks: [self managedObjectContext]];
-        [prefs setObject:@"WEB" forKey:@"selectedTranslation"];
-        [prefs setBool:YES forKey:@"appHasLaunchedBefore"];
-    }    
-    
+    // Set up iCloud
+    // TODO: check for a change in iCloud tokens
+    id currentiCloudToken = [[NSFileManager defaultManager] ubiquityIdentityToken];
+    if (currentiCloudToken) {
+        NSData *newTokenData =
+        [NSKeyedArchiver archivedDataWithRootObject: currentiCloudToken];
+        [[NSUserDefaults standardUserDefaults]
+         setObject: newTokenData
+         forKey: @"ubiquityIdentityToken"];
+    } else {
+        [[NSUserDefaults standardUserDefaults]
+         removeObjectForKey: @"ubiquityIdentityToken"];
+    }
+
+    NSNotificationCenter *dc = [NSNotificationCenter defaultCenter];
+    [dc addObserver:self selector: @selector (iCloudAccountAvailabilityChanged) name: NSUbiquityIdentityDidChangeNotification object:nil];
+    [dc addObserver:self selector:@selector(storesWillChange:) name:NSPersistentStoreCoordinatorStoresWillChangeNotification object:nil];
+
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"appHasLaunchedBefore"] == nil) {
+        [self handleFirstLaunch];
+    }
+    else {
+        [self setupControllers];
+    }
+    return YES;
+}
+
+- (void)setupControllers {
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
         UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
         MasterViewController *controller = (MasterViewController *)navigationController.topViewController;
@@ -36,9 +56,8 @@
         MasterViewController *controller = (MasterViewController *)navigationController.topViewController;
         controller.managedObjectContext = self.managedObjectContext;
     }
-    return YES;
 }
-							
+
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -81,7 +100,76 @@
     }
 }
 
+- (void) instantiateBooks {
+    [[[WEBXMLParserDelegate alloc] init] instantiateBooks: [self managedObjectContext]];
+    [[[ASVXMLParserDelegate alloc] init] instantiateBooks: [self managedObjectContext]];
+}
+
+- (void)handleFirstLaunch {
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"ubiquityIdentityToken"]) {
+        [self promptForiCloud];
+    } else {
+        [self instantiateBooks];
+        [self finishHandlingFirstLaunch];
+    }
+}
+
+- (void)finishHandlingFirstLaunch {
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    [prefs setObject:@"WEB" forKey:@"selectedTranslation"];
+    [prefs setBool:YES forKey:@"appHasLaunchedBefore"];
+    [self instantiateBooks];
+    [self setupControllers];
+}
+
+- (void)promptForiCloud {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Choose Storage Option" message: @"Should documents be stored in iCloud and available on all your devices?" delegate: self cancelButtonTitle: @"Local Only" otherButtonTitles: @"Use iCloud", nil];
+    [alert show];
+}
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 1) {
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"userWantsToUseiCloud"];
+    } else {
+        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"userWantsToUseiCloud"];
+    }
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    [self finishHandlingFirstLaunch];
+}
+
+- (void)iCloudAccountAvailabilityChanged {
+    // TODO: handle changes in iCloud accounts
+}
+
 #pragma mark - Core Data stack
+
+- (void)storesWillChange:(NSNotification *)n {
+    NSManagedObjectContext *moc = [self managedObjectContext];
+    NSError *error;
+    if ([moc hasChanges]) {
+        [moc save:&error];
+    }
+    [moc reset];
+    //TODO: reset user interface
+}
+
+- (void)mergeChangesFromiCloud:(NSNotification *)notification {
+    
+	NSLog(@"Merging in changes from iCloud...");
+    
+    NSManagedObjectContext* moc = [self managedObjectContext];
+    
+    [moc performBlock:^{
+        
+        [moc mergeChangesFromContextDidSaveNotification:notification];
+        
+        NSNotification* refreshNotification = [NSNotification notificationWithName:@"underlyingDataChanged"
+                                                                            object:self
+                                                                          userInfo:[notification userInfo]];
+        
+        [[NSNotificationCenter defaultCenter] postNotification:refreshNotification];
+    }];
+}
 
 // Returns the managed object context for the application.
 // If the context doesn't already exist, it is created and bound to the persistent store coordinator for the application.
@@ -93,14 +181,19 @@
     
     NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
     if (coordinator != nil) {
-        _managedObjectContext = [[NSManagedObjectContext alloc] init];
-        [_managedObjectContext setPersistentStoreCoordinator:coordinator];
+        NSManagedObjectContext* moc = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
+        
+        [moc performBlockAndWait:^{
+            [moc setPersistentStoreCoordinator: coordinator];
+            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(mergeChangesFromiCloud:) name:NSPersistentStoreDidImportUbiquitousContentChangesNotification object:coordinator];
+        }];
+        _managedObjectContext = moc;
     }
     return _managedObjectContext;
 }
 
 // Returns the managed object model for the application.
-// If the model doesn't already exist, it is created from the application's model.
+// If the model doesn't already exist, it is created from the application's mode	l.
 - (NSManagedObjectModel *)managedObjectModel
 {
     if (_managedObjectModel != nil) {
@@ -115,42 +208,39 @@
 // If the coordinator doesn't already exist, it is created and the application's store added to it.
 - (NSPersistentStoreCoordinator *)persistentStoreCoordinator
 {
-    if (_persistentStoreCoordinator != nil) {
+    if((_persistentStoreCoordinator != nil)) {
         return _persistentStoreCoordinator;
     }
     
-    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"Bible.sqlite"];
-    
-    NSError *error = nil;
-    _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
-    if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
-        /*
-         Replace this implementation with code to handle the error appropriately.
-         
-         abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. 
-         
-         Typical reasons for an error here include:
-         * The persistent store is not accessible;
-         * The schema for the persistent store is incompatible with current managed object model.
-         Check the error message to determine what the actual problem was.
-         
-         
-         If the persistent store is not accessible, there is typically something wrong with the file path. Often, a file URL is pointing into the application's resources directory instead of a writeable directory.
-         
-         If you encounter schema incompatibility errors during development, you can reduce their frequency by:
-         * Simply deleting the existing store:
-         [[NSFileManager defaultManager] removeItemAtURL:storeURL error:nil]
-         
-         * Performing automatic lightweight migration by passing the following dictionary as the options parameter:
-         @{NSMigratePersistentStoresAutomaticallyOption:@YES, NSInferMappingModelAutomaticallyOption:@YES}
-         
-         Lightweight migration will only work for a limited set of schema changes; consult "Core Data Model Versioning and Data Migration Programming Guide" for details.
-         
-         */
-        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-        abort();
-    }    
-    
+    _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel: [self managedObjectModel]];
+    NSPersistentStoreCoordinator *psc = _persistentStoreCoordinator;
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"userWantsToUseiCloud"]) {
+        NSLog(@"using iCloud");
+        NSURL *iCloudURL = [[NSFileManager defaultManager] URLForUbiquityContainerIdentifier:nil];
+        
+        NSDictionary *options = @{
+            NSPersistentStoreUbiquitousContentNameKey: @"BibleUbiquitousContentStore",
+            NSMigratePersistentStoresAutomaticallyOption: [NSNumber numberWithBool:YES],
+            NSInferMappingModelAutomaticallyOption: [NSNumber numberWithBool:YES],
+        };
+        
+        NSError *error;
+        [psc lock];
+        [psc addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:iCloudURL options:options error:&error];
+        [psc unlock];
+        if (error) {
+            NSLog(@"Error adding iCloud persistent store %@", [error localizedDescription]);
+        }
+    }
+    else {
+        NSLog(@"iCloud isn't working or user chose not to use it - using a local store");
+        NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"BibleLocalStore.sqlite"];
+        NSMutableDictionary *options = [NSMutableDictionary dictionary];
+        [psc lock];
+        [psc addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:options error:nil];
+        [psc unlock];
+    }
+
     return _persistentStoreCoordinator;
 }
 

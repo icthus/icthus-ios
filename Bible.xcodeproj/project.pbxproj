@@ -91,6 +91,7 @@
 		C9B305651816A1B900EE8A94 /* eng-asv_usfx.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "eng-asv_usfx.xml"; sourceTree = "<group>"; };
 		C9B305661816A1B900EE8A94 /* keys.asc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = keys.asc; sourceTree = "<group>"; };
 		C9B305671816A1B900EE8A94 /* signature.txt.asc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = signature.txt.asc; sourceTree = "<group>"; };
+		C9B3056F1816D08600EE8A94 /* Bible.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Bible.entitlements; sourceTree = "<group>"; };
 		C9BCA00817CD3FEC00196DA8 /* ReadingListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReadingListViewController.h; path = ../ReadingListViewController.h; sourceTree = "<group>"; };
 		C9BCA00917CD3FEC00196DA8 /* ReadingListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ReadingListViewController.m; path = ../ReadingListViewController.m; sourceTree = "<group>"; };
 		C9BCA00E17CD933500196DA8 /* Book.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Book.h; sourceTree = "<group>"; };
@@ -249,11 +250,12 @@
 		C9FF50FA17CBB54700BA526E /* Bible */ = {
 			isa = PBXGroup;
 			children = (
+				C9B3056F1816D08600EE8A94 /* Bible.entitlements */,
 				C9FF510917CBB54700BA526E /* Main_iPad.storyboard */,
 				C9FF510617CBB54700BA526E /* Main_iPhone.storyboard */,
-				C91EB47617FDB2DE00645EFD /* Reading */,
 				C9FF510317CBB54700BA526E /* AppDelegate.h */,
 				C9FF510417CBB54700BA526E /* AppDelegate.m */,
+				C91EB47617FDB2DE00645EFD /* Reading */,
 				C99F2FC217CCDC01008AF602 /* BooksViewController.h */,
 				C99F2FC317CCDC01008AF602 /* BooksViewController.m */,
 				C9BCA00817CD3FEC00196DA8 /* ReadingListViewController.h */,
@@ -364,6 +366,14 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Matthew Lorentz";
 				TargetAttributes = {
+					C9FF50EE17CBB54700BA526E = {
+						DevelopmentTeam = S2FZ788KSW;
+						SystemCapabilities = {
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
+					};
 					C9FF511A17CBB54800BA526E = {
 						TestTargetID = C9FF50EE17CBB54700BA526E;
 					};
@@ -579,10 +589,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = Bible/Bible.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Bible/Bible-Prefix.pch";
 				INFOPLIST_FILE = "Bible/Bible-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -592,10 +606,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = Bible/Bible.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Bible/Bible-Prefix.pch";
 				INFOPLIST_FILE = "Bible/Bible-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
