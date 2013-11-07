@@ -14,6 +14,7 @@
 
 - (BookLocation *)getCurrentLocation;
 - (void)setCurrentLocation:(BookLocation *)location;
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView;
 
 @property (retain, nonatomic) NSAttributedString* attString;
 @property (retain, nonatomic) NSString *text;

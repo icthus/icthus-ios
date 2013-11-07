@@ -23,8 +23,13 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.opaque = false;
+        self.delegate = self;
     }
     return self;
+}
+
+-(void)awakeFromNib {
+    self.delegate   = self;
 }
 
 -(void)setText:(NSString *)text {
@@ -201,6 +206,27 @@
         }
         
         [self setContentOffset:CGPointMake(0, contentOffset)];
+    }
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    if (decelerate == NO) {
+        [self saveLocation];
+    }
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    [self saveLocation];
+}
+
+- (void)saveLocation {
+    [self.book setLocation:[self getCurrentLocation]];
+    NSManagedObjectContext *context = [(NSManagedObject *)self.book managedObjectContext];
+    NSError *error;
+    [context save:&error];
+    if (error != nil) {
+        NSLog(@"An error occured during save");
+        NSLog(@"%@", [error localizedDescription]);
     }
 }
 

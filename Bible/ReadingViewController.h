@@ -10,7 +10,7 @@
 #import "Book.h"
 #import "ReadingView.h"
 
-@interface ReadingViewController : UIViewController <UIScrollViewDelegate>
+@interface ReadingViewController : UIViewController
 -(id)initWithBook:(Book *)book;
 
 @property (strong, nonatomic) IBOutlet ReadingView *readingView;
