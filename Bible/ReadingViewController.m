@@ -83,6 +83,7 @@
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
+    [self.readingView saveLocation];
 }
 
 

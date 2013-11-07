@@ -84,13 +84,24 @@
         return _fetchedResultsController;
     }
     
+    NSFetchRequest *bookLocationRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"BookLocation" inManagedObjectContext:self.managedObjectContext];
+    [bookLocationRequest setEntity:entity];
+    NSArray *bookLocations = [self.managedObjectContext executeFetchRequest:bookLocationRequest error:nil];
+    NSMutableArray *bookCodes = [[NSMutableArray alloc] initWithCapacity:[bookLocations count]];
+    for (int i = 0; i < [bookLocations count]; i++) {
+        BookLocation *loc = [bookLocations objectAtIndex:i];
+        [bookCodes setObject:loc.bookCode atIndexedSubscript:i];
+    }
+    
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     // Edit the entity name as appropriate.
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Book" inManagedObjectContext:self.managedObjectContext];
+    entity = [NSEntityDescription entityForName:@"Book" inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
     
     NSString *translationCode = [[NSUserDefaults standardUserDefaults] objectForKey:@"selectedTranslation"];
-    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"(reading == YES) AND (translation == %@)", translationCode]];
+    NSPredicate *pred = [NSPredicate predicateWithFormat:@"(translation == %@) AND (code IN %@)", translationCode, bookCodes];
+    [fetchRequest setPredicate:pred];
     
     // Set the batch size to a suitable number.
     [fetchRequest setFetchBatchSize:20];

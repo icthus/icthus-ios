@@ -216,27 +216,40 @@
     NSPersistentStoreCoordinator *psc = _persistentStoreCoordinator;
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"userWantsToUseiCloud"]) {
         NSLog(@"using iCloud");
-        // The line below is how they said to do it in the 2013 WWDC Keynote "What's New in Core Data
-        // but it doesn't work, the addPersistentStoreWithType method does return a persitent store (or throw an error)
-        NSURL *iCloudURL = [[[NSFileManager defaultManager] URLForUbiquityContainerIdentifier:nil] URLByAppendingPathComponent:@"BibleiCloudStore.sqlite"];
+        
+        // Two Configurations: Ubiquitous and Local
+        // Ubiquitous:
+        NSURL *iCloudURL = [[[NSFileManager defaultManager] URLForUbiquityContainerIdentifier:nil] URLByAppendingPathComponent:@"BibleUbiquitousStore.sqlite"];
 
         NSDictionary *options = @{
-            NSPersistentStoreUbiquitousContentNameKey: @"BibleiCloudStore",
+            NSPersistentStoreUbiquitousContentNameKey: @"BibleUbiquitousStore",
             NSMigratePersistentStoresAutomaticallyOption: [NSNumber numberWithBool:YES],
             NSInferMappingModelAutomaticallyOption: [NSNumber numberWithBool:YES],
         };
         
         NSError *error;
         [psc lock];
-        [psc addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:iCloudURL options:options error:&error];
+        [psc addPersistentStoreWithType:NSSQLiteStoreType configuration:@"Ubiquitous" URL:iCloudURL options:options error:&error];
         [psc unlock];
         if (error) {
             NSLog(@"Error adding iCloud persistent store %@", [error localizedDescription]);
         }
+        
+        // Local
+        NSURL *localStoreURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"BibleLocalStore.sqlite"];
+        
+        options = @{
+                     NSMigratePersistentStoresAutomaticallyOption: [NSNumber numberWithBool:YES],
+                     NSInferMappingModelAutomaticallyOption: [NSNumber numberWithBool:YES],
+                    };
+        
+        [psc lock];
+        [psc addPersistentStoreWithType:NSSQLiteStoreType configuration:@"Local" URL:localStoreURL options:options error:nil];
+        [psc unlock];
     }
     else {
-        NSLog(@"iCloud isn't working or user chose not to use it - using a local store");
-        NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"BibleLocalStore.sqlite"];
+        NSLog(@"iCloud isn't working or user chose not to use it - using a local store with 'Default' configuration.");
+        NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"BibleDefaultStore.sqlite"];
         
         NSDictionary *options = @{
             NSMigratePersistentStoresAutomaticallyOption: [NSNumber numberWithBool:YES],
@@ -244,7 +257,7 @@
         };
         
         [psc lock];
-        [psc addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:options error:nil];
+        [psc addPersistentStoreWithType:NSSQLiteStoreType configuration:@"Default" URL:storeURL options:options error:nil];
         [psc unlock];
     }
 

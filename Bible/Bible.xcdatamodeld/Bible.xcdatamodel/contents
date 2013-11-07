@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3396" systemVersion="12F37" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3400" systemVersion="13A603" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Book" representedClassName="Book" syncable="YES">
         <attribute name="abbr" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="code" optional="YES" attributeType="String" syncable="YES"/>
@@ -18,6 +18,13 @@
         <attribute name="code" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="displayName" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <configuration name="Local">
+        <memberEntity name="Translation"/>
+        <memberEntity name="Book"/>
+    </configuration>
+    <configuration name="Ubiquitous">
+        <memberEntity name="BookLocation"/>
+    </configuration>
     <elements>
         <element name="Book" positionX="0" positionY="0" width="0" height="0"/>
         <element name="BookLocation" positionX="0" positionY="0" width="0" height="0"/>
