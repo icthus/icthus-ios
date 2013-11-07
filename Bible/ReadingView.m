@@ -29,7 +29,7 @@
 }
 
 -(void)awakeFromNib {
-    self.delegate   = self;
+    self.delegate = self;
 }
 
 -(void)setText:(NSString *)text {
