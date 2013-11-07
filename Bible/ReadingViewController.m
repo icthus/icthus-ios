@@ -83,14 +83,6 @@
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
-    [_book setLocation:[self.readingView getCurrentLocation]];
-    NSManagedObjectContext *context = [(NSManagedObject *)_book managedObjectContext];
-    NSError *error;
-    [context save:&error];
-    if (error != nil) {
-        NSLog(@"An error occured during save");
-        NSLog(@"%@", [error localizedDescription]);
-    }
 }
 
 
