@@ -11,8 +11,10 @@
 
 @interface BibleMarkupParser : NSObject <NSXMLParserDelegate>
 
-- (NSString *)displayStringFromMarkup:(NSString *)markupText;
-- (BookLocation *)getLocationForCharAtIndex:(int)index forText:(NSString *)markupText andBookCode:(NSString *)code;
-- (int)getTextPositionForLocation:(BookLocation *)location inMarkup:(NSString *)markupText;
+-(NSArray *)verseNumbersInString:(NSString *)markupText;
+-(NSArray *)chapterNumbersInString:(NSString *)markupText;
+-(NSString *)displayStringFromMarkup:(NSString *)markupText;
+-(BookLocation *)getLocationForCharAtIndex:(int)index forText:(NSString *)markupText andBookCode:(NSString *)code;
+-(int)getTextPositionForLocation:(BookLocation *)location inMarkup:(NSString *)markupText;
 
 @end

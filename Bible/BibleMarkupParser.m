@@ -14,9 +14,13 @@
 @implementation BibleMarkupParser
 {
     NSMutableString *displayText;
+    NSMutableArray *versesInString;
+    NSMutableArray *chaptersInString;
     bool gettingLocationForChar;
     bool gettingDisplayString;
     bool gettingTextPos;
+    bool findingVersesForString;
+    bool findingChaptersForString;
     int currentChapter;
     int currentVerse;
     int neededChapter;
@@ -31,12 +35,44 @@
         gettingLocationForChar = NO;
         gettingDisplayString = NO;
         gettingTextPos = NO;
+        findingVersesForString = NO;
+        findingChaptersForString = NO;
         currentChapter = 0;
         currentVerse = 0;
         textPos = 0;
     }
     
     return self;
+}
+
+-(NSArray *)verseNumbersInString:(NSString *)markupText {
+    NSData *data = [markupText dataUsingEncoding:NSUTF8StringEncoding];
+    NSXMLParser *parser = [[NSXMLParser alloc] initWithData:data];
+    [parser setDelegate:self];
+    displayText = [[NSMutableString alloc] init];
+    findingVersesForString = YES;
+    versesInString = [[NSMutableArray alloc] init];
+    if ([parser parse]) {
+        return [NSArray arrayWithArray:versesInString];
+    } else {
+        NSLog(@"An error occured finding verse numbers for string: %@", markupText);
+        return nil;
+    }
+}
+
+-(NSArray *)chapterNumbersInString:(NSString *)markupText {
+    NSData *data = [markupText dataUsingEncoding:NSUTF8StringEncoding];
+    NSXMLParser *parser = [[NSXMLParser alloc] initWithData:data];
+    [parser setDelegate:self];
+    displayText = [[NSMutableString alloc] init];
+    findingChaptersForString = YES;
+    chaptersInString = [[NSMutableArray alloc] init];
+    if ([parser parse]) {
+        return [NSArray arrayWithArray:chaptersInString];
+    } else {
+        NSLog(@"An error occured finding verse numbers for string: %@", markupText);
+        return nil;
+    }
 }
 
 - (NSString *)displayStringFromMarkup:(NSString *)markupText {
@@ -48,7 +84,7 @@
     if ([parser parse]) {
         return displayText;
     } else {
-        NSLog(@"An error occured parsing book markup");
+//        NSLog(@"An error occured parsing book markup");
         return nil;
     }
 }
@@ -96,6 +132,14 @@
             [parser abortParsing];
             // we need to bump the text position onto the current verse
             textPos += 1;
+        }
+    }
+    
+    if (findingVersesForString) {
+        if ([elementName isEqualToString:@"v"]) {
+             [versesInString addObject:[attributeDict objectForKey:@"i"]];
+        } else if ([elementName isEqualToString:@"c"]) {
+            [chaptersInString addObject:[attributeDict objectForKey:@"i"]];
         }
     }
 }
