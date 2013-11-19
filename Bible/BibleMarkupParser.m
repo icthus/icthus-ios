@@ -61,7 +61,7 @@
     [parser setDelegate:self];
     gettingLocationForChar = YES;
     [parser parse];
-    AppDelegate *appDel = [[UIApplication sharedApplication] delegate];
+    AppDelegate *appDel = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     NSManagedObjectContext *managedObjectContext = [appDel managedObjectContext];
     BookLocation *location = [NSEntityDescription insertNewObjectForEntityForName:@"BookLocation" inManagedObjectContext:managedObjectContext];
     [location setBookCode:code chapter:currentChapter verse:currentVerse];
