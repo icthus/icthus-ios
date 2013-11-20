@@ -16,6 +16,7 @@
     NSMutableString *displayText;
     NSMutableArray *versesInString;
     NSMutableArray *chaptersInString;
+    NSRange displayStringRange;
     bool gettingLocationForChar;
     bool gettingDisplayString;
     bool gettingTextPos;
@@ -45,14 +46,18 @@
     return self;
 }
 
--(NSArray *)verseNumbersInString:(NSString *)markupText {
+-(NSArray *)verseNumbersForRange:(NSRange)range inMarkup:(NSString *)markupText {
     NSData *data = [markupText dataUsingEncoding:NSUTF8StringEncoding];
     NSXMLParser *parser = [[NSXMLParser alloc] initWithData:data];
     [parser setDelegate:self];
-    displayText = [[NSMutableString alloc] init];
     findingVersesForString = YES;
+    textPos = 0;
+    displayStringRange = range;
     versesInString = [[NSMutableArray alloc] init];
     if ([parser parse]) {
+        return [NSArray arrayWithArray:versesInString];
+    } else if (versesInString) {
+        NSLog(@"versesInString: %@", versesInString);
         return [NSArray arrayWithArray:versesInString];
     } else {
         NSLog(@"An error occured finding verse numbers for string: %@", markupText);
@@ -60,17 +65,20 @@
     }
 }
 
--(NSArray *)chapterNumbersInString:(NSString *)markupText {
+-(NSArray *)chapterNumbersForRange:(NSRange)range inMarkup:(NSString *)markupText {
     NSData *data = [markupText dataUsingEncoding:NSUTF8StringEncoding];
     NSXMLParser *parser = [[NSXMLParser alloc] initWithData:data];
     [parser setDelegate:self];
-    displayText = [[NSMutableString alloc] init];
     findingChaptersForString = YES;
+    textPos = 0;
+    displayStringRange = range;
     chaptersInString = [[NSMutableArray alloc] init];
     if ([parser parse]) {
         return [NSArray arrayWithArray:chaptersInString];
+    } else if (chaptersInString) {
+        return [NSArray arrayWithArray:chaptersInString];
     } else {
-        NSLog(@"An error occured finding verse numbers for string: %@", markupText);
+        NSLog(@"An error occured finding chapter numbers for string: %@", markupText);
         return nil;
     }
 }
@@ -97,7 +105,7 @@
     [parser setDelegate:self];
     gettingLocationForChar = YES;
     [parser parse];
-    AppDelegate *appDel = [[UIApplication sharedApplication] delegate];
+    AppDelegate *appDel = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     NSManagedObjectContext *managedObjectContext = [appDel managedObjectContext];
     BookLocation *location = [NSEntityDescription insertNewObjectForEntityForName:@"BookLocation" inManagedObjectContext:managedObjectContext];
     [location setBookCode:code chapter:currentChapter verse:currentVerse];
@@ -135,11 +143,15 @@
         }
     }
     
-    if (findingVersesForString) {
-        if ([elementName isEqualToString:@"v"]) {
-             [versesInString addObject:[attributeDict objectForKey:@"i"]];
-        } else if ([elementName isEqualToString:@"c"]) {
-            [chaptersInString addObject:[attributeDict objectForKey:@"i"]];
+    if (textPos >= displayStringRange.location) {
+        if (findingVersesForString) {
+            if ([elementName isEqualToString:@"v"]) {
+                 [versesInString addObject:[attributeDict objectForKey:@"i"]];
+            }
+        } else if (findingChaptersForString) {
+            if ([elementName isEqualToString:@"c"]) {
+                [chaptersInString addObject:[attributeDict objectForKey:@"i"]];
+            }
         }
     }
 }
@@ -158,12 +170,17 @@
         if (textPos > neededTextPos) {
             [parser abortParsing];
         }
+    } else if (findingVersesForString || findingChaptersForString) {
+        textPos += [string length];
+        if (textPos >= displayStringRange.location + displayStringRange.length) {
+            [parser abortParsing];
+        }
     }
 }
 
 - (void)parser:(NSXMLParser *)parser parseErrorOccurred:(NSError *)parseError {
-    NSLog(@"A parsing error occured");
-    NSLog(@"%@", [parseError localizedDescription]);
+//    NSLog(@"A parsing error occured");
+//    NSLog(@"%@", [parseError localizedDescription]);
 }
 
 - (void)parserDidEndDocument:(NSXMLParser *)parser {

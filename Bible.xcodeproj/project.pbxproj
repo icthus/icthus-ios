@@ -12,6 +12,7 @@
 		C9256B0717DFC5D400646198 /* BookLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = C9256B0617DFC5D400646198 /* BookLocation.m */; };
 		C93B50F1180EB65200C07D98 /* ASVXMLParserDelegate.m in Resources */ = {isa = PBXBuildFile; fileRef = C93B50F0180EB65200C07D98 /* ASVXMLParserDelegate.m */; };
 		C93B50F4180EB87A00C07D98 /* ASVXMLParserDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C93B50F0180EB65200C07D98 /* ASVXMLParserDelegate.m */; };
+		C9451E90183BB0D9009FAFEE /* BibleVerseView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9451E8F183BB0D9009FAFEE /* BibleVerseView.m */; };
 		C94A2B24181001790076926A /* TranslationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C94A2B23181001790076926A /* TranslationViewController.m */; };
 		C94A2B271810030E0076926A /* Translation.m in Sources */ = {isa = PBXBuildFile; fileRef = C94A2B261810030E0076926A /* Translation.m */; };
 		C99C73FA17DFA61B00DBF0E2 /* BibleMarkupParser.m in Sources */ = {isa = PBXBuildFile; fileRef = C99C73F917DFA61B00DBF0E2 /* BibleMarkupParser.m */; };
@@ -74,6 +75,8 @@
 		C9256B0617DFC5D400646198 /* BookLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookLocation.m; sourceTree = "<group>"; };
 		C93B50F0180EB65200C07D98 /* ASVXMLParserDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASVXMLParserDelegate.m; sourceTree = "<group>"; };
 		C93B50F2180EB66900C07D98 /* ASVXMLParserDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASVXMLParserDelegate.h; sourceTree = "<group>"; };
+		C9451E8E183BB0D9009FAFEE /* BibleVerseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BibleVerseView.h; sourceTree = "<group>"; };
+		C9451E8F183BB0D9009FAFEE /* BibleVerseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BibleVerseView.m; sourceTree = "<group>"; };
 		C94A2B22181001790076926A /* TranslationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TranslationViewController.h; sourceTree = "<group>"; };
 		C94A2B23181001790076926A /* TranslationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TranslationViewController.m; sourceTree = "<group>"; };
 		C94A2B251810030E0076926A /* Translation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Translation.h; sourceTree = "<group>"; };
@@ -163,6 +166,8 @@
 		C91EB47617FDB2DE00645EFD /* Reading */ = {
 			isa = PBXGroup;
 			children = (
+				C9451E8E183BB0D9009FAFEE /* BibleVerseView.h */,
+				C9451E8F183BB0D9009FAFEE /* BibleVerseView.m */,
 				C9198AFC17D94B2000077726 /* BibleTextView.h */,
 				C9198AFD17D94B2000077726 /* BibleTextView.m */,
 				C9D071DA17DE8C2000B535ED /* ReadingView.h */,
@@ -441,6 +446,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C93B50F4180EB87A00C07D98 /* ASVXMLParserDelegate.m in Sources */,
+				C9451E90183BB0D9009FAFEE /* BibleVerseView.m in Sources */,
 				C9FF514417CC030700BA526E /* WEBXMLParserDelegate.m in Sources */,
 				C94A2B271810030E0076926A /* Translation.m in Sources */,
 				C9FF511417CBB54800BA526E /* DetailViewController.m in Sources */,

@@ -20,6 +20,7 @@
 @synthesize book;
 
 NSMutableArray *gutterViews;
+NSString *markup;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -96,7 +97,7 @@ NSMutableArray *gutterViews;
         [self.frames addObject:content];
         [self addSubview:content];
         
-        BibleVerseView *verseView = [self getVerseViewForFrame:frame string:attString rect:tmpFrame];
+        BibleVerseView *verseView = [self getVerseViewForTextFrame:frame AndBounds:tmpFrame];
         [gutterViews addObject:verseView];
         [self addSubview:verseView];
         
@@ -111,23 +112,24 @@ NSMutableArray *gutterViews;
     self.contentSize = CGSizeMake(self.bounds.size.width, (pageIndex + 1) * self.bounds.size.height);
 }
 
--(BibleVerseView *)getVerseViewForFrame:(CTFrameRef)ctframe string:(NSAttributedString *)displayText rect:(CGRect)frame {
+-(BibleVerseView *)getVerseViewForTextFrame:(CTFrameRef)ctframe AndBounds:(CGRect)frame {
     CFArrayRef lines = CTFrameGetLines(ctframe);
     BibleMarkupParser *parser = [[BibleMarkupParser alloc] init];
     NSMutableArray *versesByLine = [[NSMutableArray alloc] init];
     NSMutableArray *chaptersByLine = [[NSMutableArray alloc] init];
     for (int i = 0; i < CFArrayGetCount(lines); i++) {
         CTLineRef line = CFArrayGetValueAtIndex(lines, i);
-        CFRange stringRange = CTLineGetStringRange(line);
-        NSString *lineString = [[displayText string] substringWithRange:NSMakeRange(stringRange.location, stringRange.length)];
-        [versesByLine insertObject:[parser verseNumbersInString:lineString] atIndex:i];
-        [chaptersByLine insertObject:[parser chapterNumbersInString:lineString] atIndex:i];
+        CFRange cfStringRange = CTLineGetStringRange(line);
+        NSRange stringRange = NSMakeRange(cfStringRange.location, cfStringRange.length);
+        [versesByLine insertObject:[parser verseNumbersForRange:stringRange inMarkup:self.text] atIndex:i];
+        [chaptersByLine insertObject:[parser chapterNumbersForRange:stringRange inMarkup:self.text] atIndex:i];
     }
     
-    CGPoint origins[ CFArrayGetCount(lines)];
+    int length = CFArrayGetCount(lines);
+    CGPoint origins[length];
     CTFrameGetLineOrigins(ctframe, CFRangeMake(0, 0), origins);
     
-    return [[BibleVerseView alloc] initWithContentFrame:frame verses:versesByLine chapters:chaptersByLine andLineOrigins:origins];
+    return [[BibleVerseView alloc] initWithContentFrame:frame verses:versesByLine chapters:chaptersByLine andLineOrigins:origins withLength:length];
 }
 
 - (void)getTouchedLocation {
