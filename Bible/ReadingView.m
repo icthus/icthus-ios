@@ -77,6 +77,7 @@ NSString *markup;
         textFrame = CGRectInset(self.bounds, 10, 0);
     }
     CTFramesetterRef framesetter = CTFramesetterCreateWithAttributedString((CFAttributedStringRef)attString);
+    CGFloat lineHeight = [attString boundingRectWithSize:CGSizeMake(textFrame.size.width, textFrame.size.height) options:0 context:nil].size.height;
     
     int textPos = 0;
     int contentOffset = 0;
@@ -97,7 +98,8 @@ NSString *markup;
         [self.frames addObject:content];
         [self addSubview:content];
         
-        BibleVerseView *verseView = [self getVerseViewForTextFrame:frame AndBounds:tmpFrame];
+
+        BibleVerseView *verseView = [self getVerseViewForTextFrame:frame bounds:tmpFrame andLineHeight:lineHeight];
         [gutterViews addObject:verseView];
         [self addSubview:verseView];
         
@@ -112,7 +114,7 @@ NSString *markup;
     self.contentSize = CGSizeMake(self.bounds.size.width, (pageIndex + 1) * self.bounds.size.height);
 }
 
--(BibleVerseView *)getVerseViewForTextFrame:(CTFrameRef)ctframe AndBounds:(CGRect)frame {
+-(BibleVerseView *)getVerseViewForTextFrame:(CTFrameRef)ctframe bounds:(CGRect)frame andLineHeight:(CGFloat) lineHeight {
     CFArrayRef lines = CTFrameGetLines(ctframe);
     BibleMarkupParser *parser = [[BibleMarkupParser alloc] init];
     NSMutableArray *versesByLine = [[NSMutableArray alloc] init];
@@ -129,7 +131,7 @@ NSString *markup;
     CGPoint origins[length];
     CTFrameGetLineOrigins(ctframe, CFRangeMake(0, 0), origins);
     
-    return [[BibleVerseView alloc] initWithContentFrame:frame verses:versesByLine chapters:chaptersByLine andLineOrigins:origins withLength:length];
+    return [[BibleVerseView alloc] initWithContentFrame:frame verses:versesByLine chapters:chaptersByLine andLineOrigins:origins withLength:length andLineHeight:lineHeight];
 }
 
 - (void)getTouchedLocation {

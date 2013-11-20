@@ -11,16 +11,19 @@
 @implementation BibleVerseView
 int gutterWidth = 70;
 
--(id)initWithContentFrame:(CGRect)contentFrame verses:(NSArray *)versesByLine chapters:(NSArray *)chaptersByLine andLineOrigins:(CGPoint[])origins withLength:(int)length {
+-(id)initWithContentFrame:(CGRect)contentFrame verses:(NSArray *)versesByLine chapters:(NSArray *)chaptersByLine andLineOrigins:(CGPoint[])origins withLength:(int)length andLineHeight:(CGFloat)lineHeight {
     
     CGRect frame = CGRectMake(contentFrame.origin.x, contentFrame.origin.y, contentFrame.size.width + gutterWidth, contentFrame.size.height);
     self = [super initWithFrame:frame];
     if (self) {
         for (int i = 0; i < length; i++) {
-            CGPoint origin = origins[i];
-            NSLog(@"origin: (%f, %f)", origin.x, origin.y);
-            CGRect labelFrame = CGRectMake(self.frame.size.width - gutterWidth, self.frame.size.height - origin.y, gutterWidth, 20);
-            UILabel *label = [[UILabel alloc] initWithFrame:labelFrame];
+            CGFloat labelTop = frame.size.height - origins[i].y - lineHeight;
+            UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(self.frame.size.width - gutterWidth, labelTop, gutterWidth, lineHeight)];
+            
+            // align the baseline with the BibleTextView text
+            CGRect newFrame = label.frame;
+            newFrame.origin.y -= label.font.descender;
+            label.frame = newFrame;
             
             NSArray *verses = [versesByLine objectAtIndex:i];
             if ([verses count] == 1) {
