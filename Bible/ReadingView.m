@@ -21,6 +21,7 @@
 
 NSMutableArray *gutterViews;
 NSString *markup;
+NSString *currentChapter;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -124,7 +125,9 @@ NSString *markup;
         CFRange cfStringRange = CTLineGetStringRange(line);
         NSRange stringRange = NSMakeRange(cfStringRange.location, cfStringRange.length);
         [versesByLine insertObject:[parser verseNumbersForRange:stringRange inMarkup:self.text] atIndex:i];
-        [chaptersByLine insertObject:[parser chapterNumbersForRange:stringRange inMarkup:self.text] atIndex:i];
+        NSArray *chapters = [parser chapterNumbersForRange:stringRange inMarkup:self.text withStartingChapter:currentChapter];
+        currentChapter = [chapters lastObject];
+        [chaptersByLine insertObject:chapters atIndex:i];
     }
     
     int length = CFArrayGetCount(lines);

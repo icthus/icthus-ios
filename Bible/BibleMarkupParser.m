@@ -57,7 +57,6 @@
     if ([parser parse]) {
         return [NSArray arrayWithArray:versesInString];
     } else if (versesInString) {
-        NSLog(@"versesInString: %@", versesInString);
         return [NSArray arrayWithArray:versesInString];
     } else {
         NSLog(@"An error occured finding verse numbers for string: %@", markupText);
@@ -65,7 +64,7 @@
     }
 }
 
--(NSArray *)chapterNumbersForRange:(NSRange)range inMarkup:(NSString *)markupText {
+-(NSArray *)chapterNumbersForRange:(NSRange)range inMarkup:(NSString *)markupText withStartingChapter:(NSString *)startingChapter {
     NSData *data = [markupText dataUsingEncoding:NSUTF8StringEncoding];
     NSXMLParser *parser = [[NSXMLParser alloc] initWithData:data];
     [parser setDelegate:self];
@@ -75,11 +74,13 @@
     chaptersInString = [[NSMutableArray alloc] init];
     if ([parser parse]) {
         return [NSArray arrayWithArray:chaptersInString];
-    } else if (chaptersInString) {
+    } else if ([chaptersInString count]) {
         return [NSArray arrayWithArray:chaptersInString];
     } else {
-        NSLog(@"An error occured finding chapter numbers for string: %@", markupText);
-        return nil;
+        if (startingChapter) {
+            [chaptersInString insertObject:startingChapter atIndex:0];
+        }
+        return [NSArray arrayWithArray:chaptersInString];
     }
 }
 
@@ -173,6 +174,8 @@
     } else if (findingVersesForString || findingChaptersForString) {
         textPos += [string length];
         if (textPos >= displayStringRange.location + displayStringRange.length) {
+            findingChaptersForString = NO;
+            findingVersesForString = NO;
             [parser abortParsing];
         }
     }

@@ -26,15 +26,21 @@ int gutterWidth = 70;
             label.frame = newFrame;
             
             NSArray *verses = [versesByLine objectAtIndex:i];
+            NSArray *chapters = [chaptersByLine objectAtIndex:i];
+            NSString *displayString;
             if ([verses count] == 1) {
-                NSString *displayString = [verses firstObject];
-                label.text = displayString;
-                [self addSubview:label];
+                displayString = [NSString stringWithFormat:@"%@:%@", [chapters firstObject], [verses firstObject]];
             } else if ([verses count] > 1) {
-                NSString *displayString = [NSString stringWithFormat:@"%@-%@", [verses firstObject], [verses lastObject]];
-                label.text = displayString;
-                [self addSubview:label];
+                NSString *firstChapter = [chapters firstObject];
+                NSString *lastChapter = [chapters lastObject];
+                if ([firstChapter isEqualToString:lastChapter]) {
+                    displayString = [NSString stringWithFormat:@"%@:%@-%@", firstChapter, [verses firstObject], [verses lastObject]];
+                } else {
+                    displayString = [NSString stringWithFormat:@"%@:%@-%@:%@", firstChapter, [verses firstObject], lastChapter, [verses lastObject]];
+                }
             }
+            label.text = displayString;
+            [self addSubview:label];
         }
     }
     return self;
