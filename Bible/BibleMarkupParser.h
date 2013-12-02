@@ -11,6 +11,7 @@
 
 @interface BibleMarkupParser : NSObject <NSXMLParserDelegate>
 
+-(NSArray *)verseAndChapterNumbersForRange:(NSRange)range inMarkup:(NSString *)markupText;
 -(NSArray *)verseNumbersForRange:(NSRange)range inMarkup:(NSString *)markupText;
 -(NSArray *)chapterNumbersForRange:(NSRange)range inMarkup:(NSString *)markupText withStartingChapter:(NSString *)startingChapter;
 -(NSString *)displayStringFromMarkup:(NSString *)markupText;

@@ -22,6 +22,8 @@
 NSMutableArray *gutterViews;
 NSString *markup;
 NSString *currentChapter;
+NSString *remainingMarkup;
+BibleMarkupParser *parser;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -29,6 +31,7 @@ NSString *currentChapter;
     if (self) {
         self.opaque = false;
         self.delegate = self;
+        parser = [[BibleMarkupParser alloc] init];
     }
     return self;
 }
@@ -36,13 +39,14 @@ NSString *currentChapter;
 -(void)awakeFromNib {
     self.delegate = self;
     self.alwaysBounceHorizontal = YES;
+    parser = [[BibleMarkupParser alloc] init];
 }
 
 -(void)setText:(NSString *)text {
     _text = text;
     
     // parse the markup
-    NSString *displayString = [[[BibleMarkupParser alloc] init] displayStringFromMarkup:text];
+    NSString *displayString = [parser displayStringFromMarkup:text];
 
     // set up the formatting
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
@@ -67,6 +71,7 @@ NSString *currentChapter;
 
 - (void)buildFrames {
     self.frames = [NSMutableArray array];
+    remainingMarkup = self.text;
     
     CGMutablePathRef path = CGPathCreateMutable();
     CGPathAddRect(path, NULL, self.bounds);
@@ -117,17 +122,27 @@ NSString *currentChapter;
 
 -(BibleVerseView *)getVerseViewForTextFrame:(CTFrameRef)ctframe bounds:(CGRect)frame andLineHeight:(CGFloat) lineHeight {
     CFArrayRef lines = CTFrameGetLines(ctframe);
-    BibleMarkupParser *parser = [[BibleMarkupParser alloc] init];
     NSMutableArray *versesByLine = [[NSMutableArray alloc] init];
     NSMutableArray *chaptersByLine = [[NSMutableArray alloc] init];
     for (int i = 0; i < CFArrayGetCount(lines); i++) {
         CTLineRef line = CFArrayGetValueAtIndex(lines, i);
         CFRange cfStringRange = CTLineGetStringRange(line);
-        NSRange stringRange = NSMakeRange(cfStringRange.location, cfStringRange.length);
-        [versesByLine insertObject:[parser verseNumbersForRange:stringRange inMarkup:self.text] atIndex:i];
-        NSArray *chapters = [parser chapterNumbersForRange:stringRange inMarkup:self.text withStartingChapter:currentChapter];
-        currentChapter = [chapters lastObject];
+        NSRange stringRange = NSMakeRange(0, cfStringRange.length);
+        NSArray *versesChaptersAndMarkupPos = [parser verseAndChapterNumbersForRange:stringRange inMarkup:remainingMarkup];
+        [versesByLine insertObject:[versesChaptersAndMarkupPos objectAtIndex:0] atIndex:i];
+        NSArray *chapters = [versesChaptersAndMarkupPos objectAtIndex:1];
+        if ([chapters lastObject]) {
+            currentChapter = [chapters lastObject];
+        } else {
+            chapters = [[NSArray alloc] initWithObjects:currentChapter, nil];
+        }
         [chaptersByLine insertObject:chapters atIndex:i];
+        
+        NSNumber *markupPos = [versesChaptersAndMarkupPos objectAtIndex:2];
+        remainingMarkup = [remainingMarkup substringFromIndex:[markupPos unsignedIntegerValue]];
+        if ([remainingMarkup length] > 0) {
+            remainingMarkup = [@"<book><c i=\"\"><v i=\"\">" stringByAppendingString:remainingMarkup];
+        }
     }
     
     int length = CFArrayGetCount(lines);
@@ -195,12 +210,12 @@ NSString *currentChapter;
         bookCode = self.book.code;
     }
     
-    return [[[BibleMarkupParser alloc] init] getLocationForCharAtIndex:(range.location + range.length) forText:self.text andBookCode:bookCode];
+    return [parser getLocationForCharAtIndex:(range.location + range.length) forText:self.text andBookCode:bookCode];
 }
 
 - (void)setCurrentLocation:(BookLocation *)location {
     if ([self.frames count]) {
-        int targetTextPos = [[[BibleMarkupParser alloc] init] getTextPositionForLocation:location inMarkup:self.text];
+        int targetTextPos = [parser getTextPositionForLocation:location inMarkup:self.text];
 
         // find the view with the given location
         BibleTextView *lastView = [self.frames objectAtIndex:0];
@@ -216,10 +231,9 @@ NSString *currentChapter;
         // find the correct line in the view
         CFArrayRef lines = CTFrameGetLines(lastView.ctFrame);
         if (CFArrayGetCount(lines)) {
-            CTLineRef line = CFArrayGetValueAtIndex(lines, 0);
             int i;
             for (i = 0; i < CFArrayGetCount(lines) - 1; i++) {
-                line = CFArrayGetValueAtIndex(lines, i);
+                CTLineRef line = CFArrayGetValueAtIndex(lines, i);
                 CFRange range = CTLineGetStringRange(line);
                 if (targetTextPos <= range.location + range.length) {
                     break;

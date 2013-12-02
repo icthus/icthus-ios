@@ -28,25 +28,47 @@
     int neededVerse;
     int neededTextPos;
     int textPos;
+    int markupPos;
 }
 
 - (id)init {
     self = [super init];
     if (self) {
-        gettingLocationForChar = NO;
-        gettingDisplayString = NO;
-        gettingTextPos = NO;
-        findingVersesForString = NO;
-        findingChaptersForString = NO;
-        currentChapter = 0;
-        currentVerse = 0;
-        textPos = 0;
+        [self reset];
     }
     
     return self;
 }
 
+- (void)reset {
+    gettingLocationForChar = NO;
+    gettingDisplayString = NO;
+    gettingTextPos = NO;
+    findingVersesForString = NO;
+    findingChaptersForString = NO;
+    currentChapter = 0;
+    currentVerse = 0;
+    textPos = 0;
+    markupPos = 0;
+}
+
+-(NSArray *)verseAndChapterNumbersForRange:(NSRange)range inMarkup:(NSString *)markupText {
+    // returns an array that has [verseNumbers, chapterNumbers, markupRange]
+    [self reset];
+    NSData *data = [markupText dataUsingEncoding:NSUTF8StringEncoding];
+    NSXMLParser *parser = [[NSXMLParser alloc] initWithData:data];
+    [parser setDelegate:self];
+    findingVersesForString = YES;
+    findingChaptersForString = YES;
+    displayStringRange = range;
+    versesInString = [[NSMutableArray alloc] init];
+    chaptersInString = [[NSMutableArray alloc] init];
+    [parser parse];
+    return [[NSArray alloc] initWithObjects:versesInString, chaptersInString, [NSNumber numberWithInt:markupPos], nil];
+}
+
 -(NSArray *)verseNumbersForRange:(NSRange)range inMarkup:(NSString *)markupText {
+    [self reset];
     NSData *data = [markupText dataUsingEncoding:NSUTF8StringEncoding];
     NSXMLParser *parser = [[NSXMLParser alloc] initWithData:data];
     [parser setDelegate:self];
@@ -65,6 +87,7 @@
 }
 
 -(NSArray *)chapterNumbersForRange:(NSRange)range inMarkup:(NSString *)markupText withStartingChapter:(NSString *)startingChapter {
+    [self reset];
     NSData *data = [markupText dataUsingEncoding:NSUTF8StringEncoding];
     NSXMLParser *parser = [[NSXMLParser alloc] initWithData:data];
     [parser setDelegate:self];
@@ -85,6 +108,7 @@
 }
 
 - (NSString *)displayStringFromMarkup:(NSString *)markupText {
+    [self reset];
     NSData *data = [markupText dataUsingEncoding:NSUTF8StringEncoding];
     NSXMLParser *parser = [[NSXMLParser alloc] initWithData:data];
     [parser setDelegate:self];
@@ -99,6 +123,7 @@
 }
 
 - (BookLocation *)getLocationForCharAtIndex:(int)index forText:(NSString *)markupText andBookCode:(NSString *)code {
+    [self reset];
     textPos = 0;
     neededTextPos = index;
     NSData *data = [markupText dataUsingEncoding:NSUTF8StringEncoding];
@@ -114,6 +139,7 @@
 }
 
 - (int)getTextPositionForLocation:(BookLocation *)location inMarkup:(NSString *)markupText {
+    [self reset];
     textPos = 0;
     neededChapter = [[location chapter] intValue];
     neededVerse = [[location verse] intValue];
@@ -144,36 +170,55 @@
         }
     }
     
-    if (textPos >= displayStringRange.location) {
+    if (findingChaptersForString || findingVersesForString) {
+        markupPos += [self lengthForOpeningMarkupElement:elementName withAttributes:attributeDict];
+    }
+    
+    if ((findingVersesForString || findingChaptersForString) && textPos >= displayStringRange.location) {
         if (findingVersesForString) {
             if ([elementName isEqualToString:@"v"]) {
-                 [versesInString addObject:[attributeDict objectForKey:@"i"]];
+                NSString *i = [attributeDict objectForKey:@"i"];
+                if ([i length]) {
+                    [versesInString addObject:i];
+                }
             }
-        } else if (findingChaptersForString) {
+        }
+        if (findingChaptersForString) {
             if ([elementName isEqualToString:@"c"]) {
-                [chaptersInString addObject:[attributeDict objectForKey:@"i"]];
+                NSString *i = [attributeDict objectForKey:@"i"];
+                if ([i length]) {
+                    [chaptersInString addObject:i];
+                }
             }
         }
     }
 }
 
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qualifiedName {
-    
+    if (findingChaptersForString || findingVersesForString) {
+        markupPos += [self lengthForClosingMarkupElement:elementName];
+    }
 }
 
 - (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string {
+    NSUInteger length = [string length];
     if (gettingDisplayString) {
         [displayText appendString:string];
     } else if (gettingTextPos) {
-        textPos += [string length];
+        textPos += length;
     } else if (gettingLocationForChar) {
-        textPos += [string length];
+        textPos += length;
         if (textPos > neededTextPos) {
             [parser abortParsing];
         }
     } else if (findingVersesForString || findingChaptersForString) {
-        textPos += [string length];
+        markupPos += length;
+        textPos += length;
         if (textPos >= displayStringRange.location + displayStringRange.length) {
+            // back the markup and text positions up to match the displayStringRange's end
+            int diff = textPos - displayStringRange.length;
+            textPos -= diff;
+            markupPos -= diff;
             findingChaptersForString = NO;
             findingVersesForString = NO;
             [parser abortParsing];
@@ -188,6 +233,40 @@
 
 - (void)parserDidEndDocument:(NSXMLParser *)parser {
 
+}
+
+- (int)lengthForOpeningMarkupElement:(NSString *)elementName withAttributes:(NSDictionary *)attributeDict {
+    int length = 0;
+    if ([elementName isEqualToString:@"v"]) {
+        length = 8 + [[attributeDict objectForKey:@"i"] length];
+    } else if ([elementName isEqualToString:@"c"]) {
+        length = 8 + [[attributeDict objectForKey:@"i"] length];
+    } else if ([elementName isEqualToString:@"book"]) {
+        length = 6;
+    } else {
+        NSLog(@"FATAL! lengthForMarkupElementwithAttributes encountered an unkown markup element!");
+        // TODO: don't use exit(0)
+        exit(0);
+    }
+    
+    return length;
+}
+
+- (int)lengthForClosingMarkupElement:(NSString *)elementName {
+    int length = 0;
+    if ([elementName isEqualToString:@"v"]) {
+        length = 4;
+    } else if ([elementName isEqualToString:@"c"]) {
+        length = 4;
+    } else if ([elementName isEqualToString:@"book"]) {
+        length = 7;
+    } else {
+        NSLog(@"FATAL! lengthForMarkupElementwithAttributes encountered an unkown markup element:%@", elementName);
+        // TODO: don't use exit(0)
+        exit(0);
+    }
+    
+    return length;
 }
 
 @end
