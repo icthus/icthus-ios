@@ -26,6 +26,7 @@ NSString *currentChapter;
 NSString *remainingMarkup;
 CGFloat  lastKnownContentOffset;
 BibleMarkupParser *parser;
+NSInteger activeViewWindow = 3;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -278,22 +279,30 @@ BibleMarkupParser *parser;
     int previousFrameIndex = lastKnownContentOffset / height;
     int currentFrameIndex  = contentOffset / height;
     if (previousFrameIndex != currentFrameIndex) {
-        // delete all the old textViews
+        int startActiveRange = MAX(currentFrameIndex - activeViewWindow / 2, 0);
+        int endActiveRange   = MIN([self.textViews count], currentFrameIndex + activeViewWindow / 2);
+        NSRange activeRange = NSMakeRange(startActiveRange, endActiveRange - startActiveRange + 1);
+        
         for (int i = 0; i < [self.textViews count]; i++) {
             BibleTextView *textView = [self.textViews objectAtIndex:i];
-            if ([textView class] != [NSNull class]) {
-                [textView removeFromSuperview];
-                textView = nil;
-                [self.textViews replaceObjectAtIndex:i withObject:[NSNull null]];
+            if (NSLocationInRange(i, activeRange)) {
+                if ([textView class] == [NSNull class]) {
+                    // if the view is null, create it
+                    CGRect frame = CGRectMake(0, self.frame.size.height * i, self.frame.size.width, self.frame.size.height);
+                    NSRange textRange = [[self.textRanges objectAtIndex:i] rangeValue];
+                    BibleTextView *textView = [[BibleTextView alloc] initWithFrame:frame andTextRange:textRange andParent:self];
+                    [self addSubview:textView];
+                    [self.textViews replaceObjectAtIndex:i withObject:textView];
+                }
+            } else {
+                // if we are not in the range of active views, make sure this view is null
+                if ([textView class] != [NSNull class]) {
+                    [textView removeFromSuperview];
+                    textView = nil;
+                    [self.textViews replaceObjectAtIndex:i withObject:[NSNull null]];
+                }
             }
         }
-        
-        // add the correct textView
-        CGRect frame = CGRectMake(0, self.frame.size.height * currentFrameIndex, self.frame.size.width, self.frame.size.height);
-        NSRange textRange = [[self.textRanges objectAtIndex:currentFrameIndex] rangeValue];
-        BibleTextView *textView = [[BibleTextView alloc] initWithFrame:frame andTextRange:textRange andParent:self];
-        [self addSubview:textView];
-        [self.textViews replaceObjectAtIndex:currentFrameIndex withObject:textView];
     }
     lastKnownContentOffset = scrollView.contentOffset.y;
 }
