@@ -15,11 +15,12 @@
 
 @implementation ReadingView
 
-@synthesize frames;
+@synthesize textViews;
+@synthesize verseViews;
+@synthesize textRanges;
 @synthesize attString;
 @synthesize book;
 
-NSMutableArray *gutterViews;
 NSString *markup;
 NSString *currentChapter;
 NSString *remainingMarkup;
@@ -70,11 +71,13 @@ BibleMarkupParser *parser;
 }
 
 - (void)buildFrames {
-    self.frames = [NSMutableArray array];
+    self.textViews = [NSMutableArray array];
+    self.verseViews = [NSMutableArray array];
+    self.textRanges = [NSMutableArray array];
     remainingMarkup = self.text;
     
-    CGMutablePathRef path = CGPathCreateMutable();
-    CGPathAddRect(path, NULL, self.bounds);
+//    CGMutablePathRef path = CGPathCreateMutable();
+//    CGPathAddRect(path, NULL, self.bounds);
     
     CGRect textFrame;
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
@@ -94,24 +97,23 @@ BibleMarkupParser *parser;
         CGPathAddRect(path, NULL, textFrame);
         CTFrameRef frame = CTFramesetterCreateFrame(framesetter, CFRangeMake(textPos, 0), path, NULL);
         CFRange frameRange = CTFrameGetVisibleStringRange(frame);
+        NSRange nsFrameRange = NSMakeRange(frameRange.location, frameRange.length);
+        [self.textRanges addObject:[NSValue valueWithRange:nsFrameRange]];
         
         CGRect tmpFrame = CGRectMake(0, contentOffset, self.frame.size.width,self.frame.size.height);
-        BibleTextView *content = [[BibleTextView alloc] initWithFrame:tmpFrame];
+        BibleTextView *content = [[BibleTextView alloc] initWithFrame:tmpFrame andTextRange:nsFrameRange andParent:self];
 
 		//set the text and verse view contents and add it as subview
-        [content setTextPos:textPos];
-        [content setCTFrame:frame];
-        [self.frames addObject:content];
+        [self.textViews addObject:content];
         [self addSubview:content];
         
 
         BibleVerseView *verseView = [self getVerseViewForTextFrame:frame bounds:tmpFrame andLineHeight:lineHeight];
-        [gutterViews addObject:verseView];
+        [self.verseViews addObject:verseView];
         [self addSubview:verseView];
         
         //prepare for next frame
         textPos += frameRange.length;
-        CFRelease(path);
         pageIndex++;
         contentOffset += self.bounds.size.height;
     }
@@ -156,7 +158,7 @@ BibleMarkupParser *parser;
     int frameHeight = self.frame.size.height;
     int offset = self.contentOffset.y;
     int frameOffset = offset % frameHeight;
-    BibleTextView *currentView = [self.frames objectAtIndex: offset / frameHeight];
+    BibleTextView *currentView = [self.textViews objectAtIndex: offset / frameHeight];
     CTFrameRef currentFrame = currentView.ctFrame;
     
     NSArray *lines = (NSArray *) CTFrameGetLines(currentFrame);
@@ -177,8 +179,8 @@ BibleMarkupParser *parser;
 
 - (BookLocation *)getCurrentLocation {
     // find the current view
-    BibleTextView *lastView = [self.frames objectAtIndex:0];
-    for (BibleTextView *view in self.frames) {
+    BibleTextView *lastView = [self.textViews objectAtIndex:0];
+    for (BibleTextView *view in self.textViews) {
         if (view.frame.origin.y > self.contentOffset.y) {
             break;
         }
@@ -214,13 +216,13 @@ BibleMarkupParser *parser;
 }
 
 - (void)setCurrentLocation:(BookLocation *)location {
-    if ([self.frames count]) {
+    if ([self.textViews count]) {
         int targetTextPos = [parser getTextPositionForLocation:location inMarkup:self.text];
 
         // find the view with the given location
-        BibleTextView *lastView = [self.frames objectAtIndex:0];
-        for (BibleTextView *view in self.frames) {
-            if (view.textPos >= targetTextPos) {
+        BibleTextView *lastView = [self.textViews objectAtIndex:0];
+        for (BibleTextView *view in self.textViews) {
+            if ([view textRange].location >= targetTextPos) {
                 break;
             }
             lastView = view;
@@ -255,6 +257,10 @@ BibleMarkupParser *parser;
         
         [self setContentOffset:CGPointMake(0, contentOffset)];
     }
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+//    NSLog(@"scrollViewDidScroll: contentOffset = %f", scrollView.contentOffset.y);
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {

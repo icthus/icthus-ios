@@ -8,14 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreText/CoreText.h>
+#import "ReadingView.h"
 
 @interface BibleTextView : UIView
 
-@property (nonatomic, strong) NSString *text;
-@property (nonatomic, strong) UIView *view;
 @property CTFrameRef ctFrame;
-@property int textPos;
+@property NSRange textRange;
+@property ReadingView *parentView;
 
 -(void)setCTFrame:(CTFrameRef)f;
+- (id)initWithFrame:(CGRect)frame andTextRange:(NSRange)textRange andParent:(ReadingView *)parentView;
 
 @end

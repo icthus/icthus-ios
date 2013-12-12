@@ -7,20 +7,37 @@
 //
 
 #import "BibleTextView.h"
+#import "ReadingView.h"
 #import <CoreText/CoreText.h>
 
 @implementation BibleTextView
 
-@synthesize text;
-@synthesize view;
 @synthesize ctFrame;
-@synthesize textPos;
+@synthesize textRange = _textRange;
+@synthesize parentView = _parentView;
 
-- (id)initWithFrame:(CGRect)frame
-{
+- (id)initWithFrame:(CGRect)frame andTextRange:(NSRange)textRange andParent:(ReadingView *)parentView {
     self = [super initWithFrame:frame];
     if (self) {
         self.opaque = NO;
+        self.textRange = textRange;
+        self.parentView = parentView;
+        
+        // Build the ctFrame that we can draw when necessary
+        NSAttributedString *attString = [self.parentView.attString attributedSubstringFromRange:self.textRange];
+        CGRect textFrame;
+        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+            textFrame = CGRectInset(self.bounds, 50, 0);
+        } else {
+            textFrame = CGRectInset(self.bounds, 10, 0);
+        }
+        
+        CTFramesetterRef framesetter = CTFramesetterCreateWithAttributedString((CFAttributedStringRef)attString);
+        
+        CGMutablePathRef path = CGPathCreateMutable();
+        CGPathAddRect(path, NULL, textFrame);
+        CTFrameRef frame = CTFramesetterCreateFrame(framesetter, CFRangeMake(0, 0), path, NULL);
+        [self setCTFrame:frame];
     }
     return self;
 }
