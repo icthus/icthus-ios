@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "BookLocation.h"
+#import "BibleMarkupParser.h"
 #import "Book.h"
 
 @interface ReadingView : UIScrollView <UIScrollViewDelegate>
@@ -18,7 +19,12 @@
 
 @property (retain, nonatomic) NSAttributedString* attString;
 @property (retain, nonatomic) NSString *text;
-@property (retain, nonatomic) NSMutableArray* frames;
+@property (retain, nonatomic) NSMutableArray* textViews;
+@property (retain, nonatomic) NSMutableArray* verseViews;
+@property (retain, nonatomic) NSMutableArray* textRanges;
+@property (retain, nonatomic) NSMutableArray* versesByView;
+@property (retain, nonatomic) NSMutableArray* chaptersByView;
 @property (retain, nonatomic) Book *book;
+@property (retain, nonatomic) BibleMarkupParser *parser;
 
 @end

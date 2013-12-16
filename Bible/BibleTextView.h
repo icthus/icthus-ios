@@ -8,14 +8,20 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreText/CoreText.h>
+#import "ReadingView.h"
+#import "BibleVerseView.h"
 
-@interface BibleTextView : UIView
+@interface BibleTextView : UIView {
+    @private BibleVerseView *verseView;
+}
 
-@property (nonatomic, strong) NSString *text;
-@property (nonatomic, strong) UIView *view;
 @property CTFrameRef ctFrame;
-@property int textPos;
+@property NSRange textRange;
+@property ReadingView *parentView;
+@property NSArray *chapters;
+@property NSArray *verses;
 
 -(void)setCTFrame:(CTFrameRef)f;
+-(id)initWithFrame:(CGRect)frame TextRange:(NSRange)textRange Parent:(ReadingView *)parentView Chapters:(NSArray *)chapters AndVerses:(NSArray *)verses;
 
 @end

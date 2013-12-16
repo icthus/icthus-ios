@@ -109,7 +109,6 @@
     if ([[NSUserDefaults standardUserDefaults] objectForKey:@"ubiquityIdentityToken"]) {
         [self promptForiCloud];
     } else {
-        [self instantiateBooks];
         [self finishHandlingFirstLaunch];
     }
 }
