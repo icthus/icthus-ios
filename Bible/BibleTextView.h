@@ -15,8 +15,10 @@
 @property CTFrameRef ctFrame;
 @property NSRange textRange;
 @property ReadingView *parentView;
+@property NSArray *chapters;
+@property NSArray *verses;
 
 -(void)setCTFrame:(CTFrameRef)f;
-- (id)initWithFrame:(CGRect)frame andTextRange:(NSRange)textRange andParent:(ReadingView *)parentView;
+-(id)initWithFrame:(CGRect)frame TextRange:(NSRange)textRange Parent:(ReadingView *)parentView Chapters:(NSArray *)chapters AndVerses:(NSArray *)verses;
 
 @end

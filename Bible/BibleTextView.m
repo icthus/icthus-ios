@@ -8,6 +8,7 @@
 
 #import "BibleTextView.h"
 #import "ReadingView.h"
+#import "BibleVerseView.h"
 #import <CoreText/CoreText.h>
 
 @implementation BibleTextView
@@ -15,13 +16,19 @@
 @synthesize ctFrame;
 @synthesize textRange = _textRange;
 @synthesize parentView = _parentView;
+@synthesize chapters = _chapters;
+@synthesize verses = _verses;
 
-- (id)initWithFrame:(CGRect)frame andTextRange:(NSRange)textRange andParent:(ReadingView *)parentView {
+BibleVerseView *verseView;
+
+- (id)initWithFrame:(CGRect)frame TextRange:(NSRange)textRange Parent:(ReadingView *)parentView Chapters:(NSArray *)chapters AndVerses:(NSArray *)verses {
     self = [super initWithFrame:frame];
     if (self) {
         self.opaque = NO;
         self.textRange = textRange;
         self.parentView = parentView;
+        self.chapters = chapters;
+        self.verses = verses;
         
         // Build the ctFrame that we can draw when necessary
         NSAttributedString *attString = [self.parentView.attString attributedSubstringFromRange:self.textRange];
@@ -36,8 +43,20 @@
         
         CGMutablePathRef path = CGPathCreateMutable();
         CGPathAddRect(path, NULL, textFrame);
-        CTFrameRef frame = CTFramesetterCreateFrame(framesetter, CFRangeMake(0, 0), path, NULL);
-        [self setCTFrame:frame];
+        CTFrameRef ctframe = CTFramesetterCreateFrame(framesetter, CFRangeMake(0, 0), path, NULL);
+        [self setCTFrame:ctframe];
+        
+        // make the BibleVerseView
+        if ([chapters count] && [verses count]) {
+            CGFloat lineHeight = [attString boundingRectWithSize:CGSizeMake(textFrame.size.width, textFrame.size.height) options:0 context:nil].size.height;
+            CFArrayRef lines = CTFrameGetLines(ctframe);
+            int length = CFArrayGetCount(lines);
+            CGPoint origins[length];
+            CTFrameGetLineOrigins(ctframe, CFRangeMake(0, 0), origins);
+        
+            verseView = [[BibleVerseView alloc] initWithContentFrame:frame verses:verses chapters:chapters andLineOrigins:origins withLength:length andLineHeight:lineHeight];
+            [self addSubview:verseView];
+        }
     }
     return self;
 }
@@ -61,6 +80,8 @@
 
 -(void)dealloc {
     CFRelease(ctFrame);
+    [verseView removeFromSuperview];
+    verseView = nil;
 }
 
 @end

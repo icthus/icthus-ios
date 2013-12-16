@@ -20,12 +20,14 @@
 @synthesize textRanges;
 @synthesize attString;
 @synthesize book;
+@synthesize parser;
+@synthesize versesByView;
+@synthesize chaptersByView;
 
 NSString *markup;
 NSString *currentChapter;
 NSString *remainingMarkup;
 CGFloat  lastKnownContentOffset;
-BibleMarkupParser *parser;
 NSInteger activeViewWindow = 3;
 
 - (id)initWithFrame:(CGRect)frame
@@ -36,6 +38,8 @@ NSInteger activeViewWindow = 3;
         self.delegate = self;
         parser = [[BibleMarkupParser alloc] init];
         lastKnownContentOffset = 0;
+        self.chaptersByView = [[NSMutableArray alloc] init];
+        self.versesByView = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -45,6 +49,8 @@ NSInteger activeViewWindow = 3;
     self.alwaysBounceHorizontal = YES;
     parser = [[BibleMarkupParser alloc] init];
     lastKnownContentOffset = 0;
+    self.chaptersByView = [[NSMutableArray alloc] init];
+    self.versesByView = [[NSMutableArray alloc] init];
 }
 
 -(void)setText:(NSString *)text {
@@ -87,7 +93,6 @@ NSInteger activeViewWindow = 3;
         textFrame = CGRectInset(self.bounds, 10, 0);
     }
     CTFramesetterRef framesetter = CTFramesetterCreateWithAttributedString((CFAttributedStringRef)attString);
-    CGFloat lineHeight = [attString boundingRectWithSize:CGSizeMake(textFrame.size.width, textFrame.size.height) options:0 context:nil].size.height;
     
     int textPos = 0;
     int contentOffset = 0;
@@ -100,18 +105,13 @@ NSInteger activeViewWindow = 3;
         CFRange frameRange = CTFrameGetVisibleStringRange(frame);
         NSRange nsFrameRange = NSMakeRange(frameRange.location, frameRange.length);
         [self.textRanges addObject:[NSValue valueWithRange:nsFrameRange]];
-        
-        CGRect tmpFrame = CGRectMake(0, contentOffset, self.frame.size.width,self.frame.size.height);
-//        BibleTextView *content = [[BibleTextView alloc] initWithFrame:tmpFrame andTextRange:nsFrameRange andParent:self];
-
-		//set the text and verse view contents and add it as subview
         [self.textViews addObject:[NSNull null]];
-//        [self addSubview:content];
         
-
-//        BibleVerseView *verseView = [self getVerseViewForTextFrame:frame bounds:tmpFrame andLineHeight:lineHeight];
-//        [self.verseViews addObject:verseView];
-//        [self addSubview:verseView];
+        NSMutableArray *chaptersForView = [[NSMutableArray alloc] init];
+        NSMutableArray *versesForView = [[NSMutableArray alloc] init];
+        [self addChapterNumbers:chaptersForView AndVerseNumbers:versesForView ForCTFrame:frame];
+        [self.chaptersByView addObject:chaptersForView];
+        [self.versesByView addObject:versesForView];
         
         //prepare for next frame
         textPos += frameRange.length;
@@ -123,10 +123,16 @@ NSInteger activeViewWindow = 3;
     self.contentSize = CGSizeMake(self.bounds.size.width, (pageIndex + 1) * self.bounds.size.height);
 }
 
--(BibleVerseView *)getVerseViewForTextFrame:(CTFrameRef)ctframe bounds:(CGRect)frame andLineHeight:(CGFloat) lineHeight {
-    CFArrayRef lines = CTFrameGetLines(ctframe);
-    NSMutableArray *versesByLine = [[NSMutableArray alloc] init];
-    NSMutableArray *chaptersByLine = [[NSMutableArray alloc] init];
+// Populates the arrays with the chapter and verse numbers in the frame. When the method returns, each
+// array will be of the form:
+//  [
+//      [1],    the first line contains the beginning of the first verse
+//      [],     the second line does not contain the start of any verses
+//      [2, 3], the third line contains the beginnings of verses 2 and 3
+//      [4],    the fourth line contains the beginning of the fourth verse
+//  ]
+- (void) addChapterNumbers:(NSMutableArray *)chaptersByLine AndVerseNumbers:(NSMutableArray *)versesByLine ForCTFrame:(CTFrameRef)ctFrame {
+    CFArrayRef lines = CTFrameGetLines(ctFrame);
     for (int i = 0; i < CFArrayGetCount(lines); i++) {
         CTLineRef line = CFArrayGetValueAtIndex(lines, i);
         CFRange cfStringRange = CTLineGetStringRange(line);
@@ -147,12 +153,6 @@ NSInteger activeViewWindow = 3;
             remainingMarkup = [@"<book><c i=\"\"><v i=\"\">" stringByAppendingString:remainingMarkup];
         }
     }
-    
-    int length = CFArrayGetCount(lines);
-    CGPoint origins[length];
-    CTFrameGetLineOrigins(ctframe, CFRangeMake(0, 0), origins);
-    
-    return [[BibleVerseView alloc] initWithContentFrame:frame verses:versesByLine chapters:chaptersByLine andLineOrigins:origins withLength:length andLineHeight:lineHeight];
 }
 
 - (void)getTouchedLocation {
@@ -237,7 +237,9 @@ NSInteger activeViewWindow = 3;
         }
         
         CGRect frame = CGRectMake(0, self.frame.size.height * i, self.frame.size.width, self.frame.size.height);
-        BibleTextView *textView = [[BibleTextView alloc] initWithFrame:frame andTextRange:lastTextRange andParent:self];
+        NSArray *chapters = [self.chaptersByView objectAtIndex:i];
+        NSArray *verses = [self.versesByView objectAtIndex:i];
+        BibleTextView *textView = [[BibleTextView alloc] initWithFrame:frame TextRange:lastTextRange Parent:self Chapters:chapters AndVerses:verses];
         [self addSubview:textView];
         [self.textViews replaceObjectAtIndex:i withObject:textView];
 
@@ -290,7 +292,9 @@ NSInteger activeViewWindow = 3;
                     // if the view is null, create it
                     CGRect frame = CGRectMake(0, self.frame.size.height * i, self.frame.size.width, self.frame.size.height);
                     NSRange textRange = [[self.textRanges objectAtIndex:i] rangeValue];
-                    BibleTextView *textView = [[BibleTextView alloc] initWithFrame:frame andTextRange:textRange andParent:self];
+                    NSArray *chapters = [self.chaptersByView objectAtIndex:i];
+                    NSArray *verses = [self.versesByView objectAtIndex:i];
+                    BibleTextView *textView = [[BibleTextView alloc] initWithFrame:frame TextRange:textRange Parent:self Chapters:chapters AndVerses:verses];
                     [self addSubview:textView];
                     [self.textViews replaceObjectAtIndex:i withObject:textView];
                 }
