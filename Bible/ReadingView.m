@@ -26,7 +26,7 @@
 
 NSString *markup;
 NSString *currentChapter;
-NSString *remainingMarkup;
+NSMutableString *remainingMarkup;
 CGFloat  lastKnownContentOffset;
 NSInteger activeViewWindow = 3;
 
@@ -84,7 +84,7 @@ NSInteger activeViewWindow = 3;
     self.textViews = [NSMutableArray array];
     self.verseViews = [NSMutableArray array];
     self.textRanges = [NSMutableArray array];
-    remainingMarkup = self.text;
+    remainingMarkup = [[NSMutableString alloc] initWithString:self.text];
     
     CGRect textFrame;
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
@@ -148,9 +148,9 @@ NSInteger activeViewWindow = 3;
         [chaptersByLine insertObject:chapters atIndex:i];
         
         NSNumber *markupPos = [versesChaptersAndMarkupPos objectAtIndex:2];
-        remainingMarkup = [remainingMarkup substringFromIndex:[markupPos unsignedIntegerValue]];
+        [remainingMarkup deleteCharactersInRange:NSMakeRange(0, [markupPos unsignedIntegerValue])];
         if ([remainingMarkup length] > 0) {
-            remainingMarkup = [@"<book><c i=\"\"><v i=\"\">" stringByAppendingString:remainingMarkup];
+            [remainingMarkup insertString:@"<book><c i=\"\"><v i=\"\">" atIndex:0];
         }
     }
 }

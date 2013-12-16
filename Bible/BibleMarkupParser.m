@@ -55,7 +55,21 @@
 -(NSArray *)verseAndChapterNumbersForRange:(NSRange)range inMarkup:(NSString *)markupText {
     // returns an array that has [verseNumbers, chapterNumbers, markupRange]
     [self reset];
-    NSData *data = [markupText dataUsingEncoding:NSUTF8StringEncoding];
+    NSString *substring;
+    
+    #pragma mark - terrible, horrible hack, what are you even doing fix this right now you idiot
+    // NSXMLParser sucks and is a memory hog so I needed to chop down the strings I was feeding it.
+    // We don't know how much to chop down because the range we get in the arguments is for the plain
+    // text not the markup. So the theory is that if we are looking for more than 10 characters of text
+    // the ratio of text to markup should be greater that 1:4 so we can chop off some of that string
+    // we are parsing so NSXMLParser doesn't allocate as much memory. Sorry.
+    if (range.length > 10) {
+        NSRange hackRange = NSMakeRange(range.location, MIN([markupText length], range.length * 4));
+        substring = [markupText substringWithRange:hackRange];
+    } else {
+        substring = markupText;
+    }
+    NSData *data = [substring dataUsingEncoding:NSUTF8StringEncoding];
     NSXMLParser *parser = [[NSXMLParser alloc] initWithData:data];
     [parser setDelegate:self];
     findingVersesForString = YES;
