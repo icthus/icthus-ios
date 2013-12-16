@@ -9,8 +9,11 @@
 #import <UIKit/UIKit.h>
 #import <CoreText/CoreText.h>
 #import "ReadingView.h"
+#import "BibleVerseView.h"
 
-@interface BibleTextView : UIView
+@interface BibleTextView : UIView {
+    @private BibleVerseView *verseView;
+}
 
 @property CTFrameRef ctFrame;
 @property NSRange textRange;

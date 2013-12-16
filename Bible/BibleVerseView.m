@@ -16,7 +16,6 @@ int gutterWidth = 70;
     CGRect frame = CGRectMake(0, 0, contentFrame.size.width + gutterWidth, contentFrame.size.height);
     self = [super initWithFrame:frame];
     if (self) {
-        self.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:1.0 alpha:0.2];
         for (int i = 0; i < length; i++) {
             CGFloat labelTop = frame.size.height - origins[i].y - lineHeight;
             UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(self.frame.size.width - gutterWidth, labelTop, gutterWidth, lineHeight)];

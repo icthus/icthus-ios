@@ -13,13 +13,13 @@
 
 @implementation BibleTextView
 
+BibleVerseView *verseView;
 @synthesize ctFrame;
 @synthesize textRange = _textRange;
 @synthesize parentView = _parentView;
 @synthesize chapters = _chapters;
 @synthesize verses = _verses;
 
-BibleVerseView *verseView;
 
 - (id)initWithFrame:(CGRect)frame TextRange:(NSRange)textRange Parent:(ReadingView *)parentView Chapters:(NSArray *)chapters AndVerses:(NSArray *)verses {
     self = [super initWithFrame:frame];
