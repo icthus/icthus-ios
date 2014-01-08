@@ -28,7 +28,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:(0/255.0) green:(190/255.0) blue:(90/255.0) alpha:1.0];
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:(0/255.0) green:(200/255.0) blue:(87/255.0) alpha:1.0];
     self.navigationController.navigationBar.translucent = NO;
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     self.navigationController.navigationBar.titleTextAttributes = @{
