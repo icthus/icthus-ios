@@ -270,7 +270,7 @@ NSInteger activeViewWindow = 3;
             }
         }
         
-        lastKnownContentOffset = contentOffset;
+        lastKnownContentOffset = 0;
         [self setContentOffset:CGPointMake(0, contentOffset) animated:NO];
     }
 }
