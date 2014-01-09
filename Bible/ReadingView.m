@@ -270,7 +270,7 @@ NSInteger activeViewWindow = 3;
             }
         }
         
-        lastKnownContentOffset = CGPointMake(0, 0);
+        lastKnownContentOffset = CGPointMake(0, 0 - self.frame.size.height);
         [self setContentOffset:CGPointMake(0, contentOffset) animated:NO];
     }
 }
@@ -278,8 +278,8 @@ NSInteger activeViewWindow = 3;
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     CGPoint contentOffset = scrollView.contentOffset;
     int height = round(self.frame.size.height);
-    int previousFrameIndex = round(lastKnownContentOffset.y) / height;
-    int currentFrameIndex  = round(contentOffset.y) / height;
+    int previousFrameIndex = roundf(lastKnownContentOffset.y) / height;
+    int currentFrameIndex  = roundf(contentOffset.y) / height;
     if (previousFrameIndex != currentFrameIndex) {
         int startActiveRange = MAX(currentFrameIndex - activeViewWindow / 2, 0);
         int endActiveRange   = MIN([self.textViews count], currentFrameIndex + activeViewWindow / 2);
