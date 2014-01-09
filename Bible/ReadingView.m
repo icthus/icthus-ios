@@ -34,23 +34,23 @@ NSInteger activeViewWindow = 3;
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.opaque = false;
-        self.delegate = self;
-        parser = [[BibleMarkupParser alloc] init];
-        lastKnownContentOffset = CGPointMake(0,0);
-        self.chaptersByView = [[NSMutableArray alloc] init];
-        self.versesByView = [[NSMutableArray alloc] init];
+        [self setup];
     }
     return self;
 }
 
 -(void)awakeFromNib {
+    [self setup];
+}
+
+- (void)setup {
     self.delegate = self;
     self.alwaysBounceHorizontal = YES;
+    self.directionalLockEnabled = YES;
     parser = [[BibleMarkupParser alloc] init];
     lastKnownContentOffset = CGPointMake(0,0);
     self.chaptersByView = [[NSMutableArray alloc] init];
-    self.versesByView = [[NSMutableArray alloc] init];
+    self.versesByView = [[NSMutableArray alloc] init];  
 }
 
 -(void)setText:(NSString *)text {
@@ -309,18 +309,6 @@ NSInteger activeViewWindow = 3;
         }
     }
     
-    NSUInteger scrollAngle = [self getScrollAngleFromFirstPoint:lastKnownContentOffset secondPoint:contentOffset];
-    NSRange scrollingRightRangePositive = NSMakeRange(0, 30);
-    NSRange scrollingRightRangeNegative = NSMakeRange(330, 360);
-    NSRange scrollingLeftRange = NSMakeRange(150, 210);
-    if (!isnan(scrollAngle) &&
-        (NSLocationInRange(scrollAngle, scrollingRightRangePositive) ||
-        NSLocationInRange(scrollAngle, scrollingRightRangeNegative) ||
-        NSLocationInRange(scrollAngle, scrollingLeftRange))) {
-//        self.alwaysBounceHorizontal = YES;
-    } else {
-//        self.alwaysBounceHorizontal = NO;
-    }
     lastKnownContentOffset = scrollView.contentOffset;
 }
 
@@ -333,39 +321,6 @@ NSInteger activeViewWindow = 3;
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     [self saveLocation];
-}
-
-- (NSUInteger)getScrollAngleFromFirstPoint:(CGPoint)first secondPoint:(CGPoint)second {
-    // First, figure out what quadrant of Cartesian plan triangle is in
-    int quadrant;
-    if (first.x < second.x) {
-        if (first.y < second.y) {
-            quadrant = 1;
-        } else {
-            quadrant = 4;
-        }
-    } else {
-        if (first.y < second.y) {
-            quadrant = 2;
-        } else {
-            quadrant = 3;
-        }
-    }
-    
-    float opposite = fabsf(first.y - second.y);
-    float adjacent = fabsf(first.x - second.x);
-    float angle = cosf(opposite/adjacent);
-    
-    if (quadrant == 4) {
-        angle = 360 - angle;
-    } else if (quadrant == 3) {
-        angle = 180 + angle;
-    } else if (quadrant == 2) {
-        angle = 180 - angle;
-    }
-    // if quadrant == 1 we don't need to adjust anything
-    NSLog(@"angle = %f", angle);
-    return (NSUInteger)angle;
 }
 
 - (void)saveLocation {
