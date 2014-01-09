@@ -27,7 +27,7 @@
 NSString *markup;
 NSString *currentChapter;
 NSMutableString *remainingMarkup;
-CGFloat  lastKnownContentOffset;
+CGPoint lastKnownContentOffset;
 NSInteger activeViewWindow = 3;
 
 - (id)initWithFrame:(CGRect)frame
@@ -37,7 +37,7 @@ NSInteger activeViewWindow = 3;
         self.opaque = false;
         self.delegate = self;
         parser = [[BibleMarkupParser alloc] init];
-        lastKnownContentOffset = 0;
+        lastKnownContentOffset = CGPointMake(0,0);
         self.chaptersByView = [[NSMutableArray alloc] init];
         self.versesByView = [[NSMutableArray alloc] init];
     }
@@ -48,7 +48,7 @@ NSInteger activeViewWindow = 3;
     self.delegate = self;
     self.alwaysBounceHorizontal = YES;
     parser = [[BibleMarkupParser alloc] init];
-    lastKnownContentOffset = 0;
+    lastKnownContentOffset = CGPointMake(0,0);
     self.chaptersByView = [[NSMutableArray alloc] init];
     self.versesByView = [[NSMutableArray alloc] init];
 }
@@ -270,16 +270,16 @@ NSInteger activeViewWindow = 3;
             }
         }
         
-        lastKnownContentOffset = 0;
+        lastKnownContentOffset = CGPointMake(0, 0);
         [self setContentOffset:CGPointMake(0, contentOffset) animated:NO];
     }
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    int contentOffset = round(scrollView.contentOffset.y);
+    CGPoint contentOffset = scrollView.contentOffset;
     int height = round(self.frame.size.height);
-    int previousFrameIndex = lastKnownContentOffset / height;
-    int currentFrameIndex  = contentOffset / height;
+    int previousFrameIndex = round(lastKnownContentOffset.y) / height;
+    int currentFrameIndex  = round(contentOffset.y) / height;
     if (previousFrameIndex != currentFrameIndex) {
         int startActiveRange = MAX(currentFrameIndex - activeViewWindow / 2, 0);
         int endActiveRange   = MIN([self.textViews count], currentFrameIndex + activeViewWindow / 2);
@@ -308,17 +308,64 @@ NSInteger activeViewWindow = 3;
             }
         }
     }
-    lastKnownContentOffset = scrollView.contentOffset.y;
+    
+    NSUInteger scrollAngle = [self getScrollAngleFromFirstPoint:lastKnownContentOffset secondPoint:contentOffset];
+    NSRange scrollingRightRangePositive = NSMakeRange(0, 30);
+    NSRange scrollingRightRangeNegative = NSMakeRange(330, 360);
+    NSRange scrollingLeftRange = NSMakeRange(150, 210);
+    if (!isnan(scrollAngle) &&
+        (NSLocationInRange(scrollAngle, scrollingRightRangePositive) ||
+        NSLocationInRange(scrollAngle, scrollingRightRangeNegative) ||
+        NSLocationInRange(scrollAngle, scrollingLeftRange))) {
+//        self.alwaysBounceHorizontal = YES;
+    } else {
+//        self.alwaysBounceHorizontal = NO;
+    }
+    lastKnownContentOffset = scrollView.contentOffset;
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
     if (decelerate == NO) {
         [self saveLocation];
+        self.alwaysBounceHorizontal = YES;
     }
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     [self saveLocation];
+}
+
+- (NSUInteger)getScrollAngleFromFirstPoint:(CGPoint)first secondPoint:(CGPoint)second {
+    // First, figure out what quadrant of Cartesian plan triangle is in
+    int quadrant;
+    if (first.x < second.x) {
+        if (first.y < second.y) {
+            quadrant = 1;
+        } else {
+            quadrant = 4;
+        }
+    } else {
+        if (first.y < second.y) {
+            quadrant = 2;
+        } else {
+            quadrant = 3;
+        }
+    }
+    
+    float opposite = fabsf(first.y - second.y);
+    float adjacent = fabsf(first.x - second.x);
+    float angle = cosf(opposite/adjacent);
+    
+    if (quadrant == 4) {
+        angle = 360 - angle;
+    } else if (quadrant == 3) {
+        angle = 180 + angle;
+    } else if (quadrant == 2) {
+        angle = 180 - angle;
+    }
+    // if quadrant == 1 we don't need to adjust anything
+    NSLog(@"angle = %f", angle);
+    return (NSUInteger)angle;
 }
 
 - (void)saveLocation {
