@@ -47,6 +47,7 @@ NSInteger activeViewWindow = 3;
     self.delegate = self;
     self.alwaysBounceHorizontal = YES;
     self.directionalLockEnabled = YES;
+    self.scrollsToTop = NO;
     parser = [[BibleMarkupParser alloc] init];
     lastKnownContentOffset = CGPointMake(0,0);
     self.chaptersByView = [[NSMutableArray alloc] init];
