@@ -64,10 +64,14 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     // Configure the cell...
-    Book *book = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.textLabel.text = [book shortName];
+    [self configureCell:cell atIndexPath:indexPath];
     
     return cell;
+}
+
+- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+    Book *book = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    cell.textLabel.text = [book shortName];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -83,6 +87,7 @@
     if (_fetchedResultsController != nil) {
         return _fetchedResultsController;
     }
+    [NSFetchedResultsController deleteCacheWithName:@"ReadingList"];
     
     NSFetchRequest *bookLocationRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"BookLocation" inManagedObjectContext:self.managedObjectContext];
@@ -116,6 +121,7 @@
     // nil for section name key path means "no sections".
     NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:@"ReadingList"];
     self.fetchedResultsController = aFetchedResultsController;
+    [self.fetchedResultsController setDelegate:self];
     
 	NSError *error = nil;
 	if (![self.fetchedResultsController performFetch:&error]) {
@@ -137,19 +143,91 @@
 }
 */
 
-/*
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+        Book *book = [self.fetchedResultsController objectAtIndexPath:indexPath];
+        NSFetchRequest *bookLocationRequest = [[NSFetchRequest alloc] init];
+        NSEntityDescription *entity = [NSEntityDescription entityForName:@"BookLocation" inManagedObjectContext:self.managedObjectContext];
+        NSPredicate *pred = [NSPredicate predicateWithFormat:@"bookCode == %@", book.code];
+        [bookLocationRequest setEntity:entity];
+        [bookLocationRequest setPredicate:pred];
+        NSArray *bookLocations = [self.managedObjectContext executeFetchRequest:bookLocationRequest error:nil];
+        if (bookLocations) {
+            [self.managedObjectContext deleteObject:[bookLocations firstObject]];
+            NSError *error;
+            [self.managedObjectContext save:&error];
+            if (error != nil) {
+                NSLog(@"%@", [error localizedDescription]);
+            }
+            
+            // Delete the row from the data source
+            self.fetchedResultsController = nil;
+            [self.fetchedResultsController performFetch:&error];
+            if (error != nil) {
+                NSLog(@"%@", [error localizedDescription]);
+            }
+            
+            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        }
+        
+    }
 }
-*/
+
+- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
+    [self.tableView beginUpdates];
+}
+
+- (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id <NSFetchedResultsSectionInfo>)sectionInfo atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type {
+    
+    switch(type) {
+        case NSFetchedResultsChangeInsert:
+            [self.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex]
+                          withRowAnimation:UITableViewRowAnimationFade];
+            break;
+            
+        case NSFetchedResultsChangeDelete:
+            [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex]
+                          withRowAnimation:UITableViewRowAnimationFade];
+            break;
+    }
+}
+
+
+- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath {
+    
+    UITableView *tableView = self.tableView;
+    
+    switch(type) {
+            
+        case NSFetchedResultsChangeInsert:
+            [tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath]
+                             withRowAnimation:UITableViewRowAnimationFade];
+            break;
+            
+        case NSFetchedResultsChangeDelete:
+            [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
+                             withRowAnimation:UITableViewRowAnimationFade];
+            break;
+            
+        case NSFetchedResultsChangeUpdate:
+            [self configureCell:[tableView cellForRowAtIndexPath:indexPath]
+                    atIndexPath:indexPath];
+            break;
+            
+        case NSFetchedResultsChangeMove:
+            [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
+                             withRowAnimation:UITableViewRowAnimationFade];
+            [tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath]
+                             withRowAnimation:UITableViewRowAnimationFade];
+            break;
+    }
+}
+
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
+    [self.tableView endUpdates];
+}
 
 /*
 // Override to support rearranging the table view.
