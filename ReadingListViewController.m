@@ -57,6 +57,15 @@
     return [sectionInfo numberOfObjects];
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    CGFloat height;
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+        height = 60;
+    } else {
+        height = 50;
+    }
+    return height;
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -72,6 +81,14 @@
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     Book *book = [self.fetchedResultsController objectAtIndexPath:indexPath];
     cell.textLabel.text = [book shortName];
+    UIFont *font;
+    
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+        font = [UIFont fontWithName:@"Avenir-Medium"size:24];
+    } else {
+        font = [UIFont fontWithName:@"Avenir-Medium"size:19];
+    }
+    cell.textLabel.font = font;
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
