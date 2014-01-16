@@ -67,7 +67,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="nJ4-AK-PfG" kind="push" id="HeG-i3-N38"/>
+                                            <segue destination="Xe0-Zg-EQq" kind="push" id="zs4-QJ-uRW"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="UGu-3Y-0LO" rowHeight="100" style="IBUITableViewCellStyleDefault" id="OrL-0l-jg9">
@@ -106,6 +106,57 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Cn-md-YlS" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="459" y="64"/>
+        </scene>
+        <!--Books View Controller - Books-->
+        <scene sceneID="8kb-Xg-pAx">
+            <objects>
+                <collectionViewController autoresizesArchivedViewToFullSize="NO" id="Xe0-Zg-EQq" customClass="BooksViewController" sceneMemberID="viewController">
+                    <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="Bua-DY-Esu">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="yNg-jb-Ne2">
+                            <size key="itemSize" width="153" height="63"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="BookCollectionViewCell" id="wmw-F4-bK3" customClass="BookCollectionViewCell">
+                                <rect key="frame" x="0.0" y="64" width="153" height="63"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="153" height="63"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Leviticus" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Usy-PB-Ln2">
+                                            <rect key="frame" x="3" y="0.0" width="147" height="61"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <connections>
+                                    <outlet property="label" destination="Usy-PB-Ln2" id="zxZ-oj-4th"/>
+                                    <segue destination="ibv-lJ-hHP" kind="push" identifier="showBook" id="KcW-dS-QtC"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="Xe0-Zg-EQq" id="2Vj-Qx-cna"/>
+                            <outlet property="delegate" destination="Xe0-Zg-EQq" id="ndV-Ie-upp"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" title="Books" id="IRc-ge-jRw"/>
+                    <connections>
+                        <outlet property="collectionView" destination="Bua-DY-Esu" id="hAu-TD-7Kx"/>
+                    </connections>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="n2l-3t-SzS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1055" y="53"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="zMr-f5-sR1">
@@ -152,38 +203,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xAC-YK-wW8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1055" y="777"/>
-        </scene>
-        <!--Books View Controller - Books-->
-        <scene sceneID="OtW-9Q-RZ7">
-            <objects>
-                <tableViewController id="nJ4-AK-PfG" customClass="BooksViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="K6t-VX-2fY">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="cpX-Lq-Rt7">
-                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cpX-Lq-Rt7" id="5Th-cW-t7W">
-                                    <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="ibv-lJ-hHP" kind="push" identifier="showBook" id="z61-rl-f1X"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="nJ4-AK-PfG" id="wBz-d7-JLB"/>
-                            <outlet property="delegate" destination="nJ4-AK-PfG" id="cY3-W2-4Qi"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Books" id="Xrk-IL-hJc"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="9PB-wR-UBv" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1048" y="25"/>
         </scene>
         <!--Translation View Controller-->
         <scene sceneID="W6m-Kn-pUh">
@@ -281,6 +300,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="1y6-yb-AVY"/>
+        <segue reference="KcW-dS-QtC"/>
     </inferredMetricsTieBreakers>
 </document>

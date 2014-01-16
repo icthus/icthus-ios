@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
 
-@interface BooksViewController : UITableViewController
+@interface BooksViewController : UICollectionViewController <UICollectionViewDataSource, UICollectionViewDelegate>
 
 @property (nonatomic, strong) AppDelegate *appDel;
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
