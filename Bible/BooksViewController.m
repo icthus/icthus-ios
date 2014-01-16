@@ -10,6 +10,7 @@
 #import "Book.h"
 #import "ReadingViewController.h"
 #import "BookCollectionViewCell.h"
+#import "ChapterPickerCollectionViewCell.h"
 
 @interface BooksViewController ()
 
@@ -35,7 +36,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    [self.collectionView registerClass:[ChapterPickerCollectionViewCell class] forCellWithReuseIdentifier:@"ChapterPicker"];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -62,6 +63,10 @@
     return [sectionInfo numberOfObjects];
 }
 
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    Book *book = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    return CGSizeMake(147, 61);
+}
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *cellIdentifier = @"BookCollectionViewCell";

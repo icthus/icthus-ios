@@ -92,6 +92,7 @@ static NSString *translationDisplayName = @"World English Bible";
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qualifiedName {
     if (parser == _bookParser && [elementName isEqualToString:@"book"]) {
         [mutableBookText appendString:@"</c></book>"];
+        [_currentBook setNumberOfChapters:[NSNumber numberWithInt:(chapterIndex + 1)]];
         [_currentBook setText:mutableBookText];
     }
     else if ([elementName isEqualToString:@"p"]) {
