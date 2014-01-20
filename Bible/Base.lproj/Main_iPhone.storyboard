@@ -67,11 +67,31 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="Xe0-Zg-EQq" kind="push" id="zs4-QJ-uRW"/>
+                                            <segue destination="1nB-hW-VJC" kind="push" id="jmr-8h-T12"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="San-x8-S8d" rowHeight="100" style="IBUITableViewCellStyleDefault" id="T1Q-RI-3Cs">
+                                        <rect key="frame" x="0.0" y="264" width="320" height="100"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="T1Q-RI-3Cs" id="TIk-q3-rEN">
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="99"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Go To Chapter" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="San-x8-S8d">
+                                                    <rect key="frame" x="15" y="0.0" width="270" height="99"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="32"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="Xe0-Zg-EQq" kind="push" id="zFl-zA-auO"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="UGu-3Y-0LO" rowHeight="100" style="IBUITableViewCellStyleDefault" id="OrL-0l-jg9">
-                                        <rect key="frame" x="0.0" y="264" width="320" height="100"/>
+                                        <rect key="frame" x="0.0" y="364" width="320" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OrL-0l-jg9" id="Sje-lq-8fb">
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="99"/>
@@ -107,10 +127,42 @@
             </objects>
             <point key="canvasLocation" x="459" y="64"/>
         </scene>
-        <!--Books View Controller - Books-->
+        <!--Books View Controller-->
+        <scene sceneID="usR-VN-yis">
+            <objects>
+                <tableViewController id="1nB-hW-VJC" customClass="BooksViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="XtZ-cj-VfN">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="J77-56-dhJ">
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="J77-56-dhJ" id="bPJ-Sj-p8S">
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="ibv-lJ-hHP" kind="push" identifier="showBook" id="So6-H2-nZB"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="1nB-hW-VJC" id="tjd-b1-Eah"/>
+                            <outlet property="delegate" destination="1nB-hW-VJC" id="cLH-qo-gn8"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="Gn2-QE-vSG"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="anL-Ss-Lga" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1332" y="-259"/>
+        </scene>
+        <!--Chapter Picker View Controller - Books-->
         <scene sceneID="8kb-Xg-pAx">
             <objects>
-                <collectionViewController autoresizesArchivedViewToFullSize="NO" id="Xe0-Zg-EQq" customClass="BooksViewController" sceneMemberID="viewController">
+                <collectionViewController autoresizesArchivedViewToFullSize="NO" id="Xe0-Zg-EQq" customClass="ChapterPickerViewController" sceneMemberID="viewController">
                     <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="Bua-DY-Esu">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -156,7 +208,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n2l-3t-SzS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1055" y="53"/>
+            <point key="canvasLocation" x="1332" y="465"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="zMr-f5-sR1">
@@ -202,7 +254,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xAC-YK-wW8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1055" y="777"/>
+            <point key="canvasLocation" x="879" y="769"/>
         </scene>
         <!--Translation View Controller-->
         <scene sceneID="W6m-Kn-pUh">
@@ -231,7 +283,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bFE-MI-pfN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="445" y="-866"/>
+            <point key="canvasLocation" x="683" y="-912"/>
         </scene>
         <!--Reading View Controller-->
         <scene sceneID="sJ8-ag-o0I">
@@ -259,7 +311,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ngv-Cf-AEE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1669" y="-353"/>
+            <point key="canvasLocation" x="1963" y="-327"/>
         </scene>
         <!--Reading List View Controller - Reading-->
         <scene sceneID="GW3-gE-bzx">
@@ -291,7 +343,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RKf-FB-kDi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1048" y="-668"/>
+            <point key="canvasLocation" x="1332" y="-968"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
@@ -300,6 +352,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="KcW-dS-QtC"/>
+        <segue reference="So6-H2-nZB"/>
     </inferredMetricsTieBreakers>
 </document>

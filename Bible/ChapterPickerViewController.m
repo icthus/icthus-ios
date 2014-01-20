@@ -1,20 +1,22 @@
 //
-//  BooksViewController.m
+//  ChapterPickerViewController.m
 //  Bible
 //
 //  Created by Matthew Lorentz on 8/27/13.
 //  Copyright (c) 2013 Matthew Lorentz. All rights reserved.
 //
 
-#import "BooksViewController.h"
+#import "ChapterPickerViewController.h"
 #import "Book.h"
 #import "ReadingViewController.h"
+#import "BookCollectionViewCell.h"
+#import "ChapterPickerCollectionViewCell.h"
 
-@interface BooksViewController ()
+@interface ChapterPickerViewController()
 
 @end
 
-@implementation BooksViewController
+@implementation ChapterPickerViewController
 
 @synthesize appDel = _appDel;
 
@@ -34,7 +36,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    [self.collectionView registerClass:[ChapterPickerCollectionViewCell class] forCellWithReuseIdentifier:@"ChapterPicker"];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -50,33 +52,39 @@
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
     return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
     id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
     return [sectionInfo numberOfObjects];
 }
 
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    Book *book = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    return CGSizeMake(147, 61);
+}
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *cellIdentifier = @"BookCollectionViewCell";
+    BookCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
     Book *book = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.textLabel.text = [book shortName];
+    
+    UILabel *label = cell.label;
+    [label setText:book.shortName];
+    [label setTextColor:[UIColor whiteColor]];
     
     return cell;
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"showBook"]) {
-        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        NSIndexPath *indexPath = [[self.collectionView indexPathsForSelectedItems] lastObject];
         NSManagedObject *object = [[self fetchedResultsController] objectAtIndexPath:indexPath];
         [(ReadingViewController *)[segue destinationViewController] setBook:(Book *)object];
     }

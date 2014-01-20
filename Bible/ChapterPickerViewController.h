@@ -1,5 +1,5 @@
 //
-//  BooksViewController.h
+//  ChapterPickerViewController.h
 //  Bible
 //
 //  Created by Matthew Lorentz on 8/27/13.
@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
 
-@interface BooksViewController : UITableViewController
+@interface ChapterPickerViewController: UICollectionViewController <UICollectionViewDataSource, UICollectionViewDelegate>
 
 @property (nonatomic, strong) AppDelegate *appDel;
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
