@@ -7,9 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Book.h"
 
 @interface BookCollectionViewCell : UICollectionViewCell
 
 @property (strong, nonatomic) IBOutlet UILabel *label;
+@property Book *book;
+@property UICollectionView *collectionView;
+
+- (id)initWithReuseIdentifier:(NSString *)reuseIdentifier;
 
 @end

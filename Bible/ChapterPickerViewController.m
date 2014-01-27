@@ -10,7 +10,8 @@
 #import "Book.h"
 #import "ReadingViewController.h"
 #import "BookCollectionViewCell.h"
-#import "ChapterPickerCollectionViewCell.h"
+#import "ChapterCollectionViewCell.h"
+#import "BookLocation.h"
 
 @interface ChapterPickerViewController()
 
@@ -19,6 +20,8 @@
 @implementation ChapterPickerViewController
 
 @synthesize appDel = _appDel;
+@synthesize selectedBook;
+@synthesize selectedChapter;
 
 -(id)initWithCoder:(NSCoder *)aDecoder
 {
@@ -36,12 +39,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.collectionView registerClass:[ChapterPickerCollectionViewCell class] forCellWithReuseIdentifier:@"ChapterPicker"];
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    selectedBook = nil;
 }
 
 - (void)didReceiveMemoryWarning
@@ -59,34 +57,102 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
+    NSInteger numberOfItems = 0;
     id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
-    return [sectionInfo numberOfObjects];
+    if (selectedBook) {
+        numberOfItems = (NSInteger)[sectionInfo numberOfObjects] + [selectedBook.numberOfChapters integerValue];
+    } else {
+        numberOfItems = (NSInteger)[sectionInfo numberOfObjects];
+    }
+    return numberOfItems;
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    Book *book = [self.fetchedResultsController objectAtIndexPath:indexPath];
     return CGSizeMake(147, 61);
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *cellIdentifier = @"BookCollectionViewCell";
-    BookCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
+    static NSString *bookIdentifier = @"BookCollectionViewCell";
+    static NSString *chapterIdentifier = @"ChapterCollectionViewCell";
+    UICollectionViewCell *uiCollectionViewCell;
     
-    // Configure the cell...
-    Book *book = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    // Determine whether we are showing chapter numbers
+    NSRange chapterRange;
+    if (selectedBook) {
+        chapterRange = NSMakeRange([[self.fetchedResultsController indexPathForObject:selectedBook] item] + 1, [selectedBook.numberOfChapters integerValue]);
+    } else {
+        chapterRange = NSMakeRange(0,0);
+    }
     
-    UILabel *label = cell.label;
-    [label setText:book.shortName];
-    [label setTextColor:[UIColor whiteColor]];
+    // Determine whether we should make a book or chapter cell
+    NSUInteger index = [indexPath item];
+    if (selectedBook && NSLocationInRange(index, chapterRange)) {
+        ChapterCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:chapterIdentifier forIndexPath:indexPath];
+        UILabel *label = cell.label;
+        NSUInteger chapterNumber = index - chapterRange.location + 1;
+        [label setText:[NSString stringWithFormat:@"%d", chapterNumber]];
+        [label setTextColor:[UIColor whiteColor]];
+        uiCollectionViewCell = cell;
+    } else {
+        BookCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:bookIdentifier forIndexPath:indexPath];
+        if (index > chapterRange.location) {
+            NSUInteger actualIndexArray[2] = { 0, index - chapterRange.length };
+            indexPath = [[NSIndexPath alloc] initWithIndexes:actualIndexArray length:2];
+        }
+        Book *book = [self.fetchedResultsController objectAtIndexPath:indexPath];
+        UILabel *label = cell.label;
+        [label setText:book.shortName];
+        [label setTextColor:[UIColor whiteColor]];
+        uiCollectionViewCell = cell;
+    }
     
-    return cell;
+    return uiCollectionViewCell;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    // Determine whether we are showing chapter numbers
+    NSRange chapterRange;
+    if (selectedBook) {
+        chapterRange = NSMakeRange([[self.fetchedResultsController indexPathForObject:selectedBook] item] + 1, (NSUInteger)[selectedBook.numberOfChapters intValue]);
+    } else {
+        chapterRange = NSMakeRange(0,0);
+    }
+    
+    // Determine whether a book or chapter was selected
+    NSUInteger index = [indexPath item];
+    if (selectedBook && NSLocationInRange(index, chapterRange)) {
+        self.selectedChapter = index - chapterRange.location + 1;
+    } else {
+        if (index > chapterRange.location) {
+            NSUInteger actualIndexArray[2] = { 0, index - chapterRange.length };
+            indexPath = [[NSIndexPath alloc] initWithIndexes:actualIndexArray length:2];
+        }
+        Book *book = [self.fetchedResultsController objectAtIndexPath:indexPath];
+        selectedBook = book;
+        NSLog(@"User selected book %@", book.shortName);
+        NSLog(@"Book has %i chapters", [book.numberOfChapters intValue]);
+        [self.collectionView reloadData];
+    }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([[segue identifier] isEqualToString:@"showBook"]) {
-        NSIndexPath *indexPath = [[self.collectionView indexPathsForSelectedItems] lastObject];
-        NSManagedObject *object = [[self fetchedResultsController] objectAtIndexPath:indexPath];
-        [(ReadingViewController *)[segue destinationViewController] setBook:(Book *)object];
+    if ([[segue identifier] isEqualToString:@"showChapter"]) {
+        NSIndexPath *chapterIndexPath = [[self.collectionView indexPathsForSelectedItems] lastObject];
+        NSIndexPath *bookIndexPath    = [self.fetchedResultsController indexPathForObject:selectedBook];
+        NSRange chapterRange = NSMakeRange([bookIndexPath item] + 1, (NSUInteger)[selectedBook.numberOfChapters integerValue]);
+        NSLog(@"chapterIndexPath: %d", [chapterIndexPath item]);
+        self.selectedChapter = [chapterIndexPath item] - chapterRange.location + 1;
+        NSLog(@"selectedChapter: %d", self.selectedChapter);
+        BookLocation *location = [selectedBook getLocation];
+        location.chapter = [NSNumber numberWithInteger:selectedChapter];
+        location.verse   = [NSNumber numberWithInt:1];
+        NSError *error;
+        [_managedObjectContext save:&error];
+        if (error) {
+            NSLog(@"%@", [error localizedDescription]);
+        }
+        [(ReadingViewController *)[segue destinationViewController] setBook:(Book *)selectedBook];
     }
 }
 
@@ -180,6 +246,5 @@
     
     return _fetchedResultsController;
 }
-
 
 @end

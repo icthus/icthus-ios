@@ -8,11 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
+#import "Book.h"
 
 @interface ChapterPickerViewController: UICollectionViewController <UICollectionViewDataSource, UICollectionViewDelegate>
 
 @property (nonatomic, strong) AppDelegate *appDel;
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (strong, nonatomic) Book *selectedBook;
+@property (nonatomic) NSUInteger selectedChapter;
 
 @end

@@ -1,14 +1,14 @@
 //
-//  ChapterPickerCollectionViewCell.m
+//  ChapterCollectionViewCell.m
 //  Bible
 //
-//  Created by Matthew Lorentz on 1/16/14.
+//  Created by Matthew Lorentz on 1/25/14.
 //  Copyright (c) 2014 Matthew Lorentz. All rights reserved.
 //
 
-#import "ChapterPickerCollectionViewCell.h"
+#import "ChapterCollectionViewCell.h"
 
-@implementation ChapterPickerCollectionViewCell
+@implementation ChapterCollectionViewCell
 
 - (id)initWithFrame:(CGRect)frame
 {

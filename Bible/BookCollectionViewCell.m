@@ -11,12 +11,14 @@
 @implementation BookCollectionViewCell
 
 @synthesize label;
+@synthesize book;
 
-- (id)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
+- (id) initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
     if (self) {
-        // Initialization code
+        UICollectionViewLayout *layout = [[UICollectionViewLayout alloc] init];
+        UICollectionView *chapterCollectionView = [[UICollectionView alloc] initWithFrame:self.frame collectionViewLayout:layout];
+        self.collectionView = chapterCollectionView;
     }
     return self;
 }
