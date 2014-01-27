@@ -68,7 +68,11 @@
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return CGSizeMake(147, 61);
+    if ([self isBookAtIndexPath:indexPath]) {
+        return CGSizeMake(319, 61);
+    } else {
+        return CGSizeMake(53, 53);
+    }
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -76,24 +80,10 @@
     static NSString *chapterIdentifier = @"ChapterCollectionViewCell";
     UICollectionViewCell *uiCollectionViewCell;
     
-    // Determine whether we are showing chapter numbers
-    NSRange chapterRange;
-    if (selectedBook) {
-        chapterRange = NSMakeRange([[self.fetchedResultsController indexPathForObject:selectedBook] item] + 1, [selectedBook.numberOfChapters integerValue]);
-    } else {
-        chapterRange = NSMakeRange(0,0);
-    }
-    
     // Determine whether we should make a book or chapter cell
+    NSRange chapterRange = [self getChapterRange];
     NSUInteger index = [indexPath item];
-    if (selectedBook && NSLocationInRange(index, chapterRange)) {
-        ChapterCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:chapterIdentifier forIndexPath:indexPath];
-        UILabel *label = cell.label;
-        NSUInteger chapterNumber = index - chapterRange.location + 1;
-        [label setText:[NSString stringWithFormat:@"%d", chapterNumber]];
-        [label setTextColor:[UIColor whiteColor]];
-        uiCollectionViewCell = cell;
-    } else {
+    if ([self isBookAtIndexPath:indexPath]) {
         BookCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:bookIdentifier forIndexPath:indexPath];
         if (index > chapterRange.location) {
             NSUInteger actualIndexArray[2] = { 0, index - chapterRange.length };
@@ -102,7 +92,12 @@
         Book *book = [self.fetchedResultsController objectAtIndexPath:indexPath];
         UILabel *label = cell.label;
         [label setText:book.shortName];
-        [label setTextColor:[UIColor whiteColor]];
+        uiCollectionViewCell = cell;
+    } else {
+        ChapterCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:chapterIdentifier forIndexPath:indexPath];
+        UILabel *label = cell.label;
+        NSUInteger chapterNumber = index - chapterRange.location + 1;
+        [label setText:[NSString stringWithFormat:@"%d", chapterNumber]];
         uiCollectionViewCell = cell;
     }
     
@@ -110,20 +105,9 @@
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    
-    // Determine whether we are showing chapter numbers
-    NSRange chapterRange;
-    if (selectedBook) {
-        chapterRange = NSMakeRange([[self.fetchedResultsController indexPathForObject:selectedBook] item] + 1, (NSUInteger)[selectedBook.numberOfChapters intValue]);
-    } else {
-        chapterRange = NSMakeRange(0,0);
-    }
-    
-    // Determine whether a book or chapter was selected
     NSUInteger index = [indexPath item];
-    if (selectedBook && NSLocationInRange(index, chapterRange)) {
-        self.selectedChapter = index - chapterRange.location + 1;
-    } else {
+    NSRange chapterRange = [self getChapterRange];
+    if ([self isBookAtIndexPath:indexPath]) {
         if (index > chapterRange.location) {
             NSUInteger actualIndexArray[2] = { 0, index - chapterRange.length };
             indexPath = [[NSIndexPath alloc] initWithIndexes:actualIndexArray length:2];
@@ -133,17 +117,16 @@
         NSLog(@"User selected book %@", book.shortName);
         NSLog(@"Book has %i chapters", [book.numberOfChapters intValue]);
         [self.collectionView reloadData];
+    } else {
+        self.selectedChapter = index - chapterRange.location + 1;
     }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"showChapter"]) {
         NSIndexPath *chapterIndexPath = [[self.collectionView indexPathsForSelectedItems] lastObject];
-        NSIndexPath *bookIndexPath    = [self.fetchedResultsController indexPathForObject:selectedBook];
-        NSRange chapterRange = NSMakeRange([bookIndexPath item] + 1, (NSUInteger)[selectedBook.numberOfChapters integerValue]);
-        NSLog(@"chapterIndexPath: %d", [chapterIndexPath item]);
+        NSRange chapterRange = [self getChapterRange];
         self.selectedChapter = [chapterIndexPath item] - chapterRange.location + 1;
-        NSLog(@"selectedChapter: %d", self.selectedChapter);
         BookLocation *location = [selectedBook getLocation];
         location.chapter = [NSNumber numberWithInteger:selectedChapter];
         location.verse   = [NSNumber numberWithInt:1];
@@ -245,6 +228,31 @@
 	}
     
     return _fetchedResultsController;
+}
+
+-(BOOL)isBookAtIndexPath:(NSIndexPath *)indexPath {
+    BOOL isBook = NO;
+    
+    if (selectedBook) {
+        NSRange chapterRange = [self getChapterRange];
+        if (NSLocationInRange([indexPath item], chapterRange)) {
+            isBook = NO;
+        } else {
+            isBook = YES;
+        }
+    } else {
+        isBook = YES;
+    }
+    
+    return isBook;
+}
+
+- (NSRange)getChapterRange {
+    if (selectedBook) {
+        return NSMakeRange([[self.fetchedResultsController indexPathForObject:selectedBook] item] + 1, [selectedBook.numberOfChapters integerValue]);
+    } else {
+        return NSMakeRange(0,0);
+    }
 }
 
 @end
