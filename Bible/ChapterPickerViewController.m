@@ -68,10 +68,18 @@
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    if ([self isBookAtIndexPath:indexPath]) {
-        return CGSizeMake(319, 61);
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+        if ([self isBookAtIndexPath:indexPath]) {
+            return CGSizeMake(371, 153);
+        } else {
+            return CGSizeMake(95, 153);
+        }
     } else {
-        return CGSizeMake(53, 53);
+        if ([self isBookAtIndexPath:indexPath]) {
+            return CGSizeMake(319, 61);
+        } else {
+            return CGSizeMake(53, 53);
+        }
     }
 }
 
