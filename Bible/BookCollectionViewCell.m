@@ -16,9 +16,6 @@
 - (id) initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        UICollectionViewLayout *layout = [[UICollectionViewLayout alloc] init];
-        UICollectionView *chapterCollectionView = [[UICollectionView alloc] initWithFrame:self.frame collectionViewLayout:layout];
-        self.collectionView = chapterCollectionView;
     }
     return self;
 }

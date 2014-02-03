@@ -13,7 +13,6 @@
 
 @property (strong, nonatomic) IBOutlet UILabel *label;
 @property Book *book;
-@property UICollectionView *collectionView;
 
 - (id)initWithReuseIdentifier:(NSString *)reuseIdentifier;
 

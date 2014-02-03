@@ -70,17 +70,21 @@
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
         if ([self isBookAtIndexPath:indexPath]) {
-            return CGSizeMake(371, 153);
+            return CGSizeMake(767, 153);
         } else {
-            return CGSizeMake(95, 153);
+            return CGSizeMake(112, 115);
         }
     } else {
         if ([self isBookAtIndexPath:indexPath]) {
             return CGSizeMake(319, 61);
         } else {
-            return CGSizeMake(53, 53);
+            return CGSizeMake(61, 61);
         }
     }
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
+    return 0;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
