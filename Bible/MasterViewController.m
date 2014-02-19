@@ -15,7 +15,6 @@
 @end
 
 @implementation MasterViewController
-
 - (void)awakeFromNib
 {
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {

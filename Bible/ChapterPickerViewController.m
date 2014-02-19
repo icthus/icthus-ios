@@ -70,9 +70,9 @@
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
         if ([self isBookAtIndexPath:indexPath]) {
-            return CGSizeMake(767, 153);
+            return CGSizeMake(293, 84);
         } else {
-            return CGSizeMake(112, 115);
+            return CGSizeMake(64, 64);
         }
     } else {
         if ([self isBookAtIndexPath:indexPath]) {

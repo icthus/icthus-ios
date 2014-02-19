@@ -10,10 +10,11 @@
 #import "Book.h"
 #import "ReadingView.h"
 
-@interface ReadingViewController : UIViewController
+@interface ReadingViewController : UIViewController <UISplitViewControllerDelegate>
 -(id)initWithBook:(Book *)book;
 
 @property (strong, nonatomic) IBOutlet ReadingView *readingView;
 @property (nonatomic, strong) Book *book;
+@property (retain, nonatomic) UIPopoverController *popoverController;
 
 @end
