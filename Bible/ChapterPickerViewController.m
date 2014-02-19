@@ -131,11 +131,19 @@
         [self.collectionView reloadData];
     } else {
         self.selectedChapter = index - chapterRange.location + 1;
+        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+            [self updateLocationAndShowChapter];
+        }
     }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"showChapter"]) {
+        [self updateLocationAndShowChapter];
+    }
+}
+
+- (void)updateLocationAndShowChapter {
         NSIndexPath *chapterIndexPath = [[self.collectionView indexPathsForSelectedItems] lastObject];
         NSRange chapterRange = [self getChapterRange];
         self.selectedChapter = [chapterIndexPath item] - chapterRange.location + 1;
@@ -147,8 +155,8 @@
         if (error) {
             NSLog(@"%@", [error localizedDescription]);
         }
-        [(ReadingViewController *)[segue destinationViewController] setBook:(Book *)selectedBook];
-    }
+        [_appDel.detailView setBook:(Book *)selectedBook];
+    
 }
 
 /*

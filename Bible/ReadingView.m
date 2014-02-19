@@ -54,7 +54,22 @@ NSInteger activeViewWindow = 3;
     self.versesByView = [[NSMutableArray alloc] init];  
 }
 
+- (void)clearText {
+    for (BibleTextView *view in self.textViews) {
+        if (![view isEqual:[NSNull null]]) {
+            [view removeFromSuperview];
+        }
+    }
+    for (BibleVerseView *view in self.verseViews) {
+        if (![view isEqual:[NSNull null]]) {
+            [view removeFromSuperview];
+        }
+    }
+}
+
 -(void)setText:(NSString *)text {
+    // remove the old text
+    [self clearText];
     _text = text;
     
     // parse the markup

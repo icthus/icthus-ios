@@ -288,7 +288,6 @@
                                 <size key="customSize" width="64" height="64"/>
                                 <connections>
                                     <outlet property="label" destination="gDQ-46-NZR" id="cI5-81-G8I"/>
-                                    <segue destination="5lW-fh-OjA" kind="replace" identifier="showBook" splitViewControllerTargetIndex="1" id="77l-Fc-a6O"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -319,9 +318,6 @@
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="5lW-fh-OjA" kind="replace" identifier="showBook" splitViewControllerTargetIndex="1" id="7US-MU-rkG"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -386,7 +382,4 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
-    <inferredMetricsTieBreakers>
-        <segue reference="ol2-b6-6n4"/>
-    </inferredMetricsTieBreakers>
 </document>

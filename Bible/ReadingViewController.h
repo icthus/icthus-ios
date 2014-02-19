@@ -15,6 +15,6 @@
 
 @property (strong, nonatomic) IBOutlet ReadingView *readingView;
 @property (nonatomic, strong) Book *book;
-@property (retain, nonatomic) UIPopoverController *popoverController;
+@property (strong, nonatomic) UIPopoverController *popoverController;
 
 @end

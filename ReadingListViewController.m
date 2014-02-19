@@ -24,7 +24,7 @@
     self = [super initWithCoder: aDecoder];
     if (self)
     {
-        _appDel = [[UIApplication sharedApplication] delegate];
+        _appDel = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         _managedObjectContext = [_appDel managedObjectContext];
     }
     return self;
@@ -76,6 +76,14 @@
     [self configureCell:cell atIndexPath:indexPath];
     
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        NSManagedObject *object = [[self fetchedResultsController] objectAtIndexPath:indexPath];
+        [_appDel.detailView setBook:(Book *)object];
+    }
 }
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {

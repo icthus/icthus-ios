@@ -104,9 +104,16 @@
     // Update the user interface for the detail item.
     if (_book) {
         self.navigationItem.title = [_book shortName];
+        if (!self.navigationController) {
+            NSLog(@"navigation controller was lost");
+        }
         [self.readingView setBook:_book];
         [self.readingView setText:[_book text]];
         [self.readingView setCurrentLocation:[_book getLocation]];
+    }
+    
+    if (self.popoverController != nil) {
+        [self.popoverController dismissPopoverAnimated:YES];
     }
 }
 
