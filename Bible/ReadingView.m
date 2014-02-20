@@ -50,8 +50,6 @@ NSInteger activeViewWindow = 3;
     self.scrollsToTop = NO;
     parser = [[BibleMarkupParser alloc] init];
     lastKnownContentOffset = CGPointMake(0,0);
-    self.chaptersByView = [[NSMutableArray alloc] init];
-    self.versesByView = [[NSMutableArray alloc] init];  
 }
 
 - (void)clearText {
@@ -100,6 +98,8 @@ NSInteger activeViewWindow = 3;
     self.textViews = [NSMutableArray array];
     self.verseViews = [NSMutableArray array];
     self.textRanges = [NSMutableArray array];
+    self.chaptersByView = [[NSMutableArray alloc] init];
+    self.versesByView = [[NSMutableArray alloc] init];
     remainingMarkup = [[NSMutableString alloc] initWithString:self.text];
     
     CGRect textFrame;
