@@ -60,6 +60,13 @@
     } else {
         [self setBook:[array firstObject]];
     }
+    
+    // Color the nav bar
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:(0/255.0) green:(200/255.0) blue:(87/255.0) alpha:1.0];
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    self.navigationController.navigationBar.titleTextAttributes = @{
+        NSForegroundColorAttributeName: [UIColor whiteColor],
+    };
 }
 
 - (id)initWithBook:(Book *)book {
