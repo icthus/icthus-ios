@@ -77,7 +77,7 @@ NSInteger activeViewWindow = 3;
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
         NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle defaultParagraphStyle] mutableCopy];
         [paragraphStyle setLineSpacing:14];
-        NSDictionary *attributesDict = [[NSDictionary alloc] initWithObjectsAndKeys:[UIFont fontWithName:@"Avenir-Roman"size:24], NSFontAttributeName, paragraphStyle, NSParagraphStyleAttributeName, nil];
+        NSDictionary *attributesDict = [[NSDictionary alloc] initWithObjectsAndKeys:[UIFont fontWithName:@"AkzidenzGroteskCE-Roman"size:24], NSFontAttributeName, paragraphStyle, NSParagraphStyleAttributeName, nil];
         [self setAttString:[[NSAttributedString alloc] initWithString:displayString attributes:attributesDict]];
     } else {
         NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle defaultParagraphStyle] mutableCopy];

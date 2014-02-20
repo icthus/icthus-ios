@@ -92,7 +92,7 @@
     UIFont *font;
     
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-        font = [UIFont fontWithName:@"Avenir-Medium"size:24];
+        font = [UIFont fontWithName:@"Bariol-Regular"size:27];
     } else {
         font = [UIFont fontWithName:@"Avenir-Medium"size:19];
     }

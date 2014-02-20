@@ -16,6 +16,8 @@
 		C94A2B24181001790076926A /* TranslationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C94A2B23181001790076926A /* TranslationViewController.m */; };
 		C94A2B271810030E0076926A /* Translation.m in Sources */ = {isa = PBXBuildFile; fileRef = C94A2B261810030E0076926A /* Translation.m */; };
 		C95DAB6B18940D6D00494256 /* ChapterCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C95DAB6A18940D6D00494256 /* ChapterCollectionViewCell.m */; };
+		C98C1A2B18B6452200E4B3DF /* Bariol_Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = C98C1A2A18B6452200E4B3DF /* Bariol_Regular.otf */; };
+		C98C1A3318B6561700E4B3DF /* Akzidenz Grotesk CE Roman.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C98C1A3218B6561700E4B3DF /* Akzidenz Grotesk CE Roman.ttf */; };
 		C99C73FA17DFA61B00DBF0E2 /* BibleMarkupParser.m in Sources */ = {isa = PBXBuildFile; fileRef = C99C73F917DFA61B00DBF0E2 /* BibleMarkupParser.m */; };
 		C99F2FC417CCDC01008AF602 /* ChapterPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C99F2FC317CCDC01008AF602 /* ChapterPickerViewController.m */; };
 		C99F2FC717CCE714008AF602 /* ReadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C99F2FC617CCE714008AF602 /* ReadingViewController.m */; };
@@ -86,6 +88,8 @@
 		C94A2B261810030E0076926A /* Translation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Translation.m; sourceTree = "<group>"; };
 		C95DAB6918940D6D00494256 /* ChapterCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChapterCollectionViewCell.h; sourceTree = "<group>"; };
 		C95DAB6A18940D6D00494256 /* ChapterCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChapterCollectionViewCell.m; sourceTree = "<group>"; };
+		C98C1A2A18B6452200E4B3DF /* Bariol_Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Bariol_Regular.otf; sourceTree = "<group>"; };
+		C98C1A3218B6561700E4B3DF /* Akzidenz Grotesk CE Roman.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Akzidenz Grotesk CE Roman.ttf"; sourceTree = "<group>"; };
 		C99C73F817DFA61B00DBF0E2 /* BibleMarkupParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BibleMarkupParser.h; sourceTree = "<group>"; };
 		C99C73F917DFA61B00DBF0E2 /* BibleMarkupParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BibleMarkupParser.m; sourceTree = "<group>"; };
 		C99F2FC217CCDC01008AF602 /* ChapterPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChapterPickerViewController.h; sourceTree = "<group>"; };
@@ -312,7 +316,9 @@
 		C9FF50FB17CBB54700BA526E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C98C1A3218B6561700E4B3DF /* Akzidenz Grotesk CE Roman.ttf */,
 				C9FF50FC17CBB54700BA526E /* Bible-Info.plist */,
+				C98C1A2A18B6452200E4B3DF /* Bariol_Regular.otf */,
 				C9FF50FD17CBB54700BA526E /* InfoPlist.strings */,
 				C9FF510017CBB54700BA526E /* main.m */,
 				C9FF510217CBB54700BA526E /* Bible-Prefix.pch */,
@@ -434,6 +440,7 @@
 				C9B3056A1816A1B900EE8A94 /* eng-asv-VernacularAdditional.xml in Resources */,
 				C9B305681816A1B900EE8A94 /* BookNames.xml in Resources */,
 				C9FF510B17CBB54700BA526E /* Main_iPad.storyboard in Resources */,
+				C98C1A3318B6561700E4B3DF /* Akzidenz Grotesk CE Roman.ttf in Resources */,
 				C9FF514117CBFEA300BA526E /* signature.txt.asc in Resources */,
 				C9B3056E1816A1B900EE8A94 /* signature.txt.asc in Resources */,
 				C9B3056C1816A1B900EE8A94 /* eng-asv_usfx.xml in Resources */,
@@ -450,6 +457,7 @@
 				C9FF50FF17CBB54700BA526E /* InfoPlist.strings in Resources */,
 				C9B3056B1816A1B900EE8A94 /* eng-asv-VernacularParms.xml in Resources */,
 				C9FF513F17CBFEA300BA526E /* eng-web-VernacularParms.xml in Resources */,
+				C98C1A2B18B6452200E4B3DF /* Bariol_Regular.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

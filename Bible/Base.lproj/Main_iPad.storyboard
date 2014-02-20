@@ -118,7 +118,7 @@
             </objects>
             <point key="canvasLocation" x="54" y="2008"/>
         </scene>
-        <!--Master View Controller - Root View Controller-->
+        <!--Master View Controller - Menu-->
         <scene sceneID="KT2-B4-REM">
             <objects>
                 <tableViewController clearsSelectionOnViewWillAppear="NO" id="vHc-xR-ECn" customClass="MasterViewController" sceneMemberID="viewController">
@@ -197,7 +197,7 @@
                             <outlet property="delegate" destination="vHc-xR-ECn" id="nMO-td-0sq"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="MJb-T1-0ZX"/>
+                    <navigationItem key="navigationItem" title="Menu" id="MJb-T1-0ZX"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dO6-ic-Dd6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -254,8 +254,8 @@
                                     <rect key="frame" x="0.0" y="0.0" width="293" height="84"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Leviticus" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P6i-P5-q7w">
-                                            <rect key="frame" x="0.0" y="0.0" width="293" height="84"/>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Leviticus" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P6i-P5-q7w">
+                                            <rect key="frame" x="15" y="0.0" width="278" height="84"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="36"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>

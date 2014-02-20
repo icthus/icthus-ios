@@ -57,5 +57,10 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Akzidenz Grotesk CE Roman.ttf</string>
+		<string>Bariol_Regular.otf</string>
+	</array>
 </dict>
 </plist>

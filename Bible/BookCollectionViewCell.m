@@ -20,6 +20,10 @@
     return self;
 }
 
+- (void)awakeFromNib {
+    self.label.font = [UIFont fontWithName:@"Bariol-Regular" size:34.0f];
+}
+
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

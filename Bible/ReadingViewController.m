@@ -61,11 +61,12 @@
         [self setBook:[array firstObject]];
     }
     
-    // Color the nav bar
+    // Style the nav bar
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:(0/255.0) green:(200/255.0) blue:(87/255.0) alpha:1.0];
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     self.navigationController.navigationBar.titleTextAttributes = @{
         NSForegroundColorAttributeName: [UIColor whiteColor],
+        NSFontAttributeName: [UIFont fontWithName:@"Bariol-Regular" size:27.0f],
     };
 }
 
@@ -83,7 +84,15 @@
 }
 
 - (void)splitViewController:(UISplitViewController *)svc willHideViewController:(UIViewController *)aViewController withBarButtonItem:(UIBarButtonItem *)barButtonItem forPopoverController:(UIPopoverController *)pc {
+    for (NSString *familyName in [UIFont familyNames]) {
+        for (NSString *fontName in [UIFont fontNamesForFamilyName:familyName]) {
+            NSLog(@"%@", fontName);
+        }
+    }
     barButtonItem.title = @"Menu";
+    [barButtonItem setTitleTextAttributes:@{
+        NSFontAttributeName: [UIFont fontWithName:@"Bariol-Regular" size:23.0],
+    } forState:UIControlStateNormal];
     [self.navigationItem setLeftBarButtonItem:barButtonItem animated:YES];
     self.popoverController = pc;
 }
