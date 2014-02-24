@@ -80,12 +80,24 @@ static NSString *translationDisplayName = @"World English Bible";
     } else if ([elementName isEqualToString:@"v"]) {
         shouldParseCharacters = YES;
         [mutableBookText appendString:[NSString stringWithFormat:@"<v i=\"%d\">", [[attributeDict objectForKey:@"id"] intValue]]];
+    } else if ([elementName isEqualToString:@"q"] ||
+               [elementName isEqualToString:@"qt"]) {
+        shouldParseCharacters = YES;
+    } else if ([elementName isEqualToString:@"qs"]) {
+        // For the "Selah" in the Psalms
+        shouldParseCharacters = YES;
+    } else if ([elementName isEqualToString:@"d"]) {
+        // Indicating the title of a Psalm
+        shouldParseCharacters = YES;
+        [mutableBookText appendString:@"\n"];
     } else if ([elementName isEqualToString:@"c"]) {
         if (chapterIndex != 0) {
             [mutableBookText appendString:@"</c>"];
         }
         chapterIndex = [(NSString *)[attributeDict objectForKey:@"id"] intValue];
         [mutableBookText appendString:[NSString stringWithFormat:@"<c i=\"%@\">", [attributeDict objectForKey:@"id"]]];
+    } else {
+        shouldParseCharacters = NO;
     }
 }
 
