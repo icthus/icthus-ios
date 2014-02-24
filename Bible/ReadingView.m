@@ -231,7 +231,9 @@ NSInteger activeViewWindow = 3;
         bookCode = self.book.code;
     }
     
-    return [parser getLocationForCharAtIndex:location forText:self.text andBookCode:bookCode];
+    BookLocation *bookLocation = [parser getLocationForCharAtIndex:location forText:self.text andBookCode:bookCode];
+    NSLog(@"ReadingView.getCurrentLocation: got location %@ %@:%@", self.book.shortName, bookLocation.chapter, bookLocation.verse);
+    return bookLocation;
 }
 
 - (void)setCurrentLocation:(BookLocation *)location {
@@ -264,11 +266,10 @@ NSInteger activeViewWindow = 3;
         // find the correct line in the view
         CFArrayRef lines = CTFrameGetLines(textView.ctFrame);
         if (CFArrayGetCount(lines)) {
-            int i;
             for (i = 0; i < CFArrayGetCount(lines) - 1; i++) {
                 CTLineRef line = CFArrayGetValueAtIndex(lines, i);
                 CFRange range = CTLineGetStringRange(line);
-                if (targetTextPos <= range.location + range.length) {
+                if (targetTextPos <= lastTextRange.location + range.location + range.length) {
                     break;
                 }
             }
@@ -276,12 +277,10 @@ NSInteger activeViewWindow = 3;
             int originLength = CFArrayGetCount(lines);
             CGPoint origins[originLength];
             CTFrameGetLineOrigins(textView.ctFrame, CFRangeMake(0, 0), origins);
+            // if (i == 0) we don't need to do anything; contentOffset is already set to the beginning of our BibleTextView
             // get the origin of the line just above the line we want to show because CoreText origins are on a Cartesian plane.
-            if (i == 0) {
-                CGPoint origin = textView.frame.origin;
-                contentOffset += origin.y;
-            } else {
-                CGPoint origin = origins[i + 1]; // I don't understand why this is i + 1 but it works
+            if (i != 0) {
+                CGPoint origin = origins[i - 1];
                 contentOffset += textView.frame.size.height - origin.y;
             }
         }

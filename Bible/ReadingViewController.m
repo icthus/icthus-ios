@@ -125,7 +125,9 @@
         }
         [self.readingView setBook:_book];
         [self.readingView setText:[_book text]];
-        [self.readingView setCurrentLocation:[_book getLocation]];
+        BookLocation *location = [_book getLocation];
+        [self.readingView setCurrentLocation:location];
+        NSLog(@"ReadingViewController: Changing book to %@ %@:%@", [_book shortName], [location chapter], [location verse]);
     }
     
     if (self.popoverController != nil) {
