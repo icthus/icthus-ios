@@ -20,6 +20,10 @@ int gutterWidth = 70;
             CGFloat labelTop = frame.size.height - origins[i].y - lineHeight;
             UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(self.frame.size.width - gutterWidth, labelTop, gutterWidth, lineHeight)];
             
+            if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+                label.font = [UIFont fontWithName:@"AkzidenzGroteskCE-Roman" size:22];
+            }
+            
             // align the baseline with the BibleTextView text
             CGRect newFrame = label.frame;
             newFrame.origin.y -= label.font.descender;
