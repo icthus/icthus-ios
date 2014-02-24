@@ -136,7 +136,7 @@ NSInteger activeViewWindow = 3;
     }
     
     //set the total width of the scroll view
-    self.contentSize = CGSizeMake(self.bounds.size.width, (pageIndex + 1) * self.bounds.size.height);
+    self.contentSize = CGSizeMake(self.bounds.size.width, pageIndex * self.bounds.size.height);
 }
 
 // Populates the arrays with the chapter and verse numbers in the frame. When the method returns, each
