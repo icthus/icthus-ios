@@ -81,7 +81,25 @@ static NSString *translationDisplayName = @"World English Bible";
         shouldParseCharacters = YES;
         [mutableBookText appendString:[NSString stringWithFormat:@"<v i=\"%d\">", [[attributeDict objectForKey:@"id"] intValue]]];
     } else if ([elementName isEqualToString:@"q"] ||
-               [elementName isEqualToString:@"qt"]) {
+               [elementName isEqualToString:@"qt"] ||
+               [elementName isEqualToString:@"wj"] ||
+               [elementName isEqualToString:@"tl"] ||
+               [elementName isEqualToString:@"qac"] ||
+               [elementName isEqualToString:@"sls"] ||
+               [elementName isEqualToString:@"bk"] ||
+               [elementName isEqualToString:@"pn"] ||
+               [elementName isEqualToString:@"k"] ||
+               [elementName isEqualToString:@"ord"] ||
+               [elementName isEqualToString:@"sig"] ||
+               [elementName isEqualToString:@"bd"] ||
+               [elementName isEqualToString:@"it"] ||
+               [elementName isEqualToString:@"bdit"] ||
+               [elementName isEqualToString:@"sc"] ||
+               [elementName isEqualToString:@"no"] ||
+               [elementName isEqualToString:@"quoteStart"] ||
+               [elementName isEqualToString:@"quoteEnd"] ||
+               [elementName isEqualToString:@"quoteRemind"] ||
+               [elementName isEqualToString:@"nd"]) {
         shouldParseCharacters = YES;
     } else if ([elementName isEqualToString:@"qs"]) {
         // For the "Selah" in the Psalms

@@ -4,7 +4,7 @@
 //
 //  Created by Matthew Lorentz on 8/26/13.
 //  Copyright (c) 2013 Matthew Lorentz. All rights reserved.
-//
+//  USFX XML schema is located at http://ebible.org/usfx.xsd
 
 #import "ASVXMLParserDelegate.h"
 #import "Book.h"
@@ -81,7 +81,25 @@ static NSString *translationDisplayName = @"American Standard Version";
         shouldParseCharacters = YES;
         [mutableBookText appendString:[NSString stringWithFormat:@"<v i=\"%d\">", [[attributeDict objectForKey:@"id"] intValue]]];
     } else if ([elementName isEqualToString:@"q"] ||
-               [elementName isEqualToString:@"qt"]) {
+               [elementName isEqualToString:@"qt"] ||
+               [elementName isEqualToString:@"wj"] ||
+               [elementName isEqualToString:@"tl"] ||
+               [elementName isEqualToString:@"qac"] ||
+               [elementName isEqualToString:@"sls"] ||
+               [elementName isEqualToString:@"bk"] ||
+               [elementName isEqualToString:@"pn"] ||
+               [elementName isEqualToString:@"k"] ||
+               [elementName isEqualToString:@"ord"] ||
+               [elementName isEqualToString:@"sig"] ||
+               [elementName isEqualToString:@"bd"] ||
+               [elementName isEqualToString:@"it"] ||
+               [elementName isEqualToString:@"bdit"] ||
+               [elementName isEqualToString:@"sc"] ||
+               [elementName isEqualToString:@"no"] ||
+               [elementName isEqualToString:@"quoteStart"] ||
+               [elementName isEqualToString:@"quoteEnd"] ||
+               [elementName isEqualToString:@"quoteRemind"] ||
+               [elementName isEqualToString:@"nd"]) {
         shouldParseCharacters = YES;
     } else if ([elementName isEqualToString:@"qs"]) {
         // For the "Selah" in the Psalms
