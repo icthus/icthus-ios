@@ -94,7 +94,7 @@
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
         font = [UIFont fontWithName:@"Bariol-Regular"size:27];
     } else {
-        font = [UIFont fontWithName:@"Avenir-Medium"size:19];
+        font = [UIFont fontWithName:@"Bariol-Regular"size:19];
     }
     cell.textLabel.font = font;
 }

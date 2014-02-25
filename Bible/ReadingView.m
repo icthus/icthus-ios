@@ -83,7 +83,7 @@ NSInteger activeViewWindow = 3;
         NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle defaultParagraphStyle] mutableCopy];
         [paragraphStyle setLineSpacing:4];
         NSDictionary *attributesDict = [[NSDictionary alloc] initWithObjectsAndKeys:
-            [UIFont fontWithName:@"Avenir-Roman" size:19], NSFontAttributeName,
+            [UIFont fontWithName:@"AkzidenzGroteskCE-Roman" size:19], NSFontAttributeName,
             paragraphStyle, NSParagraphStyleAttributeName,
             nil
         ];

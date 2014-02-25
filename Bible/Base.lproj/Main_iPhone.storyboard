@@ -155,7 +155,7 @@
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="BookCollectionViewCell" id="wmw-F4-bK3" customClass="BookCollectionViewCell">
-                                <rect key="frame" x="1" y="0.0" width="319" height="63"/>
+                                <rect key="frame" x="1" y="64" width="319" height="63"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="319" height="63"/>
@@ -178,7 +178,7 @@
                                 </connections>
                             </collectionViewCell>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ChapterCollectionViewCell" id="DWT-TC-lOf" customClass="ChapterCollectionViewCell">
-                                <rect key="frame" x="130" y="73" width="61" height="61"/>
+                                <rect key="frame" x="130" y="137" width="61" height="61"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="61" height="61"/>
@@ -309,13 +309,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="ky5-FA-OfL">
-                        <barButtonItem key="rightBarButtonItem" title="Go To" id="8bT-IS-uAO">
-                            <connections>
-                                <segue destination="Xe0-Zg-EQq" kind="modal" identifier="GoToChapter" modalTransitionStyle="flipHorizontal" id="Uz6-Ea-rXo"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="ky5-FA-OfL"/>
                     <connections>
                         <outlet property="readingView" destination="K5V-bj-KpE" id="Qmz-wN-kt8"/>
                     </connections>
@@ -363,7 +357,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Uz6-Ea-rXo"/>
         <segue reference="jS7-lI-7Gd"/>
     </inferredMetricsTieBreakers>
 </document>
