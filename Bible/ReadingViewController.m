@@ -84,11 +84,6 @@
 }
 
 - (void)splitViewController:(UISplitViewController *)svc willHideViewController:(UIViewController *)aViewController withBarButtonItem:(UIBarButtonItem *)barButtonItem forPopoverController:(UIPopoverController *)pc {
-    for (NSString *familyName in [UIFont familyNames]) {
-        for (NSString *fontName in [UIFont fontNamesForFamilyName:familyName]) {
-            NSLog(@"%@", fontName);
-        }
-    }
     barButtonItem.title = @"Menu";
     [barButtonItem setTitleTextAttributes:@{
         NSFontAttributeName: [UIFont fontWithName:@"Bariol-Regular" size:23.0],
