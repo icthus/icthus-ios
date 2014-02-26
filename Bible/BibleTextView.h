@@ -1,6 +1,6 @@
 //
 //  BibleTextView.h
-//  Bible
+//  Icthus
 //
 //  Created by Matthew Lorentz on 9/5/13.
 //  Copyright (c) 2013 Matthew Lorentz. All rights reserved.

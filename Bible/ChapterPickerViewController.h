@@ -1,6 +1,6 @@
 //
 //  ChapterPickerViewController.h
-//  Bible
+//  Icthus
 //
 //  Created by Matthew Lorentz on 8/27/13.
 //  Copyright (c) 2013 Matthew Lorentz. All rights reserved.

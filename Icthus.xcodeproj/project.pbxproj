@@ -42,7 +42,7 @@
 		C9FF510517CBB54700BA526E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C9FF510417CBB54700BA526E /* AppDelegate.m */; };
 		C9FF510817CBB54700BA526E /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9FF510617CBB54700BA526E /* Main_iPhone.storyboard */; };
 		C9FF510B17CBB54700BA526E /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9FF510917CBB54700BA526E /* Main_iPad.storyboard */; };
-		C9FF510E17CBB54800BA526E /* Bible.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C9FF510C17CBB54800BA526E /* Bible.xcdatamodeld */; };
+		C9FF510E17CBB54800BA526E /* Icthus.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C9FF510C17CBB54800BA526E /* Icthus.xcdatamodeld */; };
 		C9FF511117CBB54800BA526E /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9FF511017CBB54800BA526E /* MasterViewController.m */; };
 		C9FF511417CBB54800BA526E /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9FF511317CBB54800BA526E /* DetailViewController.m */; };
 		C9FF511617CBB54800BA526E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9FF511517CBB54800BA526E /* Images.xcassets */; };
@@ -51,7 +51,7 @@
 		C9FF511F17CBB54800BA526E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9FF50F617CBB54700BA526E /* UIKit.framework */; };
 		C9FF512017CBB54800BA526E /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9FF50F817CBB54700BA526E /* CoreData.framework */; };
 		C9FF512817CBB54800BA526E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C9FF512617CBB54800BA526E /* InfoPlist.strings */; };
-		C9FF512A17CBB54800BA526E /* BibleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C9FF512917CBB54800BA526E /* BibleTests.m */; };
+		C9FF512A17CBB54800BA526E /* IcthusTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C9FF512917CBB54800BA526E /* IcthusTests.m */; };
 		C9FF513B17CBFEA300BA526E /* BookNames.xml in Resources */ = {isa = PBXBuildFile; fileRef = C9FF513417CBFEA300BA526E /* BookNames.xml */; };
 		C9FF513C17CBFEA300BA526E /* copr.htm in Resources */ = {isa = PBXBuildFile; fileRef = C9FF513517CBFEA300BA526E /* copr.htm */; };
 		C9FF513D17CBFEA300BA526E /* eng-web_usfx.xml in Resources */ = {isa = PBXBuildFile; fileRef = C9FF513617CBFEA300BA526E /* eng-web_usfx.xml */; };
@@ -103,7 +103,7 @@
 		C9B305651816A1B900EE8A94 /* eng-asv_usfx.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "eng-asv_usfx.xml"; sourceTree = "<group>"; };
 		C9B305661816A1B900EE8A94 /* keys.asc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = keys.asc; sourceTree = "<group>"; };
 		C9B305671816A1B900EE8A94 /* signature.txt.asc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = signature.txt.asc; sourceTree = "<group>"; };
-		C9B3056F1816D08600EE8A94 /* Bible.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Bible.entitlements; sourceTree = "<group>"; };
+		C9B3056F1816D08600EE8A94 /* Icthus.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Icthus.entitlements; sourceTree = "<group>"; };
 		C9BCA00817CD3FEC00196DA8 /* ReadingListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReadingListViewController.h; path = ../ReadingListViewController.h; sourceTree = "<group>"; };
 		C9BCA00917CD3FEC00196DA8 /* ReadingListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ReadingListViewController.m; path = ../ReadingListViewController.m; sourceTree = "<group>"; };
 		C9BCA00E17CD933500196DA8 /* Book.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Book.h; sourceTree = "<group>"; };
@@ -127,7 +127,7 @@
 		C9FF510417CBB54700BA526E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C9FF510717CBB54700BA526E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		C9FF510A17CBB54700BA526E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
-		C9FF510D17CBB54800BA526E /* Bible.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Bible.xcdatamodel; sourceTree = "<group>"; };
+		C9FF510D17CBB54800BA526E /* Icthus.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Icthus.xcdatamodel; sourceTree = "<group>"; };
 		C9FF510F17CBB54800BA526E /* MasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
 		C9FF511017CBB54800BA526E /* MasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
 		C9FF511217CBB54800BA526E /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
@@ -137,7 +137,7 @@
 		C9FF511C17CBB54800BA526E /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		C9FF512517CBB54800BA526E /* IcthusTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "IcthusTests-Info.plist"; sourceTree = "<group>"; };
 		C9FF512717CBB54800BA526E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		C9FF512917CBB54800BA526E /* BibleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BibleTests.m; sourceTree = "<group>"; };
+		C9FF512917CBB54800BA526E /* IcthusTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IcthusTests.m; sourceTree = "<group>"; };
 		C9FF513417CBFEA300BA526E /* BookNames.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = BookNames.xml; sourceTree = "<group>"; };
 		C9FF513517CBFEA300BA526E /* copr.htm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = copr.htm; sourceTree = "<group>"; };
 		C9FF513617CBFEA300BA526E /* eng-web_usfx.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "eng-web_usfx.xml"; sourceTree = "<group>"; };
@@ -249,8 +249,8 @@
 		C9FF50E617CBB54700BA526E = {
 			isa = PBXGroup;
 			children = (
-				C9FF50FA17CBB54700BA526E /* Bible */,
-				C9FF512317CBB54800BA526E /* BibleTests */,
+				C9FF50FA17CBB54700BA526E /* Icthus */,
+				C9FF512317CBB54800BA526E /* IcthusTests */,
 				C9FF50F117CBB54700BA526E /* Frameworks */,
 				C9FF50F017CBB54700BA526E /* Products */,
 			);
@@ -278,10 +278,10 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		C9FF50FA17CBB54700BA526E /* Bible */ = {
+		C9FF50FA17CBB54700BA526E /* Icthus */ = {
 			isa = PBXGroup;
 			children = (
-				C9B3056F1816D08600EE8A94 /* Bible.entitlements */,
+				C9B3056F1816D08600EE8A94 /* Icthus.entitlements */,
 				C9FF510917CBB54700BA526E /* Main_iPad.storyboard */,
 				C9FF510617CBB54700BA526E /* Main_iPhone.storyboard */,
 				C9FF510317CBB54700BA526E /* AppDelegate.h */,
@@ -299,7 +299,7 @@
 				C94A2B22181001790076926A /* TranslationViewController.h */,
 				C94A2B23181001790076926A /* TranslationViewController.m */,
 				C9FF511517CBB54800BA526E /* Images.xcassets */,
-				C9FF510C17CBB54800BA526E /* Bible.xcdatamodeld */,
+				C9FF510C17CBB54800BA526E /* Icthus.xcdatamodeld */,
 				C91EB47717FDB2F400645EFD /* Models */,
 				C9FF50FB17CBB54700BA526E /* Supporting Files */,
 				C9FF513317CBFBE900BA526E /* Core Data Source Files */,
@@ -310,6 +310,7 @@
 				C99C73F817DFA61B00DBF0E2 /* BibleMarkupParser.h */,
 				C99C73F917DFA61B00DBF0E2 /* BibleMarkupParser.m */,
 			);
+			name = Icthus;
 			path = Bible;
 			sourceTree = "<group>";
 		};
@@ -326,12 +327,13 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		C9FF512317CBB54800BA526E /* BibleTests */ = {
+		C9FF512317CBB54800BA526E /* IcthusTests */ = {
 			isa = PBXGroup;
 			children = (
-				C9FF512917CBB54800BA526E /* BibleTests.m */,
+				C9FF512917CBB54800BA526E /* IcthusTests.m */,
 				C9FF512417CBB54800BA526E /* Supporting Files */,
 			);
+			name = IcthusTests;
 			path = BibleTests;
 			sourceTree = "<group>";
 		};
@@ -494,7 +496,7 @@
 				C99F2FC417CCDC01008AF602 /* ChapterPickerViewController.m in Sources */,
 				C9D071DC17DE8C2000B535ED /* ReadingView.m in Sources */,
 				C9E57771188484A3004CC974 /* BookCollectionViewCell.m in Sources */,
-				C9FF510E17CBB54800BA526E /* Bible.xcdatamodeld in Sources */,
+				C9FF510E17CBB54800BA526E /* Icthus.xcdatamodeld in Sources */,
 				C9BCA00A17CD3FEC00196DA8 /* ReadingListViewController.m in Sources */,
 				C9256B0717DFC5D400646198 /* BookLocation.m in Sources */,
 			);
@@ -504,7 +506,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9FF512A17CBB54800BA526E /* BibleTests.m in Sources */,
+				C9FF512A17CBB54800BA526E /* IcthusTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -629,7 +631,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_ENTITLEMENTS = Bible/Bible.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Bible/Icthus.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -646,7 +648,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_ENTITLEMENTS = Bible/Bible.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Bible/Icthus.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -731,13 +733,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		C9FF510C17CBB54800BA526E /* Bible.xcdatamodeld */ = {
+		C9FF510C17CBB54800BA526E /* Icthus.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				C9FF510D17CBB54800BA526E /* Bible.xcdatamodel */,
+				C9FF510D17CBB54800BA526E /* Icthus.xcdatamodel */,
 			);
-			currentVersion = C9FF510D17CBB54800BA526E /* Bible.xcdatamodel */;
-			path = Bible.xcdatamodeld;
+			currentVersion = C9FF510D17CBB54800BA526E /* Icthus.xcdatamodel */;
+			path = Icthus.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

@@ -1,6 +1,6 @@
 //
 //  AppDelegate.m
-//  Bible
+//  Icthus
 //
 //  Created by Matthew Lorentz on 8/26/13.
 //  Copyright (c) 2013 Matthew Lorentz. All rights reserved.
@@ -200,7 +200,7 @@
     if (_managedObjectModel != nil) {
         return _managedObjectModel;
     }
-    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"Bible" withExtension:@"momd"];
+    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"Icthus" withExtension:@"momd"];
     _managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
     return _managedObjectModel;
 }
@@ -220,10 +220,10 @@
         
         // Two Configurations: Ubiquitous and Local
         // Ubiquitous:
-        NSURL *iCloudURL = [[[NSFileManager defaultManager] URLForUbiquityContainerIdentifier:nil] URLByAppendingPathComponent:@"BibleUbiquitousStore.sqlite"];
+        NSURL *iCloudURL = [[[NSFileManager defaultManager] URLForUbiquityContainerIdentifier:nil] URLByAppendingPathComponent:@"IcthusUbiquitousStore.sqlite"];
 
         NSDictionary *options = @{
-            NSPersistentStoreUbiquitousContentNameKey: @"BibleUbiquitousStore",
+            NSPersistentStoreUbiquitousContentNameKey: @"IcthusUbiquitousStore",
             NSMigratePersistentStoresAutomaticallyOption: [NSNumber numberWithBool:YES],
             NSInferMappingModelAutomaticallyOption: [NSNumber numberWithBool:YES],
         };
@@ -237,7 +237,7 @@
         }
         
         // Local
-        NSURL *localStoreURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"BibleLocalStore.sqlite"];
+        NSURL *localStoreURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"IcthusLocalStore.sqlite"];
         
         options = @{
                      NSMigratePersistentStoresAutomaticallyOption: [NSNumber numberWithBool:YES],
@@ -250,7 +250,7 @@
     }
     else {
         NSLog(@"iCloud isn't working or user chose not to use it - using a local store with 'Default' configuration.");
-        NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"BibleDefaultStore.sqlite"];
+        NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"IcthusDefaultStore.sqlite"];
         
         NSDictionary *options = @{
             NSMigratePersistentStoresAutomaticallyOption: [NSNumber numberWithBool:YES],

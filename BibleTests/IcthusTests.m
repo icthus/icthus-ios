@@ -1,6 +1,6 @@
 //
-//  BibleTests.m
-//  BibleTests
+//  IcthusTests.m
+//  IcthusTests
 //
 //  Created by Matthew Lorentz on 8/26/13.
 //  Copyright (c) 2013 Matthew Lorentz. All rights reserved.
@@ -8,11 +8,11 @@
 
 #import <XCTest/XCTest.h>
 
-@interface BibleTests : XCTestCase
+@interface IcthusTests : XCTestCase
 
 @end
 
-@implementation BibleTests
+@implementation IcthusTests
 
 - (void)setUp
 {

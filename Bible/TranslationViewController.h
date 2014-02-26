@@ -1,6 +1,6 @@
 //
 //  TranslationViewController.h
-//  Bible
+//  Icthus
 //
 //  Created by Matthew Lorentz on 10/17/13.
 //  Copyright (c) 2013 Matthew Lorentz. All rights reserved.

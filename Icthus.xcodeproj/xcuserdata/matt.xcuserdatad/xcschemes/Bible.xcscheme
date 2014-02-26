@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "C9FF50EE17CBB54700BA526E"
-               BuildableName = "Bible.app"
+               BuildableName = "Icthus.app"
                BlueprintName = "Icthus"
                ReferencedContainer = "container:Icthus.xcodeproj">
             </BuildableReference>
@@ -33,7 +33,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "C9FF511A17CBB54800BA526E"
-               BuildableName = "BibleTests.xctest"
+               BuildableName = "IcthusTests.xctest"
                BlueprintName = "IcthusTests"
                ReferencedContainer = "container:Icthus.xcodeproj">
             </BuildableReference>
@@ -43,7 +43,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C9FF50EE17CBB54700BA526E"
-            BuildableName = "Bible.app"
+            BuildableName = "Icthus.app"
             BlueprintName = "Icthus"
             ReferencedContainer = "container:Icthus.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C9FF50EE17CBB54700BA526E"
-            BuildableName = "Bible.app"
+            BuildableName = "Icthus.app"
             BlueprintName = "Icthus"
             ReferencedContainer = "container:Icthus.xcodeproj">
          </BuildableReference>
@@ -80,7 +80,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C9FF50EE17CBB54700BA526E"
-            BuildableName = "Bible.app"
+            BuildableName = "Icthus.app"
             BlueprintName = "Icthus"
             ReferencedContainer = "container:Icthus.xcodeproj">
          </BuildableReference>
