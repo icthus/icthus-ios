@@ -310,7 +310,6 @@
 				C99C73F817DFA61B00DBF0E2 /* BibleMarkupParser.h */,
 				C99C73F917DFA61B00DBF0E2 /* BibleMarkupParser.m */,
 			);
-			name = Icthus;
 			path = Icthus;
 			sourceTree = "<group>";
 		};
@@ -333,7 +332,6 @@
 				C9FF512917CBB54800BA526E /* IcthusTests.m */,
 				C9FF512417CBB54800BA526E /* Supporting Files */,
 			);
-			name = IcthusTests;
 			path = IcthusTests;
 			sourceTree = "<group>";
 		};
