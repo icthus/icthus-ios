@@ -114,15 +114,15 @@
 		C9E57770188484A3004CC974 /* BookCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookCollectionViewCell.m; sourceTree = "<group>"; };
 		C9FABFD8188D55AB00C3FC05 /* BooksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BooksViewController.h; sourceTree = "<group>"; };
 		C9FABFD9188D55AB00C3FC05 /* BooksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BooksViewController.m; sourceTree = "<group>"; };
-		C9FF50EF17CBB54700BA526E /* Bible.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bible.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C9FF50EF17CBB54700BA526E /* Icthus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Icthus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9FF50F217CBB54700BA526E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C9FF50F417CBB54700BA526E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		C9FF50F617CBB54700BA526E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C9FF50F817CBB54700BA526E /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		C9FF50FC17CBB54700BA526E /* Bible-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Bible-Info.plist"; sourceTree = "<group>"; };
+		C9FF50FC17CBB54700BA526E /* Icthus-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Icthus-Info.plist"; sourceTree = "<group>"; };
 		C9FF50FE17CBB54700BA526E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C9FF510017CBB54700BA526E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		C9FF510217CBB54700BA526E /* Bible-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bible-Prefix.pch"; sourceTree = "<group>"; };
+		C9FF510217CBB54700BA526E /* Icthus-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Icthus-Prefix.pch"; sourceTree = "<group>"; };
 		C9FF510317CBB54700BA526E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C9FF510417CBB54700BA526E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C9FF510717CBB54700BA526E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
@@ -133,9 +133,9 @@
 		C9FF511217CBB54800BA526E /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		C9FF511317CBB54800BA526E /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		C9FF511517CBB54800BA526E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		C9FF511B17CBB54800BA526E /* BibleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BibleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C9FF511B17CBB54800BA526E /* IcthusTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IcthusTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9FF511C17CBB54800BA526E /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		C9FF512517CBB54800BA526E /* BibleTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BibleTests-Info.plist"; sourceTree = "<group>"; };
+		C9FF512517CBB54800BA526E /* IcthusTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "IcthusTests-Info.plist"; sourceTree = "<group>"; };
 		C9FF512717CBB54800BA526E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C9FF512917CBB54800BA526E /* BibleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BibleTests.m; sourceTree = "<group>"; };
 		C9FF513417CBFEA300BA526E /* BookNames.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = BookNames.xml; sourceTree = "<group>"; };
@@ -259,8 +259,8 @@
 		C9FF50F017CBB54700BA526E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C9FF50EF17CBB54700BA526E /* Bible.app */,
-				C9FF511B17CBB54800BA526E /* BibleTests.xctest */,
+				C9FF50EF17CBB54700BA526E /* Icthus.app */,
+				C9FF511B17CBB54800BA526E /* IcthusTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -317,11 +317,11 @@
 			isa = PBXGroup;
 			children = (
 				C98C1A3218B6561700E4B3DF /* Akzidenz Grotesk CE Roman.ttf */,
-				C9FF50FC17CBB54700BA526E /* Bible-Info.plist */,
+				C9FF50FC17CBB54700BA526E /* Icthus-Info.plist */,
 				C98C1A2A18B6452200E4B3DF /* Bariol_Regular.otf */,
 				C9FF50FD17CBB54700BA526E /* InfoPlist.strings */,
 				C9FF510017CBB54700BA526E /* main.m */,
-				C9FF510217CBB54700BA526E /* Bible-Prefix.pch */,
+				C9FF510217CBB54700BA526E /* Icthus-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -338,7 +338,7 @@
 		C9FF512417CBB54800BA526E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				C9FF512517CBB54800BA526E /* BibleTests-Info.plist */,
+				C9FF512517CBB54800BA526E /* IcthusTests-Info.plist */,
 				C9FF512617CBB54800BA526E /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
@@ -356,9 +356,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		C9FF50EE17CBB54700BA526E /* Bible */ = {
+		C9FF50EE17CBB54700BA526E /* Icthus */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C9FF512D17CBB54800BA526E /* Build configuration list for PBXNativeTarget "Bible" */;
+			buildConfigurationList = C9FF512D17CBB54800BA526E /* Build configuration list for PBXNativeTarget "Icthus" */;
 			buildPhases = (
 				C9FF50EB17CBB54700BA526E /* Sources */,
 				C9FF50EC17CBB54700BA526E /* Frameworks */,
@@ -368,14 +368,14 @@
 			);
 			dependencies = (
 			);
-			name = Bible;
+			name = Icthus;
 			productName = Bible;
-			productReference = C9FF50EF17CBB54700BA526E /* Bible.app */;
+			productReference = C9FF50EF17CBB54700BA526E /* Icthus.app */;
 			productType = "com.apple.product-type.application";
 		};
-		C9FF511A17CBB54800BA526E /* BibleTests */ = {
+		C9FF511A17CBB54800BA526E /* IcthusTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C9FF513017CBB54800BA526E /* Build configuration list for PBXNativeTarget "BibleTests" */;
+			buildConfigurationList = C9FF513017CBB54800BA526E /* Build configuration list for PBXNativeTarget "IcthusTests" */;
 			buildPhases = (
 				C9FF511717CBB54800BA526E /* Sources */,
 				C9FF511817CBB54800BA526E /* Frameworks */,
@@ -386,9 +386,9 @@
 			dependencies = (
 				C9FF512217CBB54800BA526E /* PBXTargetDependency */,
 			);
-			name = BibleTests;
+			name = IcthusTests;
 			productName = BibleTests;
-			productReference = C9FF511B17CBB54800BA526E /* BibleTests.xctest */;
+			productReference = C9FF511B17CBB54800BA526E /* IcthusTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -413,7 +413,7 @@
 					};
 				};
 			};
-			buildConfigurationList = C9FF50EA17CBB54700BA526E /* Build configuration list for PBXProject "Bible" */;
+			buildConfigurationList = C9FF50EA17CBB54700BA526E /* Build configuration list for PBXProject "Icthus" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -426,8 +426,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C9FF50EE17CBB54700BA526E /* Bible */,
-				C9FF511A17CBB54800BA526E /* BibleTests */,
+				C9FF50EE17CBB54700BA526E /* Icthus */,
+				C9FF511A17CBB54800BA526E /* IcthusTests */,
 			);
 		};
 /* End PBXProject section */
@@ -513,7 +513,7 @@
 /* Begin PBXTargetDependency section */
 		C9FF512217CBB54800BA526E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = C9FF50EE17CBB54700BA526E /* Bible */;
+			target = C9FF50EE17CBB54700BA526E /* Icthus */;
 			targetProxy = C9FF512117CBB54800BA526E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -633,9 +633,9 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Bible/Bible-Prefix.pch";
-				INFOPLIST_FILE = "Bible/Bible-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "Bible/Icthus-Prefix.pch";
+				INFOPLIST_FILE = "Bible/Icthus-Info.plist";
+				PRODUCT_NAME = Icthus;
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
@@ -650,9 +650,9 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Bible/Bible-Prefix.pch";
-				INFOPLIST_FILE = "Bible/Bible-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "Bible/Icthus-Prefix.pch";
+				INFOPLIST_FILE = "Bible/Icthus-Info.plist";
+				PRODUCT_NAME = Icthus;
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
@@ -673,8 +673,8 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "BibleTests/BibleTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "BibleTests/IcthusTests-Info.plist";
+				PRODUCT_NAME = IcthusTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -691,8 +691,8 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Bible/Bible-Prefix.pch";
-				INFOPLIST_FILE = "BibleTests/BibleTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "BibleTests/IcthusTests-Info.plist";
+				PRODUCT_NAME = IcthusTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -701,7 +701,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C9FF50EA17CBB54700BA526E /* Build configuration list for PBXProject "Bible" */ = {
+		C9FF50EA17CBB54700BA526E /* Build configuration list for PBXProject "Icthus" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C9FF512B17CBB54800BA526E /* Debug */,
@@ -710,7 +710,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C9FF512D17CBB54800BA526E /* Build configuration list for PBXNativeTarget "Bible" */ = {
+		C9FF512D17CBB54800BA526E /* Build configuration list for PBXNativeTarget "Icthus" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C9FF512E17CBB54800BA526E /* Debug */,
@@ -719,7 +719,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C9FF513017CBB54800BA526E /* Build configuration list for PBXNativeTarget "BibleTests" */ = {
+		C9FF513017CBB54800BA526E /* Build configuration list for PBXNativeTarget "IcthusTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C9FF513117CBB54800BA526E /* Debug */,

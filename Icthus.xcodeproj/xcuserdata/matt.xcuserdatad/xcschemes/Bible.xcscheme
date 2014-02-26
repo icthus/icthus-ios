@@ -16,8 +16,8 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "C9FF50EE17CBB54700BA526E"
                BuildableName = "Bible.app"
-               BlueprintName = "Bible"
-               ReferencedContainer = "container:Bible.xcodeproj">
+               BlueprintName = "Icthus"
+               ReferencedContainer = "container:Icthus.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -34,8 +34,8 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "C9FF511A17CBB54800BA526E"
                BuildableName = "BibleTests.xctest"
-               BlueprintName = "BibleTests"
-               ReferencedContainer = "container:Bible.xcodeproj">
+               BlueprintName = "IcthusTests"
+               ReferencedContainer = "container:Icthus.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -44,8 +44,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C9FF50EE17CBB54700BA526E"
             BuildableName = "Bible.app"
-            BlueprintName = "Bible"
-            ReferencedContainer = "container:Bible.xcodeproj">
+            BlueprintName = "Icthus"
+            ReferencedContainer = "container:Icthus.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -63,8 +63,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C9FF50EE17CBB54700BA526E"
             BuildableName = "Bible.app"
-            BlueprintName = "Bible"
-            ReferencedContainer = "container:Bible.xcodeproj">
+            BlueprintName = "Icthus"
+            ReferencedContainer = "container:Icthus.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -81,8 +81,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C9FF50EE17CBB54700BA526E"
             BuildableName = "Bible.app"
-            BlueprintName = "Bible"
-            ReferencedContainer = "container:Bible.xcodeproj">
+            BlueprintName = "Icthus"
+            ReferencedContainer = "container:Icthus.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
