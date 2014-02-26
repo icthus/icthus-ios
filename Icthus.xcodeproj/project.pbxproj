@@ -68,7 +68,7 @@
 			containerPortal = C9FF50E717CBB54700BA526E /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = C9FF50EE17CBB54700BA526E;
-			remoteInfo = Bible;
+			remoteInfo = Icthus;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -243,7 +243,7 @@
 				C9B305671816A1B900EE8A94 /* signature.txt.asc */,
 			);
 			name = ASV;
-			path = Bible/ASV;
+			path = Icthus/ASV;
 			sourceTree = SOURCE_ROOT;
 		};
 		C9FF50E617CBB54700BA526E = {
@@ -311,7 +311,7 @@
 				C99C73F917DFA61B00DBF0E2 /* BibleMarkupParser.m */,
 			);
 			name = Icthus;
-			path = Bible;
+			path = Icthus;
 			sourceTree = "<group>";
 		};
 		C9FF50FB17CBB54700BA526E /* Supporting Files */ = {
@@ -334,7 +334,7 @@
 				C9FF512417CBB54800BA526E /* Supporting Files */,
 			);
 			name = IcthusTests;
-			path = BibleTests;
+			path = IcthusTests;
 			sourceTree = "<group>";
 		};
 		C9FF512417CBB54800BA526E /* Supporting Files */ = {
@@ -371,7 +371,7 @@
 			dependencies = (
 			);
 			name = Icthus;
-			productName = Bible;
+			productName = Icthus;
 			productReference = C9FF50EF17CBB54700BA526E /* Icthus.app */;
 			productType = "com.apple.product-type.application";
 		};
@@ -389,7 +389,7 @@
 				C9FF512217CBB54800BA526E /* PBXTargetDependency */,
 			);
 			name = IcthusTests;
-			productName = BibleTests;
+			productName = IcthusTests;
 			productReference = C9FF511B17CBB54800BA526E /* IcthusTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
@@ -631,12 +631,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_ENTITLEMENTS = Bible/Icthus.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Icthus/Icthus.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Bible/Icthus-Prefix.pch";
-				INFOPLIST_FILE = "Bible/Icthus-Info.plist";
+				GCC_PREFIX_HEADER = "Icthus/Icthus-Prefix.pch";
+				INFOPLIST_FILE = "Icthus/Icthus-Info.plist";
 				PRODUCT_NAME = Icthus;
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
@@ -648,12 +648,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_ENTITLEMENTS = Bible/Icthus.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Icthus/Icthus.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Bible/Icthus-Prefix.pch";
-				INFOPLIST_FILE = "Bible/Icthus-Info.plist";
+				GCC_PREFIX_HEADER = "Icthus/Icthus-Prefix.pch";
+				INFOPLIST_FILE = "Icthus/Icthus-Info.plist";
 				PRODUCT_NAME = Icthus;
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
@@ -663,19 +663,19 @@
 		C9FF513117CBB54800BA526E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Bible.app/Bible";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Icthus.app/Icthus";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Bible/Bible-Prefix.pch";
+				GCC_PREFIX_HEADER = "Icthus/Icthus-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "BibleTests/IcthusTests-Info.plist";
+				INFOPLIST_FILE = "IcthusTests/IcthusTests-Info.plist";
 				PRODUCT_NAME = IcthusTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -685,15 +685,15 @@
 		C9FF513217CBB54800BA526E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Bible.app/Bible";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Icthus.app/Icthus";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Bible/Bible-Prefix.pch";
-				INFOPLIST_FILE = "BibleTests/IcthusTests-Info.plist";
+				GCC_PREFIX_HEADER = "Icthus/Icthus-Prefix.pch";
+				INFOPLIST_FILE = "IcthusTests/IcthusTests-Info.plist";
 				PRODUCT_NAME = IcthusTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
