@@ -69,6 +69,14 @@
         NSForegroundColorAttributeName: [UIColor whiteColor],
         NSFontAttributeName: [UIFont fontWithName:@"Bariol-Regular" size:27.0f],
     };
+    
+    // Style the Go To button
+    if (self.goToButton) {
+        self.goToButton.tintColor = [UIColor whiteColor];
+        [self.goToButton setTitleTextAttributes:@{
+            NSFontAttributeName: [UIFont fontWithName:@"Bariol-Regular" size:23.0],
+        } forState:UIControlStateNormal];
+    }
 }
 
 - (id)initWithBook:(Book *)book {

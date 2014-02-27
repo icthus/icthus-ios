@@ -14,6 +14,7 @@
 -(id)initWithBook:(Book *)book;
 
 @property (strong, nonatomic) IBOutlet ReadingView *readingView;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *goToButton;
 @property (nonatomic, strong) Book *book;
 @property (strong, nonatomic) UIPopoverController *masterPopover;
 @property (strong, nonatomic) UIPopoverController *chapterPickerPopover;

@@ -36,7 +36,6 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="ReadingView" id="1B4-gn-kDf">
                         <barButtonItem key="rightBarButtonItem" title="Go To" id="5pZ-Xs-0Gc">
-                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="Aed-Qw-6gf" kind="popover" identifier="showChapterPickerPopover" popoverAnchorBarButtonItem="5pZ-Xs-0Gc" id="pV7-66-91M">
                                     <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
@@ -45,6 +44,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="goToButton" destination="5pZ-Xs-0Gc" id="paO-8N-3Rh"/>
                         <outlet property="readingView" destination="C4T-3F-a0u" id="D66-WA-kHt"/>
                     </connections>
                 </viewController>
