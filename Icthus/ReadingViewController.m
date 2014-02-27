@@ -18,7 +18,8 @@
 @implementation ReadingViewController
 
 @synthesize book = _book;
-@synthesize popoverController;
+@synthesize masterPopover;
+@synthesize chapterPickerPopover;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -80,7 +81,7 @@
 
 - (void)splitViewController:(UISplitViewController *)svc willShowViewController:(UIViewController *)aViewController invalidatingBarButtonItem:(UIBarButtonItem *)barButtonItem {
     [self.navigationItem setLeftBarButtonItem:nil animated:YES];
-    self.popoverController = nil;
+    self.masterPopover = nil;
 }
 
 - (void)splitViewController:(UISplitViewController *)svc willHideViewController:(UIViewController *)aViewController withBarButtonItem:(UIBarButtonItem *)barButtonItem forPopoverController:(UIPopoverController *)pc {
@@ -89,7 +90,7 @@
         NSFontAttributeName: [UIFont fontWithName:@"Bariol-Regular" size:23.0],
     } forState:UIControlStateNormal];
     [self.navigationItem setLeftBarButtonItem:barButtonItem animated:YES];
-    self.popoverController = pc;
+    self.masterPopover = pc;
 }
 
 - (void)setBook:(Book *)newBook {
@@ -125,8 +126,27 @@
         NSLog(@"ReadingViewController: Changing book to %@ %@:%@", [_book shortName], [location chapter], [location verse]);
     }
     
-    if (self.popoverController != nil) {
-        [self.popoverController dismissPopoverAnimated:YES];
+    if (self.masterPopover != nil) {
+        [self.masterPopover dismissPopoverAnimated:YES];
+    }
+}
+
+
+- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
+    if ([identifier isEqualToString:@"showChapterPickerPopover"]) {
+        if (self.chapterPickerPopover.popoverVisible) {
+            [self.chapterPickerPopover dismissPopoverAnimated:YES];
+            return NO;
+        } else {
+            return YES;
+        }
+    }
+    return YES;
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([[segue identifier] isEqualToString:@"showChapterPickerPopover"]) {
+        self.chapterPickerPopover = [(UIStoryboardPopoverSegue *)segue popoverController];
     }
 }
 
