@@ -137,6 +137,9 @@
     if (self.masterPopover != nil) {
         [self.masterPopover dismissPopoverAnimated:YES];
     }
+    if (self.chapterPickerPopover != nil) {
+        [self.chapterPickerPopover dismissPopoverAnimated:YES];
+    }
 }
 
 
