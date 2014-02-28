@@ -37,7 +37,7 @@
     [dc addObserver:self selector: @selector (iCloudAccountAvailabilityChanged) name: NSUbiquityIdentityDidChangeNotification object:nil];
     [dc addObserver:self selector:@selector(storesWillChange:) name:NSPersistentStoreCoordinatorStoresWillChangeNotification object:nil];
     
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+//    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
     if ([[NSUserDefaults standardUserDefaults] objectForKey:@"appHasLaunchedBefore"] == nil) {
         [self handleFirstLaunch];

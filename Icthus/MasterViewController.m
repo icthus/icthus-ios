@@ -27,10 +27,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:(0/255.0) green:(200/255.0) blue:(87/255.0) alpha:1.0];
-    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:(13/255.0) green:(149/255.0) blue:(69/255.0) alpha:1.0];
+    self.navigationController.navigationBar.translucent = YES;
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithWhite:1.0 alpha:0.5];
     self.navigationController.navigationBar.titleTextAttributes = @{
-        NSForegroundColorAttributeName: [UIColor whiteColor],
+        NSForegroundColorAttributeName: [UIColor colorWithRed:(13/255.0) green:(149/255.0) blue:(69/255.0) alpha:1.0],
     };
 }
 
