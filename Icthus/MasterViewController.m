@@ -14,9 +14,12 @@
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
 @end
 
+UIColor *tintColor;
+
 @implementation MasterViewController
 - (void)awakeFromNib
 {
+    tintColor = [UIColor colorWithRed:(0/255.0) green:(165/255.0) blue:(91/255.0) alpha:1.0];
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
         self.clearsSelectionOnViewWillAppear = NO;
         self.preferredContentSize = CGSizeMake(320.0, 600.0);
@@ -27,11 +30,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:(13/255.0) green:(149/255.0) blue:(69/255.0) alpha:1.0];
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     self.navigationController.navigationBar.translucent = YES;
-    self.navigationController.navigationBar.barTintColor = [UIColor colorWithWhite:1.0 alpha:0.5];
+    self.navigationController.navigationBar.barTintColor = tintColor;
     self.navigationController.navigationBar.titleTextAttributes = @{
-        NSForegroundColorAttributeName: [UIColor colorWithRed:(13/255.0) green:(149/255.0) blue:(69/255.0) alpha:1.0],
+//        NSForegroundColorAttributeName: [UIColor colorWithRed:(13/255.0) green:(149/255.0) blue:(69/255.0) alpha:1.0],
     };
 }
 

@@ -52,7 +52,7 @@
             </objects>
             <point key="canvasLocation" x="1082" y="2014"/>
         </scene>
-        <!--Master View Controller - Menu-->
+        <!--Master View Controller-->
         <scene sceneID="KT2-B4-REM">
             <objects>
                 <tableViewController clearsSelectionOnViewWillAppear="NO" id="vHc-xR-ECn" customClass="MasterViewController" sceneMemberID="viewController">
@@ -74,7 +74,7 @@
                                                     <rect key="frame" x="15" y="0.0" width="270" height="149"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="37"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -95,7 +95,7 @@
                                                     <rect key="frame" x="15" y="0.0" width="270" height="149"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="37"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -116,7 +116,7 @@
                                                     <rect key="frame" x="15" y="0.0" width="270" height="149"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="37"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -131,7 +131,7 @@
                             <outlet property="delegate" destination="vHc-xR-ECn" id="nMO-td-0sq"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Menu" id="MJb-T1-0ZX"/>
+                    <navigationItem key="navigationItem" id="MJb-T1-0ZX"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dO6-ic-Dd6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
