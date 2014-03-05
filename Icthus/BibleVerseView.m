@@ -32,6 +32,12 @@ int gutterWidth = 70;
             NSArray *verses = [versesByLine objectAtIndex:i];
             NSArray *chapters = [chaptersByLine objectAtIndex:i];
             NSString *displayString;
+            
+            // If this is the start of a new chapter, highlight the verse number
+            if ([verses firstObject] && [[verses firstObject] isEqualToString:@"1"]) {
+                label.textColor = [UIColor colorWithRed:(0/255.0) green:(165/255.0) blue:(91/255.0) alpha:1.0];
+            }
+            
             if ([verses count] == 1) {
                 displayString = [NSString stringWithFormat:@"%@:%@", [chapters firstObject], [verses firstObject]];
             } else if ([verses count] > 1) {
