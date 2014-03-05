@@ -18,7 +18,8 @@ int gutterWidth = 70;
     if (self) {
         for (int i = 0; i < length; i++) {
             CGFloat labelTop = frame.size.height - origins[i].y - lineHeight;
-            UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(self.frame.size.width - gutterWidth, labelTop, gutterWidth, lineHeight)];
+            CGRect labelFrame = CGRectMake(self.frame.size.width - gutterWidth, labelTop, gutterWidth, lineHeight);
+            UILabel *label = [[UILabel alloc] initWithFrame:labelFrame];
             
             if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
                 label.font = [UIFont fontWithName:@"AkzidenzGroteskCE-Roman" size:22];
@@ -35,22 +36,26 @@ int gutterWidth = 70;
             
             // If this is the start of a new chapter, highlight the verse number
             if ([verses firstObject] && [[verses firstObject] isEqualToString:@"1"]) {
-                label.textColor = [UIColor colorWithRed:(0/255.0) green:(165/255.0) blue:(91/255.0) alpha:1.0];
-            }
-            
-            if ([verses count] == 1) {
-                displayString = [NSString stringWithFormat:@"%@:%@", [chapters firstObject], [verses firstObject]];
-            } else if ([verses count] > 1) {
-                NSString *firstChapter = [chapters firstObject];
-                NSString *lastChapter = [chapters lastObject];
-                if ([firstChapter isEqualToString:lastChapter]) {
-                    displayString = [NSString stringWithFormat:@"%@:%@-%@", firstChapter, [verses firstObject], [verses lastObject]];
-                } else {
-                    displayString = [NSString stringWithFormat:@"%@:%@-%@:%@", firstChapter, [verses firstObject], lastChapter, [verses lastObject]];
+                CGRect circleFrame = CGRectOffset(labelFrame, 12, 0);
+                CircleLabel *circle = [[CircleLabel alloc] initWithTextFrame:circleFrame text:[chapters firstObject]];
+                circle.foregroundColor = [UIColor blackColor];
+                circle.backgroundColor = [UIColor colorWithRed:(0/255.0) green:(165/255.0) blue:(91/255.0) alpha:1.0];
+                [self addSubview:circle];
+            } else {
+                if ([verses count] == 1) {
+                    displayString = [NSString stringWithFormat:@"%@:%@", [chapters firstObject], [verses firstObject]];
+                } else if ([verses count] > 1) {
+                    NSString *firstChapter = [chapters firstObject];
+                    NSString *lastChapter = [chapters lastObject];
+                    if ([firstChapter isEqualToString:lastChapter]) {
+                        displayString = [NSString stringWithFormat:@"%@:%@-%@", firstChapter, [verses firstObject], [verses lastObject]];
+                    } else {
+                        displayString = [NSString stringWithFormat:@"%@:%@-%@:%@", firstChapter, [verses firstObject], lastChapter, [verses lastObject]];
+                    }
                 }
+                label.text = displayString;
+                [self addSubview:label];
             }
-            label.text = displayString;
-            [self addSubview:label];
         }
     }
     return self;

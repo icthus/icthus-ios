@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CircleLabel.h"
 
 @interface BibleVerseView : UIView
 

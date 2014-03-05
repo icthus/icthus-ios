@@ -31,6 +31,7 @@
 		C9BCA00A17CD3FEC00196DA8 /* ReadingListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BCA00917CD3FEC00196DA8 /* ReadingListViewController.m */; };
 		C9BCA01017CD933500196DA8 /* Book.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BCA00F17CD933500196DA8 /* Book.m */; };
 		C9D071DC17DE8C2000B535ED /* ReadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D071DB17DE8C2000B535ED /* ReadingView.m */; };
+		C9D09B5E18C7583E00AA6B67 /* CircleLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D09B5D18C7583E00AA6B67 /* CircleLabel.m */; };
 		C9E57771188484A3004CC974 /* BookCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E57770188484A3004CC974 /* BookCollectionViewCell.m */; };
 		C9FABFDA188D55AB00C3FC05 /* BooksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9FABFD9188D55AB00C3FC05 /* BooksViewController.m */; };
 		C9FF50F317CBB54700BA526E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9FF50F217CBB54700BA526E /* Foundation.framework */; };
@@ -110,6 +111,8 @@
 		C9BCA00F17CD933500196DA8 /* Book.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Book.m; sourceTree = "<group>"; };
 		C9D071DA17DE8C2000B535ED /* ReadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadingView.h; sourceTree = "<group>"; };
 		C9D071DB17DE8C2000B535ED /* ReadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadingView.m; sourceTree = "<group>"; };
+		C9D09B5C18C7583E00AA6B67 /* CircleLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleLabel.h; sourceTree = "<group>"; };
+		C9D09B5D18C7583E00AA6B67 /* CircleLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleLabel.m; sourceTree = "<group>"; };
 		C9E5776F188484A3004CC974 /* BookCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookCollectionViewCell.h; sourceTree = "<group>"; };
 		C9E57770188484A3004CC974 /* BookCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookCollectionViewCell.m; sourceTree = "<group>"; };
 		C9FABFD8188D55AB00C3FC05 /* BooksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BooksViewController.h; sourceTree = "<group>"; };
@@ -187,6 +190,8 @@
 				C9D071DB17DE8C2000B535ED /* ReadingView.m */,
 				C99F2FC517CCE714008AF602 /* ReadingViewController.h */,
 				C99F2FC617CCE714008AF602 /* ReadingViewController.m */,
+				C9D09B5C18C7583E00AA6B67 /* CircleLabel.h */,
+				C9D09B5D18C7583E00AA6B67 /* CircleLabel.m */,
 			);
 			name = Reading;
 			sourceTree = "<group>";
@@ -484,6 +489,7 @@
 				C9FF511117CBB54800BA526E /* MasterViewController.m in Sources */,
 				C99C73FA17DFA61B00DBF0E2 /* BibleMarkupParser.m in Sources */,
 				C95DAB6B18940D6D00494256 /* ChapterCollectionViewCell.m in Sources */,
+				C9D09B5E18C7583E00AA6B67 /* CircleLabel.m in Sources */,
 				C9198AFE17D94B2000077726 /* BibleTextView.m in Sources */,
 				C94A2B24181001790076926A /* TranslationViewController.m in Sources */,
 				C9FABFDA188D55AB00C3FC05 /* BooksViewController.m in Sources */,
