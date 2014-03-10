@@ -27,7 +27,7 @@
     NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"BookLocation" inManagedObjectContext:context];
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
     [request setEntity:entityDescription];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"bookCode = %@", [self code]];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"book = %@", self];
     [request setPredicate:predicate];
 
     NSError *error;
@@ -45,7 +45,7 @@
         AppDelegate *appDel = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         NSManagedObjectContext *managedObjectContext = [appDel managedObjectContext];
         location = [NSEntityDescription insertNewObjectForEntityForName:@"BookLocation" inManagedObjectContext:managedObjectContext];
-        [location setBookCode:[self code] chapter:0 verse:0];
+        [location setBook:self chapter:0 verse:0];
     }
     
     return location;
@@ -56,7 +56,7 @@
     NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"BookLocation" inManagedObjectContext:context];
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
     [request setEntity:entityDescription];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"bookCode = %@", [self code]];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"book = %@", self];
     [request setPredicate:predicate];
     
     NSError *error;
@@ -85,7 +85,7 @@
     AppDelegate *appDel = [[UIApplication sharedApplication] delegate];
     NSManagedObjectContext *managedObjectContext = [appDel managedObjectContext];
     BookLocation *newLocation = [NSEntityDescription insertNewObjectForEntityForName:@"BookLocation" inManagedObjectContext:managedObjectContext];
-    [newLocation setBookCode:[self code] chapter:chapter verse:verse];
+    [newLocation setBook:self chapter:chapter verse:verse];
     [self setLocation:newLocation];
 }
 

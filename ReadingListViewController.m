@@ -82,12 +82,12 @@
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         NSManagedObject *object = [[self fetchedResultsController] objectAtIndexPath:indexPath];
-        [_appDel.detailView setBook:(Book *)object];
+        [_appDel.detailView setBook:[(BookLocation *)object book]];
     }
 }
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
-    Book *book = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    Book *book = [(BookLocation *)[self.fetchedResultsController objectAtIndexPath:indexPath] book];
     cell.textLabel.text = [book shortName];
     UIFont *font;
     
@@ -102,8 +102,8 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"showBook"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        NSManagedObject *object = [[self fetchedResultsController] objectAtIndexPath:indexPath];
-        [(ReadingViewController *)[segue destinationViewController] setBook:(Book *)object];
+        BookLocation *location = (BookLocation *)[[self fetchedResultsController] objectAtIndexPath:indexPath];
+        [(ReadingViewController *)[segue destinationViewController] setBook:location.book];
     }
 }
 
@@ -114,30 +114,19 @@
     }
     [NSFetchedResultsController deleteCacheWithName:@"ReadingList"];
     
-    NSFetchRequest *bookLocationRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"BookLocation" inManagedObjectContext:self.managedObjectContext];
-    [bookLocationRequest setEntity:entity];
-    NSArray *bookLocations = [self.managedObjectContext executeFetchRequest:bookLocationRequest error:nil];
-    NSMutableArray *bookCodes = [[NSMutableArray alloc] initWithCapacity:[bookLocations count]];
-    for (int i = 0; i < [bookLocations count]; i++) {
-        BookLocation *loc = [bookLocations objectAtIndex:i];
-        [bookCodes setObject:loc.bookCode atIndexedSubscript:i];
-    }
-    
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    // Edit the entity name as appropriate.
-    entity = [NSEntityDescription entityForName:@"Book" inManagedObjectContext:self.managedObjectContext];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"BookLocation" inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
     
     NSString *translationCode = [[NSUserDefaults standardUserDefaults] objectForKey:@"selectedTranslation"];
-    NSPredicate *pred = [NSPredicate predicateWithFormat:@"(translation == %@) AND (code IN %@)", translationCode, bookCodes];
+    NSPredicate *pred = [NSPredicate predicateWithFormat:@"book.translation == %@", translationCode];
     [fetchRequest setPredicate:pred];
     
     // Set the batch size to a suitable number.
     [fetchRequest setFetchBatchSize:20];
-    
+
     // Edit the sort key as appropriate.
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"shortName" ascending:YES];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"lastModified" ascending:NO];
     NSArray *sortDescriptors = @[sortDescriptor];
     
     [fetchRequest setSortDescriptors:sortDescriptors];
@@ -169,34 +158,24 @@
 */
 
 // Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        Book *book = [self.fetchedResultsController objectAtIndexPath:indexPath];
-        NSFetchRequest *bookLocationRequest = [[NSFetchRequest alloc] init];
-        NSEntityDescription *entity = [NSEntityDescription entityForName:@"BookLocation" inManagedObjectContext:self.managedObjectContext];
-        NSPredicate *pred = [NSPredicate predicateWithFormat:@"bookCode == %@", book.code];
-        [bookLocationRequest setEntity:entity];
-        [bookLocationRequest setPredicate:pred];
-        NSArray *bookLocations = [self.managedObjectContext executeFetchRequest:bookLocationRequest error:nil];
-        if (bookLocations) {
-            [self.managedObjectContext deleteObject:[bookLocations firstObject]];
-            NSError *error;
-            [self.managedObjectContext save:&error];
-            if (error != nil) {
-                NSLog(@"%@", [error localizedDescription]);
-            }
+        BookLocation *location = [self.fetchedResultsController objectAtIndexPath:indexPath];
+        [self.managedObjectContext deleteObject:location];
+        NSError *error;
+        [self.managedObjectContext save:&error];
+        if (error != nil) {
+            NSLog(@"%@", [error localizedDescription]);
+        }
             
-            // Delete the row from the data source
-            self.fetchedResultsController = nil;
-            [self.fetchedResultsController performFetch:&error];
-            if (error != nil) {
-                NSLog(@"%@", [error localizedDescription]);
-            }
-            
-            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        // Delete the row from the data source
+        self.fetchedResultsController = nil;
+        [self.fetchedResultsController performFetch:&error];
+        if (error != nil) {
+            NSLog(@"%@", [error localizedDescription]);
         }
         
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     }
 }
 

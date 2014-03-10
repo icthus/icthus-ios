@@ -8,13 +8,15 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
+#import "Book.h"
+@class Book;
 
 @interface BookLocation : NSManagedObject
 
-- (void)setBookCode:(NSString *)code chapter:(int)chapterNumber verse:(int)verseNumber;
+- (void)setBook:(Book *)code chapter:(int)chapterNumber verse:(int)verseNumber;
 - (id)initWithEntity:(NSEntityDescription *)entity insertIntoManagedObjectContext:(NSManagedObjectContext *)context;
 
-@property NSString *bookCode;
+@property (nonatomic) Book *book;
 @property NSNumber *chapter;
 @property NSDate   *lastModified;
 @property NSNumber *verse;

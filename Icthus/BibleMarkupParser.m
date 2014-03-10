@@ -136,7 +136,7 @@
     }
 }
 
-- (BookLocation *)getLocationForCharAtIndex:(int)index forText:(NSString *)markupText andBookCode:(NSString *)code {
+- (BookLocation *)getLocationForCharAtIndex:(int)index forText:(NSString *)markupText andBook:(Book *)book {
     [self reset];
     textPos = 0;
     neededTextPos = index;
@@ -148,7 +148,7 @@
     AppDelegate *appDel = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     NSManagedObjectContext *managedObjectContext = [appDel managedObjectContext];
     BookLocation *location = [NSEntityDescription insertNewObjectForEntityForName:@"BookLocation" inManagedObjectContext:managedObjectContext];
-    [location setBookCode:code chapter:currentChapter verse:currentVerse];
+    [location setBook:book chapter:currentChapter verse:currentVerse];
     return location;
 }
 

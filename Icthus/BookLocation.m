@@ -10,7 +10,7 @@
 
 @implementation BookLocation
 
-@synthesize bookCode = _bookCode;
+@synthesize book = _book;
 @synthesize chapter = _chapter;
 @dynamic lastModified;
 @synthesize verse = _verse;
@@ -24,21 +24,21 @@
     return self;
 }
 
-- (void)setBookCode:(NSString *)code chapter:(int)chapterNumber verse:(int)verseNumber {
+- (void)setBook:(Book *)book chapter:(int)chapterNumber verse:(int)verseNumber {
 
-    [self setBookCode:code];
+    [self setBook:book];
     [self setChapter:[NSNumber numberWithInt:chapterNumber]];
     [self setVerse:[NSNumber numberWithInt:verseNumber]];
     [self setLastModified:[NSDate date]];
 }
 
-- (void)setBookCode:(NSString *)bookCode {
-    _bookCode = bookCode;
+- (void)setBook:(Book *)book{
+    _book = book;
     [self setLastModified:[NSDate date]];
 }
 
-- (NSString *)bookCode {
-    return _bookCode;
+- (Book *)book{
+    return _book;
 }
 
 - (void)setChapter:(NSNumber *)chapter {

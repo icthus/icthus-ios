@@ -225,13 +225,8 @@ NSInteger activeViewWindow = 3;
     CFRange lineRange = CTLineGetStringRange(line);
     NSRange textViewRange = [[self.textRanges objectAtIndex:currentFrameIndex] rangeValue];
     int location = textViewRange.location + lineRange.location + lineRange.length;
-
-    NSString *bookCode;
-    if (self.book != nil) {
-        bookCode = self.book.code;
-    }
     
-    BookLocation *bookLocation = [parser getLocationForCharAtIndex:location forText:self.text andBookCode:bookCode];
+    BookLocation *bookLocation = [parser getLocationForCharAtIndex:location forText:self.text andBook:book];
     NSLog(@"ReadingView.getCurrentLocation: got location %@ %@:%@", self.book.shortName, bookLocation.chapter, bookLocation.verse);
     return bookLocation;
 }

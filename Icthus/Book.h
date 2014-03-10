@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 #import "BookLocation.h"
+@class BookLocation;
 
 
 @interface Book : NSManagedObject
@@ -16,6 +17,7 @@
 @property (nonatomic, retain) NSString * abbr;
 @property (nonatomic, retain) NSString * code;
 @property (nonatomic, retain) NSNumber * index;
+@property (nonatomic, retain) NSArray  * locations;
 @property (nonatomic, retain) NSString * longName;
 @property (nonatomic, retain) NSNumber * reading;
 @property (nonatomic, retain) NSString * shortName;

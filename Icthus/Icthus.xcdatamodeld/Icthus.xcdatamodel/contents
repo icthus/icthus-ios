@@ -10,12 +10,13 @@
         <attribute name="shortName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="translation" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="locations" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="BookLocation" syncable="YES"/>
     </entity>
     <entity name="BookLocation" representedClassName="BookLocation" syncable="YES">
-        <attribute name="bookCode" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="chapter" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="lastModified" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="verse" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="book" maxCount="1" deletionRule="Nullify" destinationEntity="Book" inverseName="locations" inverseEntity="Book" syncable="YES"/>
     </entity>
     <entity name="Translation" representedClassName="Translation" syncable="YES">
         <attribute name="code" optional="YES" attributeType="String" syncable="YES"/>
@@ -29,8 +30,8 @@
         <memberEntity name="BookLocation"/>
     </configuration>
     <elements>
-        <element name="Book" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="BookLocation" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Translation" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Book" positionX="0" positionY="0" width="126" height="193"/>
+        <element name="BookLocation" positionX="-281" positionY="84" width="128" height="103"/>
+        <element name="Translation" positionX="-324" positionY="-183" width="128" height="75"/>
     </elements>
 </model>
