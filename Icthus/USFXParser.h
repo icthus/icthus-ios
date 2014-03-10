@@ -5,6 +5,8 @@
 //  Created by Matthew Lorentz on 3/10/14.
 //  Copyright (c) 2014 Matthew Lorentz. All rights reserved.
 //
+// Information on the usfx format can be found here: http://ebible.org/usfx/
+// XML Schema: http://ebible.org/usfx.xsd
 
 #import <Foundation/Foundation.h>
 #import "Book.h"

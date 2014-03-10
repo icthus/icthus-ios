@@ -14,6 +14,7 @@
 
 @dynamic abbr;
 @dynamic code;
+@dynamic index;
 @dynamic longName;
 @dynamic reading;
 @dynamic shortName;
