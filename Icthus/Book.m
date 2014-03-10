@@ -42,7 +42,7 @@
     if ([array count] >= 1) {
         location = [array firstObject];
     } else {
-        AppDelegate *appDel = [[UIApplication sharedApplication] delegate];
+        AppDelegate *appDel = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         NSManagedObjectContext *managedObjectContext = [appDel managedObjectContext];
         location = [NSEntityDescription insertNewObjectForEntityForName:@"BookLocation" inManagedObjectContext:managedObjectContext];
         [location setBookCode:[self code] chapter:0 verse:0];

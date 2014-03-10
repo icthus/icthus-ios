@@ -16,6 +16,7 @@
 
 @property NSString *bookCode;
 @property NSNumber *chapter;
+@property NSDate   *lastModified;
 @property NSNumber *verse;
 
 @end
