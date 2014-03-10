@@ -105,21 +105,18 @@ UIColor *tintColor;
 }
 
 - (void)setBook:(Book *)newBook {
-    if (_book != newBook) {
-        _book = newBook;
-        [_book setReading:[NSNumber numberWithBool:YES]];
-        NSManagedObjectContext *context = [(NSManagedObject *)_book managedObjectContext];
-        NSError *error;
-        [context save:&error];
-        if (error != nil) {
-            NSLog(@"An error occured during save");
-            NSLog(@"%@", [error localizedDescription]);
-        }
-        
-        // Update the view.
-        [self configureView];
+    _book = newBook;
+    [_book setReading:[NSNumber numberWithBool:YES]];
+    NSManagedObjectContext *context = [(NSManagedObject *)_book managedObjectContext];
+    NSError *error;
+    [context save:&error];
+    if (error != nil) {
+        NSLog(@"An error occured during save");
+        NSLog(@"%@", [error localizedDescription]);
     }
     
+    // Update the view.
+    [self configureView];
 }
 
 - (void)configureView
