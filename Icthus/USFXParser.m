@@ -1,16 +1,16 @@
 //
-//  WEBXMLParserDelegate.m
+//  USFXParser.m
 //  Icthus
 //
-//  Created by Matthew Lorentz on 8/26/13.
-//  Copyright (c) 2013 Matthew Lorentz. All rights reserved.
+//  Created by Matthew Lorentz on 3/10/14.
+//  Copyright (c) 2014 Matthew Lorentz. All rights reserved.
 //
 
-#import "WEBXMLParserDelegate.h"
-#import "Book.h"
+#import "USFXParser.h"
 #import "Translation.h"
+#import "Book.h"
 
-@implementation WEBXMLParserDelegate
+@implementation USFXParser
 
 @synthesize nameParser = _nameParser;
 @synthesize bookParser = _bookParser;
@@ -21,10 +21,12 @@
 NSMutableString *mutableBookText;
 int chapterIndex;
 bool shouldParseCharacters;
-static NSString *translationCode = @"WEB";
-static NSString *translationDisplayName = @"World English Bible";
+static NSString *translationCode;
+static NSString *translationDisplayName;
 
-- (void) instantiateBooks:(NSManagedObjectContext *)context {
+- (void) instantiateBooks:(NSManagedObjectContext *)context translationCode:(NSString *)code displayName:(NSString *)displayName {
+    translationCode = code;
+    translationDisplayName = displayName;
     _context = context;
     _booksByCode = [[NSMutableDictionary alloc] init];
     

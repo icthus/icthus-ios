@@ -10,8 +10,7 @@
 		C902F4EF17DA26410077504A /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C902F4EE17DA26410077504A /* CoreText.framework */; };
 		C9198AFE17D94B2000077726 /* BibleTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9198AFD17D94B2000077726 /* BibleTextView.m */; };
 		C9256B0717DFC5D400646198 /* BookLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = C9256B0617DFC5D400646198 /* BookLocation.m */; };
-		C93B50F1180EB65200C07D98 /* ASVXMLParserDelegate.m in Resources */ = {isa = PBXBuildFile; fileRef = C93B50F0180EB65200C07D98 /* ASVXMLParserDelegate.m */; };
-		C93B50F4180EB87A00C07D98 /* ASVXMLParserDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C93B50F0180EB65200C07D98 /* ASVXMLParserDelegate.m */; };
+		C940C84C18CDE0BB00E1013C /* USFXParser.m in Sources */ = {isa = PBXBuildFile; fileRef = C940C84B18CDE0BB00E1013C /* USFXParser.m */; };
 		C9451E90183BB0D9009FAFEE /* BibleVerseView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9451E8F183BB0D9009FAFEE /* BibleVerseView.m */; };
 		C94A2B24181001790076926A /* TranslationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C94A2B23181001790076926A /* TranslationViewController.m */; };
 		C94A2B271810030E0076926A /* Translation.m in Sources */ = {isa = PBXBuildFile; fileRef = C94A2B261810030E0076926A /* Translation.m */; };
@@ -60,7 +59,6 @@
 		C9FF513F17CBFEA300BA526E /* eng-web-VernacularParms.xml in Resources */ = {isa = PBXBuildFile; fileRef = C9FF513817CBFEA300BA526E /* eng-web-VernacularParms.xml */; };
 		C9FF514017CBFEA300BA526E /* keys.asc in Resources */ = {isa = PBXBuildFile; fileRef = C9FF513917CBFEA300BA526E /* keys.asc */; };
 		C9FF514117CBFEA300BA526E /* signature.txt.asc in Resources */ = {isa = PBXBuildFile; fileRef = C9FF513A17CBFEA300BA526E /* signature.txt.asc */; };
-		C9FF514417CC030700BA526E /* WEBXMLParserDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C9FF514317CC030700BA526E /* WEBXMLParserDelegate.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,8 +77,8 @@
 		C9198AFD17D94B2000077726 /* BibleTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BibleTextView.m; sourceTree = "<group>"; };
 		C9256B0517DFC5D400646198 /* BookLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookLocation.h; sourceTree = "<group>"; };
 		C9256B0617DFC5D400646198 /* BookLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookLocation.m; sourceTree = "<group>"; };
-		C93B50F0180EB65200C07D98 /* ASVXMLParserDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASVXMLParserDelegate.m; sourceTree = "<group>"; };
-		C93B50F2180EB66900C07D98 /* ASVXMLParserDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASVXMLParserDelegate.h; sourceTree = "<group>"; };
+		C940C84A18CDE0BB00E1013C /* USFXParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = USFXParser.h; sourceTree = "<group>"; };
+		C940C84B18CDE0BB00E1013C /* USFXParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = USFXParser.m; sourceTree = "<group>"; };
 		C9451E8E183BB0D9009FAFEE /* BibleVerseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BibleVerseView.h; sourceTree = "<group>"; };
 		C9451E8F183BB0D9009FAFEE /* BibleVerseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BibleVerseView.m; sourceTree = "<group>"; };
 		C94A2B22181001790076926A /* TranslationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TranslationViewController.h; sourceTree = "<group>"; };
@@ -148,8 +146,6 @@
 		C9FF513817CBFEA300BA526E /* eng-web-VernacularParms.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "eng-web-VernacularParms.xml"; sourceTree = "<group>"; };
 		C9FF513917CBFEA300BA526E /* keys.asc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = keys.asc; sourceTree = "<group>"; };
 		C9FF513A17CBFEA300BA526E /* signature.txt.asc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = signature.txt.asc; sourceTree = "<group>"; };
-		C9FF514217CC030700BA526E /* WEBXMLParserDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEBXMLParserDelegate.h; sourceTree = "<group>"; };
-		C9FF514317CC030700BA526E /* WEBXMLParserDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEBXMLParserDelegate.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -308,10 +304,8 @@
 				C91EB47717FDB2F400645EFD /* Models */,
 				C9FF50FB17CBB54700BA526E /* Supporting Files */,
 				C9FF513317CBFBE900BA526E /* Core Data Source Files */,
-				C9FF514217CC030700BA526E /* WEBXMLParserDelegate.h */,
-				C93B50F2180EB66900C07D98 /* ASVXMLParserDelegate.h */,
-				C9FF514317CC030700BA526E /* WEBXMLParserDelegate.m */,
-				C93B50F0180EB65200C07D98 /* ASVXMLParserDelegate.m */,
+				C940C84A18CDE0BB00E1013C /* USFXParser.h */,
+				C940C84B18CDE0BB00E1013C /* USFXParser.m */,
 				C99C73F817DFA61B00DBF0E2 /* BibleMarkupParser.h */,
 				C99C73F917DFA61B00DBF0E2 /* BibleMarkupParser.m */,
 			);
@@ -451,7 +445,6 @@
 				C9B3056C1816A1B900EE8A94 /* eng-asv_usfx.xml in Resources */,
 				C9B3056D1816A1B900EE8A94 /* keys.asc in Resources */,
 				C9FF513C17CBFEA300BA526E /* copr.htm in Resources */,
-				C93B50F1180EB65200C07D98 /* ASVXMLParserDelegate.m in Resources */,
 				C9FF513E17CBFEA300BA526E /* eng-web-VernacularAdditional.xml in Resources */,
 				C9FF514017CBFEA300BA526E /* keys.asc in Resources */,
 				C9B305691816A1B900EE8A94 /* copr.htm in Resources */,
@@ -481,9 +474,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C93B50F4180EB87A00C07D98 /* ASVXMLParserDelegate.m in Sources */,
 				C9451E90183BB0D9009FAFEE /* BibleVerseView.m in Sources */,
-				C9FF514417CC030700BA526E /* WEBXMLParserDelegate.m in Sources */,
 				C94A2B271810030E0076926A /* Translation.m in Sources */,
 				C9FF511417CBB54800BA526E /* DetailViewController.m in Sources */,
 				C9FF511117CBB54800BA526E /* MasterViewController.m in Sources */,
@@ -501,6 +492,7 @@
 				C9D071DC17DE8C2000B535ED /* ReadingView.m in Sources */,
 				C9E57771188484A3004CC974 /* BookCollectionViewCell.m in Sources */,
 				C9FF510E17CBB54800BA526E /* Icthus.xcdatamodeld in Sources */,
+				C940C84C18CDE0BB00E1013C /* USFXParser.m in Sources */,
 				C9BCA00A17CD3FEC00196DA8 /* ReadingListViewController.m in Sources */,
 				C9256B0717DFC5D400646198 /* BookLocation.m in Sources */,
 			);

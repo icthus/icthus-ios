@@ -10,6 +10,7 @@
 #import "MasterViewController.h"
 #import "WEBXMLParserDelegate.h"
 #import "ASVXMLParserDelegate.h"
+#import "USFXParser.h"
 
 @implementation AppDelegate 
 
@@ -103,8 +104,8 @@
 }
 
 - (void) instantiateBooks {
-    [[[WEBXMLParserDelegate alloc] init] instantiateBooks: [self managedObjectContext]];
-    [[[ASVXMLParserDelegate alloc] init] instantiateBooks: [self managedObjectContext]];
+    [[[USFXParser alloc] init] instantiateBooks:self.managedObjectContext translationCode:@"WEB" displayName:@"World English Bible"];
+    [[[USFXParser alloc] init] instantiateBooks:self.managedObjectContext translationCode:@"ASV" displayName:@"American Standard Version"];
 }
 
 - (void)handleFirstLaunch {

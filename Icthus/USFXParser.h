@@ -1,17 +1,17 @@
 //
-//  WEBXMLParserDelegate.h
+//  USFXParser.h
 //  Icthus
 //
-//  Created by Matthew Lorentz on 8/26/13.
-//  Copyright (c) 2013 Matthew Lorentz. All rights reserved.
+//  Created by Matthew Lorentz on 3/10/14.
+//  Copyright (c) 2014 Matthew Lorentz. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import "Book.h"
 
-@interface WEBXMLParserDelegate : NSObject  <NSXMLParserDelegate>
+@interface USFXParser : NSObject <NSXMLParserDelegate>
 
-- (void) instantiateBooks:(NSManagedObjectContext *)context;
+- (void) instantiateBooks:(NSManagedObjectContext *)context translationCode:(NSString *)code displayName:(NSString *)displayName;
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qualifiedName attributes:(NSDictionary *)attributeDict;
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qualifiedName;
 - (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string;
