@@ -81,7 +81,7 @@ static NSString *translationDisplayName;
             [_booksByCode setValue:book forKey:[book code]];
         }
     } else if ([elementName isEqualToString:@"book"]) {
-        NSUInteger bookIndex = [includedBooks indexOfObject:[attributeDict valueForKey:@"code"]];
+        NSUInteger bookIndex = [includedBooks indexOfObject:[attributeDict valueForKey:@"id"]];
         if (bookIndex == NSNotFound) {
             shouldParseBook = NO;
         } else {
