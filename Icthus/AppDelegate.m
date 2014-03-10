@@ -118,6 +118,7 @@
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     [prefs setObject:@"WEB" forKey:@"selectedTranslation"];
     [prefs setBool:YES forKey:@"appHasLaunchedBefore"];
+    [prefs synchronize];
     [self instantiateBooks];
     [self setupControllers];
 }
