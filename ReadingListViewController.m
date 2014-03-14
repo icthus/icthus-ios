@@ -194,8 +194,6 @@
         if (error != nil) {
             NSLog(@"%@", [error localizedDescription]);
         }
-        
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     }
 }
 
