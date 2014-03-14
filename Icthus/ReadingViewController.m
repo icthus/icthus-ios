@@ -35,32 +35,36 @@ UIColor *tintColor;
     
     AppDelegate *appDel = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     NSManagedObjectContext *moc = appDel.managedObjectContext;
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    
-    // Edit the entity name as appropriate.
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Book" inManagedObjectContext:moc];
-    [fetchRequest setEntity:entity];
-    
-    // Find only Books for the current translation
-    NSString *translationCode = [[NSUserDefaults standardUserDefaults] objectForKey:@"selectedTranslation"];
-    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:[NSString stringWithFormat:@"translation == '%@'", translationCode]]];
-    
-    // Set the batch size to a suitable number.
-    [fetchRequest setFetchBatchSize:20];
-    
-    // Edit the sort key as appropriate.
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"shortName" ascending:YES];
-    NSArray *sortDescriptors = @[sortDescriptor];
-    
-    [fetchRequest setSortDescriptors:sortDescriptors];
-    
+    // Find the last book that was open and open to it.
+    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"BookLocation" inManagedObjectContext:moc];
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    [request setEntity:entityDescription];
+    // Sort by lastModified
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"lastModified" ascending:NO];
+    [request setSortDescriptors:@[sortDescriptor]];
+    // Only fetch the most recent location
+    [request setFetchLimit:1];
+
     NSError *error;
-    NSArray *array = [moc executeFetchRequest:fetchRequest error:&error];
-    if (array == nil)
-    {
-        // Deal with error...
+    NSArray *array = [moc executeFetchRequest:request error:&error];
+    if (error) {
+        NSLog(@"%@", [error localizedDescription]);
+    }
+    if (array == nil) {
+        // Default to Genesis 1:1
+        NSFetchRequest *genesisRequest = [NSFetchRequest fetchRequestWithEntityName:@"Book"];
+        NSString *translationCode = [[NSUserDefaults standardUserDefaults] objectForKey:@"selectedTranslation"];
+        [genesisRequest setPredicate:[NSPredicate predicateWithFormat:@"book.code = GEN && book.translation = %@", translationCode]];
+        array = [moc executeFetchRequest:genesisRequest error:&error];
+        if (error) {
+            NSLog(@"%@", [error localizedDescription]);
+        } else if ([array count]) {
+            Book *genesis = [array firstObject];
+            BookLocation *location = [NSEntityDescription insertNewObjectForEntityForName:@"BookLocation" inManagedObjectContext:moc];
+            [location setBook:genesis chapter:1 verse:1];
+        }
     } else {
-        [self setBook:[array firstObject]];
+        [self setLocation:[array firstObject]];
     }
     
     tintColor = [UIColor colorWithRed:(0/255.0) green:(165/255.0) blue:(91/255.0) alpha:1.0];
