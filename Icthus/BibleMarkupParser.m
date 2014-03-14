@@ -136,7 +136,7 @@
     }
 }
 
-- (BookLocation *)getLocationForCharAtIndex:(int)index forText:(NSString *)markupText andBook:(Book *)book {
+- (BookLocation *)saveLocationForCharAtIndex:(int)index forText:(NSString *)markupText andBook:(Book *)book {
     [self reset];
     textPos = 0;
     neededTextPos = index;
@@ -145,11 +145,15 @@
     [parser setDelegate:self];
     gettingLocationForChar = YES;
     [parser parse];
-    AppDelegate *appDel = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    NSManagedObjectContext *managedObjectContext = [appDel managedObjectContext];
-    BookLocation *location = [NSEntityDescription insertNewObjectForEntityForName:@"BookLocation" inManagedObjectContext:managedObjectContext];
-    [location setBook:book chapter:currentChapter verse:currentVerse];
-    return location;
+    
+    [book updateLocationChapter:currentChapter verse:currentVerse];
+    NSManagedObjectContext *moc = book.managedObjectContext;
+    NSError *error;
+    [moc save:&error];
+    if (error) {
+        NSLog(@"%@", [error localizedDescription]);
+    }
+    return [book getLocation];
 }
 
 - (int)getTextPositionForLocation:(BookLocation *)location inMarkup:(NSString *)markupText {

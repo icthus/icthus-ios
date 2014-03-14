@@ -147,15 +147,8 @@
         NSIndexPath *chapterIndexPath = [[self.collectionView indexPathsForSelectedItems] lastObject];
         NSRange chapterRange = [self getChapterRange];
         self.selectedChapter = [chapterIndexPath item] - chapterRange.location + 1;
-        BookLocation *location = [selectedBook getLocation];
-        location.chapter = [NSNumber numberWithInteger:selectedChapter];
-        location.verse   = [NSNumber numberWithInt:1];
-        NSError *error;
-        [_managedObjectContext save:&error];
-        if (error) {
-            NSLog(@"%@", [error localizedDescription]);
-        }
-        [_appDel.detailView setBook:(Book *)selectedBook];
+        BookLocation *location = [selectedBook setLocationChapter:selectedChapter verse:1];
+        [_appDel.detailView setLocation:location];
     
 }
 

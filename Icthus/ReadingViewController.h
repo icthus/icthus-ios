@@ -11,7 +11,8 @@
 #import "ReadingView.h"
 
 @interface ReadingViewController : UIViewController <UISplitViewControllerDelegate>
--(id)initWithBook:(Book *)book;
+- (id)initWithBook:(Book *)book;
+- (void)setLocation:(BookLocation *)location;
 
 @property (strong, nonatomic) IBOutlet ReadingView *readingView;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *goToButton;

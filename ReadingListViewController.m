@@ -39,6 +39,11 @@
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    self.fetchedResultsController = nil;
+    [self.tableView reloadData];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -82,7 +87,7 @@
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         NSManagedObject *object = [[self fetchedResultsController] objectAtIndexPath:indexPath];
-        [_appDel.detailView setBook:[(BookLocation *)object book]];
+        [_appDel.detailView setLocation:(BookLocation *)object];
     }
 }
 
@@ -115,10 +120,10 @@
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([[segue identifier] isEqualToString:@"showBook"]) {
+    if ([[segue identifier] isEqualToString:@"showChapter"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         BookLocation *location = (BookLocation *)[[self fetchedResultsController] objectAtIndexPath:indexPath];
-        [(ReadingViewController *)[segue destinationViewController] setBook:location.book];
+        [(ReadingViewController *)[segue destinationViewController] setLocation:location];
     }
 }
 

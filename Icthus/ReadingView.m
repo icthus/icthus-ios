@@ -194,7 +194,7 @@ NSInteger activeViewWindow = 3;
     CTLineRef currentLine = (__bridge CTLineRef)[lines objectAtIndex:i];
 }
 
-- (BookLocation *)getCurrentLocation {
+- (BookLocation *)saveCurrentLocation {
     // find the current view
     int contentOffset = round(self.contentOffset.y);
     int height = round(self.frame.size.height);
@@ -226,7 +226,7 @@ NSInteger activeViewWindow = 3;
     NSRange textViewRange = [[self.textRanges objectAtIndex:currentFrameIndex] rangeValue];
     int location = textViewRange.location + lineRange.location + lineRange.length;
     
-    BookLocation *bookLocation = [parser getLocationForCharAtIndex:location forText:self.text andBook:book];
+    BookLocation *bookLocation = [parser saveLocationForCharAtIndex:location forText:self.text andBook:book];
     NSLog(@"ReadingView.getCurrentLocation: got location %@ %@:%@", self.book.shortName, bookLocation.chapter, bookLocation.verse);
     return bookLocation;
 }
@@ -324,24 +324,13 @@ NSInteger activeViewWindow = 3;
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
     if (decelerate == NO) {
-        [self saveLocation];
+        [self saveCurrentLocation];
         self.alwaysBounceHorizontal = YES;
     }
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-    [self saveLocation];
-}
-
-- (void)saveLocation {
-    [self.book setLocation:[self getCurrentLocation]];
-    NSManagedObjectContext *context = [(NSManagedObject *)self.book managedObjectContext];
-    NSError *error;
-    [context save:&error];
-    if (error != nil) {
-        NSLog(@"An error occured during save");
-        NSLog(@"%@", [error localizedDescription]);
-    }
+    [self saveCurrentLocation];
 }
 
 @end

@@ -106,21 +106,15 @@ UIColor *tintColor;
 
 - (void)setBook:(Book *)newBook {
     _book = newBook;
-    [_book setReading:[NSNumber numberWithBool:YES]];
-    NSManagedObjectContext *context = [(NSManagedObject *)_book managedObjectContext];
-    NSError *error;
-    [context save:&error];
-    if (error != nil) {
-        NSLog(@"An error occured during save");
-        NSLog(@"%@", [error localizedDescription]);
-    }
-    
-    // Update the view.
-    [self configureView];
+    [self configureViewWithLocation:[newBook getLocation]];
 }
 
-- (void)configureView
-{
+- (void)setLocation:(BookLocation *)location {
+    _book = location.book;
+    [self configureViewWithLocation:location];
+}
+
+- (void)configureViewWithLocation:(BookLocation *)location {
     // Update the user interface for the detail item.
     if (_book) {
         self.navigationItem.title = [_book shortName];
@@ -129,7 +123,6 @@ UIColor *tintColor;
         }
         [self.readingView setBook:_book];
         [self.readingView setText:[_book text]];
-        BookLocation *location = [_book getLocation];
         [self.readingView setCurrentLocation:location];
         NSLog(@"ReadingViewController: Changing book to %@ %@:%@", [_book shortName], [location chapter], [location verse]);
     }
@@ -173,7 +166,7 @@ UIColor *tintColor;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    [self configureView];
+    [self configureViewWithLocation:[self.book getLocation]];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

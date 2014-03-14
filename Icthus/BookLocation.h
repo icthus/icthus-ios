@@ -15,10 +15,11 @@
 
 - (void)setBook:(Book *)code chapter:(int)chapterNumber verse:(int)verseNumber;
 - (id)initWithEntity:(NSEntityDescription *)entity insertIntoManagedObjectContext:(NSManagedObjectContext *)context;
+- (void)updateChapter:(int)chapter verse:(int)verse;
 
-@property (nonatomic) Book *book;
-@property NSNumber *chapter;
-@property NSDate   *lastModified;
-@property NSNumber *verse;
+@property (nonatomic, retain) Book     *book;
+@property (nonatomic, retain) NSNumber *chapter;
+@property (nonatomic, retain) NSDate   *lastModified;
+@property (nonatomic, retain) NSNumber *verse;
 
 @end

@@ -21,6 +21,7 @@
 @dynamic text;
 @dynamic translation;
 @dynamic numberOfChapters;
+@dynamic locations;
 
 -(BookLocation *)getLocation {
     NSManagedObjectContext *context = [(NSManagedObject *)self managedObjectContext];
@@ -29,6 +30,11 @@
     [request setEntity:entityDescription];
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"book = %@", self];
     [request setPredicate:predicate];
+    // Sort by lastModified
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"lastModified" ascending:NO];
+    [request setSortDescriptors:@[sortDescriptor]];
+    // Only fetch the most recent location
+    [request setFetchLimit:1];
 
     NSError *error;
     NSArray *array = [context executeFetchRequest:request error:&error];
@@ -42,51 +48,37 @@
     if ([array count] >= 1) {
         location = [array firstObject];
     } else {
-        AppDelegate *appDel = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        NSManagedObjectContext *managedObjectContext = [appDel managedObjectContext];
-        location = [NSEntityDescription insertNewObjectForEntityForName:@"BookLocation" inManagedObjectContext:managedObjectContext];
+        location = [NSEntityDescription insertNewObjectForEntityForName:@"BookLocation" inManagedObjectContext:context];
         [location setBook:self chapter:0 verse:0];
     }
     
     return location;
 }
 
--(void)setLocation:(BookLocation *)location {
+-(void)updateLocationChapter:(int)chapter verse:(int)verse { // Updates the most recent BookLocation
     NSManagedObjectContext *context = [(NSManagedObject *)self managedObjectContext];
-    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"BookLocation" inManagedObjectContext:context];
-    NSFetchRequest *request = [[NSFetchRequest alloc] init];
-    [request setEntity:entityDescription];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"book = %@", self];
-    [request setPredicate:predicate];
+    BookLocation *location = [self getLocation];
+    [location updateChapter:chapter verse:verse];
     
     NSError *error;
-    NSArray *array = [context executeFetchRequest:request error:&error];    
-    if (array == nil) {
-        NSLog(@"Error fetching old BookLocations");
-        NSLog(@"%@", [error localizedDescription]);
-    } else {
-        // delete the old BookLocations
-        for (BookLocation *oldLocation in array) {
-            if (![[[oldLocation objectID] URIRepresentation] isEqual:[[location objectID] URIRepresentation]]) {
-                [context deleteObject:oldLocation];
-            }
-        }
-    }
-    
     [context save:&error];
     if (error != nil) {
         NSLog(@"An error occured during save");
         NSLog(@"%@", [error localizedDescription]);
     }
-
 }
 
--(void)setLocationForChapter:(int)chapter Verse:(int)verse {
-    AppDelegate *appDel = [[UIApplication sharedApplication] delegate];
-    NSManagedObjectContext *managedObjectContext = [appDel managedObjectContext];
-    BookLocation *newLocation = [NSEntityDescription insertNewObjectForEntityForName:@"BookLocation" inManagedObjectContext:managedObjectContext];
-    [newLocation setBook:self chapter:chapter verse:verse];
-    [self setLocation:newLocation];
+-(BookLocation *)setLocationChapter:(int)chapter verse:(int)verse { // Saves given BookLocation as a new object
+    NSManagedObjectContext *context = [(NSManagedObject *)self managedObjectContext];
+    BookLocation *location = [NSEntityDescription insertNewObjectForEntityForName:@"BookLocation" inManagedObjectContext:context];
+    [location setBook:self chapter:chapter verse:verse];
+    NSError *error;
+    [context save:&error];
+    if (error != nil) {
+        NSLog(@"An error occured during save");
+        NSLog(@"%@", [error localizedDescription]);
+    }
+    return location;
 }
 
 @end

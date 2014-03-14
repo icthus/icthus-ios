@@ -18,21 +18,27 @@
 - (id)initWithEntity:(NSEntityDescription *)entity insertIntoManagedObjectContext:(NSManagedObjectContext *)context {
     self = [super initWithEntity:entity insertIntoManagedObjectContext:context];
     if (self) {
-        [self setLastModified:[NSDate date]];
+        [self setLastModified:[NSDate dateWithTimeIntervalSince1970:0]];
     }
-    
+
     return self;
 }
 
 - (void)setBook:(Book *)book chapter:(int)chapterNumber verse:(int)verseNumber {
-
+    NSLog(@"Book.shortName = %@", book.shortName);
     [self setBook:book];
     [self setChapter:[NSNumber numberWithInt:chapterNumber]];
     [self setVerse:[NSNumber numberWithInt:verseNumber]];
     [self setLastModified:[NSDate date]];
 }
 
-- (void)setBook:(Book *)book{
+- (void)updateChapter:(int)chapter verse:(int)verse {
+    _chapter = [NSNumber numberWithInt:chapter];
+    _verse   = [NSNumber numberWithInt:verse];
+    [self setLastModified:[NSDate date]];
+}
+
+- (void)setBook:(Book *)book {
     _book = book;
     [self setLastModified:[NSDate date]];
 }

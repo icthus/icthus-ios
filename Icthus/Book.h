@@ -17,7 +17,7 @@
 @property (nonatomic, retain) NSString * abbr;
 @property (nonatomic, retain) NSString * code;
 @property (nonatomic, retain) NSNumber * index;
-@property (nonatomic, retain) NSArray  * locations;
+@property (nonatomic, retain) NSSet    *locations;
 @property (nonatomic, retain) NSString * longName;
 @property (nonatomic, retain) NSNumber * reading;
 @property (nonatomic, retain) NSString * shortName;
@@ -25,7 +25,9 @@
 @property (nonatomic, retain) NSString * translation;
 @property (nonatomic, retain) NSNumber * numberOfChapters;
 
--(BookLocation *)getLocation;
--(void)setLocation:(BookLocation *)location;
+-(BookLocation *)getLocation; // Gets the most recent location
+-(void)updateLocationChapter:(int)chapter verse:(int)verse; // Updates the most recent BookLocation
+-(void)setLocation:(BookLocation *)location; // Saves given BookLocation as a new object
+-(BookLocation *)setLocationChapter:(int)chapter verse:(int)verse; // Creates new BookLocation and saves it
 
 @end
