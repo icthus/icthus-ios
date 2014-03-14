@@ -6,7 +6,6 @@
         <attribute name="index" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="longName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="numberOfChapters" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="reading" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="shortName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="translation" optional="YES" attributeType="String" syncable="YES"/>
@@ -30,7 +29,7 @@
         <memberEntity name="BookLocation"/>
     </configuration>
     <elements>
-        <element name="Book" positionX="0" positionY="0" width="126" height="193"/>
+        <element name="Book" positionX="0" positionY="0" width="126" height="178"/>
         <element name="BookLocation" positionX="-281" positionY="84" width="128" height="103"/>
         <element name="Translation" positionX="-324" positionY="-183" width="128" height="75"/>
     </elements>

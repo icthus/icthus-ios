@@ -76,7 +76,6 @@ static NSString *translationDisplayName;
             [book setShortName:[attributeDict valueForKey:@"short"]];
             [book setAbbr:[attributeDict valueForKey:@"abbr"]];
             [book setTranslation:translationCode];
-            [book setReading:NO];
             [book setText:@""];
             [_booksByCode setValue:book forKey:[book code]];
         }

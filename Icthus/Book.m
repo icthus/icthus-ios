@@ -16,7 +16,6 @@
 @dynamic code;
 @dynamic index;
 @dynamic longName;
-@dynamic reading;
 @dynamic shortName;
 @dynamic text;
 @dynamic translation;
