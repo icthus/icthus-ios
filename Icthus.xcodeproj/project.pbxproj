@@ -80,7 +80,7 @@
 		C940C84A18CDE0BB00E1013C /* USFXParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = USFXParser.h; sourceTree = "<group>"; };
 		C940C84B18CDE0BB00E1013C /* USFXParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = USFXParser.m; sourceTree = "<group>"; };
 		C9451E8E183BB0D9009FAFEE /* BibleVerseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BibleVerseView.h; sourceTree = "<group>"; };
-		C9451E8F183BB0D9009FAFEE /* BibleVerseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BibleVerseView.m; sourceTree = "<group>"; };
+		C9451E8F183BB0D9009FAFEE /* BibleVerseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BibleVerseView.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		C94A2B22181001790076926A /* TranslationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TranslationViewController.h; sourceTree = "<group>"; };
 		C94A2B23181001790076926A /* TranslationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TranslationViewController.m; sourceTree = "<group>"; };
 		C94A2B251810030E0076926A /* Translation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Translation.h; sourceTree = "<group>"; };
@@ -89,8 +89,8 @@
 		C95DAB6A18940D6D00494256 /* ChapterCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChapterCollectionViewCell.m; sourceTree = "<group>"; };
 		C98C1A2A18B6452200E4B3DF /* Bariol_Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Bariol_Regular.otf; sourceTree = "<group>"; };
 		C98C1A3218B6561700E4B3DF /* Akzidenz Grotesk CE Roman.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Akzidenz Grotesk CE Roman.ttf"; sourceTree = "<group>"; };
-		C99C73F817DFA61B00DBF0E2 /* BibleMarkupParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BibleMarkupParser.h; sourceTree = "<group>"; };
-		C99C73F917DFA61B00DBF0E2 /* BibleMarkupParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BibleMarkupParser.m; sourceTree = "<group>"; };
+		C99C73F817DFA61B00DBF0E2 /* BibleMarkupParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = BibleMarkupParser.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		C99C73F917DFA61B00DBF0E2 /* BibleMarkupParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BibleMarkupParser.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		C99F2FC217CCDC01008AF602 /* ChapterPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChapterPickerViewController.h; sourceTree = "<group>"; };
 		C99F2FC317CCDC01008AF602 /* ChapterPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChapterPickerViewController.m; sourceTree = "<group>"; };
 		C99F2FC517CCE714008AF602 /* ReadingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadingViewController.h; sourceTree = "<group>"; };
@@ -104,11 +104,11 @@
 		C9B305671816A1B900EE8A94 /* signature.txt.asc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = signature.txt.asc; sourceTree = "<group>"; };
 		C9B3056F1816D08600EE8A94 /* Icthus.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Icthus.entitlements; sourceTree = "<group>"; };
 		C9BCA00817CD3FEC00196DA8 /* ReadingListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReadingListViewController.h; path = ../ReadingListViewController.h; sourceTree = "<group>"; };
-		C9BCA00917CD3FEC00196DA8 /* ReadingListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ReadingListViewController.m; path = ../ReadingListViewController.m; sourceTree = "<group>"; };
+		C9BCA00917CD3FEC00196DA8 /* ReadingListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = ReadingListViewController.m; path = ../ReadingListViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		C9BCA00E17CD933500196DA8 /* Book.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Book.h; sourceTree = "<group>"; };
 		C9BCA00F17CD933500196DA8 /* Book.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Book.m; sourceTree = "<group>"; };
 		C9D071DA17DE8C2000B535ED /* ReadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadingView.h; sourceTree = "<group>"; };
-		C9D071DB17DE8C2000B535ED /* ReadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadingView.m; sourceTree = "<group>"; };
+		C9D071DB17DE8C2000B535ED /* ReadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ReadingView.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		C9D09B5C18C7583E00AA6B67 /* CircleLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleLabel.h; sourceTree = "<group>"; };
 		C9D09B5D18C7583E00AA6B67 /* CircleLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleLabel.m; sourceTree = "<group>"; };
 		C9E5776F188484A3004CC974 /* BookCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookCollectionViewCell.h; sourceTree = "<group>"; };

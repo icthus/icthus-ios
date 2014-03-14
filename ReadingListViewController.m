@@ -87,16 +87,31 @@
 }
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
-    Book *book = [(BookLocation *)[self.fetchedResultsController objectAtIndexPath:indexPath] book];
-    cell.textLabel.text = [book shortName];
-    UIFont *font;
+    BookLocation *location = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    Book *book = location.book;
     
+    // Format the bookNameString
+    UIFont *bookNameFont;
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-        font = [UIFont fontWithName:@"Bariol-Regular"size:27];
+        bookNameFont = [UIFont fontWithName:@"Bariol-Regular"size:27];
     } else {
-        font = [UIFont fontWithName:@"Bariol-Regular"size:19];
+        bookNameFont = [UIFont fontWithName:@"Bariol-Regular"size:19];
     }
-    cell.textLabel.font = font;
+    cell.textLabel.text = book.shortName;
+    cell.textLabel.font = bookNameFont;
+    
+    // Format the locationString
+    NSString *locationString = [[NSString alloc] initWithFormat:@"%@:%@", location.chapter, location.verse];
+    
+    UIFont *locationFont;
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+        locationFont = [UIFont fontWithName:@"Bariol-Regular"size:27];
+    } else {
+        locationFont = [UIFont fontWithName:@"Bariol-Regular"size:19];
+    }
+    
+    cell.detailTextLabel.text = locationString;
+    cell.detailTextLabel.font = locationFont;
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

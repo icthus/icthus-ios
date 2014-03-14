@@ -30,9 +30,10 @@ UIColor *tintColor;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    // Style the nav bar
+    self.navigationController.navigationBar.tintColor = tintColor;
     self.navigationController.navigationBar.translucent = YES;
-    self.navigationController.navigationBar.barTintColor = tintColor;
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithWhite:1.0 alpha:0.6];
     self.navigationController.navigationBar.titleTextAttributes = @{
 //        NSForegroundColorAttributeName: [UIColor colorWithRed:(13/255.0) green:(149/255.0) blue:(69/255.0) alpha:1.0],
     };

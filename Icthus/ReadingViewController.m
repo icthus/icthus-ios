@@ -67,7 +67,7 @@ UIColor *tintColor;
     // Style the nav bar
     self.navigationController.navigationBar.tintColor = tintColor;
     self.navigationController.navigationBar.translucent = YES;
-    self.navigationController.navigationBar.barTintColor = [UIColor colorWithWhite:1.0 alpha:0.6];
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithWhite:1.0 alpha:0.7];
     self.navigationController.navigationBar.titleTextAttributes = @{
         NSForegroundColorAttributeName: [UIColor colorWithRed:(0/255.0) green:(0/255.0) blue:(0/255.0) alpha:1.0],
         NSFontAttributeName: [UIFont fontWithName:@"Avenir-Medium" size:22.0f],
