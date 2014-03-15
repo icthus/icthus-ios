@@ -50,11 +50,13 @@ UIColor *tintColor;
     if (error) {
         NSLog(@"%@", [error localizedDescription]);
     }
-    if (array == nil) {
+    if ([array count]) {
+        [self setLocation:[array firstObject]];
+    } else {
         // Default to Genesis 1:1
         NSFetchRequest *genesisRequest = [NSFetchRequest fetchRequestWithEntityName:@"Book"];
         NSString *translationCode = [[NSUserDefaults standardUserDefaults] objectForKey:@"selectedTranslation"];
-        [genesisRequest setPredicate:[NSPredicate predicateWithFormat:@"book.code = GEN && book.translation = %@", translationCode]];
+        [genesisRequest setPredicate:[NSPredicate predicateWithFormat:@"code == %@ && translation == %@", @"GEN", translationCode]];
         array = [moc executeFetchRequest:genesisRequest error:&error];
         if (error) {
             NSLog(@"%@", [error localizedDescription]);
@@ -62,9 +64,8 @@ UIColor *tintColor;
             Book *genesis = [array firstObject];
             BookLocation *location = [NSEntityDescription insertNewObjectForEntityForName:@"BookLocation" inManagedObjectContext:moc];
             [location setBook:genesis chapter:1 verse:1];
+            [self setLocation:location];
         }
-    } else {
-        [self setLocation:[array firstObject]];
     }
     
     tintColor = [UIColor colorWithRed:(0/255.0) green:(165/255.0) blue:(91/255.0) alpha:1.0];
