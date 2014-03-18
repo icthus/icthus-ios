@@ -15,6 +15,48 @@
 		C94A2B24181001790076926A /* TranslationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C94A2B23181001790076926A /* TranslationViewController.m */; };
 		C94A2B271810030E0076926A /* Translation.m in Sources */ = {isa = PBXBuildFile; fileRef = C94A2B261810030E0076926A /* Translation.m */; };
 		C95DAB6B18940D6D00494256 /* ChapterCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C95DAB6A18940D6D00494256 /* ChapterCollectionViewCell.m */; };
+		C98B15CF18D7E306006294F8 /* Akzidenz Grotesk CE Roman.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C98B158D18D7E306006294F8 /* Akzidenz Grotesk CE Roman.ttf */; };
+		C98B15D018D7E306006294F8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C98B158F18D7E306006294F8 /* AppDelegate.m */; };
+		C98B15D118D7E306006294F8 /* BookNames.xml in Resources */ = {isa = PBXBuildFile; fileRef = C98B159118D7E306006294F8 /* BookNames.xml */; };
+		C98B15D218D7E306006294F8 /* copr.htm in Resources */ = {isa = PBXBuildFile; fileRef = C98B159218D7E306006294F8 /* copr.htm */; };
+		C98B15D318D7E306006294F8 /* eng-asv-VernacularAdditional.xml in Resources */ = {isa = PBXBuildFile; fileRef = C98B159318D7E306006294F8 /* eng-asv-VernacularAdditional.xml */; };
+		C98B15D418D7E306006294F8 /* eng-asv-VernacularParms.xml in Resources */ = {isa = PBXBuildFile; fileRef = C98B159418D7E306006294F8 /* eng-asv-VernacularParms.xml */; };
+		C98B15D518D7E306006294F8 /* eng-asv_usfx.xml in Resources */ = {isa = PBXBuildFile; fileRef = C98B159518D7E306006294F8 /* eng-asv_usfx.xml */; };
+		C98B15D618D7E306006294F8 /* keys.asc in Resources */ = {isa = PBXBuildFile; fileRef = C98B159618D7E306006294F8 /* keys.asc */; };
+		C98B15D718D7E306006294F8 /* signature.txt.asc in Resources */ = {isa = PBXBuildFile; fileRef = C98B159718D7E306006294F8 /* signature.txt.asc */; };
+		C98B15D818D7E306006294F8 /* Bariol_Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = C98B159818D7E306006294F8 /* Bariol_Regular.otf */; };
+		C98B15D918D7E306006294F8 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C98B159918D7E306006294F8 /* Main_iPad.storyboard */; };
+		C98B15DA18D7E306006294F8 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C98B159B18D7E306006294F8 /* Main_iPhone.storyboard */; };
+		C98B15DB18D7E306006294F8 /* BibleMarkupParser.m in Sources */ = {isa = PBXBuildFile; fileRef = C98B159E18D7E306006294F8 /* BibleMarkupParser.m */; };
+		C98B15DC18D7E306006294F8 /* BibleTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = C98B15A018D7E306006294F8 /* BibleTextView.m */; };
+		C98B15DD18D7E306006294F8 /* BibleVerseView.m in Sources */ = {isa = PBXBuildFile; fileRef = C98B15A218D7E306006294F8 /* BibleVerseView.m */; };
+		C98B15DE18D7E306006294F8 /* Book.m in Sources */ = {isa = PBXBuildFile; fileRef = C98B15A418D7E306006294F8 /* Book.m */; };
+		C98B15DF18D7E306006294F8 /* BookCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C98B15A618D7E306006294F8 /* BookCollectionViewCell.m */; };
+		C98B15E018D7E306006294F8 /* BookLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = C98B15A818D7E306006294F8 /* BookLocation.m */; };
+		C98B15E118D7E306006294F8 /* BookNames.xml in Resources */ = {isa = PBXBuildFile; fileRef = C98B15A918D7E306006294F8 /* BookNames.xml */; };
+		C98B15E218D7E306006294F8 /* BooksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C98B15AB18D7E306006294F8 /* BooksViewController.m */; };
+		C98B15E318D7E306006294F8 /* ChapterCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C98B15AD18D7E306006294F8 /* ChapterCollectionViewCell.m */; };
+		C98B15E418D7E306006294F8 /* ChapterPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C98B15AF18D7E306006294F8 /* ChapterPickerViewController.m */; };
+		C98B15E518D7E306006294F8 /* CircleLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C98B15B118D7E306006294F8 /* CircleLabel.m */; };
+		C98B15E618D7E306006294F8 /* copr.htm in Resources */ = {isa = PBXBuildFile; fileRef = C98B15B218D7E306006294F8 /* copr.htm */; };
+		C98B15E718D7E306006294F8 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C98B15B418D7E306006294F8 /* DetailViewController.m */; };
+		C98B15E818D7E306006294F8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C98B15B518D7E306006294F8 /* InfoPlist.strings */; };
+		C98B15E918D7E306006294F8 /* eng-web-VernacularAdditional.xml in Resources */ = {isa = PBXBuildFile; fileRef = C98B15B718D7E306006294F8 /* eng-web-VernacularAdditional.xml */; };
+		C98B15EA18D7E306006294F8 /* eng-web-VernacularParms.xml in Resources */ = {isa = PBXBuildFile; fileRef = C98B15B818D7E306006294F8 /* eng-web-VernacularParms.xml */; };
+		C98B15EB18D7E306006294F8 /* eng-web_usfx.xml in Resources */ = {isa = PBXBuildFile; fileRef = C98B15B918D7E306006294F8 /* eng-web_usfx.xml */; };
+		C98B15EC18D7E306006294F8 /* Icthus-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C98B15BA18D7E306006294F8 /* Icthus-Info.plist */; };
+		C98B15ED18D7E306006294F8 /* Icthus.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = C98B15BC18D7E306006294F8 /* Icthus.entitlements */; };
+		C98B15EE18D7E306006294F8 /* Icthus.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C98B15BD18D7E306006294F8 /* Icthus.xcdatamodeld */; };
+		C98B15EF18D7E306006294F8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C98B15BF18D7E306006294F8 /* Images.xcassets */; };
+		C98B15F018D7E306006294F8 /* keys.asc in Resources */ = {isa = PBXBuildFile; fileRef = C98B15C018D7E306006294F8 /* keys.asc */; };
+		C98B15F118D7E306006294F8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C98B15C118D7E306006294F8 /* main.m */; };
+		C98B15F218D7E306006294F8 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C98B15C318D7E306006294F8 /* MasterViewController.m */; };
+		C98B15F318D7E306006294F8 /* ReadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = C98B15C518D7E306006294F8 /* ReadingView.m */; };
+		C98B15F418D7E306006294F8 /* ReadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C98B15C718D7E306006294F8 /* ReadingViewController.m */; };
+		C98B15F518D7E306006294F8 /* signature.txt.asc in Resources */ = {isa = PBXBuildFile; fileRef = C98B15C818D7E306006294F8 /* signature.txt.asc */; };
+		C98B15F618D7E306006294F8 /* Translation.m in Sources */ = {isa = PBXBuildFile; fileRef = C98B15CA18D7E306006294F8 /* Translation.m */; };
+		C98B15F718D7E306006294F8 /* TranslationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C98B15CC18D7E306006294F8 /* TranslationViewController.m */; };
+		C98B15F818D7E306006294F8 /* USFXParser.m in Sources */ = {isa = PBXBuildFile; fileRef = C98B15CE18D7E306006294F8 /* USFXParser.m */; };
 		C98C1A2B18B6452200E4B3DF /* Bariol_Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = C98C1A2A18B6452200E4B3DF /* Bariol_Regular.otf */; };
 		C98C1A3318B6561700E4B3DF /* Akzidenz Grotesk CE Roman.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C98C1A3218B6561700E4B3DF /* Akzidenz Grotesk CE Roman.ttf */; };
 		C99C73FA17DFA61B00DBF0E2 /* BibleMarkupParser.m in Sources */ = {isa = PBXBuildFile; fileRef = C99C73F917DFA61B00DBF0E2 /* BibleMarkupParser.m */; };
@@ -87,6 +129,67 @@
 		C94A2B261810030E0076926A /* Translation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Translation.m; sourceTree = "<group>"; };
 		C95DAB6918940D6D00494256 /* ChapterCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChapterCollectionViewCell.h; sourceTree = "<group>"; };
 		C95DAB6A18940D6D00494256 /* ChapterCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChapterCollectionViewCell.m; sourceTree = "<group>"; };
+		C98B158D18D7E306006294F8 /* Akzidenz Grotesk CE Roman.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Akzidenz Grotesk CE Roman.ttf"; sourceTree = "<group>"; };
+		C98B158E18D7E306006294F8 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		C98B158F18D7E306006294F8 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		C98B159118D7E306006294F8 /* BookNames.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = BookNames.xml; sourceTree = "<group>"; };
+		C98B159218D7E306006294F8 /* copr.htm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = copr.htm; sourceTree = "<group>"; };
+		C98B159318D7E306006294F8 /* eng-asv-VernacularAdditional.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "eng-asv-VernacularAdditional.xml"; sourceTree = "<group>"; };
+		C98B159418D7E306006294F8 /* eng-asv-VernacularParms.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "eng-asv-VernacularParms.xml"; sourceTree = "<group>"; };
+		C98B159518D7E306006294F8 /* eng-asv_usfx.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "eng-asv_usfx.xml"; sourceTree = "<group>"; };
+		C98B159618D7E306006294F8 /* keys.asc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = keys.asc; sourceTree = "<group>"; };
+		C98B159718D7E306006294F8 /* signature.txt.asc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = signature.txt.asc; sourceTree = "<group>"; };
+		C98B159818D7E306006294F8 /* Bariol_Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Bariol_Regular.otf; sourceTree = "<group>"; };
+		C98B159A18D7E306006294F8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
+		C98B159C18D7E306006294F8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
+		C98B159D18D7E306006294F8 /* BibleMarkupParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BibleMarkupParser.h; sourceTree = "<group>"; };
+		C98B159E18D7E306006294F8 /* BibleMarkupParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BibleMarkupParser.m; sourceTree = "<group>"; };
+		C98B159F18D7E306006294F8 /* BibleTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BibleTextView.h; sourceTree = "<group>"; };
+		C98B15A018D7E306006294F8 /* BibleTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BibleTextView.m; sourceTree = "<group>"; };
+		C98B15A118D7E306006294F8 /* BibleVerseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BibleVerseView.h; sourceTree = "<group>"; };
+		C98B15A218D7E306006294F8 /* BibleVerseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BibleVerseView.m; sourceTree = "<group>"; };
+		C98B15A318D7E306006294F8 /* Book.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Book.h; sourceTree = "<group>"; };
+		C98B15A418D7E306006294F8 /* Book.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Book.m; sourceTree = "<group>"; };
+		C98B15A518D7E306006294F8 /* BookCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookCollectionViewCell.h; sourceTree = "<group>"; };
+		C98B15A618D7E306006294F8 /* BookCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookCollectionViewCell.m; sourceTree = "<group>"; };
+		C98B15A718D7E306006294F8 /* BookLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookLocation.h; sourceTree = "<group>"; };
+		C98B15A818D7E306006294F8 /* BookLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookLocation.m; sourceTree = "<group>"; };
+		C98B15A918D7E306006294F8 /* BookNames.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = BookNames.xml; sourceTree = "<group>"; };
+		C98B15AA18D7E306006294F8 /* BooksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BooksViewController.h; sourceTree = "<group>"; };
+		C98B15AB18D7E306006294F8 /* BooksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BooksViewController.m; sourceTree = "<group>"; };
+		C98B15AC18D7E306006294F8 /* ChapterCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChapterCollectionViewCell.h; sourceTree = "<group>"; };
+		C98B15AD18D7E306006294F8 /* ChapterCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChapterCollectionViewCell.m; sourceTree = "<group>"; };
+		C98B15AE18D7E306006294F8 /* ChapterPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChapterPickerViewController.h; sourceTree = "<group>"; };
+		C98B15AF18D7E306006294F8 /* ChapterPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChapterPickerViewController.m; sourceTree = "<group>"; };
+		C98B15B018D7E306006294F8 /* CircleLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleLabel.h; sourceTree = "<group>"; };
+		C98B15B118D7E306006294F8 /* CircleLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleLabel.m; sourceTree = "<group>"; };
+		C98B15B218D7E306006294F8 /* copr.htm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = copr.htm; sourceTree = "<group>"; };
+		C98B15B318D7E306006294F8 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		C98B15B418D7E306006294F8 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		C98B15B618D7E306006294F8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		C98B15B718D7E306006294F8 /* eng-web-VernacularAdditional.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "eng-web-VernacularAdditional.xml"; sourceTree = "<group>"; };
+		C98B15B818D7E306006294F8 /* eng-web-VernacularParms.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "eng-web-VernacularParms.xml"; sourceTree = "<group>"; };
+		C98B15B918D7E306006294F8 /* eng-web_usfx.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "eng-web_usfx.xml"; sourceTree = "<group>"; };
+		C98B15BA18D7E306006294F8 /* Icthus-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Icthus-Info.plist"; sourceTree = "<group>"; };
+		C98B15BB18D7E306006294F8 /* Icthus-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Icthus-Prefix.pch"; sourceTree = "<group>"; };
+		C98B15BC18D7E306006294F8 /* Icthus.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Icthus.entitlements; sourceTree = "<group>"; };
+		C98B15BE18D7E306006294F8 /* Icthus.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Icthus.xcdatamodel; sourceTree = "<group>"; };
+		C98B15BF18D7E306006294F8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		C98B15C018D7E306006294F8 /* keys.asc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = keys.asc; sourceTree = "<group>"; };
+		C98B15C118D7E306006294F8 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C98B15C218D7E306006294F8 /* MasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
+		C98B15C318D7E306006294F8 /* MasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
+		C98B15C418D7E306006294F8 /* ReadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadingView.h; sourceTree = "<group>"; };
+		C98B15C518D7E306006294F8 /* ReadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadingView.m; sourceTree = "<group>"; };
+		C98B15C618D7E306006294F8 /* ReadingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadingViewController.h; sourceTree = "<group>"; };
+		C98B15C718D7E306006294F8 /* ReadingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadingViewController.m; sourceTree = "<group>"; };
+		C98B15C818D7E306006294F8 /* signature.txt.asc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = signature.txt.asc; sourceTree = "<group>"; };
+		C98B15C918D7E306006294F8 /* Translation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Translation.h; sourceTree = "<group>"; };
+		C98B15CA18D7E306006294F8 /* Translation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Translation.m; sourceTree = "<group>"; };
+		C98B15CB18D7E306006294F8 /* TranslationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TranslationViewController.h; sourceTree = "<group>"; };
+		C98B15CC18D7E306006294F8 /* TranslationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TranslationViewController.m; sourceTree = "<group>"; };
+		C98B15CD18D7E306006294F8 /* USFXParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = USFXParser.h; sourceTree = "<group>"; };
+		C98B15CE18D7E306006294F8 /* USFXParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = USFXParser.m; sourceTree = "<group>"; };
 		C98C1A2A18B6452200E4B3DF /* Bariol_Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Bariol_Regular.otf; sourceTree = "<group>"; };
 		C98C1A3218B6561700E4B3DF /* Akzidenz Grotesk CE Roman.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Akzidenz Grotesk CE Roman.ttf"; sourceTree = "<group>"; };
 		C99C73F817DFA61B00DBF0E2 /* BibleMarkupParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = BibleMarkupParser.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
@@ -232,6 +335,82 @@
 			name = "Chapter Picker";
 			sourceTree = "<group>";
 		};
+		C98B158C18D7E306006294F8 /* Icthus */ = {
+			isa = PBXGroup;
+			children = (
+				C98B158D18D7E306006294F8 /* Akzidenz Grotesk CE Roman.ttf */,
+				C98B158E18D7E306006294F8 /* AppDelegate.h */,
+				C98B158F18D7E306006294F8 /* AppDelegate.m */,
+				C98B159018D7E306006294F8 /* ASV */,
+				C98B159818D7E306006294F8 /* Bariol_Regular.otf */,
+				C98B159918D7E306006294F8 /* Main_iPad.storyboard */,
+				C98B159B18D7E306006294F8 /* Main_iPhone.storyboard */,
+				C98B159D18D7E306006294F8 /* BibleMarkupParser.h */,
+				C98B159E18D7E306006294F8 /* BibleMarkupParser.m */,
+				C98B159F18D7E306006294F8 /* BibleTextView.h */,
+				C98B15A018D7E306006294F8 /* BibleTextView.m */,
+				C98B15A118D7E306006294F8 /* BibleVerseView.h */,
+				C98B15A218D7E306006294F8 /* BibleVerseView.m */,
+				C98B15A318D7E306006294F8 /* Book.h */,
+				C98B15A418D7E306006294F8 /* Book.m */,
+				C98B15A518D7E306006294F8 /* BookCollectionViewCell.h */,
+				C98B15A618D7E306006294F8 /* BookCollectionViewCell.m */,
+				C98B15A718D7E306006294F8 /* BookLocation.h */,
+				C98B15A818D7E306006294F8 /* BookLocation.m */,
+				C98B15A918D7E306006294F8 /* BookNames.xml */,
+				C98B15AA18D7E306006294F8 /* BooksViewController.h */,
+				C98B15AB18D7E306006294F8 /* BooksViewController.m */,
+				C98B15AC18D7E306006294F8 /* ChapterCollectionViewCell.h */,
+				C98B15AD18D7E306006294F8 /* ChapterCollectionViewCell.m */,
+				C98B15AE18D7E306006294F8 /* ChapterPickerViewController.h */,
+				C98B15AF18D7E306006294F8 /* ChapterPickerViewController.m */,
+				C98B15B018D7E306006294F8 /* CircleLabel.h */,
+				C98B15B118D7E306006294F8 /* CircleLabel.m */,
+				C98B15B218D7E306006294F8 /* copr.htm */,
+				C98B15B318D7E306006294F8 /* DetailViewController.h */,
+				C98B15B418D7E306006294F8 /* DetailViewController.m */,
+				C98B15B518D7E306006294F8 /* InfoPlist.strings */,
+				C98B15B718D7E306006294F8 /* eng-web-VernacularAdditional.xml */,
+				C98B15B818D7E306006294F8 /* eng-web-VernacularParms.xml */,
+				C98B15B918D7E306006294F8 /* eng-web_usfx.xml */,
+				C98B15BA18D7E306006294F8 /* Icthus-Info.plist */,
+				C98B15BB18D7E306006294F8 /* Icthus-Prefix.pch */,
+				C98B15BC18D7E306006294F8 /* Icthus.entitlements */,
+				C98B15BD18D7E306006294F8 /* Icthus.xcdatamodeld */,
+				C98B15BF18D7E306006294F8 /* Images.xcassets */,
+				C98B15C018D7E306006294F8 /* keys.asc */,
+				C98B15C118D7E306006294F8 /* main.m */,
+				C98B15C218D7E306006294F8 /* MasterViewController.h */,
+				C98B15C318D7E306006294F8 /* MasterViewController.m */,
+				C98B15C418D7E306006294F8 /* ReadingView.h */,
+				C98B15C518D7E306006294F8 /* ReadingView.m */,
+				C98B15C618D7E306006294F8 /* ReadingViewController.h */,
+				C98B15C718D7E306006294F8 /* ReadingViewController.m */,
+				C98B15C818D7E306006294F8 /* signature.txt.asc */,
+				C98B15C918D7E306006294F8 /* Translation.h */,
+				C98B15CA18D7E306006294F8 /* Translation.m */,
+				C98B15CB18D7E306006294F8 /* TranslationViewController.h */,
+				C98B15CC18D7E306006294F8 /* TranslationViewController.m */,
+				C98B15CD18D7E306006294F8 /* USFXParser.h */,
+				C98B15CE18D7E306006294F8 /* USFXParser.m */,
+			);
+			name = Icthus;
+			sourceTree = "<group>";
+		};
+		C98B159018D7E306006294F8 /* ASV */ = {
+			isa = PBXGroup;
+			children = (
+				C98B159118D7E306006294F8 /* BookNames.xml */,
+				C98B159218D7E306006294F8 /* copr.htm */,
+				C98B159318D7E306006294F8 /* eng-asv-VernacularAdditional.xml */,
+				C98B159418D7E306006294F8 /* eng-asv-VernacularParms.xml */,
+				C98B159518D7E306006294F8 /* eng-asv_usfx.xml */,
+				C98B159618D7E306006294F8 /* keys.asc */,
+				C98B159718D7E306006294F8 /* signature.txt.asc */,
+			);
+			path = ASV;
+			sourceTree = "<group>";
+		};
 		C9B305601816A1B900EE8A94 /* ASV */ = {
 			isa = PBXGroup;
 			children = (
@@ -301,6 +480,7 @@
 				C94A2B23181001790076926A /* TranslationViewController.m */,
 				C9FF511517CBB54800BA526E /* Images.xcassets */,
 				C9FF510C17CBB54800BA526E /* Icthus.xcdatamodeld */,
+				C98B158C18D7E306006294F8 /* Icthus */,
 				C91EB47717FDB2F400645EFD /* Models */,
 				C9FF50FB17CBB54700BA526E /* Supporting Files */,
 				C9FF513317CBFBE900BA526E /* Core Data Source Files */,
@@ -437,25 +617,47 @@
 			buildActionMask = 2147483647;
 			files = (
 				C9B3056A1816A1B900EE8A94 /* eng-asv-VernacularAdditional.xml in Resources */,
+				C98B15EF18D7E306006294F8 /* Images.xcassets in Resources */,
 				C9B305681816A1B900EE8A94 /* BookNames.xml in Resources */,
+				C98B15E918D7E306006294F8 /* eng-web-VernacularAdditional.xml in Resources */,
 				C9FF510B17CBB54700BA526E /* Main_iPad.storyboard in Resources */,
 				C98C1A3318B6561700E4B3DF /* Akzidenz Grotesk CE Roman.ttf in Resources */,
 				C9FF514117CBFEA300BA526E /* signature.txt.asc in Resources */,
+				C98B15EC18D7E306006294F8 /* Icthus-Info.plist in Resources */,
+				C98B15E818D7E306006294F8 /* InfoPlist.strings in Resources */,
 				C9B3056E1816A1B900EE8A94 /* signature.txt.asc in Resources */,
+				C98B15D418D7E306006294F8 /* eng-asv-VernacularParms.xml in Resources */,
 				C9B3056C1816A1B900EE8A94 /* eng-asv_usfx.xml in Resources */,
 				C9B3056D1816A1B900EE8A94 /* keys.asc in Resources */,
 				C9FF513C17CBFEA300BA526E /* copr.htm in Resources */,
 				C9FF513E17CBFEA300BA526E /* eng-web-VernacularAdditional.xml in Resources */,
+				C98B15E118D7E306006294F8 /* BookNames.xml in Resources */,
 				C9FF514017CBFEA300BA526E /* keys.asc in Resources */,
 				C9B305691816A1B900EE8A94 /* copr.htm in Resources */,
+				C98B15D218D7E306006294F8 /* copr.htm in Resources */,
 				C9FF511617CBB54800BA526E /* Images.xcassets in Resources */,
+				C98B15D918D7E306006294F8 /* Main_iPad.storyboard in Resources */,
+				C98B15ED18D7E306006294F8 /* Icthus.entitlements in Resources */,
+				C98B15F018D7E306006294F8 /* keys.asc in Resources */,
+				C98B15D518D7E306006294F8 /* eng-asv_usfx.xml in Resources */,
+				C98B15D818D7E306006294F8 /* Bariol_Regular.otf in Resources */,
 				C9FF513D17CBFEA300BA526E /* eng-web_usfx.xml in Resources */,
 				C9FF510817CBB54700BA526E /* Main_iPhone.storyboard in Resources */,
 				C9FF513B17CBFEA300BA526E /* BookNames.xml in Resources */,
 				C9FF50FF17CBB54700BA526E /* InfoPlist.strings in Resources */,
+				C98B15D318D7E306006294F8 /* eng-asv-VernacularAdditional.xml in Resources */,
+				C98B15EA18D7E306006294F8 /* eng-web-VernacularParms.xml in Resources */,
 				C9B3056B1816A1B900EE8A94 /* eng-asv-VernacularParms.xml in Resources */,
+				C98B15D718D7E306006294F8 /* signature.txt.asc in Resources */,
 				C9FF513F17CBFEA300BA526E /* eng-web-VernacularParms.xml in Resources */,
+				C98B15EB18D7E306006294F8 /* eng-web_usfx.xml in Resources */,
+				C98B15D618D7E306006294F8 /* keys.asc in Resources */,
+				C98B15F518D7E306006294F8 /* signature.txt.asc in Resources */,
 				C98C1A2B18B6452200E4B3DF /* Bariol_Regular.otf in Resources */,
+				C98B15CF18D7E306006294F8 /* Akzidenz Grotesk CE Roman.ttf in Resources */,
+				C98B15D118D7E306006294F8 /* BookNames.xml in Resources */,
+				C98B15E618D7E306006294F8 /* copr.htm in Resources */,
+				C98B15DA18D7E306006294F8 /* Main_iPhone.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -474,27 +676,47 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C98B15DE18D7E306006294F8 /* Book.m in Sources */,
+				C98B15F318D7E306006294F8 /* ReadingView.m in Sources */,
+				C98B15DD18D7E306006294F8 /* BibleVerseView.m in Sources */,
+				C98B15D018D7E306006294F8 /* AppDelegate.m in Sources */,
 				C9451E90183BB0D9009FAFEE /* BibleVerseView.m in Sources */,
 				C94A2B271810030E0076926A /* Translation.m in Sources */,
+				C98B15F118D7E306006294F8 /* main.m in Sources */,
 				C9FF511417CBB54800BA526E /* DetailViewController.m in Sources */,
 				C9FF511117CBB54800BA526E /* MasterViewController.m in Sources */,
 				C99C73FA17DFA61B00DBF0E2 /* BibleMarkupParser.m in Sources */,
 				C95DAB6B18940D6D00494256 /* ChapterCollectionViewCell.m in Sources */,
 				C9D09B5E18C7583E00AA6B67 /* CircleLabel.m in Sources */,
+				C98B15F618D7E306006294F8 /* Translation.m in Sources */,
+				C98B15F818D7E306006294F8 /* USFXParser.m in Sources */,
+				C98B15E418D7E306006294F8 /* ChapterPickerViewController.m in Sources */,
+				C98B15DC18D7E306006294F8 /* BibleTextView.m in Sources */,
+				C98B15DF18D7E306006294F8 /* BookCollectionViewCell.m in Sources */,
 				C9198AFE17D94B2000077726 /* BibleTextView.m in Sources */,
+				C98B15E018D7E306006294F8 /* BookLocation.m in Sources */,
+				C98B15F218D7E306006294F8 /* MasterViewController.m in Sources */,
 				C94A2B24181001790076926A /* TranslationViewController.m in Sources */,
 				C9FABFDA188D55AB00C3FC05 /* BooksViewController.m in Sources */,
 				C9BCA01017CD933500196DA8 /* Book.m in Sources */,
 				C9FF510517CBB54700BA526E /* AppDelegate.m in Sources */,
+				C98B15E318D7E306006294F8 /* ChapterCollectionViewCell.m in Sources */,
 				C9FF510117CBB54700BA526E /* main.m in Sources */,
 				C99F2FC717CCE714008AF602 /* ReadingViewController.m in Sources */,
+				C98B15E218D7E306006294F8 /* BooksViewController.m in Sources */,
 				C99F2FC417CCDC01008AF602 /* ChapterPickerViewController.m in Sources */,
+				C98B15F418D7E306006294F8 /* ReadingViewController.m in Sources */,
+				C98B15DB18D7E306006294F8 /* BibleMarkupParser.m in Sources */,
 				C9D071DC17DE8C2000B535ED /* ReadingView.m in Sources */,
+				C98B15E518D7E306006294F8 /* CircleLabel.m in Sources */,
 				C9E57771188484A3004CC974 /* BookCollectionViewCell.m in Sources */,
 				C9FF510E17CBB54800BA526E /* Icthus.xcdatamodeld in Sources */,
+				C98B15E718D7E306006294F8 /* DetailViewController.m in Sources */,
 				C940C84C18CDE0BB00E1013C /* USFXParser.m in Sources */,
+				C98B15F718D7E306006294F8 /* TranslationViewController.m in Sources */,
 				C9BCA00A17CD3FEC00196DA8 /* ReadingListViewController.m in Sources */,
 				C9256B0717DFC5D400646198 /* BookLocation.m in Sources */,
+				C98B15EE18D7E306006294F8 /* Icthus.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -517,6 +739,30 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		C98B159918D7E306006294F8 /* Main_iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C98B159A18D7E306006294F8 /* Base */,
+			);
+			name = Main_iPad.storyboard;
+			sourceTree = "<group>";
+		};
+		C98B159B18D7E306006294F8 /* Main_iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C98B159C18D7E306006294F8 /* Base */,
+			);
+			name = Main_iPhone.storyboard;
+			sourceTree = "<group>";
+		};
+		C98B15B518D7E306006294F8 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C98B15B618D7E306006294F8 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 		C9FF50FD17CBB54700BA526E /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -729,6 +975,16 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
+		C98B15BD18D7E306006294F8 /* Icthus.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				C98B15BE18D7E306006294F8 /* Icthus.xcdatamodel */,
+			);
+			currentVersion = C98B15BE18D7E306006294F8 /* Icthus.xcdatamodel */;
+			path = Icthus.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
 		C9FF510C17CBB54800BA526E /* Icthus.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
