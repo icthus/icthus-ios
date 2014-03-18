@@ -138,10 +138,6 @@
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"BookLocation" inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
     
-    NSString *translationCode = [[NSUserDefaults standardUserDefaults] objectForKey:@"selectedTranslation"];
-    NSPredicate *pred = [NSPredicate predicateWithFormat:@"book.translation == %@", translationCode];
-    [fetchRequest setPredicate:pred];
-    
     // Set the batch size to a suitable number.
     [fetchRequest setFetchBatchSize:20];
 

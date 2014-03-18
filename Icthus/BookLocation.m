@@ -11,6 +11,7 @@
 @implementation BookLocation
 
 @synthesize book = _book;
+@synthesize bookCode = _bookCode;
 @synthesize chapter = _chapter;
 @dynamic lastModified;
 @synthesize verse = _verse;
@@ -39,12 +40,13 @@
 }
 
 - (void)setBook:(Book *)book {
-    _book = book;
+    _bookCode = book.code;
     [self setLastModified:[NSDate date]];
 }
 
-- (Book *)book{
-    return _book;
+- (Book *)book {
+    NSArray *fetched = [self valueForKey:@"book"];
+    return [fetched lastObject];
 }
 
 - (void)setChapter:(NSNumber *)chapter {

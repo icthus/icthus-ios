@@ -18,6 +18,7 @@
 - (void)updateChapter:(int)chapter verse:(int)verse;
 
 @property (nonatomic, retain) Book     *book;
+@property (nonatomic, retain) NSString *bookCode;
 @property (nonatomic, retain) NSNumber *chapter;
 @property (nonatomic, retain) NSDate   *lastModified;
 @property (nonatomic, retain) NSNumber *verse;

@@ -17,7 +17,6 @@
 @property (nonatomic, retain) NSString * abbr;
 @property (nonatomic, retain) NSString * code;
 @property (nonatomic, retain) NSNumber * index;
-@property (nonatomic, retain) NSSet    *locations;
 @property (nonatomic, retain) NSString * longName;
 @property (nonatomic, retain) NSString * shortName;
 @property (nonatomic, retain) NSString * text;

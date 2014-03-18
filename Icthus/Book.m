@@ -20,7 +20,6 @@
 @dynamic text;
 @dynamic translation;
 @dynamic numberOfChapters;
-@dynamic locations;
 
 -(BookLocation *)getLocation {
     NSManagedObjectContext *context = [(NSManagedObject *)self managedObjectContext];

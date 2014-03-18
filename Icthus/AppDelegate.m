@@ -101,7 +101,7 @@
     }
 }
 
-- (void) instantiateBooks {
+- (void)instantiateBooks {
     [[[USFXParser alloc] init] instantiateBooks:self.managedObjectContext translationCode:@"WEB" displayName:@"World English Bible"];
     [[[USFXParser alloc] init] instantiateBooks:self.managedObjectContext translationCode:@"ASV" displayName:@"American Standard Version"];
 }
@@ -124,7 +124,7 @@
 }
 
 - (void)promptForiCloud {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Choose Storage Option" message: @"Should documents be stored in iCloud and available on all your devices?" delegate: self cancelButtonTitle: @"Local Only" otherButtonTitles: @"Use iCloud", nil];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Use iCloud?" message: @"Would you like iCloud to keep your reading positions in sync across your devices?" delegate: self cancelButtonTitle: @"Local Only" otherButtonTitles: @"Use iCloud", nil];
     [alert show];
 }
 
@@ -135,6 +135,9 @@
         [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"userWantsToUseiCloud"];
     }
     [[NSUserDefaults standardUserDefaults] synchronize];
+    // We have to kill the persistentStoreCoordinator and managedObjectContext because they were created when the xibs were loaded.
+    _persistentStoreCoordinator = nil;
+    _managedObjectContext = nil;
     [self finishHandlingFirstLaunch];
 }
 
@@ -207,8 +210,7 @@
 
 // Returns the persistent store coordinator for the application.
 // If the coordinator doesn't already exist, it is created and the application's store added to it.
-- (NSPersistentStoreCoordinator *)persistentStoreCoordinator
-{
+- (NSPersistentStoreCoordinator *)persistentStoreCoordinator {
     if((_persistentStoreCoordinator != nil)) {
         return _persistentStoreCoordinator;
     }
@@ -249,7 +251,7 @@
         [psc unlock];
     }
     else {
-        NSLog(@"iCloud isn't working or user chose not to use it - using a local store with 'Default' configuration.");
+        NSLog(@"User hasn't chosen to use iCloud - using a local store with 'Default' configuration.");
         NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"IcthusDefaultStore.sqlite"];
         
         NSDictionary *options = @{
