@@ -16,7 +16,7 @@
         <attribute name="lastModified" optional="YES" attributeType="Date" defaultDateTimeInterval="0" defaultValueString="0" syncable="YES"/>
         <attribute name="verse" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <fetchedProperty name="book" optional="YES" syncable="YES">
-            <fetchRequest name="fetchedPropertyFetchRequest" entity="Book" predicateString="$FETCHED_PROPERTY.code == bookCode"/>
+            <fetchRequest name="fetchedPropertyFetchRequest" entity="Book" predicateString="code == $FETCH_SOURCE.bookCode"/>
         </fetchedProperty>
     </entity>
     <entity name="Translation" representedClassName="Translation" syncable="YES">

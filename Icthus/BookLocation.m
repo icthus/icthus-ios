@@ -45,8 +45,14 @@
 }
 
 - (Book *)book {
-    NSArray *fetched = [self valueForKey:@"book"];
-    return [fetched lastObject];
+    NSArray *fetchedPropertyBooks = (NSArray *)_book;
+    NSString *translationCode = [[NSUserDefaults standardUserDefaults] objectForKey:@"selectedTranslation"];
+    for (Book *book in fetchedPropertyBooks) {
+        if ([book.translation isEqualToString:translationCode]) {
+            return book;
+        }
+    }
+    return nil;
 }
 
 - (void)setChapter:(NSNumber *)chapter {

@@ -26,7 +26,7 @@
     NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"BookLocation" inManagedObjectContext:context];
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
     [request setEntity:entityDescription];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"book = %@", self];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"bookCode = %@", self.code];
     [request setPredicate:predicate];
     // Sort by lastModified
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"lastModified" ascending:NO];
