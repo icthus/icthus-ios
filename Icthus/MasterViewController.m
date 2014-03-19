@@ -40,16 +40,14 @@ UIColor *tintColor;
     }
 }
 
-- (void)viewDidDisappear:(BOOL)animated {
-    [self showRecentBooks];
-}
-
-- (void)showSettings {
+- (void)toggleSettingsPopover {
     self.viewControllers = @[self.settingsViewController];
+    [self.splitViewController performSelector:@selector(toggleMasterVisible:) withObject:nil];
 }
 
-- (void)showRecentBooks {
+- (void)toggleReadingListPopover {
     self.viewControllers = @[self.readingListViewController];
+    [self.splitViewController performSelector:@selector(toggleMasterVisible:) withObject:nil];
 }
 
 - (void)didReceiveMemoryWarning

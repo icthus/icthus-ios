@@ -50,8 +50,8 @@
 - (void)setupControllers {
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
         UISplitViewController *splitViewController = (UISplitViewController *)self.window.rootViewController;
-        UINavigationController *navigationController = [splitViewController.viewControllers firstObject];
         [self setDetailView:(ReadingViewController *)[[splitViewController.viewControllers lastObject] topViewController]];
+        [self setMasterView:(MasterViewController *)[splitViewController.viewControllers firstObject]];
     } else {
         UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
         MasterViewController *controller = (MasterViewController *)navigationController.topViewController;

@@ -9,11 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "Book.h"
 #import "ReadingView.h"
+#import "MasterViewController.h"
+@class MasterViewController;
+@class AppDelegate;
 
 @interface ReadingViewController : UIViewController <UISplitViewControllerDelegate>
 - (id)initWithBook:(Book *)book;
 - (void)setLocation:(BookLocation *)location;
 
+@property (strong, nonatomic) AppDelegate *appDel;
 @property (strong, nonatomic) IBOutlet ReadingView *readingView;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *goToButton;
 @property (nonatomic, strong) Book *book;

@@ -19,7 +19,7 @@
 @property (strong, nonatomic) UITableViewController *settingsViewController;
 @property (strong, nonatomic) ReadingListViewController *readingListViewController;
 
-- (void)showSettings;
-- (void)showRecentBooks;
+- (void)toggleSettingsPopover;
+- (void)toggleReadingListPopover;
 
 @end

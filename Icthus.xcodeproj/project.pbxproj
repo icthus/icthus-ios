@@ -15,6 +15,9 @@
 		C94A2B24181001790076926A /* TranslationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C94A2B23181001790076926A /* TranslationViewController.m */; };
 		C94A2B271810030E0076926A /* Translation.m in Sources */ = {isa = PBXBuildFile; fileRef = C94A2B261810030E0076926A /* Translation.m */; };
 		C958677A18D9DBE9001F875B /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C958677918D9DBE9001F875B /* SettingsViewController.m */; };
+		C958677D18DA070C001F875B /* SettingsIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = C958677C18DA070C001F875B /* SettingsIcon.png */; };
+		C958678018DA0823001F875B /* SettingsIcon.svg in Resources */ = {isa = PBXBuildFile; fileRef = C958677F18DA0823001F875B /* SettingsIcon.svg */; };
+		C958678218DA2DA4001F875B /* SettingsIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C958678118DA2DA4001F875B /* SettingsIcon@2x.png */; };
 		C95DAB6B18940D6D00494256 /* ChapterCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C95DAB6A18940D6D00494256 /* ChapterCollectionViewCell.m */; };
 		C98C1A2B18B6452200E4B3DF /* Bariol_Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = C98C1A2A18B6452200E4B3DF /* Bariol_Regular.otf */; };
 		C98C1A3318B6561700E4B3DF /* Akzidenz Grotesk CE Roman.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C98C1A3218B6561700E4B3DF /* Akzidenz Grotesk CE Roman.ttf */; };
@@ -88,6 +91,9 @@
 		C94A2B261810030E0076926A /* Translation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Translation.m; sourceTree = "<group>"; };
 		C958677818D9DBE9001F875B /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		C958677918D9DBE9001F875B /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		C958677C18DA070C001F875B /* SettingsIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SettingsIcon.png; sourceTree = "<group>"; };
+		C958677F18DA0823001F875B /* SettingsIcon.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = SettingsIcon.svg; sourceTree = "<group>"; };
+		C958678118DA2DA4001F875B /* SettingsIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SettingsIcon@2x.png"; sourceTree = "<group>"; };
 		C95DAB6918940D6D00494256 /* ChapterCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChapterCollectionViewCell.h; sourceTree = "<group>"; };
 		C95DAB6A18940D6D00494256 /* ChapterCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChapterCollectionViewCell.m; sourceTree = "<group>"; };
 		C98C1A2A18B6452200E4B3DF /* Bariol_Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Bariol_Regular.otf; sourceTree = "<group>"; };
@@ -231,6 +237,16 @@
 			name = Settings;
 			sourceTree = "<group>";
 		};
+		C958677E18DA0716001F875B /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				C958677F18DA0823001F875B /* SettingsIcon.svg */,
+				C958677C18DA070C001F875B /* SettingsIcon.png */,
+				C958678118DA2DA4001F875B /* SettingsIcon@2x.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
 		C95DAB681893F49000494256 /* Chapter Picker */ = {
 			isa = PBXGroup;
 			children = (
@@ -302,6 +318,7 @@
 				C91EB47617FDB2DE00645EFD /* Reading */,
 				C95DAB681893F49000494256 /* Chapter Picker */,
 				C958677B18D9DBEE001F875B /* Settings */,
+				C958677E18DA0716001F875B /* Images */,
 				C9FABFD8188D55AB00C3FC05 /* BooksViewController.h */,
 				C9FABFD9188D55AB00C3FC05 /* BooksViewController.m */,
 				C9BCA00817CD3FEC00196DA8 /* ReadingListViewController.h */,
@@ -455,8 +472,11 @@
 				C98C1A3318B6561700E4B3DF /* Akzidenz Grotesk CE Roman.ttf in Resources */,
 				C9FF514117CBFEA300BA526E /* signature.txt.asc in Resources */,
 				C9B3056E1816A1B900EE8A94 /* signature.txt.asc in Resources */,
+				C958677D18DA070C001F875B /* SettingsIcon.png in Resources */,
 				C9B3056C1816A1B900EE8A94 /* eng-asv_usfx.xml in Resources */,
+				C958678018DA0823001F875B /* SettingsIcon.svg in Resources */,
 				C9B3056D1816A1B900EE8A94 /* keys.asc in Resources */,
+				C958678218DA2DA4001F875B /* SettingsIcon@2x.png in Resources */,
 				C9FF513C17CBFEA300BA526E /* copr.htm in Resources */,
 				C9FF513E17CBFEA300BA526E /* eng-web-VernacularAdditional.xml in Resources */,
 				C9FF514017CBFEA300BA526E /* keys.asc in Resources */,

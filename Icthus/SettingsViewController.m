@@ -10,7 +10,4 @@
 
 @implementation SettingsViewController
 
-- (IBAction)recentBooksPressed:(id)sender {
-    [(MasterViewController *)self.navigationController showRecentBooks];
-}
 @end

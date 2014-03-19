@@ -65,7 +65,7 @@
             </objects>
             <point key="canvasLocation" x="771" y="-38"/>
         </scene>
-        <!--Settings View Controller-->
+        <!--Settings View Controller - Settings-->
         <scene sceneID="KT2-B4-REM">
             <objects>
                 <tableViewController storyboardIdentifier="SettingsViewController" clearsSelectionOnViewWillAppear="NO" id="vHc-xR-ECn" customClass="SettingsViewController" sceneMemberID="viewController">
@@ -159,13 +159,7 @@
                             <outlet property="delegate" destination="vHc-xR-ECn" id="nMO-td-0sq"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="Anl-p1-rAr">
-                        <barButtonItem key="leftBarButtonItem" title="Recent Books" id="xlS-t4-Chw">
-                            <connections>
-                                <action selector="recentBooksPressed:" destination="vHc-xR-ECn" id="ZFs-cG-1zj"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Settings" id="Anl-p1-rAr"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dO6-ic-Dd6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -231,7 +225,7 @@
             </objects>
             <point key="canvasLocation" x="-1002" y="1432"/>
         </scene>
-        <!--Reading List View Controller-->
+        <!--Reading List View Controller - History-->
         <scene sceneID="1kZ-nf-t0w">
             <objects>
                 <tableViewController id="rl4-UR-Xps" customClass="ReadingListViewController" sceneMemberID="viewController">
@@ -270,13 +264,7 @@
                             <outlet property="delegate" destination="rl4-UR-Xps" id="NYH-wg-NlG"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="SFF-An-81L">
-                        <barButtonItem key="leftBarButtonItem" title="Settings" id="puZ-RB-Xzh">
-                            <connections>
-                                <action selector="settingsButtonPressed:" destination="rl4-UR-Xps" id="LQ5-c2-Sno"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="History" id="SFF-An-81L"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ye2-sx-aP0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

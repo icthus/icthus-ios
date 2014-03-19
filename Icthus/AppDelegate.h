@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "ReadingViewController.h"
+@class ReadingViewController;
+@class MasterViewController;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate, UIAlertViewDelegate>
 
@@ -17,6 +19,7 @@
 @property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 @property (strong, nonatomic) ReadingViewController *detailView;
+@property (strong, nonatomic) MasterViewController *masterView;
 
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;

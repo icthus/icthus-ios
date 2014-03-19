@@ -7,9 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MasterViewController.h"
 
 @interface SettingsViewController : UITableViewController
-- (IBAction)recentBooksPressed:(id)sender;
 
 @end

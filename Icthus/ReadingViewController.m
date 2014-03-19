@@ -17,6 +17,7 @@
 
 @implementation ReadingViewController
 
+@synthesize appDel;
 @synthesize book = _book;
 @synthesize masterPopover;
 @synthesize chapterPickerPopover;
@@ -33,8 +34,8 @@ UIColor *tintColor;
 -(void)awakeFromNib {
     self.splitViewController.delegate = self;
     
-    AppDelegate *appDel = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    NSManagedObjectContext *moc = appDel.managedObjectContext;
+    self.appDel = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *moc = self.appDel.managedObjectContext;
     // Find the last book that was open and open to it.
     NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"BookLocation" inManagedObjectContext:moc];
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
@@ -101,11 +102,12 @@ UIColor *tintColor;
 }
 
 - (void)splitViewController:(UISplitViewController *)svc willHideViewController:(UIViewController *)aViewController withBarButtonItem:(UIBarButtonItem *)barButtonItem forPopoverController:(UIPopoverController *)pc {
-    barButtonItem.title = @"Recent Books";
-    [barButtonItem setTitleTextAttributes:@{
-//        NSFontAttributeName: [UIFont fontWithName:@"Bariol-Regular" size:23.0],
-    } forState:UIControlStateNormal];
-    [self.navigationItem setLeftBarButtonItem:barButtonItem animated:YES];
+    UIImage *settingsIcon = [UIImage imageNamed:@"SettingsIcon"];
+    UIBarButtonItem *settingsButton = [[UIBarButtonItem alloc] initWithImage:settingsIcon style:UIBarButtonItemStylePlain target:self.appDel.masterView action:@selector(toggleSettingsPopover)];
+    
+    UIBarButtonItem *readingListButton = [[UIBarButtonItem alloc] initWithTitle:@"History" style:UIBarButtonItemStylePlain target:self.appDel.masterView action:@selector(toggleReadingListPopover)];
+
+    [self.navigationItem setLeftBarButtonItems:@[settingsButton, readingListButton]];
     self.masterPopover = pc;
 }
 
