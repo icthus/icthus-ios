@@ -22,11 +22,8 @@
     NSLog(@"initWithCoder");
     
     self = [super initWithCoder: aDecoder];
-    if (self)
-    {
+    if (self) {
         _appDel = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        _managedObjectContext = [[NSManagedObjectContext alloc] init];
-        [_managedObjectContext setPersistentStoreCoordinator:_appDel.persistentStoreCoordinator];
     }
     return self;
 }
@@ -136,7 +133,7 @@
     [NSFetchedResultsController deleteCacheWithName:@"ReadingList"];
     
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"BookLocation" inManagedObjectContext:self.managedObjectContext];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"BookLocation" inManagedObjectContext:self.appDel.managedObjectContext];
     [fetchRequest setEntity:entity];
     
     // Set the batch size to a suitable number.
@@ -150,7 +147,7 @@
     
     // Edit the section name key path and cache name if appropriate.
     // nil for section name key path means "no sections".
-    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:@"ReadingList"];
+    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.appDel.managedObjectContext sectionNameKeyPath:nil cacheName:@"ReadingList"];
     self.fetchedResultsController = aFetchedResultsController;
     [self.fetchedResultsController setDelegate:self];
     
@@ -177,9 +174,9 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         BookLocation *location = [self.fetchedResultsController objectAtIndexPath:indexPath];
-        [self.managedObjectContext deleteObject:location];
+        [self.appDel.managedObjectContext deleteObject:location];
         NSError *error;
-        [self.managedObjectContext save:&error];
+        [self.appDel.managedObjectContext save:&error];
         if (error != nil) {
             NSLog(@"%@", [error localizedDescription]);
         }

@@ -35,6 +35,7 @@
     NSNotificationCenter *dc = [NSNotificationCenter defaultCenter];
     [dc addObserver:self selector: @selector (iCloudAccountAvailabilityChanged) name: NSUbiquityIdentityDidChangeNotification object:nil];
     [dc addObserver:self selector:@selector(storesWillChange:) name:NSPersistentStoreCoordinatorStoresWillChangeNotification object:nil];
+    [dc addObserver:self selector:@selector(managedObjectContextDidSave:) name:NSManagedObjectContextDidSaveNotification object:nil];
     
 //    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
@@ -162,6 +163,12 @@
     }
     [moc reset];
     //TODO: reset user interface
+}
+
+- (void)managedObjectContextDidSave:(NSNotification *)notification {
+    if (notification.object != self.managedObjectContext) {
+        [self.managedObjectContext mergeChangesFromContextDidSaveNotification:notification];
+    }
 }
 
 - (void)mergeChangesFromiCloud:(NSNotification *)notification {

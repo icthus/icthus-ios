@@ -47,7 +47,7 @@
         location = [array firstObject];
     } else {
         location = [NSEntityDescription insertNewObjectForEntityForName:@"BookLocation" inManagedObjectContext:context];
-        [location setBook:self chapter:0 verse:0];
+        [location setBook:self chapter:1 verse:1];
     }
     
     return location;
