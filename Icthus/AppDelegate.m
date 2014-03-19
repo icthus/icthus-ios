@@ -138,6 +138,7 @@
     // We have to kill the persistentStoreCoordinator and managedObjectContext because they were created when the xibs were loaded.
     _persistentStoreCoordinator = nil;
     _managedObjectContext = nil;
+    _managedObjectModel = nil;
     [self finishHandlingFirstLaunch];
 }
 

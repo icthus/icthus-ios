@@ -15,7 +15,7 @@
 
 - (BookLocation *)getCurrentLocation;
 - (void)setCurrentLocation:(BookLocation *)location;
-- (void)saveLocation;
+- (void)saveCurrentLocation;
 
 @property (retain, nonatomic) NSAttributedString* attString;
 @property (retain, nonatomic) NSString *text;

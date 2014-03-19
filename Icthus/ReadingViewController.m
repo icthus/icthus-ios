@@ -175,7 +175,7 @@ UIColor *tintColor;
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
-    [self.readingView saveLocation];
+    [self.readingView saveCurrentLocation];
 }
 
 
