@@ -92,10 +92,6 @@
     }
 }
 
-- (IBAction)settingsButtonPressed:(id)sender {
-    [(MasterViewController *)self.navigationController showSettings];
-}
-
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     BookLocation *location = [self.fetchedResultsController objectAtIndexPath:indexPath];
     Book *book = location.book;
