@@ -13,39 +13,37 @@
 @synthesize book = _book;
 @synthesize bookCode = _bookCode;
 @synthesize chapter = _chapter;
-@dynamic lastModified;
+@synthesize lastModified;
 @synthesize verse = _verse;
 
-- (id)initWithEntity:(NSEntityDescription *)entity insertIntoManagedObjectContext:(NSManagedObjectContext *)context {
-    self = [super initWithEntity:entity insertIntoManagedObjectContext:context];
-    if (self) {
-        [self setLastModified:[NSDate dateWithTimeIntervalSince1970:0]];
-    }
-
-    return self;
+- (void) awakeFromInsert {
+    [super awakeFromInsert];
+    self.lastModified = [NSDate date];
 }
 
 - (void)setBook:(Book *)book chapter:(int)chapterNumber verse:(int)verseNumber {
-    NSLog(@"Book.shortName = %@", book.shortName);
     [self setBook:book];
     [self setChapter:[NSNumber numberWithInt:chapterNumber]];
     [self setVerse:[NSNumber numberWithInt:verseNumber]];
-    [self setLastModified:[NSDate date]];
 }
 
 - (void)updateChapter:(int)chapter verse:(int)verse {
-    _chapter = [NSNumber numberWithInt:chapter];
-    _verse   = [NSNumber numberWithInt:verse];
-    [self setLastModified:[NSDate date]];
+    self.chapter = [NSNumber numberWithInt:chapter];
+    self.verse = [NSNumber numberWithInt:verse];
 }
 
 - (void)setBook:(Book *)book {
-    _bookCode = book.code;
+    [self willChangeValueForKey:@"bookCode"];
+    [self setPrimitiveValue:book.code forKey:@"bookCode"];
+    [self didChangeValueForKey:@"bookCode"];
     [self setLastModified:[NSDate date]];
 }
 
 - (Book *)book {
-    NSArray *fetchedPropertyBooks = (NSArray *)_book;
+    [self willAccessValueForKey:@"book"];
+    NSArray *fetchedPropertyBooks = (NSArray *)[self primitiveValueForKey:@"book"];
+    [self didAccessValueForKey:@"book"];
+    
     NSString *translationCode = [[NSUserDefaults standardUserDefaults] objectForKey:@"selectedTranslation"];
     for (Book *book in fetchedPropertyBooks) {
         if ([book.translation isEqualToString:translationCode]) {
@@ -56,21 +54,32 @@
 }
 
 - (void)setChapter:(NSNumber *)chapter {
-    _chapter = chapter;
-    [self setLastModified:[NSDate date]];
+    [self willChangeValueForKey:@"chapter"];
+    [self setPrimitiveValue:chapter forKey:@"chapter"];
+    [self didChangeValueForKey:@"chapter"];
 }
 
 - (NSNumber *)chapter {
-    return _chapter;
+    NSNumber *chapter;
+    [self willAccessValueForKey:@"chapter"];
+    chapter = [self primitiveValueForKey:@"chapter"];
+    [self didAccessValueForKey:@"chapter"];
+    return chapter;
 }
 
 - (void)setVerse:(NSNumber *)verse {
-    _verse = verse;
+    [self willChangeValueForKey:@"verse"];
+    [self setPrimitiveValue:verse forKey:@"verse"];
+    [self didChangeValueForKey:@"verse"];
     [self setLastModified:[NSDate date]];
 }
 
 - (NSNumber *)verse {
-    return _verse;
+    NSNumber *verse;
+    [self willAccessValueForKey:@"verse"];
+    verse = [self primitiveValueForKey:@"verse"];
+    [self didAccessValueForKey:@"verse"];
+    return verse;
 }
 
 @end
