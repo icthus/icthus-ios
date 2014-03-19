@@ -7,12 +7,7 @@
 //
 
 #import "MasterViewController.h"
-
 #import "DetailViewController.h"
-
-@interface MasterViewController ()
-- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
-@end
 
 UIColor *tintColor;
 
@@ -21,8 +16,8 @@ UIColor *tintColor;
 {
     tintColor = [UIColor colorWithRed:(0/255.0) green:(165/255.0) blue:(91/255.0) alpha:1.0];
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-        self.clearsSelectionOnViewWillAppear = NO;
-        self.preferredContentSize = CGSizeMake(320.0, 600.0);
+//        self.clearsSelectionOnViewWillAppear = NO;
+//        self.preferredContentSize = CGSizeMake(320.0, 600.0);
     }
     [super awakeFromNib];
 }
@@ -31,14 +26,31 @@ UIColor *tintColor;
 {
     [super viewDidLoad];
     // Style the nav bar
-    self.navigationController.navigationBar.tintColor = tintColor;
-    self.navigationController.navigationBar.translucent = YES;
-    self.navigationController.navigationBar.barTintColor = [UIColor colorWithWhite:1.0 alpha:0.6];
-    self.navigationController.navigationBar.titleTextAttributes = @{
+    self.navigationBar.tintColor = tintColor;
+    self.navigationBar.translucent = YES;
+    self.navigationBar.barTintColor = [UIColor colorWithWhite:1.0 alpha:0.6];
+    self.navigationBar.titleTextAttributes = @{
 //        NSForegroundColorAttributeName: [UIColor colorWithRed:(13/255.0) green:(149/255.0) blue:(69/255.0) alpha:1.0],
     };
+    
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+        self.readingListViewController = (ReadingListViewController *)self.topViewController;
+        UIStoryboard*  sb = [UIStoryboard storyboardWithName:@"Main_iPad" bundle:nil];
+        self.settingsViewController = [sb instantiateViewControllerWithIdentifier:@"SettingsViewController"];
+    }
 }
 
+- (void)viewDidDisappear:(BOOL)animated {
+    [self showRecentBooks];
+}
+
+- (void)showSettings {
+    self.viewControllers = @[self.settingsViewController];
+}
+
+- (void)showRecentBooks {
+    self.viewControllers = @[self.readingListViewController];
+}
 
 - (void)didReceiveMemoryWarning
 {

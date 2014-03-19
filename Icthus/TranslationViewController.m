@@ -100,6 +100,7 @@ NSString *selectedTranslation;
     Translation *trans = [self.fetchedResultsController objectAtIndexPath:indexPath];
     selectedTranslation = [trans code];
     [[NSUserDefaults standardUserDefaults] setObject:selectedTranslation forKey:@"selectedTranslation"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
     [self.navigationController popViewControllerAnimated:YES];
 }
 

@@ -14,6 +14,7 @@
 		C9451E90183BB0D9009FAFEE /* BibleVerseView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9451E8F183BB0D9009FAFEE /* BibleVerseView.m */; };
 		C94A2B24181001790076926A /* TranslationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C94A2B23181001790076926A /* TranslationViewController.m */; };
 		C94A2B271810030E0076926A /* Translation.m in Sources */ = {isa = PBXBuildFile; fileRef = C94A2B261810030E0076926A /* Translation.m */; };
+		C958677A18D9DBE9001F875B /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C958677918D9DBE9001F875B /* SettingsViewController.m */; };
 		C95DAB6B18940D6D00494256 /* ChapterCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C95DAB6A18940D6D00494256 /* ChapterCollectionViewCell.m */; };
 		C98C1A2B18B6452200E4B3DF /* Bariol_Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = C98C1A2A18B6452200E4B3DF /* Bariol_Regular.otf */; };
 		C98C1A3318B6561700E4B3DF /* Akzidenz Grotesk CE Roman.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C98C1A3218B6561700E4B3DF /* Akzidenz Grotesk CE Roman.ttf */; };
@@ -85,6 +86,8 @@
 		C94A2B23181001790076926A /* TranslationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TranslationViewController.m; sourceTree = "<group>"; };
 		C94A2B251810030E0076926A /* Translation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Translation.h; sourceTree = "<group>"; };
 		C94A2B261810030E0076926A /* Translation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Translation.m; sourceTree = "<group>"; };
+		C958677818D9DBE9001F875B /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		C958677918D9DBE9001F875B /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		C95DAB6918940D6D00494256 /* ChapterCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChapterCollectionViewCell.h; sourceTree = "<group>"; };
 		C95DAB6A18940D6D00494256 /* ChapterCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChapterCollectionViewCell.m; sourceTree = "<group>"; };
 		C98C1A2A18B6452200E4B3DF /* Bariol_Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Bariol_Regular.otf; sourceTree = "<group>"; };
@@ -219,6 +222,15 @@
 			name = WEB;
 			sourceTree = "<group>";
 		};
+		C958677B18D9DBEE001F875B /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				C958677818D9DBE9001F875B /* SettingsViewController.h */,
+				C958677918D9DBE9001F875B /* SettingsViewController.m */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
 		C95DAB681893F49000494256 /* Chapter Picker */ = {
 			isa = PBXGroup;
 			children = (
@@ -289,6 +301,7 @@
 				C9FF510417CBB54700BA526E /* AppDelegate.m */,
 				C91EB47617FDB2DE00645EFD /* Reading */,
 				C95DAB681893F49000494256 /* Chapter Picker */,
+				C958677B18D9DBEE001F875B /* Settings */,
 				C9FABFD8188D55AB00C3FC05 /* BooksViewController.h */,
 				C9FABFD9188D55AB00C3FC05 /* BooksViewController.m */,
 				C9BCA00817CD3FEC00196DA8 /* ReadingListViewController.h */,
@@ -493,6 +506,7 @@
 				C9E57771188484A3004CC974 /* BookCollectionViewCell.m in Sources */,
 				C9FF510E17CBB54800BA526E /* Icthus.xcdatamodeld in Sources */,
 				C940C84C18CDE0BB00E1013C /* USFXParser.m in Sources */,
+				C958677A18D9DBE9001F875B /* SettingsViewController.m in Sources */,
 				C9BCA00A17CD3FEC00196DA8 /* ReadingListViewController.m in Sources */,
 				C9256B0717DFC5D400646198 /* BookLocation.m in Sources */,
 			);

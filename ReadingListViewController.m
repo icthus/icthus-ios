@@ -25,7 +25,8 @@
     if (self)
     {
         _appDel = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        _managedObjectContext = [_appDel managedObjectContext];
+        _managedObjectContext = [[NSManagedObjectContext alloc] init];
+        [_managedObjectContext setPersistentStoreCoordinator:_appDel.persistentStoreCoordinator];
     }
     return self;
 }
@@ -89,6 +90,10 @@
         NSManagedObject *object = [[self fetchedResultsController] objectAtIndexPath:indexPath];
         [_appDel.detailView setLocation:(BookLocation *)object];
     }
+}
+
+- (IBAction)settingsButtonPressed:(id)sender {
+    [(MasterViewController *)self.navigationController showSettings];
 }
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {

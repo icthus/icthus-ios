@@ -7,16 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreData/CoreData.h>
+#import "ReadingListViewController.h"
 
 @class DetailViewController;
+@class ReadingListViewController;
 
-#import <CoreData/CoreData.h>
-
-@interface MasterViewController : UITableViewController <NSFetchedResultsControllerDelegate>
+@interface MasterViewController : UINavigationController
 
 @property (strong, nonatomic) DetailViewController *detailViewController;
+@property (strong, nonatomic) UITableViewController *settingsViewController;
+@property (strong, nonatomic) ReadingListViewController *readingListViewController;
 
-@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
-@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+- (void)showSettings;
+- (void)showRecentBooks;
 
 @end

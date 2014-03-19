@@ -101,7 +101,7 @@ UIColor *tintColor;
 }
 
 - (void)splitViewController:(UISplitViewController *)svc willHideViewController:(UIViewController *)aViewController withBarButtonItem:(UIBarButtonItem *)barButtonItem forPopoverController:(UIPopoverController *)pc {
-    barButtonItem.title = @"Menu";
+    barButtonItem.title = @"Recent Books";
     [barButtonItem setTitleTextAttributes:@{
 //        NSFontAttributeName: [UIFont fontWithName:@"Bariol-Regular" size:23.0],
     } forState:UIControlStateNormal];
