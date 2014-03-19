@@ -26,7 +26,7 @@ bool shouldParseBook;
 static NSString *translationCode;
 static NSString *translationDisplayName;
 
-- (void) instantiateBooks:(NSManagedObjectContext *)context translationCode:(NSString *)code displayName:(NSString *)displayName {
+- (void) instantiateBooks:(NSManagedObjectContext *)context translationCode:(NSString *)code displayName:(NSString *)displayName bookNamePath:(NSString *)bookNamePath bookTextPath:(NSString *)bookTextPath {
     translationCode = code;
     translationDisplayName = displayName;
     _context = context;
@@ -39,8 +39,7 @@ static NSString *translationDisplayName;
     [trans setCode:translationCode];
     [trans setDisplayName:translationDisplayName];
     
-    NSString* path = [[NSBundle mainBundle] pathForResource:@"BookNames" ofType:@"xml"];
-    _nameParser = [[NSXMLParser alloc] initWithData:[[NSData alloc] initWithContentsOfFile:path]];
+    _nameParser = [[NSXMLParser alloc] initWithData:[[NSData alloc] initWithContentsOfFile:bookNamePath]];
     [_nameParser setDelegate:self];
     
     if ([_nameParser parse]) {
@@ -49,8 +48,7 @@ static NSString *translationDisplayName;
         NSLog(@"An error occured parsing book names");
     }
     
-    path = [[NSBundle mainBundle] pathForResource:@"eng-web_usfx" ofType:@"xml"];
-    _bookParser = [[NSXMLParser alloc] initWithData:[[NSData alloc] initWithContentsOfFile:path]];
+    _bookParser = [[NSXMLParser alloc] initWithData:[[NSData alloc] initWithContentsOfFile:bookTextPath]];
     [_bookParser setDelegate:self];
     
     if ([_bookParser parse]) {

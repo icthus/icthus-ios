@@ -101,8 +101,15 @@
 }
 
 - (void)instantiateBooks {
-    [[[USFXParser alloc] init] instantiateBooks:self.managedObjectContext translationCode:@"WEB" displayName:@"World English Bible"];
-    [[[USFXParser alloc] init] instantiateBooks:self.managedObjectContext translationCode:@"ASV" displayName:@"American Standard Version"];
+    // WEB
+    NSString* WEBBookNamePath = [[NSBundle mainBundle] pathForResource:@"WEBBookNames" ofType:@"xml"];
+    NSString* WEBBookTextPath = [[NSBundle mainBundle] pathForResource:@"eng-web_usfx" ofType:@"xml"];
+    [[[USFXParser alloc] init] instantiateBooks:self.managedObjectContext translationCode:@"WEB" displayName:@"World English Bible" bookNamePath:WEBBookNamePath bookTextPath:WEBBookTextPath];
+    
+    // ASV
+    NSString* ASVBookTextPath = [[NSBundle mainBundle] pathForResource:@"eng-asv_usfx" ofType:@"xml"];
+    NSString* ASVBookNamePath = [[NSBundle mainBundle] pathForResource:@"ASVBookNames" ofType:@"xml"];
+    [[[USFXParser alloc] init] instantiateBooks:self.managedObjectContext translationCode:@"ASV" displayName:@"American Standard Version" bookNamePath:ASVBookNamePath bookTextPath:ASVBookTextPath];
 }
 
 - (void)handleFirstLaunch {
