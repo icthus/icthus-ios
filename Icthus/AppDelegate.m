@@ -111,6 +111,11 @@
     NSString* ASVBookTextPath = [[NSBundle mainBundle] pathForResource:@"eng-asv_usfx" ofType:@"xml"];
     NSString* ASVBookNamePath = [[NSBundle mainBundle] pathForResource:@"ASVBookNames" ofType:@"xml"];
     [[[USFXParser alloc] init] instantiateBooks:self.managedObjectContext translationCode:@"ASV" displayName:@"American Standard Version" bookNamePath:ASVBookNamePath bookTextPath:ASVBookTextPath];
+    
+    // KJV
+//    NSString* KJVBookTextPath = [[NSBundle mainBundle] pathForResource:@"eng-kjv_usfx" ofType:@"xml"];
+//    NSString* KJVBookNamePath = [[NSBundle mainBundle] pathForResource:@"KJVBookNames" ofType:@"xml"];
+//    [[[USFXParser alloc] init] instantiateBooks:self.managedObjectContext translationCode:@"KJV" displayName:@"King James Version" bookNamePath:KJVBookNamePath bookTextPath:KJVBookTextPath];
 }
 
 - (void)handleFirstLaunch {
@@ -159,7 +164,11 @@
     NSManagedObjectContext *moc = [self managedObjectContext];
     NSError *error;
     if ([moc hasChanges]) {
-        [moc save:&error];
+        if (![NSThread isMainThread]) {
+            [self performSelectorOnMainThread:@selector(storesWillChange:) withObject:n waitUntilDone:YES];
+        } else {
+            [moc save:&error];
+        }
     }
     [moc reset];
     //TODO: reset user interface

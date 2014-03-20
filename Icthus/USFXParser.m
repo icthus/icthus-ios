@@ -31,6 +31,7 @@ static NSString *translationDisplayName;
     translationDisplayName = displayName;
     _context = context;
     _booksByCode = [[NSMutableDictionary alloc] init];
+    AppDelegate *appDel = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
     // Define the books we will include
     includedBooks = @[@"GEN",@"EXO",@"LEV",@"NUM",@"DEU",@"JOS",@"JDG",@"RUT",@"1SA",@"2SA",@"1KI",@"2KI",@"1CH",@"2CH",@"EZR",@"NEH",@"EST",@"JOB",@"PSA",@"PRO",@"ECC",@"SNG",@"ISA",@"JER",@"LAM",@"EZK",@"DAN",@"HOS",@"JOL",@"AMO",@"OBA",@"JON",@"MIC",@"NAM",@"HAB",@"ZEP",@"HAG",@"ZEC",@"MAL",@"MAT",@"MRK",@"LUK",@"JHN",@"ACT",@"ROM",@"1CO",@"2CO",@"GAL",@"EPH",@"PHP",@"COL",@"1TH",@"2TH",@"1TI",@"2TI",@"TIT",@"PHM",@"HEB",@"JAS",@"1PE",@"2PE",@"1JN",@"2JN",@"3JN",@"JUD",@"REV",];
@@ -43,24 +44,26 @@ static NSString *translationDisplayName;
     [_nameParser setDelegate:self];
     
     if ([_nameParser parse]) {
-        NSLog(@"Successfully parsed book names");
+        NSLog(@"Successfully parsed %@ book names", displayName);
     } else {
-        NSLog(@"An error occured parsing book names");
+        NSLog(@"An error occured parsing %@ book names", displayName);
     }
     
     _bookParser = [[NSXMLParser alloc] initWithData:[[NSData alloc] initWithContentsOfFile:bookTextPath]];
     [_bookParser setDelegate:self];
     
     if ([_bookParser parse]) {
-        NSLog(@"Successfully parsed books");
+        NSLog(@"Successfully parsed %@ books", displayName);
     } else {
-        NSLog(@"An error occured parsing books");
+        NSLog(@"An error occured parsing %@ books", displayName);
     }
     
     NSError *error;
+    [appDel.persistentStoreCoordinator lock];
     if (![_context save:&error]) {
         NSLog(@"Error saving books: %@", [error localizedDescription]);
     }
+    [appDel.persistentStoreCoordinator unlock];
 }
 
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qualifiedName attributes:(NSDictionary *)attributeDict {

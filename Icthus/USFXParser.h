@@ -10,6 +10,7 @@
 
 #import <Foundation/Foundation.h>
 #import "Book.h"
+#import "AppDelegate.h"
 
 @interface USFXParser : NSObject <NSXMLParserDelegate>
 

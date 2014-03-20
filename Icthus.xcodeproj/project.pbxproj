@@ -36,6 +36,13 @@
 		C9D071DC17DE8C2000B535ED /* ReadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D071DB17DE8C2000B535ED /* ReadingView.m */; };
 		C9D09B5E18C7583E00AA6B67 /* CircleLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D09B5D18C7583E00AA6B67 /* CircleLabel.m */; };
 		C9E57771188484A3004CC974 /* BookCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E57770188484A3004CC974 /* BookCollectionViewCell.m */; };
+		C9ED7D6C18DA7C3900864288 /* KJVBookNames.xml in Resources */ = {isa = PBXBuildFile; fileRef = C9ED7D6518DA7C3900864288 /* KJVBookNames.xml */; };
+		C9ED7D6D18DA7C3900864288 /* copr.htm in Resources */ = {isa = PBXBuildFile; fileRef = C9ED7D6618DA7C3900864288 /* copr.htm */; };
+		C9ED7D6E18DA7C3900864288 /* eng-kjv-VernacularAdditional.xml in Resources */ = {isa = PBXBuildFile; fileRef = C9ED7D6718DA7C3900864288 /* eng-kjv-VernacularAdditional.xml */; };
+		C9ED7D6F18DA7C3900864288 /* eng-kjv-VernacularParms.xml in Resources */ = {isa = PBXBuildFile; fileRef = C9ED7D6818DA7C3900864288 /* eng-kjv-VernacularParms.xml */; };
+		C9ED7D7018DA7C3900864288 /* eng-kjv_usfx.xml in Resources */ = {isa = PBXBuildFile; fileRef = C9ED7D6918DA7C3900864288 /* eng-kjv_usfx.xml */; };
+		C9ED7D7118DA7C3900864288 /* keys.asc in Resources */ = {isa = PBXBuildFile; fileRef = C9ED7D6A18DA7C3900864288 /* keys.asc */; };
+		C9ED7D7218DA7C3900864288 /* signature.txt.asc in Resources */ = {isa = PBXBuildFile; fileRef = C9ED7D6B18DA7C3900864288 /* signature.txt.asc */; };
 		C9FABFDA188D55AB00C3FC05 /* BooksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9FABFD9188D55AB00C3FC05 /* BooksViewController.m */; };
 		C9FF50F317CBB54700BA526E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9FF50F217CBB54700BA526E /* Foundation.framework */; };
 		C9FF50F517CBB54700BA526E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9FF50F417CBB54700BA526E /* CoreGraphics.framework */; };
@@ -122,6 +129,13 @@
 		C9D09B5D18C7583E00AA6B67 /* CircleLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleLabel.m; sourceTree = "<group>"; };
 		C9E5776F188484A3004CC974 /* BookCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookCollectionViewCell.h; sourceTree = "<group>"; };
 		C9E57770188484A3004CC974 /* BookCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookCollectionViewCell.m; sourceTree = "<group>"; };
+		C9ED7D6518DA7C3900864288 /* KJVBookNames.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = KJVBookNames.xml; sourceTree = "<group>"; };
+		C9ED7D6618DA7C3900864288 /* copr.htm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = copr.htm; sourceTree = "<group>"; };
+		C9ED7D6718DA7C3900864288 /* eng-kjv-VernacularAdditional.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "eng-kjv-VernacularAdditional.xml"; sourceTree = "<group>"; };
+		C9ED7D6818DA7C3900864288 /* eng-kjv-VernacularParms.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "eng-kjv-VernacularParms.xml"; sourceTree = "<group>"; };
+		C9ED7D6918DA7C3900864288 /* eng-kjv_usfx.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "eng-kjv_usfx.xml"; sourceTree = "<group>"; };
+		C9ED7D6A18DA7C3900864288 /* keys.asc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = keys.asc; sourceTree = "<group>"; };
+		C9ED7D6B18DA7C3900864288 /* signature.txt.asc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = signature.txt.asc; sourceTree = "<group>"; };
 		C9FABFD8188D55AB00C3FC05 /* BooksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BooksViewController.h; sourceTree = "<group>"; };
 		C9FABFD9188D55AB00C3FC05 /* BooksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BooksViewController.m; sourceTree = "<group>"; };
 		C9FF50EF17CBB54700BA526E /* Icthus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Icthus.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -275,6 +289,21 @@
 			path = Icthus/ASV;
 			sourceTree = SOURCE_ROOT;
 		};
+		C9ED7D6418DA7C3900864288 /* KJV */ = {
+			isa = PBXGroup;
+			children = (
+				C9ED7D6518DA7C3900864288 /* KJVBookNames.xml */,
+				C9ED7D6618DA7C3900864288 /* copr.htm */,
+				C9ED7D6718DA7C3900864288 /* eng-kjv-VernacularAdditional.xml */,
+				C9ED7D6818DA7C3900864288 /* eng-kjv-VernacularParms.xml */,
+				C9ED7D6918DA7C3900864288 /* eng-kjv_usfx.xml */,
+				C9ED7D6A18DA7C3900864288 /* keys.asc */,
+				C9ED7D6B18DA7C3900864288 /* signature.txt.asc */,
+			);
+			name = KJV;
+			path = "eng-kjv_usfx";
+			sourceTree = "<group>";
+		};
 		C9FF50E617CBB54700BA526E = {
 			isa = PBXGroup;
 			children = (
@@ -376,6 +405,7 @@
 		C9FF513317CBFBE900BA526E /* Core Data Source Files */ = {
 			isa = PBXGroup;
 			children = (
+				C9ED7D6418DA7C3900864288 /* KJV */,
 				C9B305601816A1B900EE8A94 /* ASV */,
 				C93B50E0180EB5D700C07D98 /* WEB */,
 			);
@@ -466,6 +496,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9ED7D7218DA7C3900864288 /* signature.txt.asc in Resources */,
 				C9B3056A1816A1B900EE8A94 /* eng-asv-VernacularAdditional.xml in Resources */,
 				C9B305681816A1B900EE8A94 /* ASVBookNames.xml in Resources */,
 				C9FF510B17CBB54700BA526E /* Main_iPad.storyboard in Resources */,
@@ -477,7 +508,10 @@
 				C958678018DA0823001F875B /* SettingsIcon.svg in Resources */,
 				C9B3056D1816A1B900EE8A94 /* keys.asc in Resources */,
 				C958678218DA2DA4001F875B /* SettingsIcon@2x.png in Resources */,
+				C9ED7D6C18DA7C3900864288 /* KJVBookNames.xml in Resources */,
+				C9ED7D6E18DA7C3900864288 /* eng-kjv-VernacularAdditional.xml in Resources */,
 				C9FF513C17CBFEA300BA526E /* copr.htm in Resources */,
+				C9ED7D6F18DA7C3900864288 /* eng-kjv-VernacularParms.xml in Resources */,
 				C9FF513E17CBFEA300BA526E /* eng-web-VernacularAdditional.xml in Resources */,
 				C9FF514017CBFEA300BA526E /* keys.asc in Resources */,
 				C9B305691816A1B900EE8A94 /* copr.htm in Resources */,
@@ -488,6 +522,9 @@
 				C9FF50FF17CBB54700BA526E /* InfoPlist.strings in Resources */,
 				C9B3056B1816A1B900EE8A94 /* eng-asv-VernacularParms.xml in Resources */,
 				C9FF513F17CBFEA300BA526E /* eng-web-VernacularParms.xml in Resources */,
+				C9ED7D6D18DA7C3900864288 /* copr.htm in Resources */,
+				C9ED7D7018DA7C3900864288 /* eng-kjv_usfx.xml in Resources */,
+				C9ED7D7118DA7C3900864288 /* keys.asc in Resources */,
 				C98C1A2B18B6452200E4B3DF /* Bariol_Regular.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
