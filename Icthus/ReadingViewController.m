@@ -121,6 +121,22 @@ UIColor *tintColor;
     [self configureViewWithLocation:location];
 }
 
+- (void)setTranslation:(Translation *)translation {
+    if (_book) {
+        NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Book"];
+        [request setPredicate:[NSPredicate predicateWithFormat:@"code == %@ && translation == %@", [_book code], [translation code]]];
+        NSError *error;
+        NSArray *array = [self.appDel.managedObjectContext executeFetchRequest:request error:&error];
+        if (error) {
+            NSLog(@"%@", [error localizedDescription]);
+
+        } else {
+            _book = [array firstObject];
+            [self configureViewWithLocation:[_book getLocation]];
+        }
+    }
+}
+
 - (void)configureViewWithLocation:(BookLocation *)location {
     // Update the user interface for the detail item.
     if (_book) {

@@ -17,7 +17,6 @@
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
-- (IBAction)settingsButtonPressed:(id)sender;
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
 - (void)controllerWillChangeContent:(NSFetchedResultsController *)controller;
 - (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id <NSFetchedResultsSectionInfo>)sectionInfo atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type;

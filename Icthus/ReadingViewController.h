@@ -10,12 +10,15 @@
 #import "Book.h"
 #import "ReadingView.h"
 #import "MasterViewController.h"
+#import "Translation.h"
 @class MasterViewController;
 @class AppDelegate;
 
 @interface ReadingViewController : UIViewController <UISplitViewControllerDelegate>
 - (id)initWithBook:(Book *)book;
 - (void)setLocation:(BookLocation *)location;
+- (void)setBook:(Book *)newBook;
+- (void)setTranslation:(Translation *)translation;
 
 @property (strong, nonatomic) AppDelegate *appDel;
 @property (strong, nonatomic) IBOutlet ReadingView *readingView;

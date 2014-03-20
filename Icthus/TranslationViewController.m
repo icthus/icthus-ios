@@ -102,6 +102,9 @@ NSString *selectedTranslation;
     [[NSUserDefaults standardUserDefaults] setObject:selectedTranslation forKey:@"selectedTranslation"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     [self.navigationController popViewControllerAnimated:YES];
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+        [self.appDel.detailView setTranslation:trans];
+    }
 }
 
 - (NSFetchedResultsController *)fetchedResultsController
