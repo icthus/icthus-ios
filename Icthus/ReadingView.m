@@ -29,6 +29,7 @@ NSString *currentChapter;
 NSMutableString *remainingMarkup;
 CGPoint lastKnownContentOffset;
 NSInteger activeViewWindow = 3;
+CGRect textFrame;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -102,12 +103,15 @@ NSInteger activeViewWindow = 3;
     self.versesByView = [[NSMutableArray alloc] init];
     remainingMarkup = [[NSMutableString alloc] initWithString:self.text];
     
-    CGRect textFrame;
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
         textFrame = CGRectInset(self.bounds, 50, 0);
     } else {
         textFrame = CGRectInset(self.bounds, 10, 0);
     }
+    // Trim the height of the frame to fit an arbitrary 50 lines of text
+    CGFloat lineHeight = [attString boundingRectWithSize:CGSizeMake(textFrame.size.width, textFrame.size.height) options:0 context:nil].size.height;
+    textFrame.size.height = lineHeight * 50;
+
     CTFramesetterRef framesetter = CTFramesetterCreateWithAttributedString((CFAttributedStringRef)attString);
     
     int textPos = 0;
@@ -172,7 +176,7 @@ NSInteger activeViewWindow = 3;
 }
 
 - (void)getTouchedLocation {
-    int frameHeight = self.frame.size.height;
+    int frameHeight = textFrame.size.height;
     int offset = self.contentOffset.y;
     int frameOffset = offset % frameHeight;
     BibleTextView *currentView = [self.textViews objectAtIndex: offset / frameHeight];
@@ -197,7 +201,7 @@ NSInteger activeViewWindow = 3;
 - (BookLocation *)saveCurrentLocation {
     // find the current view
     int contentOffset = round(self.contentOffset.y);
-    int height = round(self.frame.size.height);
+    int height = round(textFrame.size.height);
     int currentFrameIndex  = contentOffset / height;
     BibleTextView *textView = [self.textViews objectAtIndex:currentFrameIndex];
     if ([textView class] == [NSNull class]) {
@@ -249,7 +253,7 @@ NSInteger activeViewWindow = 3;
             lastTextRange = thisTextRange;
         }
         
-        CGRect frame = CGRectMake(0, self.frame.size.height * i, self.frame.size.width, self.frame.size.height);
+        CGRect frame = CGRectMake(0, textFrame.size.height * i, textFrame.size.width, textFrame.size.height);
         NSArray *chapters = [self.chaptersByView objectAtIndex:i];
         NSArray *verses = [self.versesByView objectAtIndex:i];
         BibleTextView *textView = [[BibleTextView alloc] initWithFrame:frame TextRange:lastTextRange Parent:self Chapters:chapters AndVerses:verses];
@@ -280,14 +284,14 @@ NSInteger activeViewWindow = 3;
             }
         }
         
-        lastKnownContentOffset = CGPointMake(0, 0 - self.frame.size.height);
+        lastKnownContentOffset = CGPointMake(0, 0 - textFrame.size.height);
         [self setContentOffset:CGPointMake(0, contentOffset) animated:NO];
     }
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     CGPoint contentOffset = scrollView.contentOffset;
-    int height = round(self.frame.size.height);
+    int height = round(textFrame.size.height);
     int previousFrameIndex = roundf(lastKnownContentOffset.y) / height;
     int currentFrameIndex  = roundf(contentOffset.y) / height;
     if (previousFrameIndex != currentFrameIndex) {
@@ -300,7 +304,7 @@ NSInteger activeViewWindow = 3;
             if (NSLocationInRange(i, activeRange)) {
                 if ([textView class] == [NSNull class]) {
                     // if the view is null, create it
-                    CGRect frame = CGRectMake(0, self.frame.size.height * i, self.frame.size.width, self.frame.size.height);
+                    CGRect frame = CGRectMake(0, textFrame.size.height * i, textFrame.size.width, textFrame.size.height);
                     NSRange textRange = [[self.textRanges objectAtIndex:i] rangeValue];
                     NSArray *chapters = [self.chaptersByView objectAtIndex:i];
                     NSArray *verses = [self.versesByView objectAtIndex:i];
