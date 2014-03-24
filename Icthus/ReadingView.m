@@ -82,9 +82,9 @@ CGRect textFrame;
         [self setAttString:[[NSAttributedString alloc] initWithString:displayString attributes:attributesDict]];
     } else {
         NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle defaultParagraphStyle] mutableCopy];
-        [paragraphStyle setLineSpacing:4];
+        [paragraphStyle setLineSpacing:6];
         NSDictionary *attributesDict = [[NSDictionary alloc] initWithObjectsAndKeys:
-            [UIFont fontWithName:@"AkzidenzGroteskCE-Roman" size:19], NSFontAttributeName,
+            [UIFont fontWithName:@"AkzidenzGroteskCE-Roman" size:20], NSFontAttributeName,
             paragraphStyle, NSParagraphStyleAttributeName,
             nil
         ];
@@ -108,7 +108,7 @@ CGRect textFrame;
     } else {
         textFrame = CGRectInset(self.bounds, 10, 0);
     }
-    // Trim the height of the frame to fit an arbitrary 50 lines of text
+    // Set the height of the frame to fit an arbitrary 50 lines of text
     CGFloat lineHeight = [attString boundingRectWithSize:CGSizeMake(textFrame.size.width, textFrame.size.height) options:0 context:nil].size.height;
     textFrame.size.height = lineHeight * 50;
 
@@ -136,11 +136,11 @@ CGRect textFrame;
         //prepare for next frame
         textPos += frameRange.length;
         pageIndex++;
-        contentOffset += self.bounds.size.height;
+        contentOffset += textFrame.size.height;
     }
     
     //set the total width of the scroll view
-    self.contentSize = CGSizeMake(self.bounds.size.width, pageIndex * self.bounds.size.height);
+    self.contentSize = CGSizeMake(textFrame.size.width, pageIndex * textFrame.size.height);
 }
 
 // Populates the arrays with the chapter and verse numbers in the frame. When the method returns, each
@@ -253,7 +253,7 @@ CGRect textFrame;
             lastTextRange = thisTextRange;
         }
         
-        CGRect frame = CGRectMake(0, textFrame.size.height * i, textFrame.size.width, textFrame.size.height);
+        CGRect frame = CGRectMake(0, textFrame.size.height * i, self.frame.size.width, textFrame.size.height);
         NSArray *chapters = [self.chaptersByView objectAtIndex:i];
         NSArray *verses = [self.versesByView objectAtIndex:i];
         BibleTextView *textView = [[BibleTextView alloc] initWithFrame:frame TextRange:lastTextRange Parent:self Chapters:chapters AndVerses:verses];
@@ -304,7 +304,7 @@ CGRect textFrame;
             if (NSLocationInRange(i, activeRange)) {
                 if ([textView class] == [NSNull class]) {
                     // if the view is null, create it
-                    CGRect frame = CGRectMake(0, textFrame.size.height * i, textFrame.size.width, textFrame.size.height);
+                    CGRect frame = CGRectMake(0, textFrame.size.height * i, self.frame.size.width, textFrame.size.height);
                     NSRange textRange = [[self.textRanges objectAtIndex:i] rangeValue];
                     NSArray *chapters = [self.chaptersByView objectAtIndex:i];
                     NSArray *verses = [self.versesByView objectAtIndex:i];

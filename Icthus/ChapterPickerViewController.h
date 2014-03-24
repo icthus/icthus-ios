@@ -17,5 +17,6 @@
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (strong, nonatomic) Book *selectedBook;
 @property (nonatomic) NSUInteger selectedChapter;
+- (IBAction)dismissButtonPressed:(id)sender;
 
 @end

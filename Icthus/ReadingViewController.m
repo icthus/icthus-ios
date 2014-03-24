@@ -74,9 +74,15 @@ UIColor *tintColor;
     self.navigationController.navigationBar.tintColor = tintColor;
     self.navigationController.navigationBar.translucent = YES;
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithWhite:1.0 alpha:0.7];
+    UIFont *titleFont;
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+        titleFont = [UIFont fontWithName:@"Avenir-Medium" size:22.0f];
+    } else {
+        titleFont = [UIFont fontWithName:@"Avenir-Medium" size:20.0f];
+    }
     self.navigationController.navigationBar.titleTextAttributes = @{
         NSForegroundColorAttributeName: [UIColor colorWithRed:(0/255.0) green:(0/255.0) blue:(0/255.0) alpha:1.0],
-        NSFontAttributeName: [UIFont fontWithName:@"Avenir-Medium" size:22.0f],
+        NSFontAttributeName: titleFont,
     };
     
     // Style the Go To button
@@ -180,6 +186,7 @@ UIColor *tintColor;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self configureViewWithLocation:[self.book getLocation]];
 }
 
 - (void)didReceiveMemoryWarning
@@ -189,7 +196,6 @@ UIColor *tintColor;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    [self configureViewWithLocation:[self.book getLocation]];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

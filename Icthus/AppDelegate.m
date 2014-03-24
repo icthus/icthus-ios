@@ -54,8 +54,8 @@
         [self setDetailView:(ReadingViewController *)[[splitViewController.viewControllers lastObject] topViewController]];
         [self setMasterView:(MasterViewController *)[splitViewController.viewControllers firstObject]];
     } else {
-        UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
-        MasterViewController *controller = (MasterViewController *)navigationController.topViewController;
+        [self setMasterView:(MasterViewController *)self.window.rootViewController];
+        [self setDetailView:(ReadingViewController *)self.masterView.topViewController];
     }
 }
 

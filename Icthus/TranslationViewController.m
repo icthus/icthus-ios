@@ -101,9 +101,11 @@ NSString *selectedTranslation;
     selectedTranslation = [trans code];
     [[NSUserDefaults standardUserDefaults] setObject:selectedTranslation forKey:@"selectedTranslation"];
     [[NSUserDefaults standardUserDefaults] synchronize];
-    [self.navigationController popViewControllerAnimated:YES];
+    [self.appDel.detailView setTranslation:trans];
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-        [self.appDel.detailView setTranslation:trans];
+        [self.navigationController popViewControllerAnimated:YES];
+    } else {
+        [self.navigationController popToRootViewControllerAnimated:YES];
     }
 }
 

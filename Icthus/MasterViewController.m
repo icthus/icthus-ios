@@ -15,22 +15,25 @@ UIColor *tintColor;
 - (void)awakeFromNib
 {
     tintColor = [UIColor colorWithRed:(0/255.0) green:(165/255.0) blue:(91/255.0) alpha:1.0];
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-//        self.clearsSelectionOnViewWillAppear = NO;
-//        self.preferredContentSize = CGSizeMake(320.0, 600.0);
-    }
     [super awakeFromNib];
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     // Style the nav bar
     self.navigationBar.tintColor = tintColor;
     self.navigationBar.translucent = YES;
     self.navigationBar.barTintColor = [UIColor colorWithWhite:1.0 alpha:0.6];
-    self.navigationBar.titleTextAttributes = @{
-//        NSForegroundColorAttributeName: [UIColor colorWithRed:(13/255.0) green:(149/255.0) blue:(69/255.0) alpha:1.0],
+    UIFont *titleFont;
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+        titleFont = [UIFont fontWithName:@"Avenir-Medium" size:22.0f];
+    } else {
+        titleFont = [UIFont fontWithName:@"Avenir-Medium" size:20.0f];
+    }
+    
+    self.navigationController.navigationBar.titleTextAttributes = @{
+        NSForegroundColorAttributeName: [UIColor colorWithRed:(0/255.0) green:(0/255.0) blue:(0/255.0) alpha:1.0],
+        NSFontAttributeName: titleFont
     };
     
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {

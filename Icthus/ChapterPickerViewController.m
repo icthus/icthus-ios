@@ -76,9 +76,9 @@
         }
     } else {
         if ([self isBookAtIndexPath:indexPath]) {
-            return CGSizeMake(319, 61);
+            return CGSizeMake(319, 42);
         } else {
-            return CGSizeMake(61, 61);
+            return CGSizeMake(61, 42);
         }
     }
 }
@@ -131,9 +131,7 @@
         [self.collectionView reloadData];
     } else {
         self.selectedChapter = index - chapterRange.location + 1;
-        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-            [self updateLocationAndShowChapter];
-        }
+        [self updateLocationAndShowChapter];
     }
 }
 
@@ -144,11 +142,14 @@
 }
 
 - (void)updateLocationAndShowChapter {
-        NSIndexPath *chapterIndexPath = [[self.collectionView indexPathsForSelectedItems] lastObject];
-        NSRange chapterRange = [self getChapterRange];
-        self.selectedChapter = [chapterIndexPath item] - chapterRange.location + 1;
-        BookLocation *location = [selectedBook setLocationChapter:selectedChapter verse:1];
-        [_appDel.detailView setLocation:location];
+    NSIndexPath *chapterIndexPath = [[self.collectionView indexPathsForSelectedItems] lastObject];
+    NSRange chapterRange = [self getChapterRange];
+    self.selectedChapter = [chapterIndexPath item] - chapterRange.location + 1;
+    BookLocation *location = [selectedBook setLocationChapter:selectedChapter verse:1];
+    [_appDel.detailView setLocation:location];
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
     
 }
 
@@ -268,4 +269,7 @@
     }
 }
 
+- (IBAction)dismissButtonPressed:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 @end
