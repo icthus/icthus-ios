@@ -12,8 +12,7 @@
 UIColor *tintColor;
 
 @implementation MasterViewController
-- (void)awakeFromNib
-{
+- (void)awakeFromNib {
     tintColor = [UIColor colorWithRed:(0/255.0) green:(165/255.0) blue:(91/255.0) alpha:1.0];
     [super awakeFromNib];
 }
@@ -40,7 +39,14 @@ UIColor *tintColor;
         self.readingListViewController = (ReadingListViewController *)self.topViewController;
         UIStoryboard*  sb = [UIStoryboard storyboardWithName:@"Main_iPad" bundle:nil];
         self.settingsViewController = [sb instantiateViewControllerWithIdentifier:@"SettingsViewController"];
+    } else {
+        UIStoryboard*  sb = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle:nil];
+        self.settingsViewController = [sb instantiateViewControllerWithIdentifier:@"SettingsViewController"];
     }
+}
+
+- (void)showSettings {
+    [self pushViewController:self.settingsViewController animated:YES];
 }
 
 - (void)toggleSettingsPopover {

@@ -19,6 +19,7 @@
 @property (strong, nonatomic) UITableViewController *settingsViewController;
 @property (strong, nonatomic) ReadingListViewController *readingListViewController;
 
+- (void)showSettings;
 - (void)toggleSettingsPopover;
 - (void)toggleReadingListPopover;
 

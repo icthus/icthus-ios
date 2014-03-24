@@ -22,7 +22,7 @@
         <!--Settings View Controller - Menu-->
         <scene sceneID="VgW-fR-Quf">
             <objects>
-                <tableViewController title="Menu" id="pGg-6v-bdr" customClass="SettingsViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="SettingsViewController" title="Menu" id="pGg-6v-bdr" customClass="SettingsViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="mLL-gJ-YKr">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -30,28 +30,8 @@
                         <sections>
                             <tableViewSection id="GM9-YD-G3f">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="Jgt-9X-vtJ" rowHeight="100" style="IBUITableViewCellStyleDefault" id="4tW-AX-hLk">
-                                        <rect key="frame" x="0.0" y="64" width="320" height="100"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4tW-AX-hLk" id="buI-4Q-Nmw">
-                                            <rect key="frame" x="0.0" y="0.0" width="287" height="99"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Recent Books" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="270" id="Jgt-9X-vtJ">
-                                                    <rect key="frame" x="15" y="0.0" width="270" height="99"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="32"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="qht-c0-i04" kind="push" identifier="" id="n2y-Og-6WS"/>
-                                        </connections>
-                                    </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="UGu-3Y-0LO" rowHeight="100" style="IBUITableViewCellStyleDefault" id="OrL-0l-jg9">
-                                        <rect key="frame" x="0.0" y="164" width="320" height="100"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OrL-0l-jg9" id="Sje-lq-8fb">
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="99"/>
@@ -78,14 +58,14 @@
                             <outlet property="delegate" destination="pGg-6v-bdr" id="Y6K-Cp-Qkv"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Menu" id="tQt-TN-PWz"/>
+                    <navigationItem key="navigationItem" title="Settings" id="tQt-TN-PWz"/>
                     <connections>
                         <segue destination="par-AT-uJO" kind="modal" identifier="promptForiCloud" id="mkW-DF-7eD"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Cn-md-YlS" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="939" y="-168"/>
+            <point key="canvasLocation" x="1581" y="-248"/>
         </scene>
         <!--Master View Controller-->
         <scene sceneID="tQL-aV-kwH">
@@ -100,7 +80,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5mh-3d-5VW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="780" y="645"/>
+            <point key="canvasLocation" x="1008" y="547"/>
         </scene>
         <!--Chapter Picker View Controller - Choose a Chapter-->
         <scene sceneID="8kb-Xg-pAx">
@@ -182,7 +162,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n2l-3t-SzS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1257" y="639"/>
+            <point key="canvasLocation" x="1485" y="541"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="zMr-f5-sR1">
@@ -228,7 +208,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xAC-YK-wW8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1618" y="595"/>
+            <point key="canvasLocation" x="2146" y="191"/>
         </scene>
         <!--Translation View Controller-->
         <scene sceneID="W6m-Kn-pUh">
@@ -240,7 +220,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="sK7-fT-5vr">
-                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sK7-fT-5vr" id="48h-hK-Lfu">
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
@@ -257,7 +237,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bFE-MI-pfN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1583" y="-860"/>
+            <point key="canvasLocation" x="2137" y="-492"/>
         </scene>
         <!--Reading View Controller - ReadingView-->
         <scene sceneID="sJ8-ag-o0I">
@@ -279,9 +259,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="ReadingView" id="ky5-FA-OfL">
-                        <barButtonItem key="leftBarButtonItem" title="Menu" id="nJV-fl-hx2">
+                        <barButtonItem key="leftBarButtonItem" title="History" id="nJV-fl-hx2">
                             <connections>
-                                <segue destination="pGg-6v-bdr" kind="push" id="hMo-Nd-mq2"/>
+                                <segue destination="qht-c0-i04" kind="push" id="RVG-qd-955"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Go To" id="9KI-zJ-HOg">
@@ -298,7 +278,7 @@
             </objects>
             <point key="canvasLocation" x="437" y="64"/>
         </scene>
-        <!--Reading List View Controller - Reading-->
+        <!--Reading List View Controller - History-->
         <scene sceneID="GW3-gE-bzx">
             <objects>
                 <tableViewController id="qht-c0-i04" customClass="ReadingListViewController" sceneMemberID="viewController">
@@ -337,11 +317,11 @@
                             <outlet property="delegate" destination="qht-c0-i04" id="JbJ-MO-ilV"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Reading" id="qjY-zY-yTa"/>
+                    <navigationItem key="navigationItem" title="History" id="qjY-zY-yTa"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RKf-FB-kDi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1618" y="-190"/>
+            <point key="canvasLocation" x="1008" y="-238"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

@@ -34,7 +34,14 @@
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
-    self.navigationItem.rightBarButtonItem = self.editButtonItem;
+
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+        self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    } else {
+        UIImage *settingsIcon = [UIImage imageNamed:@"SettingsIcon"];
+        UIBarButtonItem *settingsButton = [[UIBarButtonItem alloc] initWithImage:settingsIcon style:UIBarButtonItemStylePlain target:self.appDel.masterView action:@selector(showSettings)];
+        self.navigationItem.rightBarButtonItem = settingsButton;
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
