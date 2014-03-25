@@ -93,6 +93,8 @@ static NSString *translationDisplayName;
     } else if (shouldParseBook) {
         if ([elementName isEqualToString:@"p"]) {
             shouldParseCharacters = YES;
+            // add a newline and a tab
+            [mutableBookText appendString:@"\n   "];
         } else if ([elementName isEqualToString:@"f"]) {
             shouldParseCharacters = NO;
         } else if ([elementName isEqualToString:@"v"]) {
@@ -156,6 +158,8 @@ static NSString *translationDisplayName;
 
 - (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string {
     if (shouldParseBook && shouldParseCharacters) {
+        // remove the newlines in the xml. Replace with spaces.
+        string = [string stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
         [mutableBookText appendString:string];
     }
 }

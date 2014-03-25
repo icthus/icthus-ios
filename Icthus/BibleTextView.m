@@ -48,12 +48,12 @@ BibleVerseView *verseView;
         
         // make the BibleVerseView
         if ([chapters count] && [verses count]) {
-            CGFloat lineHeight = [attString boundingRectWithSize:CGSizeMake(textFrame.size.width, textFrame.size.height) options:0 context:nil].size.height;
             CFArrayRef lines = CTFrameGetLines(ctframe);
             int length = CFArrayGetCount(lines);
             CGPoint origins[length];
             CTFrameGetLineOrigins(ctframe, CFRangeMake(0, 0), origins);
-        
+            CGFloat lineHeight = [self.parentView.sizingString boundingRectWithSize:CGSizeMake(textFrame.size.width, textFrame.size.height) options:0 context:nil].size.height;
+
             verseView = [[BibleVerseView alloc] initWithContentFrame:frame verses:verses chapters:chapters andLineOrigins:origins withLength:length andLineHeight:lineHeight];
             [self addSubview:verseView];
         }

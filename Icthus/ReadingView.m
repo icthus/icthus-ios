@@ -19,6 +19,7 @@
 @synthesize verseViews;
 @synthesize textRanges;
 @synthesize attString;
+@synthesize sizingString;
 @synthesize book;
 @synthesize parser;
 @synthesize versesByView;
@@ -80,6 +81,7 @@ CGRect textFrame;
         [paragraphStyle setLineSpacing:14];
         NSDictionary *attributesDict = [[NSDictionary alloc] initWithObjectsAndKeys:[UIFont fontWithName:@"AkzidenzGroteskCE-Roman"size:24], NSFontAttributeName, paragraphStyle, NSParagraphStyleAttributeName, nil];
         [self setAttString:[[NSAttributedString alloc] initWithString:displayString attributes:attributesDict]];
+        [self setSizingString:[[NSAttributedString alloc] initWithString:@"Foo" attributes:attributesDict]];
     } else {
         NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle defaultParagraphStyle] mutableCopy];
         [paragraphStyle setLineSpacing:6];
@@ -89,6 +91,7 @@ CGRect textFrame;
             nil
         ];
         [self setAttString:[[NSAttributedString alloc] initWithString:displayString attributes:attributesDict]];
+        [self setSizingString:[[NSAttributedString alloc] initWithString:@"Foo" attributes:attributesDict]];
     }
         
     // build the subviews
@@ -109,7 +112,7 @@ CGRect textFrame;
         textFrame = CGRectInset(self.bounds, 10, 0);
     }
     // Set the height of the frame to fit an arbitrary 50 lines of text
-    CGFloat lineHeight = [attString boundingRectWithSize:CGSizeMake(textFrame.size.width, textFrame.size.height) options:0 context:nil].size.height;
+    CGFloat lineHeight = [self.sizingString boundingRectWithSize:CGSizeMake(textFrame.size.width, textFrame.size.height) options:0 context:nil].size.height;
     textFrame.size.height = lineHeight * 50;
 
     CTFramesetterRef framesetter = CTFramesetterCreateWithAttributedString((CFAttributedStringRef)attString);

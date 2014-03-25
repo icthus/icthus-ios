@@ -18,6 +18,7 @@
 - (void)saveCurrentLocation;
 
 @property (retain, nonatomic) NSAttributedString* attString;
+@property (retain, nonatomic) NSAttributedString* sizingString;
 @property (retain, nonatomic) NSString *text;
 @property (retain, nonatomic) NSMutableArray* textViews;
 @property (retain, nonatomic) NSMutableArray* verseViews;
