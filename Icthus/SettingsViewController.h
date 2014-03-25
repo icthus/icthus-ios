@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SendMailTableViewCell.h"
+#import <MessageUI/MFMailComposeViewController.h>
 
-@interface SettingsViewController : UITableViewController
+@interface SettingsViewController : UITableViewController <MFMailComposeViewControllerDelegate>
+
+- (void)presentMailViewController;
 
 @end

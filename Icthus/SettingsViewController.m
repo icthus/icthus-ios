@@ -10,4 +10,27 @@
 
 @implementation SettingsViewController
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *selectedCell = [self.tableView cellForRowAtIndexPath:indexPath];
+    if ([selectedCell class] == [SendMailTableViewCell class]) {
+        [self presentMailViewController];
+    }
+}
+
+- (void)presentMailViewController {
+    if ([MFMailComposeViewController canSendMail]) {
+        MFMailComposeViewController *mailController = [[MFMailComposeViewController alloc] init];
+        mailController.mailComposeDelegate = self;
+        [mailController setToRecipients:@[@"matt@lorentz.is"]];
+        [self presentViewController:mailController animated:YES completion:nil];
+    } else {
+        [[[UIAlertView alloc] initWithTitle:@"No Mail Account Configured" message:@"You must configure a mail account before you can send email" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil] show];
+    }
+}
+
+- (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error {
+    // Handle any errors here & check for controller's result as well
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 @end
