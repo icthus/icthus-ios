@@ -94,7 +94,7 @@ static NSString *translationDisplayName;
         if ([elementName isEqualToString:@"p"]) {
             shouldParseCharacters = YES;
             // add a newline and a tab
-            [mutableBookText appendString:@"\n     "];
+            [mutableBookText appendString:@"\n\t"];
         } else if ([elementName isEqualToString:@"q"]) {
             // These are lyrical verses. Insert a newline.
             [mutableBookText appendString:@"\n"];
@@ -143,16 +143,19 @@ static NSString *translationDisplayName;
 }
 
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qualifiedName {
-    if (parser == _bookParser && [elementName isEqualToString:@"book"]) {
+    if (parser == _bookParser && [elementName isEqualToString:@"book"] && shouldParseBook) {
         [mutableBookText appendString:@"</c></book>"];
+        // Remove any blocks of spaces
+        NSString *replacedText = [self cleanBookText:mutableBookText];
+        [_currentBook setText:replacedText];
         [_currentBook setNumberOfChapters:[NSNumber numberWithInt:chapterIndex]];
-        [_currentBook setText:mutableBookText];
     } else if (shouldParseBook) {
         if ([elementName isEqualToString:@"p"]) {
             shouldParseCharacters = NO;
         } else if ([elementName isEqualToString:@"f"]) {
             shouldParseCharacters = YES;
         } else if ([elementName isEqualToString:@"ve"]) {
+            shouldParseCharacters = NO;
             [mutableBookText appendString:@"</v>"];
         }
     }
@@ -173,6 +176,36 @@ static NSString *translationDisplayName;
 
 - (void)parserDidEndDocument:(NSXMLParser *)parser {
 
+}
+
+- (NSString *)cleanBookText:(NSString *)bookText {
+    NSError *error;
+    
+    // Parse double spaces by themselves
+    NSRegularExpression *filterSpaces = [NSRegularExpression regularExpressionWithPattern:@"  +" options:NSRegularExpressionCaseInsensitive error:&error];
+    if (error) {
+        NSLog(@"%@", [error localizedDescription]);
+    } else {
+        bookText = [filterSpaces stringByReplacingMatchesInString:bookText options:0 range:NSMakeRange(0, [bookText length]) withTemplate:@" "];
+    }
+    
+    // Parse double spaces separeted by verse tags
+    NSRegularExpression *filterSpacesWithVerseTags = [NSRegularExpression regularExpressionWithPattern:@" +(</v><v i=\"[0-9]+\">) +" options:NSRegularExpressionCaseInsensitive error:&error];
+    if (error) {
+        NSLog(@"%@", [error localizedDescription]);
+    } else {
+        bookText = [filterSpacesWithVerseTags stringByReplacingMatchesInString:bookText options:0 range:NSMakeRange(0, [bookText length]) withTemplate:@" $1"];
+    }
+    
+    // parse double spaces separated by chapter tags
+    NSRegularExpression *filterSpacesWithChapterTags = [NSRegularExpression regularExpressionWithPattern:@" +(</v></c><c i=\"[0-9]\"><v i=\"[0-9]+\">) +" options:NSRegularExpressionCaseInsensitive error:&error];
+    if (error) {
+        NSLog(@"%@", [error localizedDescription]);
+    } else {
+        bookText = [filterSpacesWithChapterTags stringByReplacingMatchesInString:bookText options:0 range:NSMakeRange(0, [bookText length]) withTemplate:@" $1"];
+    }
+    
+    return bookText;
 }
 
 
