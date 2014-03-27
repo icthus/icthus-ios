@@ -79,17 +79,19 @@ CGRect textFrame;
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
         NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle defaultParagraphStyle] mutableCopy];
         [paragraphStyle setLineSpacing:14];
-        NSDictionary *attributesDict = [[NSDictionary alloc] initWithObjectsAndKeys:[UIFont fontWithName:@"AkzidenzGroteskCE-Roman"size:24], NSFontAttributeName, paragraphStyle, NSParagraphStyleAttributeName, nil];
+        NSDictionary *attributesDict = @{
+            NSFontAttributeName: [UIFont fontWithName:@"AkzidenzGroteskCE-Roman"size:24],
+            NSParagraphStyleAttributeName: paragraphStyle,
+        };
         [self setAttString:[[NSAttributedString alloc] initWithString:displayString attributes:attributesDict]];
         [self setSizingString:[[NSAttributedString alloc] initWithString:@"Foo" attributes:attributesDict]];
     } else {
         NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle defaultParagraphStyle] mutableCopy];
         [paragraphStyle setLineSpacing:6];
-        NSDictionary *attributesDict = [[NSDictionary alloc] initWithObjectsAndKeys:
-            [UIFont fontWithName:@"AkzidenzGroteskCE-Roman" size:20], NSFontAttributeName,
-            paragraphStyle, NSParagraphStyleAttributeName,
-            nil
-        ];
+        NSDictionary *attributesDict = @{
+            NSFontAttributeName: [UIFont fontWithName:@"AkzidenzGroteskCE-Roman"size:20],
+            NSParagraphStyleAttributeName: paragraphStyle,
+        };
         [self setAttString:[[NSAttributedString alloc] initWithString:displayString attributes:attributesDict]];
         [self setSizingString:[[NSAttributedString alloc] initWithString:@"Foo" attributes:attributesDict]];
     }

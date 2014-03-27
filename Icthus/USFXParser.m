@@ -94,14 +94,16 @@ static NSString *translationDisplayName;
         if ([elementName isEqualToString:@"p"]) {
             shouldParseCharacters = YES;
             // add a newline and a tab
-            [mutableBookText appendString:@"\n   "];
+            [mutableBookText appendString:@"\n     "];
+        } else if ([elementName isEqualToString:@"q"]) {
+            // These are lyrical verses. Insert a newline.
+            [mutableBookText appendString:@"\n"];
         } else if ([elementName isEqualToString:@"f"]) {
             shouldParseCharacters = NO;
         } else if ([elementName isEqualToString:@"v"]) {
             shouldParseCharacters = YES;
             [mutableBookText appendString:[NSString stringWithFormat:@"<v i=\"%d\">", [[attributeDict objectForKey:@"id"] intValue]]];
-        } else if ([elementName isEqualToString:@"q"] ||
-                   [elementName isEqualToString:@"qt"] ||
+        } else if ([elementName isEqualToString:@"qt"] ||
                    [elementName isEqualToString:@"wj"] ||
                    [elementName isEqualToString:@"tl"] ||
                    [elementName isEqualToString:@"qac"] ||

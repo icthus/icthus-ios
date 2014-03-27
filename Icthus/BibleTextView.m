@@ -36,7 +36,7 @@ BibleVerseView *verseView;
         if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
             textFrame = CGRectInset(self.bounds, 50, 0);
         } else {
-            textFrame = CGRectInset(self.bounds, 10, 0);
+            textFrame = CGRectInset(self.bounds, 15, 0);
         }
         
         CTFramesetterRef framesetter = CTFramesetterCreateWithAttributedString((CFAttributedStringRef)attString);
