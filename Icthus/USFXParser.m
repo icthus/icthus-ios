@@ -19,6 +19,9 @@
 @synthesize currentBook = _currentBook;
 
 NSArray *includedBooks;
+NSSet *includedTags;
+NSSet *excludedTags;
+NSMutableArray *heirarchy;
 NSMutableString *mutableBookText;
 int chapterIndex;
 bool shouldParseCharacters;
@@ -32,9 +35,16 @@ static NSString *translationDisplayName;
     _context = context;
     _booksByCode = [[NSMutableDictionary alloc] init];
     AppDelegate *appDel = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    heirarchy = [[NSMutableArray alloc] initWithCapacity:50];
     
     // Define the books we will include
     includedBooks = @[@"GEN",@"EXO",@"LEV",@"NUM",@"DEU",@"JOS",@"JDG",@"RUT",@"1SA",@"2SA",@"1KI",@"2KI",@"1CH",@"2CH",@"EZR",@"NEH",@"EST",@"JOB",@"PSA",@"PRO",@"ECC",@"SNG",@"ISA",@"JER",@"LAM",@"EZK",@"DAN",@"HOS",@"JOL",@"AMO",@"OBA",@"JON",@"MIC",@"NAM",@"HAB",@"ZEP",@"HAG",@"ZEC",@"MAL",@"MAT",@"MRK",@"LUK",@"JHN",@"ACT",@"ROM",@"1CO",@"2CO",@"GAL",@"EPH",@"PHP",@"COL",@"1TH",@"2TH",@"1TI",@"2TI",@"TIT",@"PHM",@"HEB",@"JAS",@"1PE",@"2PE",@"1JN",@"2JN",@"3JN",@"JUD",@"REV",];
+    
+    // Define the tags we will include and exclude
+    // TODO: handle formatting of h, mt, b tags
+    // tags I'm unsure of (and can't find any examples of): milestone, generated, da, cs
+    includedTags = [[NSSet alloc] initWithArray:@[@"usfx", @"book", @"h", @"p", @"q", @"mt", @"d", @"b", @"generated", @"c", @"v", @"ve", @"qt", @"nd", @"tl", @"qs", @"qac", @"sls", @"bk", @"pn", @"k", @"ord", @"sig", @"bd", @"it", @"bdit", @"sc", @"no", @"quoteStart", @"quoteEnd", @"wj", @"wtp", @"da"]];
+    excludedTags = [[NSSet alloc] initWithArray:@[@"languageCode", @"rem", @"id", @"ide", @"rem", @"cl", @"s", @"sectionBoundary", @"cp", @"ca", @"toc", @"milestone", @"va", @"vp", @"table", @"generated", @"f", @"ef", @"fm", @"x", @"ex", @"dc", @"add", @"fig", @"description", @"catalog", @"size", @"location", @"copyright", @"caption", @"reference", @"ndx", @"w", @"wh", @"wg", @"wr", @"quoteRemind", @"ior", @"cs", @"fs", @"cl", @"//", @"ref", @"zw"]];
     
     Translation *trans = [NSEntityDescription insertNewObjectForEntityForName:@"Translation" inManagedObjectContext:_context];
     [trans setCode:translationCode];
@@ -67,6 +77,7 @@ static NSString *translationDisplayName;
 }
 
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qualifiedName attributes:(NSDictionary *)attributeDict {
+    [heirarchy addObject:elementName];
     if (parser == _nameParser && [elementName isEqual: @"book"]) {
         NSUInteger bookIndex = [includedBooks indexOfObject:[attributeDict valueForKey:@"code"]];
         if (bookIndex != NSNotFound) {
@@ -97,45 +108,30 @@ static NSString *translationDisplayName;
             [mutableBookText appendString:@"\n\t"];
         } else if ([elementName isEqualToString:@"q"]) {
             // These are lyrical verses. Insert a newline.
+            shouldParseCharacters = YES;
             [mutableBookText appendString:@"\n"];
-        } else if ([elementName isEqualToString:@"f"]) {
-            shouldParseCharacters = NO;
-        } else if ([elementName isEqualToString:@"v"]) {
-            shouldParseCharacters = YES;
-            [mutableBookText appendString:[NSString stringWithFormat:@"<v i=\"%d\">", [[attributeDict objectForKey:@"id"] intValue]]];
-        } else if ([elementName isEqualToString:@"qt"] ||
-                   [elementName isEqualToString:@"wj"] ||
-                   [elementName isEqualToString:@"tl"] ||
-                   [elementName isEqualToString:@"qac"] ||
-                   [elementName isEqualToString:@"sls"] ||
-                   [elementName isEqualToString:@"bk"] ||
-                   [elementName isEqualToString:@"pn"] ||
-                   [elementName isEqualToString:@"k"] ||
-                   [elementName isEqualToString:@"ord"] ||
-                   [elementName isEqualToString:@"sig"] ||
-                   [elementName isEqualToString:@"bd"] ||
-                   [elementName isEqualToString:@"it"] ||
-                   [elementName isEqualToString:@"bdit"] ||
-                   [elementName isEqualToString:@"sc"] ||
-                   [elementName isEqualToString:@"no"] ||
-                   [elementName isEqualToString:@"quoteStart"] ||
-                   [elementName isEqualToString:@"quoteEnd"] ||
-                   [elementName isEqualToString:@"quoteRemind"] ||
-                   [elementName isEqualToString:@"nd"]) {
-            shouldParseCharacters = YES;
-        } else if ([elementName isEqualToString:@"qs"]) {
-            // For the "Selah" in the Psalms
-            shouldParseCharacters = YES;
         } else if ([elementName isEqualToString:@"d"]) {
             // Indicating the title of a Psalm
             shouldParseCharacters = YES;
-            [mutableBookText appendString:@"\n"];
+            [mutableBookText appendString:@"\n\n"];
+        } else if ([elementName isEqualToString:@"v"]) {
+            shouldParseCharacters = YES;
+            [mutableBookText appendString:[NSString stringWithFormat:@"<v i=\"%d\">", [[attributeDict objectForKey:@"id"] intValue]]];
         } else if ([elementName isEqualToString:@"c"]) {
             if (chapterIndex != 0) {
                 [mutableBookText appendString:@"</c>"];
             }
             chapterIndex = [(NSString *)[attributeDict objectForKey:@"id"] intValue];
             [mutableBookText appendString:[NSString stringWithFormat:@"<c i=\"%@\">", [attributeDict objectForKey:@"id"]]];
+        } else if ([includedTags containsObject:elementName]) {
+            // Test if we found an element we should parse inside an element we should not parse
+            shouldParseCharacters = YES;
+            for (NSString *element in heirarchy) {
+                if ([excludedTags containsObject:element]) {
+                    shouldParseCharacters = NO;
+                    break;
+                }
+            }
         } else {
             shouldParseCharacters = NO;
         }
@@ -143,6 +139,7 @@ static NSString *translationDisplayName;
 }
 
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qualifiedName {
+    [heirarchy removeLastObject];
     if (parser == _bookParser && [elementName isEqualToString:@"book"] && shouldParseBook) {
         [mutableBookText appendString:@"</c></book>"];
         // Remove any blocks of spaces
@@ -150,13 +147,13 @@ static NSString *translationDisplayName;
         [_currentBook setText:replacedText];
         [_currentBook setNumberOfChapters:[NSNumber numberWithInt:chapterIndex]];
     } else if (shouldParseBook) {
-        if ([elementName isEqualToString:@"p"]) {
-            shouldParseCharacters = NO;
-        } else if ([elementName isEqualToString:@"f"]) {
-            shouldParseCharacters = YES;
-        } else if ([elementName isEqualToString:@"ve"]) {
+        if ([elementName isEqualToString:@"ve"]) {
             shouldParseCharacters = NO;
             [mutableBookText appendString:@"</v>"];
+        } else if ([includedTags containsObject:[heirarchy lastObject]]) {
+            shouldParseCharacters = YES;
+        } else {
+            shouldParseCharacters = NO;
         }
     }
 }
