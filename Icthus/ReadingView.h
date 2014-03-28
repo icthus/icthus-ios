@@ -21,7 +21,7 @@
 @property (retain, nonatomic) NSAttributedString* sizingString;
 @property (retain, nonatomic) NSString *text;
 @property (retain, nonatomic) NSMutableArray* textViews;
-@property (retain, nonatomic) NSMutableArray* verseViews;
+@property (retain, nonatomic) NSMutableArray* frameData;
 @property (retain, nonatomic) NSMutableArray* textRanges;
 @property (retain, nonatomic) NSMutableArray* versesByView;
 @property (retain, nonatomic) NSMutableArray* chaptersByView;

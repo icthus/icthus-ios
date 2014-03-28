@@ -10,6 +10,7 @@
 #import <CoreText/CoreText.h>
 #import "ReadingView.h"
 #import "BibleVerseView.h"
+#import "BibleFrameInfo.h"
 
 @interface BibleTextView : UIView {
     @private BibleVerseView *verseView;
@@ -22,6 +23,6 @@
 @property NSArray *verses;
 
 -(void)setCTFrame:(CTFrameRef)f;
--(id)initWithFrame:(CGRect)frame TextRange:(NSRange)textRange Parent:(ReadingView *)parentView Chapters:(NSArray *)chapters AndVerses:(NSArray *)verses;
-
+- (id)initWithFrameInfo:(BibleFrameInfo *)frameInfo andParent:(ReadingView *)parentView;
+    
 @end

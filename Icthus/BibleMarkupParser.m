@@ -9,6 +9,7 @@
 #import "BibleMarkupParser.h"
 #import "BookLocation.h"
 #import "AppDelegate.h"
+#import "BibleFrameInfo.h"
 
 
 @implementation BibleMarkupParser
@@ -16,19 +17,22 @@
     NSMutableString *displayText;
     NSMutableArray *versesInString;
     NSMutableArray *chaptersInString;
+    NSArray *frameData;
     NSRange displayStringRange;
     bool gettingLocationForChar;
     bool gettingDisplayString;
     bool gettingTextPos;
-    bool findingVersesForString;
-    bool findingChaptersForString;
+    bool findingVersesAndChaptersForString;
     int currentChapter;
     int currentVerse;
     int neededChapter;
     int neededVerse;
     int neededTextPos;
+    int frameIndex;
+    int lineIndex;
+    int lineCount;
+    int frameCount;
     int textPos;
-    int markupPos;
 }
 
 - (id)init {
@@ -44,81 +48,31 @@
     gettingLocationForChar = NO;
     gettingDisplayString = NO;
     gettingTextPos = NO;
-    findingVersesForString = NO;
-    findingChaptersForString = NO;
+    findingVersesAndChaptersForString = NO;
     currentChapter = 0;
     currentVerse = 0;
+    frameIndex = 0;
+    lineIndex = 0;
+    lineCount = 0;
+    frameCount = 0;
     textPos = 0;
-    markupPos = 0;
 }
 
--(NSArray *)verseAndChapterNumbersForRange:(NSRange)range inMarkup:(NSString *)markupText {
-    // returns an array that has [verseNumbers, chapterNumbers, markupRange]
+-(void)addChapterAndVerseNumbersToFrameData:(NSArray *)frameDataArray fromMarkup:(NSString *)markupText {
     [self reset];
-    NSString *substring;
+    findingVersesAndChaptersForString = YES;
     
-    #pragma mark - terrible, horrible hack, what are you even doing fix this right now you idiot
-    // NSXMLParser sucks and is a memory hog so I needed to chop down the strings I was feeding it.
-    // We don't know how much to chop down because the range we get in the arguments is for the plain
-    // text not the markup. So the theory is that if we are looking for more than 10 characters of text
-    // the ratio of text to markup should be greater that 1:4 so we can chop off some of that string
-    // we are parsing so NSXMLParser doesn't allocate as much memory. Sorry.
-    if (range.length > 10) {
-        NSRange hackRange = NSMakeRange(range.location, MIN([markupText length], range.length * 4));
-        substring = [markupText substringWithRange:hackRange];
-    } else {
-        substring = markupText;
+    frameData = frameDataArray;
+    if ([frameData count] > 0) {
+        BibleFrameInfo *frameInfo = [frameData firstObject];
+        frameCount = [frameData count];
+        lineCount = [frameInfo.lineRanges count];
+        displayStringRange = [[frameInfo.lineRanges firstObject] rangeValue];
     }
-    NSData *data = [substring dataUsingEncoding:NSUTF8StringEncoding];
+    NSData *data = [markupText dataUsingEncoding:NSUTF8StringEncoding];
     NSXMLParser *parser = [[NSXMLParser alloc] initWithData:data];
     [parser setDelegate:self];
-    findingVersesForString = YES;
-    findingChaptersForString = YES;
-    displayStringRange = range;
-    versesInString = [[NSMutableArray alloc] init];
-    chaptersInString = [[NSMutableArray alloc] init];
     [parser parse];
-    return [[NSArray alloc] initWithObjects:versesInString, chaptersInString, [NSNumber numberWithInt:markupPos], nil];
-}
-
--(NSArray *)verseNumbersForRange:(NSRange)range inMarkup:(NSString *)markupText {
-    [self reset];
-    NSData *data = [markupText dataUsingEncoding:NSUTF8StringEncoding];
-    NSXMLParser *parser = [[NSXMLParser alloc] initWithData:data];
-    [parser setDelegate:self];
-    findingVersesForString = YES;
-    textPos = 0;
-    displayStringRange = range;
-    versesInString = [[NSMutableArray alloc] init];
-    if ([parser parse]) {
-        return [NSArray arrayWithArray:versesInString];
-    } else if (versesInString) {
-        return [NSArray arrayWithArray:versesInString];
-    } else {
-        NSLog(@"An error occured finding verse numbers for string: %@", markupText);
-        return nil;
-    }
-}
-
--(NSArray *)chapterNumbersForRange:(NSRange)range inMarkup:(NSString *)markupText withStartingChapter:(NSString *)startingChapter {
-    [self reset];
-    NSData *data = [markupText dataUsingEncoding:NSUTF8StringEncoding];
-    NSXMLParser *parser = [[NSXMLParser alloc] initWithData:data];
-    [parser setDelegate:self];
-    findingChaptersForString = YES;
-    textPos = 0;
-    displayStringRange = range;
-    chaptersInString = [[NSMutableArray alloc] init];
-    if ([parser parse]) {
-        return [NSArray arrayWithArray:chaptersInString];
-    } else if ([chaptersInString count]) {
-        return [NSArray arrayWithArray:chaptersInString];
-    } else {
-        if (startingChapter) {
-            [chaptersInString insertObject:startingChapter atIndex:0];
-        }
-        return [NSArray arrayWithArray:chaptersInString];
-    }
 }
 
 - (NSString *)displayStringFromMarkup:(NSString *)markupText {
@@ -188,34 +142,31 @@
         }
     }
     
-    if (findingChaptersForString || findingVersesForString) {
-        markupPos += [self lengthForOpeningMarkupElement:elementName withAttributes:attributeDict];
-    }
-    
-    if ((findingVersesForString || findingChaptersForString) && textPos >= displayStringRange.location) {
-        if (findingVersesForString) {
-            if ([elementName isEqualToString:@"v"]) {
-                NSString *i = [attributeDict objectForKey:@"i"];
-                if ([i length]) {
-                    [versesInString addObject:i];
-                }
+    if (findingVersesAndChaptersForString) {
+        if ([elementName isEqualToString:@"v"]) {
+            NSString *i = [attributeDict objectForKey:@"i"];
+            if ([i length]) {
+                NSMutableArray *versesForLine = [[(BibleFrameInfo *)[frameData objectAtIndex:frameIndex] verses] objectAtIndex:lineIndex];
+                [versesForLine addObject:i];
             }
         }
-        if (findingChaptersForString) {
-            if ([elementName isEqualToString:@"c"]) {
-                NSString *i = [attributeDict objectForKey:@"i"];
-                if ([i length]) {
-                    [chaptersInString addObject:i];
-                }
+
+        if ([elementName isEqualToString:@"c"]) {
+            NSString *i = [attributeDict objectForKey:@"i"];
+            if ([i length]) {
+                currentChapter = [i intValue];
             }
+        }
+        
+        if ([elementName isEqualToString:@"v"] || [elementName isEqualToString:@"c"]) {
+            NSMutableArray *chaptersForLine = [[(BibleFrameInfo *)[frameData objectAtIndex:frameIndex] chapters] objectAtIndex:lineIndex];
+            [chaptersForLine addObject:[NSString stringWithFormat:@"%d", currentChapter]];
         }
     }
 }
 
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qualifiedName {
-    if (findingChaptersForString || findingVersesForString) {
-        markupPos += [self lengthForClosingMarkupElement:elementName];
-    }
+    
 }
 
 - (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string {
@@ -229,17 +180,20 @@
         if (textPos > neededTextPos) {
             [parser abortParsing];
         }
-    } else if (findingVersesForString || findingChaptersForString) {
-        markupPos += length;
+    } else if (findingVersesAndChaptersForString) {
         textPos += length;
-        if (textPos >= displayStringRange.location + displayStringRange.length) {
-            // back the markup and text positions up to match the displayStringRange's end
-            int diff = textPos - displayStringRange.length;
-            textPos -= diff;
-            markupPos -= diff;
-            findingChaptersForString = NO;
-            findingVersesForString = NO;
-            [parser abortParsing];
+        while (!NSLocationInRange(textPos, displayStringRange)) {
+            lineIndex++;
+            if (lineIndex >= lineCount) {
+                lineIndex = 0;
+                frameIndex++;
+                if (frameIndex >= frameCount) {
+                    return;
+                }
+                lineCount = [[[frameData objectAtIndex:frameIndex] lineRanges] count];
+            }
+            BibleFrameInfo *frameInfo = [frameData objectAtIndex:frameIndex];
+            displayStringRange = [[frameInfo.lineRanges objectAtIndex:lineIndex] rangeValue];
         }
     }
 }

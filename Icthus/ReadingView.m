@@ -12,11 +12,12 @@
 #import "BibleMarkupParser.h"
 #import "BookLocation.h"
 #import <CoreText/CoreText.h>
+#import "BibleFrameInfo.h"
 
 @implementation ReadingView
 
 @synthesize textViews;
-@synthesize verseViews;
+@synthesize frameData;
 @synthesize textRanges;
 @synthesize attString;
 @synthesize sizingString;
@@ -60,11 +61,6 @@ CGRect textFrame;
             [view removeFromSuperview];
         }
     }
-    for (BibleVerseView *view in self.verseViews) {
-        if (![view isEqual:[NSNull null]]) {
-            [view removeFromSuperview];
-        }
-    }
 }
 
 -(void)setText:(NSString *)text {
@@ -101,8 +97,8 @@ CGRect textFrame;
 }
 
 - (void)buildFrames {
+    self.frameData = [[NSMutableArray alloc] init];
     self.textViews = [NSMutableArray array];
-    self.verseViews = [NSMutableArray array];
     self.textRanges = [NSMutableArray array];
     self.chaptersByView = [[NSMutableArray alloc] init];
     self.versesByView = [[NSMutableArray alloc] init];
@@ -129,20 +125,39 @@ CGRect textFrame;
         CTFrameRef frame = CTFramesetterCreateFrame(framesetter, CFRangeMake(textPos, 0), path, NULL);
         CFRange frameRange = CTFrameGetVisibleStringRange(frame);
         NSRange nsFrameRange = NSMakeRange(frameRange.location, frameRange.length);
-        [self.textRanges addObject:[NSValue valueWithRange:nsFrameRange]];
-        [self.textViews addObject:[NSNull null]];
         
-        NSMutableArray *chaptersForView = [[NSMutableArray alloc] init];
-        NSMutableArray *versesForView = [[NSMutableArray alloc] init];
-        [self addChapterNumbers:chaptersForView AndVerseNumbers:versesForView ForCTFrame:frame];
-        [self.chaptersByView addObject:chaptersForView];
-        [self.versesByView addObject:versesForView];
+        // Save the frame info so we can instantiate this frame later.
+        BibleFrameInfo *frameInfo = [[BibleFrameInfo alloc] init];
+        frameInfo.frame = CGRectMake(0, textFrame.size.height * pageIndex, self.frame.size.width, textFrame.size.height);
+        frameInfo.textRange = nsFrameRange;
+
+        CFArrayRef lines = CTFrameGetLines(frame);
+        int length = CFArrayGetCount(lines);
+        NSMutableArray *lineRanges = [[NSMutableArray alloc] initWithCapacity:length];
+        for (int i = 0; i < length; i++) {
+            CTLineRef line = CFArrayGetValueAtIndex(lines, i);
+            CFRange cfStringRange = CTLineGetStringRange(line);
+            [lineRanges addObject:[NSValue valueWithRange:NSMakeRange(cfStringRange.location, cfStringRange.length)]];
+        }
+        frameInfo.lineRanges = lineRanges;
+        frameInfo.chapters = [[NSMutableArray alloc] initWithCapacity:length];
+        frameInfo.verses   = [[NSMutableArray alloc] initWithCapacity:length];
+        for (int i = 0; i < length; i++) {
+            [frameInfo.chapters addObject:[[NSMutableArray alloc] init]];
+            [frameInfo.verses   addObject:[[NSMutableArray alloc] init]];
+        }
+        
+        [self.frameData addObject:frameInfo];
+        [self.textViews addObject:[NSNull null]];
         
         //prepare for next frame
         textPos += frameRange.length;
         pageIndex++;
         contentOffset += textFrame.size.height;
     }
+    
+    // The parse all the verse and chapter numbers
+    [parser addChapterAndVerseNumbersToFrameData:frameData fromMarkup:self.text];
     
     //set the total width of the scroll view
     self.contentSize = CGSizeMake(textFrame.size.width, pageIndex * textFrame.size.height);
@@ -156,29 +171,29 @@ CGRect textFrame;
 //      [2, 3], the third line contains the beginnings of verses 2 and 3
 //      [4],    the fourth line contains the beginning of the fourth verse
 //  ]
-- (void) addChapterNumbers:(NSMutableArray *)chaptersByLine AndVerseNumbers:(NSMutableArray *)versesByLine ForCTFrame:(CTFrameRef)ctFrame {
-    CFArrayRef lines = CTFrameGetLines(ctFrame);
-    for (int i = 0; i < CFArrayGetCount(lines); i++) {
-        CTLineRef line = CFArrayGetValueAtIndex(lines, i);
-        CFRange cfStringRange = CTLineGetStringRange(line);
-        NSRange stringRange = NSMakeRange(0, cfStringRange.length);
-        NSArray *versesChaptersAndMarkupPos = [parser verseAndChapterNumbersForRange:stringRange inMarkup:remainingMarkup];
-        [versesByLine insertObject:[versesChaptersAndMarkupPos objectAtIndex:0] atIndex:i];
-        NSArray *chapters = [versesChaptersAndMarkupPos objectAtIndex:1];
-        if ([chapters lastObject]) {
-            currentChapter = [chapters lastObject];
-        } else {
-            chapters = [[NSArray alloc] initWithObjects:currentChapter, nil];
-        }
-        [chaptersByLine insertObject:chapters atIndex:i];
-        
-        NSNumber *markupPos = [versesChaptersAndMarkupPos objectAtIndex:2];
-        [remainingMarkup deleteCharactersInRange:NSMakeRange(0, [markupPos unsignedIntegerValue])];
-        if ([remainingMarkup length] > 0) {
-            [remainingMarkup insertString:@"<book><c i=\"\"><v i=\"\">" atIndex:0];
-        }
-    }
-}
+//- (void) addChapterNumbers:(NSMutableArray *)chaptersByLine AndVerseNumbers:(NSMutableArray *)versesByLine ForCTFrame:(CTFrameRef)ctFrame {
+//    CFArrayRef lines = CTFrameGetLines(ctFrame);
+//    for (int i = 0; i < CFArrayGetCount(lines); i++) {
+//        CTLineRef line = CFArrayGetValueAtIndex(lines, i);
+//        CFRange cfStringRange = CTLineGetStringRange(line);
+//        NSRange stringRange = NSMakeRange(0, cfStringRange.length);
+//        NSArray *versesChaptersAndMarkupPos = [parser verseAndChapterNumbersForRange:stringRange inMarkup:remainingMarkup];
+//        [versesByLine insertObject:[versesChaptersAndMarkupPos objectAtIndex:0] atIndex:i];
+//        NSArray *chapters = [versesChaptersAndMarkupPos objectAtIndex:1];
+//        if ([chapters lastObject]) {
+//            currentChapter = [chapters lastObject];
+//        } else {
+//            chapters = [[NSArray alloc] initWithObjects:currentChapter, nil];
+//        }
+//        [chaptersByLine insertObject:chapters atIndex:i];
+//        
+//        NSNumber *markupPos = [versesChaptersAndMarkupPos objectAtIndex:2];
+//        [remainingMarkup deleteCharactersInRange:NSMakeRange(0, [markupPos unsignedIntegerValue])];
+//        if ([remainingMarkup length] > 0) {
+//            [remainingMarkup insertString:@"<book><c i=\"\"><v i=\"\">" atIndex:0];
+//        }
+//    }
+//}
 
 - (void)getTouchedLocation {
     int frameHeight = textFrame.size.height;
@@ -232,7 +247,7 @@ CGRect textFrame;
     
     CTLineRef line = CFArrayGetValueAtIndex(lines, i);
     CFRange lineRange = CTLineGetStringRange(line);
-    NSRange textViewRange = [[self.textRanges objectAtIndex:currentFrameIndex] rangeValue];
+    NSRange textViewRange = [[frameData objectAtIndex:currentFrameIndex] textRange];
     int location = textViewRange.location + lineRange.location + lineRange.length;
     
     BookLocation *bookLocation = [parser saveLocationForCharAtIndex:location forText:self.text andBook:book];
@@ -245,10 +260,10 @@ CGRect textFrame;
         int targetTextPos = [parser getTextPositionForLocation:location inMarkup:self.text];
 
         // find the index of the view with the given location and instantiate it
-        NSRange lastTextRange = [[self.textRanges firstObject] rangeValue];
+        NSRange lastTextRange = [[frameData firstObject] textRange];
         int i;
-        for (i = 0; i < [self.textRanges count]; i++) {
-            NSRange thisTextRange = [[self.textRanges objectAtIndex:i] rangeValue];
+        for (i = 0; i < [frameData count]; i++) {
+            NSRange thisTextRange = [[frameData objectAtIndex:i] textRange];
             if (thisTextRange.location >= targetTextPos) {
                 if (i > 0) {
                     i -= 1;
@@ -257,11 +272,8 @@ CGRect textFrame;
             }
             lastTextRange = thisTextRange;
         }
-        
-        CGRect frame = CGRectMake(0, textFrame.size.height * i, self.frame.size.width, textFrame.size.height);
-        NSArray *chapters = [self.chaptersByView objectAtIndex:i];
-        NSArray *verses = [self.versesByView objectAtIndex:i];
-        BibleTextView *textView = [[BibleTextView alloc] initWithFrame:frame TextRange:lastTextRange Parent:self Chapters:chapters AndVerses:verses];
+
+        BibleTextView *textView = [[BibleTextView alloc] initWithFrameInfo:[frameData objectAtIndex:i] andParent:self];
         [self addSubview:textView];
         [self.textViews replaceObjectAtIndex:i withObject:textView];
 
@@ -309,11 +321,7 @@ CGRect textFrame;
             if (NSLocationInRange(i, activeRange)) {
                 if ([textView class] == [NSNull class]) {
                     // if the view is null, create it
-                    CGRect frame = CGRectMake(0, textFrame.size.height * i, self.frame.size.width, textFrame.size.height);
-                    NSRange textRange = [[self.textRanges objectAtIndex:i] rangeValue];
-                    NSArray *chapters = [self.chaptersByView objectAtIndex:i];
-                    NSArray *verses = [self.versesByView objectAtIndex:i];
-                    BibleTextView *textView = [[BibleTextView alloc] initWithFrame:frame TextRange:textRange Parent:self Chapters:chapters AndVerses:verses];
+                    BibleTextView *textView = [[BibleTextView alloc] initWithFrameInfo:[frameData objectAtIndex:i] andParent:self];
                     [self addSubview:textView];
                     [self.textViews replaceObjectAtIndex:i withObject:textView];
                 }
