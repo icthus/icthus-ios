@@ -16,13 +16,13 @@
     @private BibleVerseView *verseView;
 }
 
+@property (nonatomic, strong) NSAttributedString *attString;
 @property CTFrameRef ctFrame;
 @property NSRange textRange;
 @property ReadingView *parentView;
 @property NSArray *chapters;
 @property NSArray *verses;
 
--(void)setCTFrame:(CTFrameRef)f;
 - (id)initWithFrameInfo:(BibleFrameInfo *)frameInfo andParent:(ReadingView *)parentView;
     
 @end

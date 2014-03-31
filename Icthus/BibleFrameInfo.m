@@ -10,10 +10,28 @@
 
 @implementation BibleFrameInfo
 
-@synthesize frame;
-@synthesize textRange;
+@synthesize frame = _frame;
+@synthesize ctFrame = _ctFrame;
+@synthesize textRange = _textRange;
 @synthesize lineRanges;
 @synthesize chapters;
 @synthesize verses;
+
+- (void)setCtFrame:(CTFrameRef)ctFrame {
+    if (_ctFrame) {
+        CFRelease(_ctFrame);
+    }
+    _ctFrame = CFRetain(ctFrame);
+}
+
+- (CTFrameRef)ctFrame {
+    return _ctFrame;
+}
+
+- (void)dealloc {
+    if (_ctFrame) {
+        CFRelease(_ctFrame);
+    }
+}
 
 @end

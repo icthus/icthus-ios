@@ -7,13 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreText/CoreText.h>
 
 @interface BibleFrameInfo : NSObject
 
-@property CGRect  frame;
-@property NSRange textRange;
-@property NSArray *lineRanges;
-@property NSMutableArray *chapters;
-@property NSMutableArray *verses;
+@property (assign) CGRect  frame;
+@property CTFrameRef ctFrame;
+@property (assign) NSRange textRange;
+@property (nonatomic, strong) NSArray *lineRanges;
+@property (nonatomic, strong) NSMutableArray *chapters;
+@property (nonatomic, strong) NSMutableArray *verses;
 
 @end

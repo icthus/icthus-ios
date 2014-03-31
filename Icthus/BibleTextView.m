@@ -14,7 +14,7 @@
 @implementation BibleTextView
 
 BibleVerseView *verseView;
-@synthesize ctFrame;
+@synthesize ctFrame = _ctFrame;
 @synthesize textRange = _textRange;
 @synthesize parentView = _parentView;
 @synthesize chapters = _chapters;
@@ -43,7 +43,9 @@ BibleVerseView *verseView;
         CGMutablePathRef path = CGPathCreateMutable();
         CGPathAddRect(path, NULL, textFrame);
         CTFrameRef ctframe = CTFramesetterCreateFrame(framesetter, CFRangeMake(0, 0), path, NULL);
-        [self setCTFrame:ctframe];
+        [self setCtFrame:ctframe];
+        // TODO: Fix this so that we are not just duplicating the ctFrame made in ReadingView.buildFrames();
+//        [self setCtFrame:frameInfo.ctFrame];
         
         [self refreshVerseView];
     }
@@ -68,10 +70,6 @@ BibleVerseView *verseView;
     }
 }
 
--(void)setCTFrame:(CTFrameRef) f {
-    ctFrame = f;
-}
-
 - (void)drawRect:(CGRect)rect {
     CGContextRef context = UIGraphicsGetCurrentContext();
     
@@ -80,14 +78,27 @@ BibleVerseView *verseView;
     CGContextTranslateCTM(context, 0, self.bounds.size.height);
     CGContextScaleCTM(context, 1.0, -1.0);
     
-    CTFrameDraw((CTFrameRef)ctFrame, context);
+    CTFrameDraw(self.ctFrame, context);
 
 }
 
+- (void)setCtFrame:(CTFrameRef)ctFrame {
+    if (_ctFrame) {
+        CFRelease(_ctFrame);
+    }
+    _ctFrame = CFRetain(ctFrame);
+}
+
+- (CTFrameRef)ctFrame {
+    return _ctFrame;
+}
+
 -(void)dealloc {
-    CFRelease(ctFrame);
     [verseView removeFromSuperview];
     verseView = nil;
+    if (_ctFrame) {
+        CFRelease(_ctFrame);
+    }
 }
 
 @end

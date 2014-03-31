@@ -28,7 +28,6 @@
 
 NSString *markup;
 NSString *currentChapter;
-NSMutableString *remainingMarkup;
 CGPoint lastKnownContentOffset;
 NSInteger activeViewWindow = 3;
 CGRect textFrame;
@@ -97,17 +96,16 @@ CGRect textFrame;
 }
 
 - (void)buildFrames {
-    self.frameData = [[NSMutableArray alloc] init];
+    self.frameData = [NSMutableArray array];
     self.textViews = [NSMutableArray array];
     self.textRanges = [NSMutableArray array];
-    self.chaptersByView = [[NSMutableArray alloc] init];
-    self.versesByView = [[NSMutableArray alloc] init];
-    remainingMarkup = [[NSMutableString alloc] initWithString:self.text];
+    self.chaptersByView = [NSMutableArray array];
+    self.versesByView = [NSMutableArray array];
     
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
         textFrame = CGRectInset(self.bounds, 50, 0);
     } else {
-        textFrame = CGRectInset(self.bounds, 10, 0);
+        textFrame = CGRectInset(self.bounds, 15, 0);
     }
     // Set the height of the frame to fit an arbitrary 50 lines of text
     CGFloat lineHeight = [self.sizingString boundingRectWithSize:CGSizeMake(textFrame.size.width, textFrame.size.height) options:0 context:nil].size.height;
@@ -129,6 +127,7 @@ CGRect textFrame;
         // Save the frame info so we can instantiate this frame later.
         BibleFrameInfo *frameInfo = [[BibleFrameInfo alloc] init];
         frameInfo.frame = CGRectMake(0, textFrame.size.height * pageIndex, self.frame.size.width, textFrame.size.height);
+        frameInfo.ctFrame = frame;
         frameInfo.textRange = nsFrameRange;
 
         CFArrayRef lines = CTFrameGetLines(frame);
@@ -163,37 +162,6 @@ CGRect textFrame;
     self.contentSize = CGSizeMake(textFrame.size.width, pageIndex * textFrame.size.height);
 }
 
-// Populates the arrays with the chapter and verse numbers in the frame. When the method returns, each
-// array will be of the form:
-//  [
-//      [1],    the first line contains the beginning of the first verse
-//      [],     the second line does not contain the start of any verses
-//      [2, 3], the third line contains the beginnings of verses 2 and 3
-//      [4],    the fourth line contains the beginning of the fourth verse
-//  ]
-//- (void) addChapterNumbers:(NSMutableArray *)chaptersByLine AndVerseNumbers:(NSMutableArray *)versesByLine ForCTFrame:(CTFrameRef)ctFrame {
-//    CFArrayRef lines = CTFrameGetLines(ctFrame);
-//    for (int i = 0; i < CFArrayGetCount(lines); i++) {
-//        CTLineRef line = CFArrayGetValueAtIndex(lines, i);
-//        CFRange cfStringRange = CTLineGetStringRange(line);
-//        NSRange stringRange = NSMakeRange(0, cfStringRange.length);
-//        NSArray *versesChaptersAndMarkupPos = [parser verseAndChapterNumbersForRange:stringRange inMarkup:remainingMarkup];
-//        [versesByLine insertObject:[versesChaptersAndMarkupPos objectAtIndex:0] atIndex:i];
-//        NSArray *chapters = [versesChaptersAndMarkupPos objectAtIndex:1];
-//        if ([chapters lastObject]) {
-//            currentChapter = [chapters lastObject];
-//        } else {
-//            chapters = [[NSArray alloc] initWithObjects:currentChapter, nil];
-//        }
-//        [chaptersByLine insertObject:chapters atIndex:i];
-//        
-//        NSNumber *markupPos = [versesChaptersAndMarkupPos objectAtIndex:2];
-//        [remainingMarkup deleteCharactersInRange:NSMakeRange(0, [markupPos unsignedIntegerValue])];
-//        if ([remainingMarkup length] > 0) {
-//            [remainingMarkup insertString:@"<book><c i=\"\"><v i=\"\">" atIndex:0];
-//        }
-//    }
-//}
 
 - (void)getTouchedLocation {
     int frameHeight = textFrame.size.height;
@@ -260,17 +228,13 @@ CGRect textFrame;
         int targetTextPos = [parser getTextPositionForLocation:location inMarkup:self.text];
 
         // find the index of the view with the given location and instantiate it
-        NSRange lastTextRange = [[frameData firstObject] textRange];
+        NSRange textRange;
         int i;
         for (i = 0; i < [frameData count]; i++) {
-            NSRange thisTextRange = [[frameData objectAtIndex:i] textRange];
-            if (thisTextRange.location >= targetTextPos) {
-                if (i > 0) {
-                    i -= 1;
-                }
+            textRange = [[frameData objectAtIndex:i] textRange];
+            if (NSLocationInRange(targetTextPos, textRange)) {
                 break;
             }
-            lastTextRange = thisTextRange;
         }
 
         BibleTextView *textView = [[BibleTextView alloc] initWithFrameInfo:[frameData objectAtIndex:i] andParent:self];
@@ -285,7 +249,7 @@ CGRect textFrame;
             for (i = 0; i < CFArrayGetCount(lines) - 1; i++) {
                 CTLineRef line = CFArrayGetValueAtIndex(lines, i);
                 CFRange range = CTLineGetStringRange(line);
-                if (targetTextPos <= lastTextRange.location + range.location + range.length) {
+                if (targetTextPos <= textRange.location + range.location + range.length) {
                     break;
                 }
             }
