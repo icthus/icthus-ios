@@ -188,6 +188,7 @@
                 lineIndex = 0;
                 frameIndex++;
                 if (frameIndex >= frameCount) {
+                    [parser abortParsing];
                     return;
                 }
                 lineCount = [[[frameData objectAtIndex:frameIndex] lineRanges] count];
