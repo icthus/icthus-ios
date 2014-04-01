@@ -13,6 +13,7 @@
 #import "BookLocation.h"
 #import <CoreText/CoreText.h>
 #import "BibleFrameInfo.h"
+#import "AppDelegate.h"
 
 @implementation ReadingView
 
@@ -187,6 +188,11 @@ CGRect textFrame;
 }
 
 - (BookLocation *)saveCurrentLocation {
+    // hack to fix a weird bug where self.book would be null on first launch on an 32-bit iPhone using iCloud.
+    if (!self.book.managedObjectContext) {
+        self.book = (Book *)[[(AppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext] objectWithID:self.book.objectID];
+    }
+    
     // find the current view
     int contentOffset = round(self.contentOffset.y);
     int height = round(textFrame.size.height);
@@ -217,8 +223,8 @@ CGRect textFrame;
     CFRange lineRange = CTLineGetStringRange(line);
     NSRange textViewRange = [[frameData objectAtIndex:currentFrameIndex] textRange];
     int location = textViewRange.location + lineRange.location + lineRange.length;
-    
-    BookLocation *bookLocation = [parser saveLocationForCharAtIndex:location forText:self.text andBook:book];
+
+    BookLocation *bookLocation = [parser saveLocationForCharAtIndex:location forText:self.text andBook:self.book];
     NSLog(@"ReadingView.getCurrentLocation: got location %@ %@:%@", self.book.shortName, bookLocation.chapter, bookLocation.verse);
     return bookLocation;
 }

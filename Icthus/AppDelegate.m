@@ -53,10 +53,15 @@
         UISplitViewController *splitViewController = (UISplitViewController *)self.window.rootViewController;
         [self setDetailView:(ReadingViewController *)[[splitViewController.viewControllers lastObject] topViewController]];
         [self setMasterView:(MasterViewController *)[splitViewController.viewControllers firstObject]];
+
+        // Call UISplitViewControllerDelegate method again so that bar button items work. Hack.
+        [self.detailView splitViewController:splitViewController willHideViewController:nil withBarButtonItem:nil forPopoverController:self.detailView.masterPopover];
     } else {
         [self setMasterView:(MasterViewController *)self.window.rootViewController];
         [self setDetailView:(ReadingViewController *)self.masterView.topViewController];
     }
+    
+    [self.detailView setBookToLatest];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

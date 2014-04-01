@@ -16,14 +16,16 @@
 
 @interface ReadingViewController : UIViewController <UISplitViewControllerDelegate>
 - (id)initWithBook:(Book *)book;
+- (void)setBookToLatest;
 - (void)setLocation:(BookLocation *)location;
 - (void)setBook:(Book *)newBook;
 - (void)setTranslation:(Translation *)translation;
 
 @property (strong, nonatomic) AppDelegate *appDel;
+@property (strong, nonatomic) NSManagedObjectContext *moc;
 @property (strong, nonatomic) IBOutlet ReadingView *readingView;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *goToButton;
-@property (nonatomic, strong) Book *book;
+@property (strong, nonatomic) Book *book;
 @property (strong, nonatomic) UIPopoverController *masterPopover;
 @property (strong, nonatomic) UIPopoverController *chapterPickerPopover;
 
