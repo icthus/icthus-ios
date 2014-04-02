@@ -156,9 +156,6 @@ UIColor *tintColor;
 
 - (void)configureViewWithLocation:(BookLocation *)location {
     // Update the user interface for the detail item.
-    NSLog(@"Book.name = %@", self.book.shortName);
-    NSLog(@"Book.longName = %@", self.book.longName);
-    NSLog(@"Book.code = %@", self.book.code);
     if (self.book) {
         self.navigationItem.title = [self.book shortName];
         if (!self.navigationController) {

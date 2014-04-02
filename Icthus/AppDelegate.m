@@ -9,6 +9,8 @@
 #import "AppDelegate.h"
 #import "MasterViewController.h"
 #import "USFXParser.h"
+#import "WEBUSFXParser.h"
+#import "ASVUSFXParser.h"
 
 @implementation AppDelegate 
 
@@ -110,12 +112,12 @@
     // WEB
     NSString* WEBBookNamePath = [[NSBundle mainBundle] pathForResource:@"WEBBookNames" ofType:@"xml"];
     NSString* WEBBookTextPath = [[NSBundle mainBundle] pathForResource:@"eng-web_usfx" ofType:@"xml"];
-    [[[USFXParser alloc] init] instantiateBooks:self.managedObjectContext translationCode:@"WEB" displayName:@"World English Bible" bookNamePath:WEBBookNamePath bookTextPath:WEBBookTextPath];
+    [[[WEBUSFXParser alloc] init] instantiateBooks:self.managedObjectContext translationCode:@"WEB" displayName:@"World English Bible" bookNamePath:WEBBookNamePath bookTextPath:WEBBookTextPath];
     
     // ASV
     NSString* ASVBookTextPath = [[NSBundle mainBundle] pathForResource:@"eng-asv_usfx" ofType:@"xml"];
     NSString* ASVBookNamePath = [[NSBundle mainBundle] pathForResource:@"ASVBookNames" ofType:@"xml"];
-    [[[USFXParser alloc] init] instantiateBooks:self.managedObjectContext translationCode:@"ASV" displayName:@"American Standard Version" bookNamePath:ASVBookNamePath bookTextPath:ASVBookTextPath];
+    [[[ASVUSFXParser alloc] init] instantiateBooks:self.managedObjectContext translationCode:@"ASV" displayName:@"American Standard Version" bookNamePath:ASVBookNamePath bookTextPath:ASVBookTextPath];
     
     // KJV
 //    NSString* KJVBookTextPath = [[NSBundle mainBundle] pathForResource:@"eng-kjv_usfx" ofType:@"xml"];

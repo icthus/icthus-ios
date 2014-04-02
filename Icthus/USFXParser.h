@@ -26,5 +26,15 @@
 @property (nonatomic, strong) NSManagedObjectContext *context;
 @property (nonatomic, strong) NSMutableDictionary *booksByCode;
 @property (nonatomic, strong) Book *currentBook;
+@property (nonatomic, strong) NSArray *includedBooks;
+@property (nonatomic, strong) NSSet *includedTags;
+@property (nonatomic, strong) NSSet *excludedTags;
+@property (nonatomic, strong) NSMutableArray *heirarchy;
+@property (nonatomic, strong) NSMutableString *mutableBookText;
+@property (nonatomic) int chapterIndex;
+@property (nonatomic) bool shouldParseCharacters;
+@property (nonatomic) bool shouldParseBook;
+@property (nonatomic, strong) NSString *translationCode;
+@property (nonatomic, strong) NSString *translationDisplayName;
 
 @end

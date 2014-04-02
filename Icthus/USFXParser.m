@@ -17,17 +17,16 @@
 @synthesize context = _context;
 @synthesize booksByCode = _booksByCode;
 @synthesize currentBook = _currentBook;
-
-NSArray *includedBooks;
-NSSet *includedTags;
-NSSet *excludedTags;
-NSMutableArray *heirarchy;
-NSMutableString *mutableBookText;
-int chapterIndex;
-bool shouldParseCharacters;
-bool shouldParseBook;
-static NSString *translationCode;
-static NSString *translationDisplayName;
+@synthesize includedBooks;
+@synthesize includedTags;
+@synthesize excludedTags;
+@synthesize heirarchy;
+@synthesize mutableBookText;
+@synthesize chapterIndex;
+@synthesize shouldParseCharacters;
+@synthesize shouldParseBook;
+@synthesize translationCode;
+@synthesize translationDisplayName;
 
 - (void) instantiateBooks:(NSManagedObjectContext *)context translationCode:(NSString *)code displayName:(NSString *)displayName bookNamePath:(NSString *)bookNamePath bookTextPath:(NSString *)bookTextPath {
     translationCode = code;
@@ -43,8 +42,8 @@ static NSString *translationDisplayName;
     // Define the tags we will include and exclude
     // TODO: handle formatting of h, mt, b tags
     // tags I'm unsure of (and can't find any examples of): milestone, generated, da, cs
-    includedTags = [[NSSet alloc] initWithArray:@[@"usfx", @"book", @"h", @"p", @"q", @"mt", @"d", @"b", @"generated", @"c", @"v", @"ve", @"qt", @"nd", @"tl", @"qs", @"qac", @"sls", @"bk", @"pn", @"k", @"ord", @"sig", @"bd", @"it", @"bdit", @"sc", @"no", @"quoteStart", @"quoteEnd", @"wj", @"wtp", @"da"]];
-    excludedTags = [[NSSet alloc] initWithArray:@[@"languageCode", @"rem", @"id", @"ide", @"rem", @"cl", @"s", @"sectionBoundary", @"cp", @"ca", @"toc", @"milestone", @"va", @"vp", @"table", @"generated", @"f", @"ef", @"fm", @"x", @"ex", @"dc", @"add", @"fig", @"description", @"catalog", @"size", @"location", @"copyright", @"caption", @"reference", @"ndx", @"w", @"wh", @"wg", @"wr", @"quoteRemind", @"ior", @"cs", @"fs", @"cl", @"//", @"ref", @"zw"]];
+    includedTags = [[NSSet alloc] initWithArray:@[@"usfx", @"book", @"p", @"q", @"mt", @"d", @"b", @"generated", @"c", @"v", @"ve", @"qt", @"nd", @"tl", @"qs", @"qac", @"sls", @"bk", @"pn", @"k", @"ord", @"sig", @"bd", @"it", @"bdit", @"sc", @"no", @"quoteStart", @"quoteEnd", @"wj", @"wtp", @"da"]];
+    excludedTags = [[NSSet alloc] initWithArray:@[@"languageCode", @"rem", @"id", @"ide", @"h", @"rem", @"cl", @"s", @"sectionBoundary", @"cp", @"ca", @"toc", @"milestone", @"va", @"vp", @"table", @"generated", @"f", @"ef", @"fm", @"x", @"ex", @"dc", @"add", @"fig", @"description", @"catalog", @"size", @"location", @"copyright", @"caption", @"reference", @"ndx", @"w", @"wh", @"wg", @"wr", @"quoteRemind", @"ior", @"cs", @"fs", @"cl", @"//", @"ref", @"zw"]];
     
     Translation *trans = [NSEntityDescription insertNewObjectForEntityForName:@"Translation" inManagedObjectContext:_context];
     [trans setCode:translationCode];
@@ -104,8 +103,22 @@ static NSString *translationDisplayName;
     } else if (shouldParseBook) {
         if ([elementName isEqualToString:@"p"]) {
             shouldParseCharacters = YES;
-            // add a newline and a tab
-            [mutableBookText appendString:@"\n\t"];
+            NSString *format = [attributeDict objectForKey:@"sfm"];
+            if (format) {
+                if ([format isEqualToString:@"ms"]) {
+                    // denotes a book in Psalms
+                    [mutableBookText appendString:@"\n\n"];
+                } else if ([format isEqualToString:@"mt"]) {
+                    // denotes a book's main title
+                    // We don't need to include these, we know the book's title.
+                    shouldParseCharacters = NO;
+                } else {
+                    [mutableBookText appendString:@"\n"];
+                }
+            } else {
+                // add a newline and a tab
+                [mutableBookText appendString:@"\n\t"];
+            }
         } else if ([elementName isEqualToString:@"q"]) {
             // These are lyrical verses. Insert a newline.
             shouldParseCharacters = YES;
@@ -113,7 +126,10 @@ static NSString *translationDisplayName;
         } else if ([elementName isEqualToString:@"d"]) {
             // Indicating the title of a Psalm
             shouldParseCharacters = YES;
-            [mutableBookText appendString:@"\n\n"];
+            [mutableBookText appendString:@"\n"];
+        } else if ([elementName isEqualToString:@"b"]) {
+            // blank line after poetry
+            [mutableBookText appendString:@"\n"];
         } else if ([elementName isEqualToString:@"v"]) {
             shouldParseCharacters = YES;
             [mutableBookText appendString:[NSString stringWithFormat:@"<v i=\"%d\">", [[attributeDict objectForKey:@"id"] intValue]]];
@@ -177,6 +193,15 @@ static NSString *translationDisplayName;
 
 - (NSString *)cleanBookText:(NSString *)bookText {
     NSError *error;
+    
+    // Remove newlines at the beginning of the text
+    NSRegularExpression *filterNewlinesAtBeginning = [NSRegularExpression regularExpressionWithPattern:@"(<book>) *\n+(<c i=\"[0-9]+\">) *\n+" options:NSRegularExpressionCaseInsensitive error:&error];
+    if (error) {
+        NSLog(@"%@", [error localizedDescription]);
+    } else {
+        bookText = [filterNewlinesAtBeginning stringByReplacingMatchesInString:bookText options:0 range:NSMakeRange(0, [bookText length]) withTemplate:@"$1$2"];
+    }
+    
     
     // Parse double spaces by themselves
     NSRegularExpression *filterSpaces = [NSRegularExpression regularExpressionWithPattern:@"  +" options:NSRegularExpressionCaseInsensitive error:&error];

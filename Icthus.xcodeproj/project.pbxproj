@@ -32,6 +32,7 @@
 		C9B3056C1816A1B900EE8A94 /* eng-asv_usfx.xml in Resources */ = {isa = PBXBuildFile; fileRef = C9B305651816A1B900EE8A94 /* eng-asv_usfx.xml */; };
 		C9B3056D1816A1B900EE8A94 /* keys.asc in Resources */ = {isa = PBXBuildFile; fileRef = C9B305661816A1B900EE8A94 /* keys.asc */; };
 		C9B3056E1816A1B900EE8A94 /* signature.txt.asc in Resources */ = {isa = PBXBuildFile; fileRef = C9B305671816A1B900EE8A94 /* signature.txt.asc */; };
+		C9B96E2618EC31A50069249B /* ASVUSFXParser.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B96E2518EC31A50069249B /* ASVUSFXParser.m */; };
 		C9BCA00A17CD3FEC00196DA8 /* ReadingListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BCA00917CD3FEC00196DA8 /* ReadingListViewController.m */; };
 		C9BCA01017CD933500196DA8 /* Book.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BCA00F17CD933500196DA8 /* Book.m */; };
 		C9C324F818E1CAE5005D0BAD /* SendMailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C324F718E1CAE5005D0BAD /* SendMailTableViewCell.m */; };
@@ -46,6 +47,7 @@
 		C9ED7D7118DA7C3900864288 /* keys.asc in Resources */ = {isa = PBXBuildFile; fileRef = C9ED7D6A18DA7C3900864288 /* keys.asc */; };
 		C9ED7D7218DA7C3900864288 /* signature.txt.asc in Resources */ = {isa = PBXBuildFile; fileRef = C9ED7D6B18DA7C3900864288 /* signature.txt.asc */; };
 		C9FABFDA188D55AB00C3FC05 /* BooksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9FABFD9188D55AB00C3FC05 /* BooksViewController.m */; };
+		C9FD6B2218EB020D007BBEFF /* WEBUSFXParser.m in Sources */ = {isa = PBXBuildFile; fileRef = C9FD6B2118EB020D007BBEFF /* WEBUSFXParser.m */; };
 		C9FF50F317CBB54700BA526E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9FF50F217CBB54700BA526E /* Foundation.framework */; };
 		C9FF50F517CBB54700BA526E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9FF50F417CBB54700BA526E /* CoreGraphics.framework */; };
 		C9FF50F717CBB54700BA526E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9FF50F617CBB54700BA526E /* UIKit.framework */; };
@@ -123,6 +125,8 @@
 		C9B305661816A1B900EE8A94 /* keys.asc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = keys.asc; sourceTree = "<group>"; };
 		C9B305671816A1B900EE8A94 /* signature.txt.asc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = signature.txt.asc; sourceTree = "<group>"; };
 		C9B3056F1816D08600EE8A94 /* Icthus.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Icthus.entitlements; sourceTree = "<group>"; };
+		C9B96E2418EC31A50069249B /* ASVUSFXParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASVUSFXParser.h; sourceTree = "<group>"; };
+		C9B96E2518EC31A50069249B /* ASVUSFXParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASVUSFXParser.m; sourceTree = "<group>"; };
 		C9BCA00817CD3FEC00196DA8 /* ReadingListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReadingListViewController.h; path = ../ReadingListViewController.h; sourceTree = "<group>"; };
 		C9BCA00917CD3FEC00196DA8 /* ReadingListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = ReadingListViewController.m; path = ../ReadingListViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		C9BCA00E17CD933500196DA8 /* Book.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Book.h; sourceTree = "<group>"; };
@@ -144,6 +148,8 @@
 		C9ED7D6B18DA7C3900864288 /* signature.txt.asc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = signature.txt.asc; sourceTree = "<group>"; };
 		C9FABFD8188D55AB00C3FC05 /* BooksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BooksViewController.h; sourceTree = "<group>"; };
 		C9FABFD9188D55AB00C3FC05 /* BooksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BooksViewController.m; sourceTree = "<group>"; };
+		C9FD6B2018EB020D007BBEFF /* WEBUSFXParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEBUSFXParser.h; sourceTree = "<group>"; };
+		C9FD6B2118EB020D007BBEFF /* WEBUSFXParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEBUSFXParser.m; sourceTree = "<group>"; };
 		C9FF50EF17CBB54700BA526E /* Icthus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Icthus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9FF50F217CBB54700BA526E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C9FF50F417CBB54700BA526E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -299,6 +305,21 @@
 			path = Icthus/ASV;
 			sourceTree = SOURCE_ROOT;
 		};
+		C9B96E2718EC31B30069249B /* Parsers */ = {
+			isa = PBXGroup;
+			children = (
+				C940C84A18CDE0BB00E1013C /* USFXParser.h */,
+				C940C84B18CDE0BB00E1013C /* USFXParser.m */,
+				C9FD6B2018EB020D007BBEFF /* WEBUSFXParser.h */,
+				C9FD6B2118EB020D007BBEFF /* WEBUSFXParser.m */,
+				C9B96E2418EC31A50069249B /* ASVUSFXParser.h */,
+				C9B96E2518EC31A50069249B /* ASVUSFXParser.m */,
+				C99C73F817DFA61B00DBF0E2 /* BibleMarkupParser.h */,
+				C99C73F917DFA61B00DBF0E2 /* BibleMarkupParser.m */,
+			);
+			name = Parsers;
+			sourceTree = "<group>";
+		};
 		C9ED7D6418DA7C3900864288 /* KJV */ = {
 			isa = PBXGroup;
 			children = (
@@ -373,10 +394,7 @@
 				C91EB47717FDB2F400645EFD /* Models */,
 				C9FF50FB17CBB54700BA526E /* Supporting Files */,
 				C9FF513317CBFBE900BA526E /* Core Data Source Files */,
-				C940C84A18CDE0BB00E1013C /* USFXParser.h */,
-				C940C84B18CDE0BB00E1013C /* USFXParser.m */,
-				C99C73F817DFA61B00DBF0E2 /* BibleMarkupParser.h */,
-				C99C73F917DFA61B00DBF0E2 /* BibleMarkupParser.m */,
+				C9B96E2718EC31B30069249B /* Parsers */,
 			);
 			path = Icthus;
 			sourceTree = "<group>";
@@ -572,8 +590,10 @@
 				C99F2FC417CCDC01008AF602 /* ChapterPickerViewController.m in Sources */,
 				C9D071DC17DE8C2000B535ED /* ReadingView.m in Sources */,
 				C97A1AF818E5DF57001E148D /* BibleFrameInfo.m in Sources */,
+				C9FD6B2218EB020D007BBEFF /* WEBUSFXParser.m in Sources */,
 				C9E57771188484A3004CC974 /* BookCollectionViewCell.m in Sources */,
 				C9FF510E17CBB54800BA526E /* Icthus.xcdatamodeld in Sources */,
+				C9B96E2618EC31A50069249B /* ASVUSFXParser.m in Sources */,
 				C940C84C18CDE0BB00E1013C /* USFXParser.m in Sources */,
 				C958677A18D9DBE9001F875B /* SettingsViewController.m in Sources */,
 				C9BCA00A17CD3FEC00196DA8 /* ReadingListViewController.m in Sources */,
