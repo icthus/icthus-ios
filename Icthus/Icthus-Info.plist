@@ -57,6 +57,9 @@
 		<string>UIInterfaceOrientationPortrait</string>
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
+	<key>ubertesters_project_id</key>
+	<string>6aef2a62-ba74-11e3-8ca5-22000ac44c54
+</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 </dict>

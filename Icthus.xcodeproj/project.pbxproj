@@ -32,6 +32,17 @@
 		C9B3056C1816A1B900EE8A94 /* eng-asv_usfx.xml in Resources */ = {isa = PBXBuildFile; fileRef = C9B305651816A1B900EE8A94 /* eng-asv_usfx.xml */; };
 		C9B3056D1816A1B900EE8A94 /* keys.asc in Resources */ = {isa = PBXBuildFile; fileRef = C9B305661816A1B900EE8A94 /* keys.asc */; };
 		C9B3056E1816A1B900EE8A94 /* signature.txt.asc in Resources */ = {isa = PBXBuildFile; fileRef = C9B305671816A1B900EE8A94 /* signature.txt.asc */; };
+		C9B837DD18EC596D00311905 /* UbertestersSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B837DB18EC596D00311905 /* UbertestersSDK.framework */; };
+		C9B837DE18EC596D00311905 /* UbertestersSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C9B837DC18EC596D00311905 /* UbertestersSDKResources.bundle */; };
+		C9B837E018EC751100311905 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B837DF18EC751100311905 /* AdSupport.framework */; };
+		C9B837E218EC752000311905 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B837E118EC752000311905 /* QuartzCore.framework */; };
+		C9B837E418EC752E00311905 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B837E318EC752E00311905 /* CoreImage.framework */; };
+		C9B837E618EC753E00311905 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B837E518EC753E00311905 /* SystemConfiguration.framework */; };
+		C9B837E818EC754D00311905 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B837E718EC754D00311905 /* CoreTelephony.framework */; };
+		C9B837EA18EC756400311905 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B837E918EC756400311905 /* CoreLocation.framework */; };
+		C9B837EC18EC757300311905 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B837EB18EC757300311905 /* AudioToolbox.framework */; };
+		C9B837EE18EC758B00311905 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B837ED18EC758B00311905 /* CoreMotion.framework */; };
+		C9B837F018EC759500311905 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B837EF18EC759500311905 /* OpenGLES.framework */; };
 		C9B96E2618EC31A50069249B /* ASVUSFXParser.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B96E2518EC31A50069249B /* ASVUSFXParser.m */; };
 		C9BCA00A17CD3FEC00196DA8 /* ReadingListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BCA00917CD3FEC00196DA8 /* ReadingListViewController.m */; };
 		C9BCA01017CD933500196DA8 /* Book.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BCA00F17CD933500196DA8 /* Book.m */; };
@@ -125,6 +136,17 @@
 		C9B305661816A1B900EE8A94 /* keys.asc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = keys.asc; sourceTree = "<group>"; };
 		C9B305671816A1B900EE8A94 /* signature.txt.asc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = signature.txt.asc; sourceTree = "<group>"; };
 		C9B3056F1816D08600EE8A94 /* Icthus.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Icthus.entitlements; sourceTree = "<group>"; };
+		C9B837DB18EC596D00311905 /* UbertestersSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UbertestersSDK.framework; sourceTree = "<group>"; };
+		C9B837DC18EC596D00311905 /* UbertestersSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = UbertestersSDKResources.bundle; sourceTree = "<group>"; };
+		C9B837DF18EC751100311905 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		C9B837E118EC752000311905 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		C9B837E318EC752E00311905 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		C9B837E518EC753E00311905 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		C9B837E718EC754D00311905 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		C9B837E918EC756400311905 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		C9B837EB18EC757300311905 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		C9B837ED18EC758B00311905 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		C9B837EF18EC759500311905 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		C9B96E2418EC31A50069249B /* ASVUSFXParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASVUSFXParser.h; sourceTree = "<group>"; };
 		C9B96E2518EC31A50069249B /* ASVUSFXParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASVUSFXParser.m; sourceTree = "<group>"; };
 		C9BCA00817CD3FEC00196DA8 /* ReadingListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReadingListViewController.h; path = ../ReadingListViewController.h; sourceTree = "<group>"; };
@@ -188,8 +210,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9B837F018EC759500311905 /* OpenGLES.framework in Frameworks */,
+				C9B837EE18EC758B00311905 /* CoreMotion.framework in Frameworks */,
+				C9B837EC18EC757300311905 /* AudioToolbox.framework in Frameworks */,
+				C9B837EA18EC756400311905 /* CoreLocation.framework in Frameworks */,
+				C9B837E818EC754D00311905 /* CoreTelephony.framework in Frameworks */,
+				C9B837E618EC753E00311905 /* SystemConfiguration.framework in Frameworks */,
+				C9B837E418EC752E00311905 /* CoreImage.framework in Frameworks */,
+				C9B837E218EC752000311905 /* QuartzCore.framework in Frameworks */,
+				C9B837E018EC751100311905 /* AdSupport.framework in Frameworks */,
 				C902F4EF17DA26410077504A /* CoreText.framework in Frameworks */,
 				C9FF50F517CBB54700BA526E /* CoreGraphics.framework in Frameworks */,
+				C9B837DD18EC596D00311905 /* UbertestersSDK.framework in Frameworks */,
 				C9FF50F917CBB54700BA526E /* CoreData.framework in Frameworks */,
 				C9FF50F717CBB54700BA526E /* UIKit.framework in Frameworks */,
 				C9FF50F317CBB54700BA526E /* Foundation.framework in Frameworks */,
@@ -305,6 +337,15 @@
 			path = Icthus/ASV;
 			sourceTree = SOURCE_ROOT;
 		};
+		C9B837DA18EC596D00311905 /* UbertestersSDK */ = {
+			isa = PBXGroup;
+			children = (
+				C9B837DB18EC596D00311905 /* UbertestersSDK.framework */,
+				C9B837DC18EC596D00311905 /* UbertestersSDKResources.bundle */,
+			);
+			path = UbertestersSDK;
+			sourceTree = "<group>";
+		};
 		C9B96E2718EC31B30069249B /* Parsers */ = {
 			isa = PBXGroup;
 			children = (
@@ -357,6 +398,16 @@
 		C9FF50F117CBB54700BA526E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C9B837EF18EC759500311905 /* OpenGLES.framework */,
+				C9B837ED18EC758B00311905 /* CoreMotion.framework */,
+				C9B837EB18EC757300311905 /* AudioToolbox.framework */,
+				C9B837E918EC756400311905 /* CoreLocation.framework */,
+				C9B837E718EC754D00311905 /* CoreTelephony.framework */,
+				C9B837E518EC753E00311905 /* SystemConfiguration.framework */,
+				C9B837E318EC752E00311905 /* CoreImage.framework */,
+				C9B837E118EC752000311905 /* QuartzCore.framework */,
+				C9B837DF18EC751100311905 /* AdSupport.framework */,
+				C9B837DA18EC596D00311905 /* UbertestersSDK */,
 				C902F4EE17DA26410077504A /* CoreText.framework */,
 				C9FF50F217CBB54700BA526E /* Foundation.framework */,
 				C9FF50F417CBB54700BA526E /* CoreGraphics.framework */,
@@ -539,6 +590,7 @@
 				C9ED7D6C18DA7C3900864288 /* KJVBookNames.xml in Resources */,
 				C9ED7D6E18DA7C3900864288 /* eng-kjv-VernacularAdditional.xml in Resources */,
 				C9FF513C17CBFEA300BA526E /* copr.htm in Resources */,
+				C9B837DE18EC596D00311905 /* UbertestersSDKResources.bundle in Resources */,
 				C9ED7D6F18DA7C3900864288 /* eng-kjv-VernacularParms.xml in Resources */,
 				C9FF513E17CBFEA300BA526E /* eng-web-VernacularAdditional.xml in Resources */,
 				C9FF514017CBFEA300BA526E /* keys.asc in Resources */,
@@ -733,6 +785,10 @@
 				CODE_SIGN_ENTITLEMENTS = Icthus/Icthus.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/UbertestersSDK",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Icthus/Icthus-Prefix.pch";
 				INFOPLIST_FILE = "Icthus/Icthus-Info.plist";
@@ -750,6 +806,10 @@
 				CODE_SIGN_ENTITLEMENTS = Icthus/Icthus.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/UbertestersSDK",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Icthus/Icthus-Prefix.pch";
 				INFOPLIST_FILE = "Icthus/Icthus-Info.plist";

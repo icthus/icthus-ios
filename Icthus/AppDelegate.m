@@ -47,6 +47,10 @@
     else {
         [self setupControllers];
     }
+    
+    //Ubertersters SDK initialization
+    [[Ubertesters shared] initialize];
+    
     return YES;
 }
 
