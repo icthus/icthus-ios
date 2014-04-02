@@ -49,7 +49,7 @@
     }
     
     //Ubertersters SDK initialization
-    [[Ubertesters shared] initialize];
+    [[Ubertesters shared] initializeWithOptions:UTOptionsShake | UTOptionsLockingModeDisableUbertestersIfBuildNotExist];
     
     return YES;
 }
