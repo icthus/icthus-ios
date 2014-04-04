@@ -11,6 +11,7 @@
 #import "USFXParser.h"
 #import "WEBUSFXParser.h"
 #import "ASVUSFXParser.h"
+#import <HockeySDK/HockeySDK.h>
 
 @implementation AppDelegate 
 
@@ -18,8 +19,13 @@
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:@"b70f5fb8d6935fb9a22b9bd95004ae0f"];
+    [[BITHockeyManager sharedHockeyManager] startManager];
+    [[BITHockeyManager sharedHockeyManager].authenticator setIdentificationType:BITAuthenticatorIdentificationTypeWebAuth];
+    [[BITHockeyManager sharedHockeyManager].authenticator authenticateInstallation];
+
     // Set up iCloud
     // TODO: check for a change in iCloud tokens
     id currentiCloudToken = [[NSFileManager defaultManager] ubiquityIdentityToken];
@@ -49,6 +55,16 @@
     }
     
     return YES;
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    if( [[BITHockeyManager sharedHockeyManager].authenticator handleOpenURL:url
+                                                          sourceApplication:sourceApplication
+                                                                 annotation:annotation]) {
+        return YES;
+    }
+        
+    return NO;
 }
 
 - (void)setupControllers {
