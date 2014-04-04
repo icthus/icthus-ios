@@ -48,9 +48,6 @@
         [self setupControllers];
     }
     
-    //Ubertersters SDK initialization
-    [[Ubertesters shared] initializeWithOptions:UTOptionsShake | UTOptionsLockingModeDisableUbertestersIfBuildNotExist];
-    
     return YES;
 }
 
