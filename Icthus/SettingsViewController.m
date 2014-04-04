@@ -21,7 +21,7 @@
     if ([MFMailComposeViewController canSendMail]) {
         MFMailComposeViewController *mailController = [[MFMailComposeViewController alloc] init];
         mailController.mailComposeDelegate = self;
-        [mailController setToRecipients:@[@"matt@lorentz.is"]];
+        [mailController setToRecipients:@[@"support@icthusapp.com"]];
         [self presentViewController:mailController animated:YES completion:nil];
     } else {
         [[[UIAlertView alloc] initWithTitle:@"No Mail Account Configured" message:@"You must configure a mail account before you can send email" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil] show];
