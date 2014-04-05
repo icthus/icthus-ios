@@ -109,7 +109,7 @@ CGRect textFrame;
         textFrame = CGRectInset(self.bounds, 15, 0);
     }
     // Set the height of the frame to fit an arbitrary 50 lines of text
-    CGFloat lineHeight = [self.sizingString boundingRectWithSize:CGSizeMake(textFrame.size.width, textFrame.size.height) options:0 context:nil].size.height;
+    CGFloat lineHeight = [self lineHeightForString:self.attString];
     textFrame.size.height = lineHeight * 50;
 
     CTFramesetterRef framesetter = CTFramesetterCreateWithAttributedString((CFAttributedStringRef)attString);
@@ -159,7 +159,7 @@ CGRect textFrame;
     // The parse all the verse and chapter numbers
     [parser addChapterAndVerseNumbersToFrameData:frameData fromMarkup:self.text];
     
-    //set the total width of the scroll view
+    //set the total size of the scroll view
     self.contentSize = CGSizeMake(textFrame.size.width, pageIndex * textFrame.size.height);
 }
 
@@ -318,6 +318,13 @@ CGRect textFrame;
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     [self saveCurrentLocation];
+}
+
+- (CGFloat)lineHeightForString:(NSAttributedString *)string {
+    CGFloat lineHeight = [self.sizingString boundingRectWithSize:CGSizeMake(textFrame.size.width, textFrame.size.height) options:0 context:nil].size.height;
+    NSParagraphStyle *style = [self.attString attribute:NSParagraphStyleAttributeName atIndex:0 effectiveRange:nil];
+    lineHeight += style.lineSpacing;
+    return lineHeight;
 }
 
 @end
