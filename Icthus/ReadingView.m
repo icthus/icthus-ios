@@ -163,30 +163,6 @@ CGRect textFrame;
     self.contentSize = CGSizeMake(textFrame.size.width, pageIndex * textFrame.size.height);
 }
 
-
-- (void)getTouchedLocation {
-    int frameHeight = textFrame.size.height;
-    int offset = self.contentOffset.y;
-    int frameOffset = offset % frameHeight;
-    BibleTextView *currentView = [self.textViews objectAtIndex: offset / frameHeight];
-    CTFrameRef currentFrame = currentView.ctFrame;
-    
-    NSArray *lines = (NSArray *) CTFrameGetLines(currentFrame);
-    CGPoint origins[lines.count];
-    CTFrameGetLineOrigins(currentFrame, CFRangeMake(0, 0), origins);
-    
-    int i;
-    for (i = 0; i < [lines count]; i++) {
-        CGPoint currentLineOrigin = origins[i];
-        if (currentLineOrigin.y > frameOffset) {
-            i -= 1;
-            break;
-        }
-    }
-    
-    CTLineRef currentLine = (__bridge CTLineRef)[lines objectAtIndex:i];
-}
-
 - (BookLocation *)saveCurrentLocation {
     // hack to fix a weird bug where self.book would be null on first launch on an 32-bit iPhone using iCloud.
     if (!self.book.managedObjectContext) {
@@ -252,7 +228,7 @@ CGRect textFrame;
         // find the correct line in the view
         CFArrayRef lines = CTFrameGetLines(textView.ctFrame);
         if (CFArrayGetCount(lines)) {
-            for (i = 0; i < CFArrayGetCount(lines) - 1; i++) {
+            for (i = 0; i < CFArrayGetCount(lines); i++) {
                 CTLineRef line = CFArrayGetValueAtIndex(lines, i);
                 CFRange range = CTLineGetStringRange(line);
                 if (targetTextPos <= textRange.location + range.location + range.length) {
@@ -265,10 +241,11 @@ CGRect textFrame;
             CTFrameGetLineOrigins(textView.ctFrame, CFRangeMake(0, 0), origins);
             // if (i == 0) we don't need to do anything; contentOffset is already set to the beginning of our BibleTextView
             // get the origin of the line just above the line we want to show because CoreText origins are on a Cartesian plane.
-            if (i != 0) {
-                CGPoint origin = origins[i - 1];
+//            if (i != 0) {
+//                CGPoint origin = origins[i - 1];
+                CGPoint origin = origins[i];
                 contentOffset += textView.frame.size.height - origin.y;
-            }
+//            }
         }
         
         lastKnownContentOffset = CGPointMake(0, 0 - textFrame.size.height);

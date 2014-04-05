@@ -16,7 +16,7 @@
 - (CGFloat)lineHeightForString:(NSAttributedString *)string;
 - (BookLocation *)getCurrentLocation;
 - (void)setCurrentLocation:(BookLocation *)location;
-- (void)saveCurrentLocation;
+- (BookLocation *)saveCurrentLocation;
 
 @property (retain, nonatomic) NSAttributedString* attString;
 @property (retain, nonatomic) NSAttributedString* sizingString;
