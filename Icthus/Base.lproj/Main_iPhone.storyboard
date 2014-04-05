@@ -257,7 +257,7 @@
             </objects>
             <point key="canvasLocation" x="2137" y="-492"/>
         </scene>
-        <!--Reading View Controller - ReadingView-->
+        <!--Reading View Controller - Please Wait...-->
         <scene sceneID="sJ8-ag-o0I">
             <objects>
                 <viewController id="ibv-lJ-hHP" customClass="ReadingViewController" sceneMemberID="viewController">
@@ -277,7 +277,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
-                    <navigationItem key="navigationItem" title="ReadingView" id="ky5-FA-OfL">
+                    <navigationItem key="navigationItem" title="Please Wait..." id="ky5-FA-OfL">
                         <barButtonItem key="leftBarButtonItem" title="History" id="nJV-fl-hx2">
                             <connections>
                                 <segue destination="qht-c0-i04" kind="push" id="RVG-qd-955"/>
