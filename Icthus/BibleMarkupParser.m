@@ -131,6 +131,7 @@
             currentVerse = [[attributeDict objectForKey:@"i"] intValue];
         } else if ([elementName isEqualToString:@"c"]) {
             currentChapter = [[attributeDict objectForKey:@"i"] intValue];
+            currentVerse = 1;
         }
     }
     
