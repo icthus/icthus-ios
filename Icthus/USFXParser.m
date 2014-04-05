@@ -42,8 +42,8 @@
     // Define the tags we will include and exclude
     // TODO: handle formatting of h, mt, b tags
     // tags I'm unsure of (and can't find any examples of): milestone, generated, da, cs
-    includedTags = [[NSSet alloc] initWithArray:@[@"usfx", @"book", @"p", @"q", @"mt", @"d", @"b", @"generated", @"c", @"v", @"ve", @"qt", @"nd", @"tl", @"qs", @"qac", @"sls", @"bk", @"pn", @"k", @"ord", @"sig", @"bd", @"it", @"bdit", @"sc", @"no", @"quoteStart", @"quoteEnd", @"wj", @"wtp", @"da"]];
-    excludedTags = [[NSSet alloc] initWithArray:@[@"languageCode", @"rem", @"id", @"ide", @"h", @"rem", @"cl", @"s", @"sectionBoundary", @"cp", @"ca", @"toc", @"milestone", @"va", @"vp", @"table", @"generated", @"f", @"ef", @"fm", @"x", @"ex", @"dc", @"add", @"fig", @"description", @"catalog", @"size", @"location", @"copyright", @"caption", @"reference", @"ndx", @"w", @"wh", @"wg", @"wr", @"quoteRemind", @"ior", @"cs", @"fs", @"cl", @"//", @"ref", @"zw"]];
+    includedTags = [[NSSet alloc] initWithArray:@[@"usfx", @"book", @"p", @"q", @"mt", @"d", @"b", @"generated", @"c", @"v", @"ve", @"qt", @"nd", @"tl", @"qs", @"qac", @"sls", @"bk", @"pn", @"k", @"ord", @"sig", @"bd", @"it", @"bdit", @"sc", @"no", @"quoteStart", @"quoteEnd", @"wj", @"wtp", @"da", @"add"]];
+    excludedTags = [[NSSet alloc] initWithArray:@[@"languageCode", @"rem", @"id", @"ide", @"h", @"rem", @"cl", @"s", @"sectionBoundary", @"cp", @"ca", @"toc", @"milestone", @"va", @"vp", @"table", @"generated", @"f", @"ef", @"fm", @"x", @"ex", @"dc", @"fig", @"description", @"catalog", @"size", @"location", @"copyright", @"caption", @"reference", @"ndx", @"w", @"wh", @"wg", @"wr", @"quoteRemind", @"ior", @"cs", @"fs", @"cl", @"//", @"ref", @"zw"]];
     
     Translation *trans = [NSEntityDescription insertNewObjectForEntityForName:@"Translation" inManagedObjectContext:_context];
     [trans setCode:translationCode];
