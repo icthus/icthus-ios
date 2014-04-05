@@ -212,7 +212,7 @@ CGRect textFrame;
         // find the index of the view with the given location and instantiate it
         NSRange textRange;
         int i;
-        for (i = 0; i < [frameData count]; i++) {
+        for (i = 0; i < [frameData count] - 1; i++) {
             textRange = [[frameData objectAtIndex:i] textRange];
             if (NSLocationInRange(targetTextPos, textRange)) {
                 break;
@@ -228,7 +228,7 @@ CGRect textFrame;
         // find the correct line in the view
         CFArrayRef lines = CTFrameGetLines(textView.ctFrame);
         if (CFArrayGetCount(lines)) {
-            for (i = 0; i < CFArrayGetCount(lines); i++) {
+            for (i = 0; i < CFArrayGetCount(lines) - 1; i++) {
                 CTLineRef line = CFArrayGetValueAtIndex(lines, i);
                 CFRange range = CTLineGetStringRange(line);
                 if (targetTextPos <= textRange.location + range.location + range.length) {
