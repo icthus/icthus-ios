@@ -22,14 +22,14 @@
 @synthesize appDel = _appDel;
 @synthesize selectedBook;
 @synthesize selectedChapter;
+@synthesize finishedAnimations;
 
 -(id)initWithCoder:(NSCoder *)aDecoder
 {
     NSLog(@"initWithCoder");
     
     self = [super initWithCoder: aDecoder];
-    if (self)
-    {
+    if (self) {
         _appDel = [[UIApplication sharedApplication] delegate];
         _managedObjectContext = [_appDel managedObjectContext];
     }
@@ -109,7 +109,7 @@
         ChapterCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:chapterIdentifier forIndexPath:indexPath];
         UILabel *label = cell.label;
         NSUInteger chapterNumber = index - chapterRange.location + 1;
-        [label setText:[NSString stringWithFormat:@"%d", chapterNumber]];
+        [label setText:[NSString stringWithFormat:@"%lu", (unsigned long)chapterNumber]];
         uiCollectionViewCell = cell;
     }
     
@@ -126,12 +126,12 @@
         }
         Book *book = [self.fetchedResultsController objectAtIndexPath:indexPath];
         
-        
+        self.finishedAnimations = 0;
         if ([selectedBook isEqual:book]) {
             // This is the second time the user tapped the book. Remove the chapters.
             [self.collectionView performBatchUpdates:^{
                 NSArray *indexPaths = [self indexPathsForChapters];
-                selectedBook = nil;
+                self.selectedBook = nil;
                 [self.collectionView deleteItemsAtIndexPaths:indexPaths];
             } completion:nil];
         } else {
@@ -140,16 +140,32 @@
                 // Delete old chapters
                 [self.collectionView performBatchUpdates:^{
                     NSArray *indexPaths = [self indexPathsForChapters];
-                    selectedBook = nil;
+                    self.selectedBook = nil;
                     [self.collectionView deleteItemsAtIndexPaths:indexPaths];
-                } completion:nil];
+                } completion:^(BOOL finished) {
+                    @synchronized(self.finishedAnimations) {
+                        self.finishedAnimations = [NSNumber numberWithInt:[self.finishedAnimations intValue] + 1];
+                        if ([self.finishedAnimations intValue] >= 2) {
+                            [self scrollCellIntoViewIfNeeded];
+                            self.finishedAnimations = 0;
+                        }
+                    }
+                }];
             }
             
             // Insert the new chapters
             selectedBook = book;
             [self.collectionView performBatchUpdates:^{
                 [self.collectionView insertItemsAtIndexPaths:[self indexPathsForChapters]];
-            } completion:nil];
+            } completion:^(BOOL finished){
+                @synchronized(self.finishedAnimations) {
+                    self.finishedAnimations = [NSNumber numberWithInt:[self.finishedAnimations intValue] + 1];
+                    if ([self.finishedAnimations intValue] >= 2) {
+                        [self scrollCellIntoViewIfNeeded];
+                        self.finishedAnimations = 0;
+                    }
+                }
+            }];
         }
     } else {
         self.selectedChapter = index - chapterRange.location + 1;
@@ -300,6 +316,13 @@
         [chapterIndexPaths addObject:path];
     }
     return chapterIndexPaths;
+}
+
+- (void)scrollCellIntoViewIfNeeded {
+    NSIndexPath *selectedBookPath = [self.fetchedResultsController indexPathForObject:self.selectedBook];
+    if (![[self.collectionView visibleCells] containsObject:[self.collectionView cellForItemAtIndexPath:selectedBookPath]]) {
+        [self.collectionView scrollToItemAtIndexPath:selectedBookPath atScrollPosition:UICollectionViewScrollPositionTop animated:YES];
+    }
 }
 
 - (IBAction)dismissButtonPressed:(id)sender {

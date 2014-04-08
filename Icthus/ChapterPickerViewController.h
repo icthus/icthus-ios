@@ -15,8 +15,9 @@
 @property (nonatomic, strong) AppDelegate *appDel;
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
-@property (strong, nonatomic) Book *selectedBook;
+@property (strong, atomic) Book *selectedBook;
 @property (nonatomic) NSUInteger selectedChapter;
+@property (nonatomic, strong) NSNumber *finishedAnimations;
 - (IBAction)dismissButtonPressed:(id)sender;
 
 @end
