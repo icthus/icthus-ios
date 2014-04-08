@@ -14,6 +14,7 @@
 		C9451E90183BB0D9009FAFEE /* BibleVerseView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9451E8F183BB0D9009FAFEE /* BibleVerseView.m */; };
 		C94A2B24181001790076926A /* TranslationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C94A2B23181001790076926A /* TranslationViewController.m */; };
 		C94A2B271810030E0076926A /* Translation.m in Sources */ = {isa = PBXBuildFile; fileRef = C94A2B261810030E0076926A /* Translation.m */; };
+		C94C254318F487DC008E9CD4 /* CollectionViewLeftFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = C94C254218F487DC008E9CD4 /* CollectionViewLeftFlowLayout.m */; };
 		C958677A18D9DBE9001F875B /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C958677918D9DBE9001F875B /* SettingsViewController.m */; };
 		C958677D18DA070C001F875B /* SettingsIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = C958677C18DA070C001F875B /* SettingsIcon.png */; };
 		C958678018DA0823001F875B /* SettingsIcon.svg in Resources */ = {isa = PBXBuildFile; fileRef = C958677F18DA0823001F875B /* SettingsIcon.svg */; };
@@ -105,6 +106,8 @@
 		C94A2B23181001790076926A /* TranslationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TranslationViewController.m; sourceTree = "<group>"; };
 		C94A2B251810030E0076926A /* Translation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Translation.h; sourceTree = "<group>"; };
 		C94A2B261810030E0076926A /* Translation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Translation.m; sourceTree = "<group>"; };
+		C94C254118F487DC008E9CD4 /* CollectionViewLeftFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewLeftFlowLayout.h; sourceTree = "<group>"; };
+		C94C254218F487DC008E9CD4 /* CollectionViewLeftFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewLeftFlowLayout.m; sourceTree = "<group>"; };
 		C958677818D9DBE9001F875B /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		C958677918D9DBE9001F875B /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		C958677C18DA070C001F875B /* SettingsIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SettingsIcon.png; sourceTree = "<group>"; };
@@ -299,6 +302,8 @@
 				C95DAB6A18940D6D00494256 /* ChapterCollectionViewCell.m */,
 				C9E5776F188484A3004CC974 /* BookCollectionViewCell.h */,
 				C9E57770188484A3004CC974 /* BookCollectionViewCell.m */,
+				C94C254118F487DC008E9CD4 /* CollectionViewLeftFlowLayout.h */,
+				C94C254218F487DC008E9CD4 /* CollectionViewLeftFlowLayout.m */,
 			);
 			name = "Chapter Picker";
 			sourceTree = "<group>";
@@ -642,6 +647,7 @@
 				C9FF510117CBB54700BA526E /* main.m in Sources */,
 				C99F2FC717CCE714008AF602 /* ReadingViewController.m in Sources */,
 				C99F2FC417CCDC01008AF602 /* ChapterPickerViewController.m in Sources */,
+				C94C254318F487DC008E9CD4 /* CollectionViewLeftFlowLayout.m in Sources */,
 				C9D071DC17DE8C2000B535ED /* ReadingView.m in Sources */,
 				C97A1AF818E5DF57001E148D /* BibleFrameInfo.m in Sources */,
 				C9FD6B2218EB020D007BBEFF /* WEBUSFXParser.m in Sources */,

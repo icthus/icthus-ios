@@ -72,13 +72,13 @@
         if ([self isBookAtIndexPath:indexPath]) {
             return CGSizeMake(293, 54);
         } else {
-            return CGSizeMake(54, 54);
+            return CGSizeMake(56, 54);
         }
     } else {
         if ([self isBookAtIndexPath:indexPath]) {
             return CGSizeMake(319, 42);
         } else {
-            return CGSizeMake(61, 42);
+            return CGSizeMake(56, 42);
         }
     }
 }

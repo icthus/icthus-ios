@@ -23,7 +23,7 @@
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
         self.label.font = [UIFont fontWithName:@"Bariol-Regular" size:34.0f];
     } else {
-        self.label.font = [UIFont fontWithName:@"Bariol-Regular" size:24.0f];
+        self.label.font = [UIFont fontWithName:@"Bariol-Regular" size:28.0f];
     }
 }
 
