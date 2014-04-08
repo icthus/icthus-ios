@@ -20,11 +20,16 @@
 }
 
 - (void)awakeFromNib {
+    self.label.highlightedTextColor = [UIColor colorWithWhite:0.5 alpha:1.0];
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
         self.label.font = [UIFont fontWithName:@"Bariol-Regular" size:34.0f];
     } else {
         self.label.font = [UIFont fontWithName:@"Bariol-Regular" size:28.0f];
     }
+}
+
+- (void)setHighlighted:(BOOL)highlighted {
+    self.label.highlighted = highlighted;
 }
 
 /*
