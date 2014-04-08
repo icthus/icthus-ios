@@ -125,10 +125,32 @@
             indexPath = [[NSIndexPath alloc] initWithIndexes:actualIndexArray length:2];
         }
         Book *book = [self.fetchedResultsController objectAtIndexPath:indexPath];
-        selectedBook = book;
-        NSLog(@"User selected book %@", book.shortName);
-        NSLog(@"Book has %i chapters", [book.numberOfChapters intValue]);
-        [self.collectionView reloadData];
+        
+        
+        if ([selectedBook isEqual:book]) {
+            // This is the second time the user tapped the book. Remove the chapters.
+            [self.collectionView performBatchUpdates:^{
+                NSArray *indexPaths = [self indexPathsForChapters];
+                selectedBook = nil;
+                [self.collectionView deleteItemsAtIndexPaths:indexPaths];
+            } completion:nil];
+        } else {
+            if (selectedBook) {
+                // There was another book selected
+                // Delete old chapters
+                [self.collectionView performBatchUpdates:^{
+                    NSArray *indexPaths = [self indexPathsForChapters];
+                    selectedBook = nil;
+                    [self.collectionView deleteItemsAtIndexPaths:indexPaths];
+                } completion:nil];
+            }
+            
+            // Insert the new chapters
+            selectedBook = book;
+            [self.collectionView performBatchUpdates:^{
+                [self.collectionView insertItemsAtIndexPaths:[self indexPathsForChapters]];
+            } completion:nil];
+        }
     } else {
         self.selectedChapter = index - chapterRange.location + 1;
         [self updateLocationAndShowChapter];
@@ -267,6 +289,17 @@
     } else {
         return NSMakeRange(0,0);
     }
+}
+
+- (NSArray *)indexPathsForChapters {
+    NSRange chapterRange = [self getChapterRange];
+    NSMutableArray *chapterIndexPaths = [[NSMutableArray alloc] initWithCapacity:chapterRange.length];
+    for (NSUInteger i = chapterRange.location; i < chapterRange.location + chapterRange.length; i++) {
+        NSUInteger indexes[2] = {0, i};
+        NSIndexPath *path = [[NSIndexPath alloc] initWithIndexes:indexes length:2];
+        [chapterIndexPaths addObject:path];
+    }
+    return chapterIndexPaths;
 }
 
 - (IBAction)dismissButtonPressed:(id)sender {
