@@ -55,28 +55,12 @@
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     [prefs setObject:@"WEB" forKey:@"selectedTranslation"];
     [prefs synchronize];
-    [self instantiateBooks];
+//    [self instantiateBooks];
     [prefs setBool:YES forKey:@"appHasLaunchedBefore"];
     [prefs synchronize];
     [self setupControllers];
 }
 
-- (void)instantiateBooks {
-    // WEB
-    NSString* WEBBookNamePath = [[NSBundle mainBundle] pathForResource:@"WEBBookNames" ofType:@"xml"];
-    NSString* WEBBookTextPath = [[NSBundle mainBundle] pathForResource:@"eng-web_usfx" ofType:@"xml"];
-    [[[WEBUSFXParser alloc] init] instantiateBooks:self.managedObjectContext translationCode:@"WEB" displayName:@"World English Bible" bookNamePath:WEBBookNamePath bookTextPath:WEBBookTextPath];
-    
-    // ASV
-    NSString* ASVBookTextPath = [[NSBundle mainBundle] pathForResource:@"eng-asv_usfx" ofType:@"xml"];
-    NSString* ASVBookNamePath = [[NSBundle mainBundle] pathForResource:@"ASVBookNames" ofType:@"xml"];
-    [[[ASVUSFXParser alloc] init] instantiateBooks:self.managedObjectContext translationCode:@"ASV" displayName:@"American Standard Version" bookNamePath:ASVBookNamePath bookTextPath:ASVBookTextPath];
-    
-    // KJV
-//    NSString* KJVBookTextPath = [[NSBundle mainBundle] pathForResource:@"eng-kjv_usfx" ofType:@"xml"];
-//    NSString* KJVBookNamePath = [[NSBundle mainBundle] pathForResource:@"KJVBookNames" ofType:@"xml"];
-//    [[[USFXParser alloc] init] instantiateBooks:self.managedObjectContext translationCode:@"KJV" displayName:@"King James Version" bookNamePath:KJVBookNamePath bookTextPath:KJVBookTextPath];
-}
 
 - (void)setupControllers {
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
@@ -248,6 +232,14 @@
     
     // Local
     NSURL *localStoreURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"IcthusLocalStore.sqlite"];
+    if (![[NSFileManager defaultManager] fileExistsAtPath:[localStoreURL path]]) {
+        NSURL *preloadURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"IcthusPrepopulatedStore" ofType:@"sqlite"]];
+        NSError* err = nil;
+        if (![[NSFileManager defaultManager] copyItemAtURL:preloadURL toURL:localStoreURL error:&err]) {
+            NSLog(@"VERY BAD: Could not copy preloaded data");
+            // TODO: give user an alert
+        }
+    }
     
     options = @{
                  NSMigratePersistentStoresAutomaticallyOption: [NSNumber numberWithBool:YES],

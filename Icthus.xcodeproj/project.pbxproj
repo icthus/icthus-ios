@@ -21,6 +21,7 @@
 		C958678218DA2DA4001F875B /* SettingsIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C958678118DA2DA4001F875B /* SettingsIcon@2x.png */; };
 		C95DAB6B18940D6D00494256 /* ChapterCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C95DAB6A18940D6D00494256 /* ChapterCollectionViewCell.m */; };
 		C97A1AF818E5DF57001E148D /* BibleFrameInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = C97A1AF718E5DF57001E148D /* BibleFrameInfo.m */; };
+		C981303318F5BCBB00C65310 /* IcthusPrepopulatedStore.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = C981303218F5BC5C00C65310 /* IcthusPrepopulatedStore.sqlite */; };
 		C98C1A2B18B6452200E4B3DF /* Bariol_Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = C98C1A2A18B6452200E4B3DF /* Bariol_Regular.otf */; };
 		C98C1A3318B6561700E4B3DF /* Akzidenz Grotesk CE Roman.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C98C1A3218B6561700E4B3DF /* Akzidenz Grotesk CE Roman.ttf */; };
 		C99C73FA17DFA61B00DBF0E2 /* BibleMarkupParser.m in Sources */ = {isa = PBXBuildFile; fileRef = C99C73F917DFA61B00DBF0E2 /* BibleMarkupParser.m */; };
@@ -117,6 +118,7 @@
 		C95DAB6A18940D6D00494256 /* ChapterCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChapterCollectionViewCell.m; sourceTree = "<group>"; };
 		C97A1AF618E5DF57001E148D /* BibleFrameInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BibleFrameInfo.h; sourceTree = "<group>"; };
 		C97A1AF718E5DF57001E148D /* BibleFrameInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BibleFrameInfo.m; sourceTree = "<group>"; };
+		C981303218F5BC5C00C65310 /* IcthusPrepopulatedStore.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = IcthusPrepopulatedStore.sqlite; sourceTree = "<group>"; };
 		C98C1A2A18B6452200E4B3DF /* Bariol_Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Bariol_Regular.otf; sourceTree = "<group>"; };
 		C98C1A3218B6561700E4B3DF /* Akzidenz Grotesk CE Roman.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Akzidenz Grotesk CE Roman.ttf"; sourceTree = "<group>"; };
 		C99C73F817DFA61B00DBF0E2 /* BibleMarkupParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = BibleMarkupParser.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
@@ -473,6 +475,7 @@
 		C9FF513317CBFBE900BA526E /* Core Data Source Files */ = {
 			isa = PBXGroup;
 			children = (
+				C981303218F5BC5C00C65310 /* IcthusPrepopulatedStore.sqlite */,
 				C9ED7D6418DA7C3900864288 /* KJV */,
 				C9B305601816A1B900EE8A94 /* ASV */,
 				C93B50E0180EB5D700C07D98 /* WEB */,
@@ -490,7 +493,7 @@
 				C9FF50EB17CBB54700BA526E /* Sources */,
 				C9FF50EC17CBB54700BA526E /* Frameworks */,
 				C9FF50ED17CBB54700BA526E /* Resources */,
-				C9F55EDD18EF61DC009E685D /* ShellScript */,
+				C9F55EDD18EF61DC009E685D /* Run Hockey BuildAgent */,
 			);
 			buildRules = (
 			);
@@ -565,6 +568,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C981303318F5BCBB00C65310 /* IcthusPrepopulatedStore.sqlite in Resources */,
 				C9ED7D7218DA7C3900864288 /* signature.txt.asc in Resources */,
 				C9F55EE918EF622F009E685D /* HockeySDKResources.bundle in Resources */,
 				C9B3056A1816A1B900EE8A94 /* eng-asv-VernacularAdditional.xml in Resources */,
@@ -611,13 +615,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		C9F55EDD18EF61DC009E685D /* ShellScript */ = {
+		C9F55EDD18EF61DC009E685D /* Run Hockey BuildAgent */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = "Run Hockey BuildAgent";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;

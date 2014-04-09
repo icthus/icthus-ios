@@ -20,6 +20,20 @@
                ReferencedContainer = "container:Icthus.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "C9A691F318F59CC100801A8B"
+               BuildableName = "IcthusStoreGenerator"
+               BlueprintName = "IcthusStoreGenerator"
+               ReferencedContainer = "container:IcthusStoreGenerator/IcthusStoreGenerator.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction

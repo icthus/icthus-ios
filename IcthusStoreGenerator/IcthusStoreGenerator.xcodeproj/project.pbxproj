@@ -1,0 +1,763 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C948F6CF18F5A8900010DA88 /* Icthus.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C948F6CD18F5A8900010DA88 /* Icthus.xcdatamodeld */; };
+		C981302818F5B3BC00C65310 /* ASVBookNames.xml in CopyFiles */ = {isa = PBXBuildFile; fileRef = C9F7B56418F5ABB9009462BA /* ASVBookNames.xml */; };
+		C981302918F5B3BC00C65310 /* eng-asv_usfx.xml in CopyFiles */ = {isa = PBXBuildFile; fileRef = C9F7B56818F5ABB9009462BA /* eng-asv_usfx.xml */; };
+		C981302A18F5B3BC00C65310 /* eng-kjv_usfx.xml in CopyFiles */ = {isa = PBXBuildFile; fileRef = C9F7B56F18F5ABB9009462BA /* eng-kjv_usfx.xml */; };
+		C981302B18F5B3BC00C65310 /* KJVBookNames.xml in CopyFiles */ = {isa = PBXBuildFile; fileRef = C9F7B57118F5ABB9009462BA /* KJVBookNames.xml */; };
+		C981302C18F5B3BC00C65310 /* eng-web_usfx.xml in CopyFiles */ = {isa = PBXBuildFile; fileRef = C9F7B57718F5ABB9009462BA /* eng-web_usfx.xml */; };
+		C981302D18F5B3BC00C65310 /* WEBBookNames.xml in CopyFiles */ = {isa = PBXBuildFile; fileRef = C9F7B57A18F5ABB9009462BA /* WEBBookNames.xml */; };
+		C9A691F818F59CC100801A8B /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9A691F718F59CC100801A8B /* CoreData.framework */; };
+		C9A691FA18F59CC100801A8B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9A691F918F59CC100801A8B /* Foundation.framework */; };
+		C9A691FD18F59CC100801A8B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A691FC18F59CC100801A8B /* main.m */; };
+		C9A6920418F59CC100801A8B /* IcthusStoreGenerator.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = C9A6920318F59CC100801A8B /* IcthusStoreGenerator.1 */; };
+		C9A6921118F5A0C400801A8B /* USFXParser.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A6920C18F5A0C400801A8B /* USFXParser.m */; };
+		C9A6921218F5A0C400801A8B /* WEBUSFXParser.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A6920E18F5A0C400801A8B /* WEBUSFXParser.m */; };
+		C9A6921318F5A0C400801A8B /* ASVUSFXParser.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A6921018F5A0C400801A8B /* ASVUSFXParser.m */; };
+		C9A6921918F5A5F300801A8B /* Translation.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A6921618F5A5F300801A8B /* Translation.m */; };
+		C9A6921A18F5A5F300801A8B /* Book.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A6921818F5A5F300801A8B /* Book.m */; };
+		C9A6921E18F5A65000801A8B /* BookLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A6921D18F5A65000801A8B /* BookLocation.m */; };
+		C9F7B58E18F5AF98009462BA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9F7B58D18F5AF98009462BA /* Cocoa.framework */; };
+		C9F7B59818F5AF98009462BA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C9F7B59618F5AF98009462BA /* InfoPlist.strings */; };
+		C9F7B59A18F5AF98009462BA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F7B59918F5AF98009462BA /* main.m */; };
+		C9F7B59E18F5AF98009462BA /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = C9F7B59C18F5AF98009462BA /* Credits.rtf */; };
+		C9F7B5A118F5AF98009462BA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F7B5A018F5AF98009462BA /* AppDelegate.m */; };
+		C9F7B5A418F5AF98009462BA /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9F7B5A218F5AF98009462BA /* MainMenu.xib */; };
+		C9F7B5A618F5AF98009462BA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9F7B5A518F5AF98009462BA /* Images.xcassets */; };
+		C9F7B5AD18F5AF98009462BA /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9F7B5AC18F5AF98009462BA /* XCTest.framework */; };
+		C9F7B5AE18F5AF98009462BA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9F7B58D18F5AF98009462BA /* Cocoa.framework */; };
+		C9F7B5B618F5AF98009462BA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C9F7B5B418F5AF98009462BA /* InfoPlist.strings */; };
+		C9F7B5B818F5AF98009462BA /* IcthusStoreGeneratorApplicationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F7B5B718F5AF98009462BA /* IcthusStoreGeneratorApplicationTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C9F7B5AF18F5AF98009462BA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C9A691EC18F59CC100801A8B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C9F7B58B18F5AF98009462BA;
+			remoteInfo = IcthusStoreGeneratorApplication;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		C981302718F5B3A800C65310 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 7;
+			files = (
+				C981302818F5B3BC00C65310 /* ASVBookNames.xml in CopyFiles */,
+				C981302918F5B3BC00C65310 /* eng-asv_usfx.xml in CopyFiles */,
+				C981302A18F5B3BC00C65310 /* eng-kjv_usfx.xml in CopyFiles */,
+				C981302B18F5B3BC00C65310 /* KJVBookNames.xml in CopyFiles */,
+				C981302C18F5B3BC00C65310 /* eng-web_usfx.xml in CopyFiles */,
+				C981302D18F5B3BC00C65310 /* WEBBookNames.xml in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C9A691F218F59CC100801A8B /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 8;
+			dstPath = usr/share/man/man1;
+			dstSubfolderSpec = 0;
+			files = (
+				C9A6920418F59CC100801A8B /* IcthusStoreGenerator.1 in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		C948F6CE18F5A8900010DA88 /* Icthus.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Icthus.xcdatamodel; sourceTree = "<group>"; };
+		C9A691F418F59CC100801A8B /* IcthusStoreGenerator */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = IcthusStoreGenerator; sourceTree = BUILT_PRODUCTS_DIR; };
+		C9A691F718F59CC100801A8B /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		C9A691F918F59CC100801A8B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		C9A691FC18F59CC100801A8B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C9A691FF18F59CC100801A8B /* IcthusStoreGenerator-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "IcthusStoreGenerator-Prefix.pch"; sourceTree = "<group>"; };
+		C9A6920318F59CC100801A8B /* IcthusStoreGenerator.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = IcthusStoreGenerator.1; sourceTree = "<group>"; };
+		C9A6920B18F5A0C400801A8B /* USFXParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = USFXParser.h; sourceTree = "<group>"; };
+		C9A6920C18F5A0C400801A8B /* USFXParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = USFXParser.m; sourceTree = "<group>"; };
+		C9A6920D18F5A0C400801A8B /* WEBUSFXParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEBUSFXParser.h; sourceTree = "<group>"; };
+		C9A6920E18F5A0C400801A8B /* WEBUSFXParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEBUSFXParser.m; sourceTree = "<group>"; };
+		C9A6920F18F5A0C400801A8B /* ASVUSFXParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASVUSFXParser.h; sourceTree = "<group>"; };
+		C9A6921018F5A0C400801A8B /* ASVUSFXParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASVUSFXParser.m; sourceTree = "<group>"; };
+		C9A6921518F5A5F300801A8B /* Translation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Translation.h; sourceTree = "<group>"; };
+		C9A6921618F5A5F300801A8B /* Translation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Translation.m; sourceTree = "<group>"; };
+		C9A6921718F5A5F300801A8B /* Book.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Book.h; sourceTree = "<group>"; };
+		C9A6921818F5A5F300801A8B /* Book.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Book.m; sourceTree = "<group>"; };
+		C9A6921C18F5A65000801A8B /* BookLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookLocation.h; sourceTree = "<group>"; };
+		C9A6921D18F5A65000801A8B /* BookLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookLocation.m; sourceTree = "<group>"; };
+		C9F7B56418F5ABB9009462BA /* ASVBookNames.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ASVBookNames.xml; sourceTree = "<group>"; };
+		C9F7B56518F5ABB9009462BA /* copr.htm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = copr.htm; sourceTree = "<group>"; };
+		C9F7B56618F5ABB9009462BA /* eng-asv-VernacularAdditional.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "eng-asv-VernacularAdditional.xml"; sourceTree = "<group>"; };
+		C9F7B56718F5ABB9009462BA /* eng-asv-VernacularParms.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "eng-asv-VernacularParms.xml"; sourceTree = "<group>"; };
+		C9F7B56818F5ABB9009462BA /* eng-asv_usfx.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "eng-asv_usfx.xml"; sourceTree = "<group>"; };
+		C9F7B56918F5ABB9009462BA /* keys.asc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = keys.asc; sourceTree = "<group>"; };
+		C9F7B56A18F5ABB9009462BA /* signature.txt.asc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = signature.txt.asc; sourceTree = "<group>"; };
+		C9F7B56C18F5ABB9009462BA /* copr.htm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = copr.htm; sourceTree = "<group>"; };
+		C9F7B56D18F5ABB9009462BA /* eng-kjv-VernacularAdditional.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "eng-kjv-VernacularAdditional.xml"; sourceTree = "<group>"; };
+		C9F7B56E18F5ABB9009462BA /* eng-kjv-VernacularParms.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "eng-kjv-VernacularParms.xml"; sourceTree = "<group>"; };
+		C9F7B56F18F5ABB9009462BA /* eng-kjv_usfx.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "eng-kjv_usfx.xml"; sourceTree = "<group>"; };
+		C9F7B57018F5ABB9009462BA /* keys.asc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = keys.asc; sourceTree = "<group>"; };
+		C9F7B57118F5ABB9009462BA /* KJVBookNames.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = KJVBookNames.xml; sourceTree = "<group>"; };
+		C9F7B57218F5ABB9009462BA /* signature.txt.asc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = signature.txt.asc; sourceTree = "<group>"; };
+		C9F7B57418F5ABB9009462BA /* copr.htm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = copr.htm; sourceTree = "<group>"; };
+		C9F7B57518F5ABB9009462BA /* eng-web-VernacularAdditional.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "eng-web-VernacularAdditional.xml"; sourceTree = "<group>"; };
+		C9F7B57618F5ABB9009462BA /* eng-web-VernacularParms.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "eng-web-VernacularParms.xml"; sourceTree = "<group>"; };
+		C9F7B57718F5ABB9009462BA /* eng-web_usfx.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "eng-web_usfx.xml"; sourceTree = "<group>"; };
+		C9F7B57818F5ABB9009462BA /* keys.asc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = keys.asc; sourceTree = "<group>"; };
+		C9F7B57918F5ABB9009462BA /* signature.txt.asc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = signature.txt.asc; sourceTree = "<group>"; };
+		C9F7B57A18F5ABB9009462BA /* WEBBookNames.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = WEBBookNames.xml; sourceTree = "<group>"; };
+		C9F7B58C18F5AF98009462BA /* IcthusStoreGeneratorApplication.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IcthusStoreGeneratorApplication.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C9F7B58D18F5AF98009462BA /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		C9F7B59018F5AF98009462BA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		C9F7B59118F5AF98009462BA /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		C9F7B59218F5AF98009462BA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		C9F7B59518F5AF98009462BA /* IcthusStoreGeneratorApplication-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "IcthusStoreGeneratorApplication-Info.plist"; sourceTree = "<group>"; };
+		C9F7B59718F5AF98009462BA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		C9F7B59918F5AF98009462BA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C9F7B59B18F5AF98009462BA /* IcthusStoreGeneratorApplication-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "IcthusStoreGeneratorApplication-Prefix.pch"; sourceTree = "<group>"; };
+		C9F7B59D18F5AF98009462BA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		C9F7B59F18F5AF98009462BA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		C9F7B5A018F5AF98009462BA /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		C9F7B5A318F5AF98009462BA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		C9F7B5A518F5AF98009462BA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		C9F7B5AB18F5AF98009462BA /* IcthusStoreGeneratorApplicationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IcthusStoreGeneratorApplicationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C9F7B5AC18F5AF98009462BA /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		C9F7B5B318F5AF98009462BA /* IcthusStoreGeneratorApplicationTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "IcthusStoreGeneratorApplicationTests-Info.plist"; sourceTree = "<group>"; };
+		C9F7B5B518F5AF98009462BA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		C9F7B5B718F5AF98009462BA /* IcthusStoreGeneratorApplicationTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IcthusStoreGeneratorApplicationTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C9A691F118F59CC100801A8B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C9A691F818F59CC100801A8B /* CoreData.framework in Frameworks */,
+				C9A691FA18F59CC100801A8B /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C9F7B58918F5AF98009462BA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C9F7B58E18F5AF98009462BA /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C9F7B5A818F5AF98009462BA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C9F7B5AE18F5AF98009462BA /* Cocoa.framework in Frameworks */,
+				C9F7B5AD18F5AF98009462BA /* XCTest.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C9A691EB18F59CC100801A8B = {
+			isa = PBXGroup;
+			children = (
+				C9A691FB18F59CC100801A8B /* IcthusStoreGenerator */,
+				C9F7B59318F5AF98009462BA /* IcthusStoreGeneratorApplication */,
+				C9F7B5B118F5AF98009462BA /* IcthusStoreGeneratorApplicationTests */,
+				C9A691F618F59CC100801A8B /* Frameworks */,
+				C9A691F518F59CC100801A8B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C9A691F518F59CC100801A8B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C9A691F418F59CC100801A8B /* IcthusStoreGenerator */,
+				C9F7B58C18F5AF98009462BA /* IcthusStoreGeneratorApplication.app */,
+				C9F7B5AB18F5AF98009462BA /* IcthusStoreGeneratorApplicationTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C9A691F618F59CC100801A8B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C9A691F718F59CC100801A8B /* CoreData.framework */,
+				C9A691F918F59CC100801A8B /* Foundation.framework */,
+				C9F7B58D18F5AF98009462BA /* Cocoa.framework */,
+				C9F7B5AC18F5AF98009462BA /* XCTest.framework */,
+				C9F7B58F18F5AF98009462BA /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C9A691FB18F59CC100801A8B /* IcthusStoreGenerator */ = {
+			isa = PBXGroup;
+			children = (
+				C9F7B57B18F5ABC0009462BA /* Core Data Source Files */,
+				C9A6921B18F5A5FA00801A8B /* Models */,
+				C9A6921418F5A0CD00801A8B /* Parsers */,
+				C9A691FC18F59CC100801A8B /* main.m */,
+				C948F6CD18F5A8900010DA88 /* Icthus.xcdatamodeld */,
+				C9A6920318F59CC100801A8B /* IcthusStoreGenerator.1 */,
+				C9A691FE18F59CC100801A8B /* Supporting Files */,
+			);
+			path = IcthusStoreGenerator;
+			sourceTree = "<group>";
+		};
+		C9A691FE18F59CC100801A8B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C9A691FF18F59CC100801A8B /* IcthusStoreGenerator-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C9A6921418F5A0CD00801A8B /* Parsers */ = {
+			isa = PBXGroup;
+			children = (
+				C9A6920B18F5A0C400801A8B /* USFXParser.h */,
+				C9A6920C18F5A0C400801A8B /* USFXParser.m */,
+				C9A6920D18F5A0C400801A8B /* WEBUSFXParser.h */,
+				C9A6920E18F5A0C400801A8B /* WEBUSFXParser.m */,
+				C9A6920F18F5A0C400801A8B /* ASVUSFXParser.h */,
+				C9A6921018F5A0C400801A8B /* ASVUSFXParser.m */,
+			);
+			name = Parsers;
+			sourceTree = "<group>";
+		};
+		C9A6921B18F5A5FA00801A8B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C9A6921C18F5A65000801A8B /* BookLocation.h */,
+				C9A6921D18F5A65000801A8B /* BookLocation.m */,
+				C9A6921518F5A5F300801A8B /* Translation.h */,
+				C9A6921618F5A5F300801A8B /* Translation.m */,
+				C9A6921718F5A5F300801A8B /* Book.h */,
+				C9A6921818F5A5F300801A8B /* Book.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		C9F7B56318F5ABB9009462BA /* ASV */ = {
+			isa = PBXGroup;
+			children = (
+				C9F7B56418F5ABB9009462BA /* ASVBookNames.xml */,
+				C9F7B56518F5ABB9009462BA /* copr.htm */,
+				C9F7B56618F5ABB9009462BA /* eng-asv-VernacularAdditional.xml */,
+				C9F7B56718F5ABB9009462BA /* eng-asv-VernacularParms.xml */,
+				C9F7B56818F5ABB9009462BA /* eng-asv_usfx.xml */,
+				C9F7B56918F5ABB9009462BA /* keys.asc */,
+				C9F7B56A18F5ABB9009462BA /* signature.txt.asc */,
+			);
+			name = ASV;
+			path = IcthusStoreGenerator/ASV;
+			sourceTree = "<group>";
+		};
+		C9F7B56B18F5ABB9009462BA /* KJV */ = {
+			isa = PBXGroup;
+			children = (
+				C9F7B56C18F5ABB9009462BA /* copr.htm */,
+				C9F7B56D18F5ABB9009462BA /* eng-kjv-VernacularAdditional.xml */,
+				C9F7B56E18F5ABB9009462BA /* eng-kjv-VernacularParms.xml */,
+				C9F7B56F18F5ABB9009462BA /* eng-kjv_usfx.xml */,
+				C9F7B57018F5ABB9009462BA /* keys.asc */,
+				C9F7B57118F5ABB9009462BA /* KJVBookNames.xml */,
+				C9F7B57218F5ABB9009462BA /* signature.txt.asc */,
+			);
+			name = KJV;
+			path = "IcthusStoreGenerator/eng-kjv_usfx";
+			sourceTree = "<group>";
+		};
+		C9F7B57318F5ABB9009462BA /* WEB */ = {
+			isa = PBXGroup;
+			children = (
+				C9F7B57418F5ABB9009462BA /* copr.htm */,
+				C9F7B57518F5ABB9009462BA /* eng-web-VernacularAdditional.xml */,
+				C9F7B57618F5ABB9009462BA /* eng-web-VernacularParms.xml */,
+				C9F7B57718F5ABB9009462BA /* eng-web_usfx.xml */,
+				C9F7B57818F5ABB9009462BA /* keys.asc */,
+				C9F7B57918F5ABB9009462BA /* signature.txt.asc */,
+				C9F7B57A18F5ABB9009462BA /* WEBBookNames.xml */,
+			);
+			name = WEB;
+			path = IcthusStoreGenerator/WEB;
+			sourceTree = "<group>";
+		};
+		C9F7B57B18F5ABC0009462BA /* Core Data Source Files */ = {
+			isa = PBXGroup;
+			children = (
+				C9F7B56318F5ABB9009462BA /* ASV */,
+				C9F7B56B18F5ABB9009462BA /* KJV */,
+				C9F7B57318F5ABB9009462BA /* WEB */,
+			);
+			name = "Core Data Source Files";
+			path = ..;
+			sourceTree = "<group>";
+		};
+		C9F7B58F18F5AF98009462BA /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C9F7B59018F5AF98009462BA /* AppKit.framework */,
+				C9F7B59118F5AF98009462BA /* CoreData.framework */,
+				C9F7B59218F5AF98009462BA /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		C9F7B59318F5AF98009462BA /* IcthusStoreGeneratorApplication */ = {
+			isa = PBXGroup;
+			children = (
+				C9F7B59F18F5AF98009462BA /* AppDelegate.h */,
+				C9F7B5A018F5AF98009462BA /* AppDelegate.m */,
+				C9F7B5A218F5AF98009462BA /* MainMenu.xib */,
+				C9F7B5A518F5AF98009462BA /* Images.xcassets */,
+				C9F7B59418F5AF98009462BA /* Supporting Files */,
+			);
+			path = IcthusStoreGeneratorApplication;
+			sourceTree = "<group>";
+		};
+		C9F7B59418F5AF98009462BA /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C9F7B59518F5AF98009462BA /* IcthusStoreGeneratorApplication-Info.plist */,
+				C9F7B59618F5AF98009462BA /* InfoPlist.strings */,
+				C9F7B59918F5AF98009462BA /* main.m */,
+				C9F7B59B18F5AF98009462BA /* IcthusStoreGeneratorApplication-Prefix.pch */,
+				C9F7B59C18F5AF98009462BA /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C9F7B5B118F5AF98009462BA /* IcthusStoreGeneratorApplicationTests */ = {
+			isa = PBXGroup;
+			children = (
+				C9F7B5B718F5AF98009462BA /* IcthusStoreGeneratorApplicationTests.m */,
+				C9F7B5B218F5AF98009462BA /* Supporting Files */,
+			);
+			path = IcthusStoreGeneratorApplicationTests;
+			sourceTree = "<group>";
+		};
+		C9F7B5B218F5AF98009462BA /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C9F7B5B318F5AF98009462BA /* IcthusStoreGeneratorApplicationTests-Info.plist */,
+				C9F7B5B418F5AF98009462BA /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C9A691F318F59CC100801A8B /* IcthusStoreGenerator */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C9A6920718F59CC100801A8B /* Build configuration list for PBXNativeTarget "IcthusStoreGenerator" */;
+			buildPhases = (
+				C9A691F018F59CC100801A8B /* Sources */,
+				C9A691F118F59CC100801A8B /* Frameworks */,
+				C9A691F218F59CC100801A8B /* CopyFiles */,
+				C981302718F5B3A800C65310 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = IcthusStoreGenerator;
+			productName = IcthusStoreGenerator;
+			productReference = C9A691F418F59CC100801A8B /* IcthusStoreGenerator */;
+			productType = "com.apple.product-type.tool";
+		};
+		C9F7B58B18F5AF98009462BA /* IcthusStoreGeneratorApplication */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C9F7B5B918F5AF99009462BA /* Build configuration list for PBXNativeTarget "IcthusStoreGeneratorApplication" */;
+			buildPhases = (
+				C9F7B58818F5AF98009462BA /* Sources */,
+				C9F7B58918F5AF98009462BA /* Frameworks */,
+				C9F7B58A18F5AF98009462BA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = IcthusStoreGeneratorApplication;
+			productName = IcthusStoreGeneratorApplication;
+			productReference = C9F7B58C18F5AF98009462BA /* IcthusStoreGeneratorApplication.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C9F7B5AA18F5AF98009462BA /* IcthusStoreGeneratorApplicationTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C9F7B5BC18F5AF99009462BA /* Build configuration list for PBXNativeTarget "IcthusStoreGeneratorApplicationTests" */;
+			buildPhases = (
+				C9F7B5A718F5AF98009462BA /* Sources */,
+				C9F7B5A818F5AF98009462BA /* Frameworks */,
+				C9F7B5A918F5AF98009462BA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C9F7B5B018F5AF98009462BA /* PBXTargetDependency */,
+			);
+			name = IcthusStoreGeneratorApplicationTests;
+			productName = IcthusStoreGeneratorApplicationTests;
+			productReference = C9F7B5AB18F5AF98009462BA /* IcthusStoreGeneratorApplicationTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C9A691EC18F59CC100801A8B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "Matthew Lorentz";
+				TargetAttributes = {
+					C9F7B5AA18F5AF98009462BA = {
+						TestTargetID = C9F7B58B18F5AF98009462BA;
+					};
+				};
+			};
+			buildConfigurationList = C9A691EF18F59CC100801A8B /* Build configuration list for PBXProject "IcthusStoreGenerator" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C9A691EB18F59CC100801A8B;
+			productRefGroup = C9A691F518F59CC100801A8B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C9A691F318F59CC100801A8B /* IcthusStoreGenerator */,
+				C9F7B58B18F5AF98009462BA /* IcthusStoreGeneratorApplication */,
+				C9F7B5AA18F5AF98009462BA /* IcthusStoreGeneratorApplicationTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C9F7B58A18F5AF98009462BA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C9F7B59818F5AF98009462BA /* InfoPlist.strings in Resources */,
+				C9F7B5A618F5AF98009462BA /* Images.xcassets in Resources */,
+				C9F7B59E18F5AF98009462BA /* Credits.rtf in Resources */,
+				C9F7B5A418F5AF98009462BA /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C9F7B5A918F5AF98009462BA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C9F7B5B618F5AF98009462BA /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C9A691F018F59CC100801A8B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C9A6921118F5A0C400801A8B /* USFXParser.m in Sources */,
+				C9A6921218F5A0C400801A8B /* WEBUSFXParser.m in Sources */,
+				C9A6921918F5A5F300801A8B /* Translation.m in Sources */,
+				C948F6CF18F5A8900010DA88 /* Icthus.xcdatamodeld in Sources */,
+				C9A691FD18F59CC100801A8B /* main.m in Sources */,
+				C9A6921A18F5A5F300801A8B /* Book.m in Sources */,
+				C9A6921318F5A0C400801A8B /* ASVUSFXParser.m in Sources */,
+				C9A6921E18F5A65000801A8B /* BookLocation.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C9F7B58818F5AF98009462BA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C9F7B5A118F5AF98009462BA /* AppDelegate.m in Sources */,
+				C9F7B59A18F5AF98009462BA /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C9F7B5A718F5AF98009462BA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C9F7B5B818F5AF98009462BA /* IcthusStoreGeneratorApplicationTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C9F7B5B018F5AF98009462BA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C9F7B58B18F5AF98009462BA /* IcthusStoreGeneratorApplication */;
+			targetProxy = C9F7B5AF18F5AF98009462BA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		C9F7B59618F5AF98009462BA /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C9F7B59718F5AF98009462BA /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		C9F7B59C18F5AF98009462BA /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C9F7B59D18F5AF98009462BA /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		C9F7B5A218F5AF98009462BA /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C9F7B5A318F5AF98009462BA /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		C9F7B5B418F5AF98009462BA /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C9F7B5B518F5AF98009462BA /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C9A6920518F59CC100801A8B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		C9A6920618F59CC100801A8B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		C9A6920818F59CC100801A8B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "IcthusStoreGenerator/IcthusStoreGenerator-Prefix.pch";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		C9A6920918F59CC100801A8B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "IcthusStoreGenerator/IcthusStoreGenerator-Prefix.pch";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		C9F7B5BA18F5AF99009462BA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "IcthusStoreGeneratorApplication/IcthusStoreGeneratorApplication-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "IcthusStoreGeneratorApplication/IcthusStoreGeneratorApplication-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		C9F7B5BB18F5AF99009462BA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "IcthusStoreGeneratorApplication/IcthusStoreGeneratorApplication-Prefix.pch";
+				INFOPLIST_FILE = "IcthusStoreGeneratorApplication/IcthusStoreGeneratorApplication-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		C9F7B5BD18F5AF99009462BA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/IcthusStoreGeneratorApplication.app/Contents/MacOS/IcthusStoreGeneratorApplication";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "IcthusStoreGeneratorApplication/IcthusStoreGeneratorApplication-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "IcthusStoreGeneratorApplicationTests/IcthusStoreGeneratorApplicationTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		C9F7B5BE18F5AF99009462BA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/IcthusStoreGeneratorApplication.app/Contents/MacOS/IcthusStoreGeneratorApplication";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "IcthusStoreGeneratorApplication/IcthusStoreGeneratorApplication-Prefix.pch";
+				INFOPLIST_FILE = "IcthusStoreGeneratorApplicationTests/IcthusStoreGeneratorApplicationTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C9A691EF18F59CC100801A8B /* Build configuration list for PBXProject "IcthusStoreGenerator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C9A6920518F59CC100801A8B /* Debug */,
+				C9A6920618F59CC100801A8B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C9A6920718F59CC100801A8B /* Build configuration list for PBXNativeTarget "IcthusStoreGenerator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C9A6920818F59CC100801A8B /* Debug */,
+				C9A6920918F59CC100801A8B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C9F7B5B918F5AF99009462BA /* Build configuration list for PBXNativeTarget "IcthusStoreGeneratorApplication" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C9F7B5BA18F5AF99009462BA /* Debug */,
+				C9F7B5BB18F5AF99009462BA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C9F7B5BC18F5AF99009462BA /* Build configuration list for PBXNativeTarget "IcthusStoreGeneratorApplicationTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C9F7B5BD18F5AF99009462BA /* Debug */,
+				C9F7B5BE18F5AF99009462BA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		C948F6CD18F5A8900010DA88 /* Icthus.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				C948F6CE18F5A8900010DA88 /* Icthus.xcdatamodel */,
+			);
+			currentVersion = C948F6CE18F5A8900010DA88 /* Icthus.xcdatamodel */;
+			path = Icthus.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = C9A691EC18F59CC100801A8B /* Project object */;
+}
