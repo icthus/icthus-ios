@@ -17,7 +17,8 @@
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (strong, atomic) Book *selectedBook;
 @property (nonatomic) NSUInteger selectedChapter;
-@property (nonatomic, strong) NSNumber *finishedAnimations;
+@property (atomic) NSNumber *finishedAnimations;
+
 - (IBAction)dismissButtonPressed:(id)sender;
 
 @end

@@ -26,26 +26,10 @@
     [[BITHockeyManager sharedHockeyManager].authenticator setIdentificationType:BITAuthenticatorIdentificationTypeWebAuth];
     [[BITHockeyManager sharedHockeyManager].authenticator authenticateInstallation];
 
-    // Set up iCloud
-    // TODO: check for a change in iCloud tokens
-    id currentiCloudToken = [[NSFileManager defaultManager] ubiquityIdentityToken];
-    if (currentiCloudToken) {
-        NSData *newTokenData =
-        [NSKeyedArchiver archivedDataWithRootObject: currentiCloudToken];
-        [[NSUserDefaults standardUserDefaults]
-         setObject: newTokenData
-         forKey: @"ubiquityIdentityToken"];
-    } else {
-        [[NSUserDefaults standardUserDefaults]
-         removeObjectForKey: @"ubiquityIdentityToken"];
-    }
-
     NSNotificationCenter *dc = [NSNotificationCenter defaultCenter];
     [dc addObserver:self selector: @selector (iCloudAccountAvailabilityChanged) name: NSUbiquityIdentityDidChangeNotification object:nil];
     [dc addObserver:self selector:@selector(storesWillChange:) name:NSPersistentStoreCoordinatorStoresWillChangeNotification object:nil];
     [dc addObserver:self selector:@selector(managedObjectContextDidSave:) name:NSManagedObjectContextDidSaveNotification object:nil];
-    
-//    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
     if ([[NSUserDefaults standardUserDefaults] objectForKey:@"appHasLaunchedBefore"] == nil) {
         [self handleFirstLaunch];
@@ -65,6 +49,33 @@
     }
         
     return NO;
+}
+
+- (void)handleFirstLaunch {
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    [prefs setObject:@"WEB" forKey:@"selectedTranslation"];
+    [prefs synchronize];
+    [self instantiateBooks];
+    [prefs setBool:YES forKey:@"appHasLaunchedBefore"];
+    [prefs synchronize];
+    [self setupControllers];
+}
+
+- (void)instantiateBooks {
+    // WEB
+    NSString* WEBBookNamePath = [[NSBundle mainBundle] pathForResource:@"WEBBookNames" ofType:@"xml"];
+    NSString* WEBBookTextPath = [[NSBundle mainBundle] pathForResource:@"eng-web_usfx" ofType:@"xml"];
+    [[[WEBUSFXParser alloc] init] instantiateBooks:self.managedObjectContext translationCode:@"WEB" displayName:@"World English Bible" bookNamePath:WEBBookNamePath bookTextPath:WEBBookTextPath];
+    
+    // ASV
+    NSString* ASVBookTextPath = [[NSBundle mainBundle] pathForResource:@"eng-asv_usfx" ofType:@"xml"];
+    NSString* ASVBookNamePath = [[NSBundle mainBundle] pathForResource:@"ASVBookNames" ofType:@"xml"];
+    [[[ASVUSFXParser alloc] init] instantiateBooks:self.managedObjectContext translationCode:@"ASV" displayName:@"American Standard Version" bookNamePath:ASVBookNamePath bookTextPath:ASVBookTextPath];
+    
+    // KJV
+//    NSString* KJVBookTextPath = [[NSBundle mainBundle] pathForResource:@"eng-kjv_usfx" ofType:@"xml"];
+//    NSString* KJVBookNamePath = [[NSBundle mainBundle] pathForResource:@"KJVBookNames" ofType:@"xml"];
+//    [[[USFXParser alloc] init] instantiateBooks:self.managedObjectContext translationCode:@"KJV" displayName:@"King James Version" bookNamePath:KJVBookNamePath bookTextPath:KJVBookTextPath];
 }
 
 - (void)setupControllers {
@@ -125,63 +136,6 @@
     }
 }
 
-- (void)instantiateBooks {
-    // WEB
-    NSString* WEBBookNamePath = [[NSBundle mainBundle] pathForResource:@"WEBBookNames" ofType:@"xml"];
-    NSString* WEBBookTextPath = [[NSBundle mainBundle] pathForResource:@"eng-web_usfx" ofType:@"xml"];
-    [[[WEBUSFXParser alloc] init] instantiateBooks:self.managedObjectContext translationCode:@"WEB" displayName:@"World English Bible" bookNamePath:WEBBookNamePath bookTextPath:WEBBookTextPath];
-    
-    // ASV
-    NSString* ASVBookTextPath = [[NSBundle mainBundle] pathForResource:@"eng-asv_usfx" ofType:@"xml"];
-    NSString* ASVBookNamePath = [[NSBundle mainBundle] pathForResource:@"ASVBookNames" ofType:@"xml"];
-    [[[ASVUSFXParser alloc] init] instantiateBooks:self.managedObjectContext translationCode:@"ASV" displayName:@"American Standard Version" bookNamePath:ASVBookNamePath bookTextPath:ASVBookTextPath];
-    
-    // KJV
-//    NSString* KJVBookTextPath = [[NSBundle mainBundle] pathForResource:@"eng-kjv_usfx" ofType:@"xml"];
-//    NSString* KJVBookNamePath = [[NSBundle mainBundle] pathForResource:@"KJVBookNames" ofType:@"xml"];
-//    [[[USFXParser alloc] init] instantiateBooks:self.managedObjectContext translationCode:@"KJV" displayName:@"King James Version" bookNamePath:KJVBookNamePath bookTextPath:KJVBookTextPath];
-}
-
-- (void)handleFirstLaunch {
-    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"ubiquityIdentityToken"]) {
-        [self promptForiCloud];
-    } else {
-        [self finishHandlingFirstLaunch];
-    }
-}
-
-- (void)finishHandlingFirstLaunch {
-    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-    [prefs setObject:@"WEB" forKey:@"selectedTranslation"];
-    [prefs setBool:YES forKey:@"appHasLaunchedBefore"];
-    [prefs synchronize];
-    [self instantiateBooks];
-    [self setupControllers];
-}
-
-- (void)promptForiCloud {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Use iCloud?" message: @"Would you like iCloud to keep your reading positions in sync across your devices?" delegate: self cancelButtonTitle: @"Local Only" otherButtonTitles: @"Use iCloud", nil];
-    [alert show];
-}
-
-- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
-    if (buttonIndex == 1) {
-        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"userWantsToUseiCloud"];
-    } else {
-        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"userWantsToUseiCloud"];
-    }
-    [[NSUserDefaults standardUserDefaults] synchronize];
-    // We have to kill the persistentStoreCoordinator and managedObjectContext because they were created when the xibs were loaded.
-    _persistentStoreCoordinator = nil;
-    _managedObjectContext = nil;
-    _managedObjectModel = nil;
-    [self finishHandlingFirstLaunch];
-}
-
-- (void)iCloudAccountAvailabilityChanged {
-    // TODO: handle changes in iCloud accounts
-}
-
 #pragma mark - Core Data stack
 
 - (void)storesWillChange:(NSNotification *)n {
@@ -192,16 +146,20 @@
             [self performSelectorOnMainThread:@selector(storesWillChange:) withObject:n waitUntilDone:YES];
         } else {
             [moc save:&error];
+            [moc reset];
         }
     }
-    [moc reset];
-    //TODO: reset user interface
 }
 
 - (void)managedObjectContextDidSave:(NSNotification *)notification {
     if (notification.object != self.managedObjectContext) {
         [self.managedObjectContext mergeChangesFromContextDidSaveNotification:notification];
     }
+}
+
+- (void)iCloudAccountAvailabilityChanged {
+    _persistentStoreCoordinator = nil;
+    // TODO: handle changes in iCloud accounts
 }
 
 - (void)mergeChangesFromiCloud:(NSNotification *)notification {
@@ -264,52 +222,41 @@
     
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel: [self managedObjectModel]];
     NSPersistentStoreCoordinator *psc = _persistentStoreCoordinator;
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"userWantsToUseiCloud"]) {
-        NSLog(@"using iCloud");
-        
-        // Two Configurations: Ubiquitous and Local
-        // Ubiquitous:
-        NSURL *iCloudURL = [[[NSFileManager defaultManager] URLForUbiquityContainerIdentifier:nil] URLByAppendingPathComponent:@"IcthusUbiquitousStore.sqlite"];
+    
+    // Two Configurations: Ubiquitous and Local
+    // Ubiquitous:
+    NSURL *iCloudURL = [[[NSFileManager defaultManager] URLForUbiquityContainerIdentifier:nil] URLByAppendingPathComponent:@"IcthusUbiquitousStore.sqlite"];
+    
+    if (!iCloudURL) {
+        NSLog(@"User is not signed into iCloud. Using a local store.");
+        iCloudURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"IcthusSubstitueUbiquitousStore.sqlite"];
+    }
 
-        NSDictionary *options = @{
-            NSPersistentStoreUbiquitousContentNameKey: @"IcthusUbiquitousStore",
-            NSMigratePersistentStoresAutomaticallyOption: [NSNumber numberWithBool:YES],
-            NSInferMappingModelAutomaticallyOption: [NSNumber numberWithBool:YES],
-        };
-        
-        NSError *error;
-        [psc lock];
-        [psc addPersistentStoreWithType:NSSQLiteStoreType configuration:@"Ubiquitous" URL:iCloudURL options:options error:&error];
-        [psc unlock];
-        if (error) {
-            NSLog(@"Error adding iCloud persistent store %@", [error localizedDescription]);
-        }
-        
-        // Local
-        NSURL *localStoreURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"IcthusLocalStore.sqlite"];
-        
-        options = @{
-                     NSMigratePersistentStoresAutomaticallyOption: [NSNumber numberWithBool:YES],
-                     NSInferMappingModelAutomaticallyOption: [NSNumber numberWithBool:YES],
-                    };
-        
-        [psc lock];
-        [psc addPersistentStoreWithType:NSSQLiteStoreType configuration:@"Local" URL:localStoreURL options:options error:nil];
-        [psc unlock];
+    NSDictionary *options = @{
+        NSPersistentStoreUbiquitousContentNameKey: @"IcthusUbiquitousStore",
+        NSMigratePersistentStoresAutomaticallyOption: [NSNumber numberWithBool:YES],
+        NSInferMappingModelAutomaticallyOption: [NSNumber numberWithBool:YES],
+    };
+    
+    NSError *error;
+    [psc lock];
+    [psc addPersistentStoreWithType:NSSQLiteStoreType configuration:@"Ubiquitous" URL:iCloudURL options:options error:&error];
+    [psc unlock];
+    if (error) {
+        NSLog(@"Error adding iCloud persistent store %@", [error localizedDescription]);
     }
-    else {
-        NSLog(@"User hasn't chosen to use iCloud - using a local store with 'Default' configuration.");
-        NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"IcthusDefaultStore.sqlite"];
-        
-        NSDictionary *options = @{
-            NSMigratePersistentStoresAutomaticallyOption: [NSNumber numberWithBool:YES],
-            NSInferMappingModelAutomaticallyOption: [NSNumber numberWithBool:YES],
-        };
-        
-        [psc lock];
-        [psc addPersistentStoreWithType:NSSQLiteStoreType configuration:@"Default" URL:storeURL options:options error:nil];
-        [psc unlock];
-    }
+    
+    // Local
+    NSURL *localStoreURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"IcthusLocalStore.sqlite"];
+    
+    options = @{
+                 NSMigratePersistentStoresAutomaticallyOption: [NSNumber numberWithBool:YES],
+                 NSInferMappingModelAutomaticallyOption: [NSNumber numberWithBool:YES],
+                };
+    
+    [psc lock];
+    [psc addPersistentStoreWithType:NSSQLiteStoreType configuration:@"Local" URL:localStoreURL options:options error:nil];
+    [psc unlock];
 
     return _persistentStoreCoordinator;
 }
