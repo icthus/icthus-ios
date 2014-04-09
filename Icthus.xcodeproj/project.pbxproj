@@ -10,7 +10,6 @@
 		C902F4EF17DA26410077504A /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C902F4EE17DA26410077504A /* CoreText.framework */; };
 		C9198AFE17D94B2000077726 /* BibleTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9198AFD17D94B2000077726 /* BibleTextView.m */; };
 		C9256B0717DFC5D400646198 /* BookLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = C9256B0617DFC5D400646198 /* BookLocation.m */; };
-		C940C84C18CDE0BB00E1013C /* USFXParser.m in Sources */ = {isa = PBXBuildFile; fileRef = C940C84B18CDE0BB00E1013C /* USFXParser.m */; };
 		C9451E90183BB0D9009FAFEE /* BibleVerseView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9451E8F183BB0D9009FAFEE /* BibleVerseView.m */; };
 		C94A2B24181001790076926A /* TranslationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C94A2B23181001790076926A /* TranslationViewController.m */; };
 		C94A2B271810030E0076926A /* Translation.m in Sources */ = {isa = PBXBuildFile; fileRef = C94A2B261810030E0076926A /* Translation.m */; };
@@ -27,34 +26,18 @@
 		C99C73FA17DFA61B00DBF0E2 /* BibleMarkupParser.m in Sources */ = {isa = PBXBuildFile; fileRef = C99C73F917DFA61B00DBF0E2 /* BibleMarkupParser.m */; };
 		C99F2FC417CCDC01008AF602 /* ChapterPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C99F2FC317CCDC01008AF602 /* ChapterPickerViewController.m */; };
 		C99F2FC717CCE714008AF602 /* ReadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C99F2FC617CCE714008AF602 /* ReadingViewController.m */; };
-		C9B305681816A1B900EE8A94 /* ASVBookNames.xml in Resources */ = {isa = PBXBuildFile; fileRef = C9B305611816A1B900EE8A94 /* ASVBookNames.xml */; };
-		C9B305691816A1B900EE8A94 /* copr.htm in Resources */ = {isa = PBXBuildFile; fileRef = C9B305621816A1B900EE8A94 /* copr.htm */; };
-		C9B3056A1816A1B900EE8A94 /* eng-asv-VernacularAdditional.xml in Resources */ = {isa = PBXBuildFile; fileRef = C9B305631816A1B900EE8A94 /* eng-asv-VernacularAdditional.xml */; };
-		C9B3056B1816A1B900EE8A94 /* eng-asv-VernacularParms.xml in Resources */ = {isa = PBXBuildFile; fileRef = C9B305641816A1B900EE8A94 /* eng-asv-VernacularParms.xml */; };
-		C9B3056C1816A1B900EE8A94 /* eng-asv_usfx.xml in Resources */ = {isa = PBXBuildFile; fileRef = C9B305651816A1B900EE8A94 /* eng-asv_usfx.xml */; };
-		C9B3056D1816A1B900EE8A94 /* keys.asc in Resources */ = {isa = PBXBuildFile; fileRef = C9B305661816A1B900EE8A94 /* keys.asc */; };
-		C9B3056E1816A1B900EE8A94 /* signature.txt.asc in Resources */ = {isa = PBXBuildFile; fileRef = C9B305671816A1B900EE8A94 /* signature.txt.asc */; };
-		C9B96E2618EC31A50069249B /* ASVUSFXParser.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B96E2518EC31A50069249B /* ASVUSFXParser.m */; };
 		C9BCA00A17CD3FEC00196DA8 /* ReadingListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BCA00917CD3FEC00196DA8 /* ReadingListViewController.m */; };
 		C9BCA01017CD933500196DA8 /* Book.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BCA00F17CD933500196DA8 /* Book.m */; };
 		C9C324F818E1CAE5005D0BAD /* SendMailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C324F718E1CAE5005D0BAD /* SendMailTableViewCell.m */; };
 		C9D071DC17DE8C2000B535ED /* ReadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D071DB17DE8C2000B535ED /* ReadingView.m */; };
 		C9D09B5E18C7583E00AA6B67 /* CircleLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D09B5D18C7583E00AA6B67 /* CircleLabel.m */; };
 		C9E57771188484A3004CC974 /* BookCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E57770188484A3004CC974 /* BookCollectionViewCell.m */; };
-		C9ED7D6C18DA7C3900864288 /* KJVBookNames.xml in Resources */ = {isa = PBXBuildFile; fileRef = C9ED7D6518DA7C3900864288 /* KJVBookNames.xml */; };
-		C9ED7D6D18DA7C3900864288 /* copr.htm in Resources */ = {isa = PBXBuildFile; fileRef = C9ED7D6618DA7C3900864288 /* copr.htm */; };
-		C9ED7D6E18DA7C3900864288 /* eng-kjv-VernacularAdditional.xml in Resources */ = {isa = PBXBuildFile; fileRef = C9ED7D6718DA7C3900864288 /* eng-kjv-VernacularAdditional.xml */; };
-		C9ED7D6F18DA7C3900864288 /* eng-kjv-VernacularParms.xml in Resources */ = {isa = PBXBuildFile; fileRef = C9ED7D6818DA7C3900864288 /* eng-kjv-VernacularParms.xml */; };
-		C9ED7D7018DA7C3900864288 /* eng-kjv_usfx.xml in Resources */ = {isa = PBXBuildFile; fileRef = C9ED7D6918DA7C3900864288 /* eng-kjv_usfx.xml */; };
-		C9ED7D7118DA7C3900864288 /* keys.asc in Resources */ = {isa = PBXBuildFile; fileRef = C9ED7D6A18DA7C3900864288 /* keys.asc */; };
-		C9ED7D7218DA7C3900864288 /* signature.txt.asc in Resources */ = {isa = PBXBuildFile; fileRef = C9ED7D6B18DA7C3900864288 /* signature.txt.asc */; };
 		C9F55EDF18EF620A009E685D /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9F55EDE18EF6209009E685D /* Security.framework */; };
 		C9F55EE118EF6212009E685D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9F55EE018EF6212009E685D /* SystemConfiguration.framework */; };
 		C9F55EE718EF622F009E685D /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9F55EE318EF622F009E685D /* HockeySDK.framework */; };
 		C9F55EE818EF622F009E685D /* HockeySDK.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = C9F55EE518EF622F009E685D /* HockeySDK.xcconfig */; };
 		C9F55EE918EF622F009E685D /* HockeySDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C9F55EE618EF622F009E685D /* HockeySDKResources.bundle */; };
 		C9FABFDA188D55AB00C3FC05 /* BooksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9FABFD9188D55AB00C3FC05 /* BooksViewController.m */; };
-		C9FD6B2218EB020D007BBEFF /* WEBUSFXParser.m in Sources */ = {isa = PBXBuildFile; fileRef = C9FD6B2118EB020D007BBEFF /* WEBUSFXParser.m */; };
 		C9FF50F317CBB54700BA526E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9FF50F217CBB54700BA526E /* Foundation.framework */; };
 		C9FF50F517CBB54700BA526E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9FF50F417CBB54700BA526E /* CoreGraphics.framework */; };
 		C9FF50F717CBB54700BA526E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9FF50F617CBB54700BA526E /* UIKit.framework */; };
@@ -74,13 +57,6 @@
 		C9FF512017CBB54800BA526E /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9FF50F817CBB54700BA526E /* CoreData.framework */; };
 		C9FF512817CBB54800BA526E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C9FF512617CBB54800BA526E /* InfoPlist.strings */; };
 		C9FF512A17CBB54800BA526E /* IcthusTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C9FF512917CBB54800BA526E /* IcthusTests.m */; };
-		C9FF513B17CBFEA300BA526E /* WEBBookNames.xml in Resources */ = {isa = PBXBuildFile; fileRef = C9FF513417CBFEA300BA526E /* WEBBookNames.xml */; };
-		C9FF513C17CBFEA300BA526E /* copr.htm in Resources */ = {isa = PBXBuildFile; fileRef = C9FF513517CBFEA300BA526E /* copr.htm */; };
-		C9FF513D17CBFEA300BA526E /* eng-web_usfx.xml in Resources */ = {isa = PBXBuildFile; fileRef = C9FF513617CBFEA300BA526E /* eng-web_usfx.xml */; };
-		C9FF513E17CBFEA300BA526E /* eng-web-VernacularAdditional.xml in Resources */ = {isa = PBXBuildFile; fileRef = C9FF513717CBFEA300BA526E /* eng-web-VernacularAdditional.xml */; };
-		C9FF513F17CBFEA300BA526E /* eng-web-VernacularParms.xml in Resources */ = {isa = PBXBuildFile; fileRef = C9FF513817CBFEA300BA526E /* eng-web-VernacularParms.xml */; };
-		C9FF514017CBFEA300BA526E /* keys.asc in Resources */ = {isa = PBXBuildFile; fileRef = C9FF513917CBFEA300BA526E /* keys.asc */; };
-		C9FF514117CBFEA300BA526E /* signature.txt.asc in Resources */ = {isa = PBXBuildFile; fileRef = C9FF513A17CBFEA300BA526E /* signature.txt.asc */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,8 +75,6 @@
 		C9198AFD17D94B2000077726 /* BibleTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BibleTextView.m; sourceTree = "<group>"; };
 		C9256B0517DFC5D400646198 /* BookLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookLocation.h; sourceTree = "<group>"; };
 		C9256B0617DFC5D400646198 /* BookLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookLocation.m; sourceTree = "<group>"; };
-		C940C84A18CDE0BB00E1013C /* USFXParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = USFXParser.h; sourceTree = "<group>"; };
-		C940C84B18CDE0BB00E1013C /* USFXParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = USFXParser.m; sourceTree = "<group>"; };
 		C9451E8E183BB0D9009FAFEE /* BibleVerseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BibleVerseView.h; sourceTree = "<group>"; };
 		C9451E8F183BB0D9009FAFEE /* BibleVerseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BibleVerseView.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		C94A2B22181001790076926A /* TranslationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TranslationViewController.h; sourceTree = "<group>"; };
@@ -127,16 +101,7 @@
 		C99F2FC317CCDC01008AF602 /* ChapterPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChapterPickerViewController.m; sourceTree = "<group>"; };
 		C99F2FC517CCE714008AF602 /* ReadingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadingViewController.h; sourceTree = "<group>"; };
 		C99F2FC617CCE714008AF602 /* ReadingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadingViewController.m; sourceTree = "<group>"; };
-		C9B305611816A1B900EE8A94 /* ASVBookNames.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ASVBookNames.xml; sourceTree = "<group>"; };
-		C9B305621816A1B900EE8A94 /* copr.htm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = copr.htm; sourceTree = "<group>"; };
-		C9B305631816A1B900EE8A94 /* eng-asv-VernacularAdditional.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "eng-asv-VernacularAdditional.xml"; sourceTree = "<group>"; };
-		C9B305641816A1B900EE8A94 /* eng-asv-VernacularParms.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "eng-asv-VernacularParms.xml"; sourceTree = "<group>"; };
-		C9B305651816A1B900EE8A94 /* eng-asv_usfx.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "eng-asv_usfx.xml"; sourceTree = "<group>"; };
-		C9B305661816A1B900EE8A94 /* keys.asc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = keys.asc; sourceTree = "<group>"; };
-		C9B305671816A1B900EE8A94 /* signature.txt.asc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = signature.txt.asc; sourceTree = "<group>"; };
 		C9B3056F1816D08600EE8A94 /* Icthus.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Icthus.entitlements; sourceTree = "<group>"; };
-		C9B96E2418EC31A50069249B /* ASVUSFXParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASVUSFXParser.h; sourceTree = "<group>"; };
-		C9B96E2518EC31A50069249B /* ASVUSFXParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASVUSFXParser.m; sourceTree = "<group>"; };
 		C9BCA00817CD3FEC00196DA8 /* ReadingListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReadingListViewController.h; path = ../ReadingListViewController.h; sourceTree = "<group>"; };
 		C9BCA00917CD3FEC00196DA8 /* ReadingListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = ReadingListViewController.m; path = ../ReadingListViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		C9BCA00E17CD933500196DA8 /* Book.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Book.h; sourceTree = "<group>"; };
@@ -149,13 +114,6 @@
 		C9D09B5D18C7583E00AA6B67 /* CircleLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleLabel.m; sourceTree = "<group>"; };
 		C9E5776F188484A3004CC974 /* BookCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookCollectionViewCell.h; sourceTree = "<group>"; };
 		C9E57770188484A3004CC974 /* BookCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookCollectionViewCell.m; sourceTree = "<group>"; };
-		C9ED7D6518DA7C3900864288 /* KJVBookNames.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = KJVBookNames.xml; sourceTree = "<group>"; };
-		C9ED7D6618DA7C3900864288 /* copr.htm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = copr.htm; sourceTree = "<group>"; };
-		C9ED7D6718DA7C3900864288 /* eng-kjv-VernacularAdditional.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "eng-kjv-VernacularAdditional.xml"; sourceTree = "<group>"; };
-		C9ED7D6818DA7C3900864288 /* eng-kjv-VernacularParms.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "eng-kjv-VernacularParms.xml"; sourceTree = "<group>"; };
-		C9ED7D6918DA7C3900864288 /* eng-kjv_usfx.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "eng-kjv_usfx.xml"; sourceTree = "<group>"; };
-		C9ED7D6A18DA7C3900864288 /* keys.asc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = keys.asc; sourceTree = "<group>"; };
-		C9ED7D6B18DA7C3900864288 /* signature.txt.asc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = signature.txt.asc; sourceTree = "<group>"; };
 		C9F55EDE18EF6209009E685D /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		C9F55EE018EF6212009E685D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		C9F55EE318EF622F009E685D /* HockeySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HockeySDK.framework; sourceTree = "<group>"; };
@@ -163,8 +121,6 @@
 		C9F55EE618EF622F009E685D /* HockeySDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = HockeySDKResources.bundle; sourceTree = "<group>"; };
 		C9FABFD8188D55AB00C3FC05 /* BooksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BooksViewController.h; sourceTree = "<group>"; };
 		C9FABFD9188D55AB00C3FC05 /* BooksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BooksViewController.m; sourceTree = "<group>"; };
-		C9FD6B2018EB020D007BBEFF /* WEBUSFXParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WEBUSFXParser.h; sourceTree = "<group>"; };
-		C9FD6B2118EB020D007BBEFF /* WEBUSFXParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEBUSFXParser.m; sourceTree = "<group>"; };
 		C9FF50EF17CBB54700BA526E /* Icthus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Icthus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9FF50F217CBB54700BA526E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C9FF50F417CBB54700BA526E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -189,13 +145,6 @@
 		C9FF512517CBB54800BA526E /* IcthusTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "IcthusTests-Info.plist"; sourceTree = "<group>"; };
 		C9FF512717CBB54800BA526E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C9FF512917CBB54800BA526E /* IcthusTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IcthusTests.m; sourceTree = "<group>"; };
-		C9FF513417CBFEA300BA526E /* WEBBookNames.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = WEBBookNames.xml; sourceTree = "<group>"; };
-		C9FF513517CBFEA300BA526E /* copr.htm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = copr.htm; sourceTree = "<group>"; };
-		C9FF513617CBFEA300BA526E /* eng-web_usfx.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "eng-web_usfx.xml"; sourceTree = "<group>"; };
-		C9FF513717CBFEA300BA526E /* eng-web-VernacularAdditional.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "eng-web-VernacularAdditional.xml"; sourceTree = "<group>"; };
-		C9FF513817CBFEA300BA526E /* eng-web-VernacularParms.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "eng-web-VernacularParms.xml"; sourceTree = "<group>"; };
-		C9FF513917CBFEA300BA526E /* keys.asc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = keys.asc; sourceTree = "<group>"; };
-		C9FF513A17CBFEA300BA526E /* signature.txt.asc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = signature.txt.asc; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -260,20 +209,6 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
-		C93B50E0180EB5D700C07D98 /* WEB */ = {
-			isa = PBXGroup;
-			children = (
-				C9FF513417CBFEA300BA526E /* WEBBookNames.xml */,
-				C9FF513517CBFEA300BA526E /* copr.htm */,
-				C9FF513617CBFEA300BA526E /* eng-web_usfx.xml */,
-				C9FF513717CBFEA300BA526E /* eng-web-VernacularAdditional.xml */,
-				C9FF513817CBFEA300BA526E /* eng-web-VernacularParms.xml */,
-				C9FF513917CBFEA300BA526E /* keys.asc */,
-				C9FF513A17CBFEA300BA526E /* signature.txt.asc */,
-			);
-			name = WEB;
-			sourceTree = "<group>";
-		};
 		C958677B18D9DBEE001F875B /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -310,49 +245,13 @@
 			name = "Chapter Picker";
 			sourceTree = "<group>";
 		};
-		C9B305601816A1B900EE8A94 /* ASV */ = {
-			isa = PBXGroup;
-			children = (
-				C9B305611816A1B900EE8A94 /* ASVBookNames.xml */,
-				C9B305621816A1B900EE8A94 /* copr.htm */,
-				C9B305631816A1B900EE8A94 /* eng-asv-VernacularAdditional.xml */,
-				C9B305641816A1B900EE8A94 /* eng-asv-VernacularParms.xml */,
-				C9B305651816A1B900EE8A94 /* eng-asv_usfx.xml */,
-				C9B305661816A1B900EE8A94 /* keys.asc */,
-				C9B305671816A1B900EE8A94 /* signature.txt.asc */,
-			);
-			name = ASV;
-			path = Icthus/ASV;
-			sourceTree = SOURCE_ROOT;
-		};
 		C9B96E2718EC31B30069249B /* Parsers */ = {
 			isa = PBXGroup;
 			children = (
-				C940C84A18CDE0BB00E1013C /* USFXParser.h */,
-				C940C84B18CDE0BB00E1013C /* USFXParser.m */,
-				C9FD6B2018EB020D007BBEFF /* WEBUSFXParser.h */,
-				C9FD6B2118EB020D007BBEFF /* WEBUSFXParser.m */,
-				C9B96E2418EC31A50069249B /* ASVUSFXParser.h */,
-				C9B96E2518EC31A50069249B /* ASVUSFXParser.m */,
 				C99C73F817DFA61B00DBF0E2 /* BibleMarkupParser.h */,
 				C99C73F917DFA61B00DBF0E2 /* BibleMarkupParser.m */,
 			);
 			name = Parsers;
-			sourceTree = "<group>";
-		};
-		C9ED7D6418DA7C3900864288 /* KJV */ = {
-			isa = PBXGroup;
-			children = (
-				C9ED7D6518DA7C3900864288 /* KJVBookNames.xml */,
-				C9ED7D6618DA7C3900864288 /* copr.htm */,
-				C9ED7D6718DA7C3900864288 /* eng-kjv-VernacularAdditional.xml */,
-				C9ED7D6818DA7C3900864288 /* eng-kjv-VernacularParms.xml */,
-				C9ED7D6918DA7C3900864288 /* eng-kjv_usfx.xml */,
-				C9ED7D6A18DA7C3900864288 /* keys.asc */,
-				C9ED7D6B18DA7C3900864288 /* signature.txt.asc */,
-			);
-			name = KJV;
-			path = "eng-kjv_usfx";
 			sourceTree = "<group>";
 		};
 		C9F55EE218EF622F009E685D /* HockeySDK.embeddedframework */ = {
@@ -476,9 +375,6 @@
 			isa = PBXGroup;
 			children = (
 				C981303218F5BC5C00C65310 /* IcthusPrepopulatedStore.sqlite */,
-				C9ED7D6418DA7C3900864288 /* KJV */,
-				C9B305601816A1B900EE8A94 /* ASV */,
-				C93B50E0180EB5D700C07D98 /* WEB */,
 			);
 			name = "Core Data Source Files";
 			sourceTree = "<group>";
@@ -569,37 +465,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				C981303318F5BCBB00C65310 /* IcthusPrepopulatedStore.sqlite in Resources */,
-				C9ED7D7218DA7C3900864288 /* signature.txt.asc in Resources */,
 				C9F55EE918EF622F009E685D /* HockeySDKResources.bundle in Resources */,
-				C9B3056A1816A1B900EE8A94 /* eng-asv-VernacularAdditional.xml in Resources */,
-				C9B305681816A1B900EE8A94 /* ASVBookNames.xml in Resources */,
 				C9FF510B17CBB54700BA526E /* Main_iPad.storyboard in Resources */,
 				C9F55EE818EF622F009E685D /* HockeySDK.xcconfig in Resources */,
 				C98C1A3318B6561700E4B3DF /* Akzidenz Grotesk CE Roman.ttf in Resources */,
-				C9FF514117CBFEA300BA526E /* signature.txt.asc in Resources */,
-				C9B3056E1816A1B900EE8A94 /* signature.txt.asc in Resources */,
 				C958677D18DA070C001F875B /* SettingsIcon.png in Resources */,
-				C9B3056C1816A1B900EE8A94 /* eng-asv_usfx.xml in Resources */,
 				C958678018DA0823001F875B /* SettingsIcon.svg in Resources */,
-				C9B3056D1816A1B900EE8A94 /* keys.asc in Resources */,
 				C958678218DA2DA4001F875B /* SettingsIcon@2x.png in Resources */,
-				C9ED7D6C18DA7C3900864288 /* KJVBookNames.xml in Resources */,
-				C9ED7D6E18DA7C3900864288 /* eng-kjv-VernacularAdditional.xml in Resources */,
-				C9FF513C17CBFEA300BA526E /* copr.htm in Resources */,
-				C9ED7D6F18DA7C3900864288 /* eng-kjv-VernacularParms.xml in Resources */,
-				C9FF513E17CBFEA300BA526E /* eng-web-VernacularAdditional.xml in Resources */,
-				C9FF514017CBFEA300BA526E /* keys.asc in Resources */,
-				C9B305691816A1B900EE8A94 /* copr.htm in Resources */,
 				C9FF511617CBB54800BA526E /* Images.xcassets in Resources */,
-				C9FF513D17CBFEA300BA526E /* eng-web_usfx.xml in Resources */,
 				C9FF510817CBB54700BA526E /* Main_iPhone.storyboard in Resources */,
-				C9FF513B17CBFEA300BA526E /* WEBBookNames.xml in Resources */,
 				C9FF50FF17CBB54700BA526E /* InfoPlist.strings in Resources */,
-				C9B3056B1816A1B900EE8A94 /* eng-asv-VernacularParms.xml in Resources */,
-				C9FF513F17CBFEA300BA526E /* eng-web-VernacularParms.xml in Resources */,
-				C9ED7D6D18DA7C3900864288 /* copr.htm in Resources */,
-				C9ED7D7018DA7C3900864288 /* eng-kjv_usfx.xml in Resources */,
-				C9ED7D7118DA7C3900864288 /* keys.asc in Resources */,
 				C98C1A2B18B6452200E4B3DF /* Bariol_Regular.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -655,11 +530,8 @@
 				C94C254318F487DC008E9CD4 /* CollectionViewLeftFlowLayout.m in Sources */,
 				C9D071DC17DE8C2000B535ED /* ReadingView.m in Sources */,
 				C97A1AF818E5DF57001E148D /* BibleFrameInfo.m in Sources */,
-				C9FD6B2218EB020D007BBEFF /* WEBUSFXParser.m in Sources */,
 				C9E57771188484A3004CC974 /* BookCollectionViewCell.m in Sources */,
 				C9FF510E17CBB54800BA526E /* Icthus.xcdatamodeld in Sources */,
-				C9B96E2618EC31A50069249B /* ASVUSFXParser.m in Sources */,
-				C940C84C18CDE0BB00E1013C /* USFXParser.m in Sources */,
 				C958677A18D9DBE9001F875B /* SettingsViewController.m in Sources */,
 				C9BCA00A17CD3FEC00196DA8 /* ReadingListViewController.m in Sources */,
 				C9256B0717DFC5D400646198 /* BookLocation.m in Sources */,

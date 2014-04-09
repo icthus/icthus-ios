@@ -8,9 +8,6 @@
 
 #import "AppDelegate.h"
 #import "MasterViewController.h"
-#import "USFXParser.h"
-#import "WEBUSFXParser.h"
-#import "ASVUSFXParser.h"
 #import <HockeySDK/HockeySDK.h>
 
 @implementation AppDelegate 
@@ -55,7 +52,6 @@
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     [prefs setObject:@"WEB" forKey:@"selectedTranslation"];
     [prefs synchronize];
-//    [self instantiateBooks];
     [prefs setBool:YES forKey:@"appHasLaunchedBefore"];
     [prefs synchronize];
     [self setupControllers];
