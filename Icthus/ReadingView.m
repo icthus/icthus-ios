@@ -314,8 +314,6 @@ CGRect textFrame;
         NSLog(@"Error: lineHeightForString got a nil font.");
     }
     
-    NSLog(@"CTFontGetBoundingBox height = %f", CTFontGetBoundingBox(ctFont).size.height);
-    NSLog(@"Got lineHeight %f", lineHeight);
     return lineHeight;
 }
 
