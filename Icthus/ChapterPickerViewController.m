@@ -36,9 +36,16 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
+    
+    
+    if (self.navigationController && [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+        self.navigationController.navigationBar.titleTextAttributes = @{
+            NSFontAttributeName: [UIFont fontWithName:@"Avenir-Roman" size:22.0f]
+        };
+    }
+    
     selectedBook = nil;
 }
 

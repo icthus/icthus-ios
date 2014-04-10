@@ -24,6 +24,8 @@ int gutterWidth = 70;
             
             if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
                 label.font = [UIFont fontWithName:@"AkzidenzGroteskCE-Roman" size:22];
+            } else {
+                label.font = [UIFont fontWithName:@"AkzidenzGroteskCE-Roman" size:20];
             }
             
             // align the baseline with the BibleTextView text

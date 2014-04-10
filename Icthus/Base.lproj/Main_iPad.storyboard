@@ -19,7 +19,7 @@
             </objects>
             <point key="canvasLocation" x="193" y="2014"/>
         </scene>
-        <!--Reading View Controller - Please Wait...-->
+        <!--Reading View Controller-->
         <scene sceneID="09X-wh-w3R">
             <objects>
                 <viewController id="5lW-fh-OjA" customClass="ReadingViewController" sceneMemberID="viewController">
@@ -30,7 +30,7 @@
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Please Wait..." id="1B4-gn-kDf">
+                    <navigationItem key="navigationItem" id="1B4-gn-kDf">
                         <barButtonItem key="rightBarButtonItem" title="Go To" id="5pZ-Xs-0Gc">
                             <connections>
                                 <segue destination="Aed-Qw-6gf" kind="popover" identifier="showChapterPickerPopover" popoverAnchorBarButtonItem="5pZ-Xs-0Gc" id="pV7-66-91M">

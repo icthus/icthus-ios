@@ -100,7 +100,7 @@
             </objects>
             <point key="canvasLocation" x="1008" y="547"/>
         </scene>
-        <!--Chapter Picker View Controller - Choose a Chapter-->
+        <!--Chapter Picker View Controller - Choose Chapter-->
         <scene sceneID="8kb-Xg-pAx">
             <objects>
                 <collectionViewController autoresizesArchivedViewToFullSize="NO" id="Xe0-Zg-EQq" customClass="ChapterPickerViewController" sceneMemberID="viewController">
@@ -162,7 +162,7 @@
                         </connections>
                     </collectionView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Choose a Chapter" id="jYF-sT-XMl">
+                    <navigationItem key="navigationItem" title="Choose Chapter" id="jYF-sT-XMl">
                         <barButtonItem key="rightBarButtonItem" title="Dismiss" id="dN9-4E-RSU">
                             <connections>
                                 <action selector="dismissButtonPressed:" destination="Xe0-Zg-EQq" id="ZE0-1U-SHO"/>
@@ -252,7 +252,7 @@
             </objects>
             <point key="canvasLocation" x="2137" y="-492"/>
         </scene>
-        <!--Reading View Controller - Please Wait...-->
+        <!--Reading View Controller-->
         <scene sceneID="sJ8-ag-o0I">
             <objects>
                 <viewController id="ibv-lJ-hHP" customClass="ReadingViewController" sceneMemberID="viewController">
@@ -272,7 +272,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
-                    <navigationItem key="navigationItem" title="Please Wait..." id="ky5-FA-OfL">
+                    <navigationItem key="navigationItem" id="ky5-FA-OfL">
                         <barButtonItem key="leftBarButtonItem" title="History" id="nJV-fl-hx2">
                             <connections>
                                 <segue destination="qht-c0-i04" kind="push" id="RVG-qd-955"/>

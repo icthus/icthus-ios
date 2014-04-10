@@ -83,9 +83,9 @@ CGRect textFrame;
         [self setSizingString:[[NSAttributedString alloc] initWithString:@"Foo" attributes:attributesDict]];
     } else {
         NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle defaultParagraphStyle] mutableCopy];
-        [paragraphStyle setLineSpacing:6];
+        [paragraphStyle setLineSpacing:7.5f];
         NSDictionary *attributesDict = @{
-            NSFontAttributeName: [UIFont fontWithName:@"AkzidenzGroteskCE-Roman"size:20],
+            NSFontAttributeName: [UIFont fontWithName:@"AkzidenzGroteskCE-Roman"size:22],
             NSParagraphStyleAttributeName: paragraphStyle,
         };
         [self setAttString:[[NSAttributedString alloc] initWithString:displayString attributes:attributesDict]];
