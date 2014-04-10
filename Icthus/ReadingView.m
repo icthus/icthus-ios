@@ -298,9 +298,24 @@ CGRect textFrame;
 }
 
 - (CGFloat)lineHeightForString:(NSAttributedString *)string {
-    CGFloat lineHeight = [self.sizingString boundingRectWithSize:CGSizeMake(textFrame.size.width, textFrame.size.height) options:0 context:nil].size.height;
-    NSParagraphStyle *style = [self.attString attribute:NSParagraphStyleAttributeName atIndex:0 effectiveRange:nil];
+    CGFloat lineHeight = 0.0;
+    
+    NSParagraphStyle *style = [string attribute:NSParagraphStyleAttributeName atIndex:0 effectiveRange:nil];
     lineHeight += style.lineSpacing;
+    
+    UIFont *uiFont = [string attribute:NSFontAttributeName atIndex:0 effectiveRange:nil];
+    CTFontRef ctFont = CTFontCreateWithName((CFStringRef)uiFont.fontName, uiFont.pointSize, nil);
+    
+    if (ctFont != nil) {
+        lineHeight += ceil(CTFontGetAscent(ctFont));
+        lineHeight += ceil(CTFontGetDescent(ctFont));
+        lineHeight += ceil(CTFontGetLeading(ctFont));
+    } else {
+        NSLog(@"Error: lineHeightForString got a nil font.");
+    }
+    
+    NSLog(@"CTFontGetBoundingBox height = %f", CTFontGetBoundingBox(ctFont).size.height);
+    NSLog(@"Got lineHeight %f", lineHeight);
     return lineHeight;
 }
 
