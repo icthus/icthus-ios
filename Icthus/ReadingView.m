@@ -235,7 +235,6 @@ CGRect textFrame;
                     break;
                 }
             }
-            CTLineRef line = CFArrayGetValueAtIndex(lines, i);
             
             int originLength = CFArrayGetCount(lines);
             CGPoint origins[originLength];
