@@ -29,6 +29,7 @@ BibleVerseView *verseView;
         self.chapters = frameInfo.chapters;
         self.verses = frameInfo.verses;
         
+        // This is all duplicate code from ReadingView->buildFrames. Make sure they stay the same or bad things will happen.
         // Build the ctFrame that we can draw when necessary
         NSAttributedString *attString = [self.parentView.attString attributedSubstringFromRange:self.textRange];
         CGRect textFrame;
@@ -37,6 +38,9 @@ BibleVerseView *verseView;
         } else {
             textFrame = CGRectInset(self.bounds, 15, 0);
         }
+        
+        CGFloat lineHeight = [self.parentView lineHeightForString:attString];
+        textFrame.size.height = lineHeight * 50;
         
         CTFramesetterRef framesetter = CTFramesetterCreateWithAttributedString((CFAttributedStringRef)attString);
         

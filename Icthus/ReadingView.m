@@ -212,7 +212,7 @@ CGRect textFrame;
         // find the index of the view with the given location and instantiate it
         NSRange textRange;
         int i;
-        for (i = 0; i < [frameData count] - 1; i++) {
+        for (i = 0; i < [frameData count]; i++) {
             textRange = [[frameData objectAtIndex:i] textRange];
             if (NSLocationInRange(targetTextPos, textRange)) {
                 break;
@@ -231,21 +231,17 @@ CGRect textFrame;
             for (i = 0; i < CFArrayGetCount(lines) - 1; i++) {
                 CTLineRef line = CFArrayGetValueAtIndex(lines, i);
                 CFRange range = CTLineGetStringRange(line);
-                if (targetTextPos <= textRange.location + range.location + range.length) {
+                if (targetTextPos < textRange.location + range.location + range.length - 1) { // TODO: We shouldn't need a "- 1" in this statement. There must be a bug somewhere but I can't find it and it's time to ship.
                     break;
                 }
             }
+            CTLineRef line = CFArrayGetValueAtIndex(lines, i);
             
             int originLength = CFArrayGetCount(lines);
             CGPoint origins[originLength];
             CTFrameGetLineOrigins(textView.ctFrame, CFRangeMake(0, 0), origins);
-            // if (i == 0) we don't need to do anything; contentOffset is already set to the beginning of our BibleTextView
-            // get the origin of the line just above the line we want to show because CoreText origins are on a Cartesian plane.
-//            if (i != 0) {
-//                CGPoint origin = origins[i - 1];
-                CGPoint origin = origins[i];
-                contentOffset += textView.frame.size.height - origin.y;
-//            }
+            CGPoint origin = origins[i];
+            contentOffset += textView.frame.size.height - origin.y - [self lineHeightForString:self.attString];
         }
         
         lastKnownContentOffset = CGPointMake(0, 0 - textFrame.size.height);
@@ -299,20 +295,19 @@ CGRect textFrame;
 
 - (CGFloat)lineHeightForString:(NSAttributedString *)string {
     CGFloat lineHeight = 0.0;
-    
-    NSParagraphStyle *style = [string attribute:NSParagraphStyleAttributeName atIndex:0 effectiveRange:nil];
-    lineHeight += style.lineSpacing;
-    
     UIFont *uiFont = [string attribute:NSFontAttributeName atIndex:0 effectiveRange:nil];
     CTFontRef ctFont = CTFontCreateWithName((CFStringRef)uiFont.fontName, uiFont.pointSize, nil);
     
     if (ctFont != nil) {
-        lineHeight += ceil(CTFontGetAscent(ctFont));
-        lineHeight += ceil(CTFontGetDescent(ctFont));
-        lineHeight += ceil(CTFontGetLeading(ctFont));
+        lineHeight += CTFontGetLeading(ctFont);
+        lineHeight += floorf(CTFontGetAscent(ctFont) + 0.5);
+        lineHeight += floorf(CTFontGetDescent(ctFont) + 0.5);
     } else {
         NSLog(@"Error: lineHeightForString got a nil font.");
     }
+    
+    NSParagraphStyle *style = [string attribute:NSParagraphStyleAttributeName atIndex:0 effectiveRange:nil];
+    lineHeight += style.lineSpacing;
     
     return lineHeight;
 }
