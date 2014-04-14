@@ -21,8 +21,8 @@ UIColor *tintColor;
     [super viewDidLoad];
     // Style the nav bar
     self.navigationBar.tintColor = tintColor;
-    self.navigationBar.translucent = YES;
-    self.navigationBar.barTintColor = [UIColor colorWithWhite:1.0 alpha:0.6];
+    self.navigationBar.translucent = NO;
+    self.navigationBar.barTintColor = [UIColor colorWithWhite:1.0 alpha:0.1];
     UIFont *titleFont;
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
         titleFont = [UIFont fontWithName:@"Avenir-Medium" size:22.0f];
