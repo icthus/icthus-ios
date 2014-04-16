@@ -261,6 +261,8 @@ CGPoint maxContentOffset;
         } else {
             [self setContentOffset:CGPointMake(0, contentOffset) animated:NO];
         }
+        // Sometimes scrollViewDidScroll doesn't get called. So we'll call it ourselves.
+        [self scrollViewDidScroll:self];
     }
 }
 
