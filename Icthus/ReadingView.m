@@ -32,6 +32,7 @@ NSString *currentChapter;
 CGPoint lastKnownContentOffset;
 NSInteger activeViewWindow = 3;
 CGRect textFrame;
+CGPoint maxContentOffset;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -156,11 +157,22 @@ CGRect textFrame;
         contentOffset += textFrame.size.height;
     }
     
-    // The parse all the verse and chapter numbers
+    // Then parse all the verse and chapter numbers
     [parser addChapterAndVerseNumbersToFrameData:frameData fromMarkup:self.text];
     
-    //set the total size of the scroll view
-    self.contentSize = CGSizeMake(textFrame.size.width, pageIndex * textFrame.size.height);
+    // set the total size of the scroll view
+    // We need to cut off the blank space on the last text view
+    NSRange lastRange = [[self.frameData lastObject] textRange];
+    CGSize suggestedSize = CTFramesetterSuggestFrameSizeWithConstraints(
+        framesetter,
+        CFRangeMake(lastRange.location, lastRange.length),
+        nil, CGSizeMake(textFrame.size.width, CGFLOAT_MAX),
+        nil
+    );
+    CGFloat lastFrameHeight = suggestedSize.height;
+    CGFloat lastLineSpacing = [[self.attString attribute:NSParagraphStyleAttributeName atIndex:0 effectiveRange:nil] lineSpacing];
+    self.contentSize = CGSizeMake(textFrame.size.width, (pageIndex - 1) * textFrame.size.height + lastFrameHeight + lastLineSpacing);
+    maxContentOffset = CGPointMake(0, self.contentSize.height - self.frame.size.height);
 }
 
 - (BookLocation *)saveCurrentLocation {
@@ -243,8 +255,12 @@ CGRect textFrame;
             contentOffset += textView.frame.size.height - origin.y - [self lineHeightForString:self.attString];
         }
         
-        lastKnownContentOffset = CGPointMake(0, 0 - textFrame.size.height);
-        [self setContentOffset:CGPointMake(0, contentOffset) animated:NO];
+        lastKnownContentOffset = CGPointMake(0, 0 - textFrame.size.height); // to trigger BibleTextFrame creation on next scroll;
+        if (contentOffset > maxContentOffset.y) {
+            [self setContentOffset:maxContentOffset animated:NO];
+        } else {
+            [self setContentOffset:CGPointMake(0, contentOffset) animated:NO];
+        }
     }
 }
 
