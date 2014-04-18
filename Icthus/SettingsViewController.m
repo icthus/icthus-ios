@@ -14,6 +14,11 @@
     UITableViewCell *selectedCell = [self.tableView cellForRowAtIndexPath:indexPath];
     if ([selectedCell class] == [SendMailTableViewCell class]) {
         [self presentMailViewController];
+    } else if ([selectedCell class] == [ShowTutorialTableViewCell class]) {
+        IcthusTutorialPageViewController *pageViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"TutorialPageViewController"];
+        [(MasterViewController *)self.navigationController toggleSettingsPopover];
+        [self presentViewController:pageViewController animated:YES completion:nil];
+        
     }
 }
 

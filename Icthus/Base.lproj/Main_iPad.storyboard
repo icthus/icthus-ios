@@ -19,6 +19,84 @@
             </objects>
             <point key="canvasLocation" x="193" y="2014"/>
         </scene>
+        <!--Icthus Tutorial Page View Controller-->
+        <scene sceneID="Dxl-Ib-oOd">
+            <objects>
+                <pageViewController storyboardIdentifier="TutorialPageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="r8k-C8-HWO" customClass="IcthusTutorialPageViewController" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Upj-L5-pBq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2278" y="694"/>
+        </scene>
+        <!--Icthus Tutorial View Controller-->
+        <scene sceneID="lSJ-UP-J60">
+            <objects>
+                <viewController storyboardIdentifier="TutorialPage1" id="Tod-H4-Fod" customClass="IcthusTutorialViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="p0S-7g-SiG">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Icthus." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hbr-l7-W5J">
+                                <rect key="frame" x="194" y="58" width="381" height="90"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="42"/>
+                                <color key="textColor" red="0.0" green="0.64705882349999999" blue="0.35686274509999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Icthus is designed to let you read the Bible without any distractions. " textAlignment="center" lineBreakMode="wordWrap" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="uMh-Zm-8yi">
+                                <rect key="frame" x="114" y="138" width="541" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You'll find chapter and verse numbers stashed conveniently offscreen." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="uxA-98-yiD">
+                                <rect key="frame" x="114" y="182" width="541" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.64705882349999999" blue="0.35686274509999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Icthus doesn't contain any chapter headings or footnotes either, for an uninteruppted reading experience." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="L6q-C3-ezr">
+                                <rect key="frame" x="114" y="895" width="541" height="47"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.64705882349999999" blue="0.35686274509999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iPad Show Verses 1.png" id="by5-5w-Vjy">
+                                <rect key="frame" x="141" y="226" width="487" height="637"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="K8k-Av-tFA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3336" y="694"/>
+        </scene>
+        <!--Icthus Tutorial View Controller-->
+        <scene sceneID="3Up-hR-P85">
+            <objects>
+                <viewController storyboardIdentifier="TutorialPage2" id="p90-Ne-qeH" customClass="IcthusTutorialViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="avO-sH-gL0">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Page 2" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="P7e-4y-g0m">
+                                <rect key="frame" x="236" y="403" width="54" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Tb5-yG-dTA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4220" y="694"/>
+        </scene>
         <!--Reading View Controller-->
         <scene sceneID="09X-wh-w3R">
             <objects>
@@ -105,6 +183,24 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Send Feedback" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="SQI-YS-xUe">
+                                                    <rect key="frame" x="15" y="0.0" width="290" height="149"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="37"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="ncS-30-ee5" rowHeight="150" style="IBUITableViewCellStyleDefault" id="8eW-ug-51F" customClass="ShowTutorialTableViewCell">
+                                        <rect key="frame" x="0.0" y="364" width="320" height="150"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8eW-ug-51F" id="HTT-Bm-kP9">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="149"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Help" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ncS-30-ee5">
                                                     <rect key="frame" x="15" y="0.0" width="290" height="149"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="37"/>
@@ -300,6 +396,9 @@
             <point key="canvasLocation" x="2012" y="2014"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="iPad Show Verses 1.png" width="576" height="754"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackOpaque"/>
         <simulatedOrientationMetrics key="orientation"/>

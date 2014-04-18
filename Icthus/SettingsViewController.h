@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "SendMailTableViewCell.h"
+#import "ShowTutorialTableViewCell.h"
+#import "IcthusTutorialPageViewController.h"
+#import "MasterViewController.h"
 #import <MessageUI/MFMailComposeViewController.h>
 
 @interface SettingsViewController : UITableViewController <MFMailComposeViewControllerDelegate>
