@@ -23,6 +23,8 @@
     self.tutorialViewControllers = @[
                              [self.storyboard instantiateViewControllerWithIdentifier:@"TutorialPage1"],
                              [self.storyboard instantiateViewControllerWithIdentifier:@"TutorialPage2"],
+                             [self.storyboard instantiateViewControllerWithIdentifier:@"TutorialPage3"],
+                             [self.storyboard instantiateViewControllerWithIdentifier:@"TutorialPage4"],
                              ];
     for (IcthusTutorialViewController *viewController in self.tutorialViewControllers) {
         [viewController setPageViewController:self];
