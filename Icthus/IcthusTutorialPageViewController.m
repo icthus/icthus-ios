@@ -20,12 +20,21 @@
     pageControl.currentPageIndicatorTintColor = [UIColor blackColor];
     
     // Set up the pages
-    self.tutorialViewControllers = @[
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+        self.tutorialViewControllers = @[
                              [self.storyboard instantiateViewControllerWithIdentifier:@"TutorialPage1"],
                              [self.storyboard instantiateViewControllerWithIdentifier:@"TutorialPage2"],
                              [self.storyboard instantiateViewControllerWithIdentifier:@"TutorialPage3"],
                              [self.storyboard instantiateViewControllerWithIdentifier:@"TutorialPage4"],
                              ];
+    } else {
+        self.tutorialViewControllers = @[
+                             [self.storyboard instantiateViewControllerWithIdentifier:@"TutorialPage1"],
+                             [self.storyboard instantiateViewControllerWithIdentifier:@"TutorialPage2"],
+//                             [self.storyboard instantiateViewControllerWithIdentifier:@"TutorialPage3"],
+//                             [self.storyboard instantiateViewControllerWithIdentifier:@"TutorialPage4"],
+                             ];
+    }
     for (IcthusTutorialViewController *viewController in self.tutorialViewControllers) {
         [viewController setPageViewController:self];
     }
