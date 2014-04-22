@@ -158,6 +158,9 @@
                         }
                     }
                 }];
+            } else {
+                // Let the other block know not to wait on animations
+                self.finishedAnimations = [NSNumber numberWithInt:1];
             }
             
             // Insert the new chapters
@@ -326,8 +329,16 @@
 }
 
 - (void)scrollCellIntoViewIfNeeded {
+    // Get the cell of the selectedBook
     NSIndexPath *selectedBookPath = [self.fetchedResultsController indexPathForObject:self.selectedBook];
-    if (![[self.collectionView visibleCells] containsObject:[self.collectionView cellForItemAtIndexPath:selectedBookPath]]) {
+    UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:selectedBookPath];
+    
+    // Get the number of total books
+    // If the selectedBook is the last book then we need to scroll it into view.
+    id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][selectedBookPath.section];
+    NSInteger numberOfBooks = (NSInteger)[sectionInfo numberOfObjects];
+    
+    if (![[self.collectionView visibleCells] containsObject:cell] || selectedBookPath.item == numberOfBooks - 1) {
         [self.collectionView scrollToItemAtIndexPath:selectedBookPath atScrollPosition:UICollectionViewScrollPositionTop animated:YES];
     }
 }
