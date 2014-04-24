@@ -24,17 +24,20 @@
 - (void)setupUserInterfaceElements {
     CGRect frame = self.view.frame;
     CGFloat labelWidth, labelHeight, sideMargin, topMargin;
-    UIColor *tintColor = [UIColor colorWithRed:0 green:165/255.0 blue:91/255.0 alpha:1];
-    UIFont  *font = [UIFont systemFontOfSize:17];
+//    UIColor *tintColor = [UIColor colorWithRed:0 green:165/255.0 blue:91/255.0 alpha:1];
+    UIColor *tintColor = [UIColor colorWithWhite:0.0 alpha:1.0];
+    UIFont  *font;
     
     // Set button metrics;
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+        font = [UIFont systemFontOfSize:17];
         labelWidth = 60;
         labelHeight = 21;
         sideMargin = 12;
         topMargin = 15;
         
     } else {
+        font = [UIFont systemFontOfSize:13];
         labelWidth = 60;
         labelHeight = 21;
         sideMargin = 12;
