@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SwipingLeftImageView.h"
 @class IcthusTutorialPageViewController;
 
 @interface IcthusTutorialViewController : UIViewController
@@ -16,6 +17,7 @@
 @property BOOL isLastPage;
 @property UIButton *leftButton;
 @property UIButton *rightButton;
+@property (strong, nonatomic) IBOutlet SwipingLeftImageView *animatedImage;
 
 - (void)dismissParentViewController;
 

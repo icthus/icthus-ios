@@ -15,6 +15,19 @@
 @synthesize isLastPage = _isLastPage;
 @synthesize leftButton;
 @synthesize rightButton;
+@synthesize animatedImage;
+
+- (void)viewDidAppear:(BOOL)animated {
+    if (self.animatedImage) {
+        [self.animatedImage startSwipeAnimations];
+    }
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    if (self.animatedImage) {
+        [self.animatedImage stopSwipeAnimations];
+    }
+}
 
 - (void)viewDidLoad {
     self.isLastPage = NO;
@@ -24,7 +37,6 @@
 - (void)setupUserInterfaceElements {
     CGRect frame = self.view.frame;
     CGFloat labelWidth, labelHeight, sideMargin, topMargin;
-//    UIColor *tintColor = [UIColor colorWithRed:0 green:165/255.0 blue:91/255.0 alpha:1];
     UIColor *tintColor = [UIColor colorWithWhite:0.0 alpha:1.0];
     UIFont  *font;
     

@@ -11,6 +11,16 @@
 		C907AE0C1900139500245E1E /* IcthusTutorialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C907AE0B1900139500245E1E /* IcthusTutorialViewController.m */; };
 		C90A82C31901682C00FF3FB8 /* ShowTutorialTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C90A82C21901682C00FF3FB8 /* ShowTutorialTableViewCell.m */; };
 		C9198AFE17D94B2000077726 /* BibleTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9198AFD17D94B2000077726 /* BibleTextView.m */; };
+		C9221CFA190A7B54008F3C5A /* iPhone Show Verses Top.png in Resources */ = {isa = PBXBuildFile; fileRef = C9221CF8190A7B54008F3C5A /* iPhone Show Verses Top.png */; };
+		C9221CFB190A7B54008F3C5A /* iPhone Show Verses Top@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9221CF9190A7B54008F3C5A /* iPhone Show Verses Top@2x.png */; };
+		C9221D00190A831F008F3C5A /* Touch Icon Hover.png in Resources */ = {isa = PBXBuildFile; fileRef = C9221CFC190A831F008F3C5A /* Touch Icon Hover.png */; };
+		C9221D01190A831F008F3C5A /* Touch Icon Hover@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9221CFD190A831F008F3C5A /* Touch Icon Hover@2x.png */; };
+		C9221D02190A831F008F3C5A /* Touch Icon Pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = C9221CFE190A831F008F3C5A /* Touch Icon Pressed.png */; };
+		C9221D03190A831F008F3C5A /* Touch Icon Pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9221CFF190A831F008F3C5A /* Touch Icon Pressed@2x.png */; };
+		C9221D08190A9171008F3C5A /* iPad Show Verses.png in Resources */ = {isa = PBXBuildFile; fileRef = C9221D04190A9171008F3C5A /* iPad Show Verses.png */; };
+		C9221D09190A9171008F3C5A /* iPad Show Verses Top.png in Resources */ = {isa = PBXBuildFile; fileRef = C9221D05190A9171008F3C5A /* iPad Show Verses Top.png */; };
+		C9221D0A190A9171008F3C5A /* iPad Show Verses Top@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9221D06190A9171008F3C5A /* iPad Show Verses Top@2x.png */; };
+		C9221D0B190A9171008F3C5A /* iPad Show Verses@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9221D07190A9171008F3C5A /* iPad Show Verses@2x.png */; };
 		C9256B0717DFC5D400646198 /* BookLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = C9256B0617DFC5D400646198 /* BookLocation.m */; };
 		C9451E90183BB0D9009FAFEE /* BibleVerseView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9451E8F183BB0D9009FAFEE /* BibleVerseView.m */; };
 		C94A2B24181001790076926A /* TranslationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C94A2B23181001790076926A /* TranslationViewController.m */; };
@@ -46,6 +56,9 @@
 		C9A6FA2A1909990200028B00 /* iPhone Settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9A6FA281909990200028B00 /* iPhone Settings@2x.png */; };
 		C9A6FA2D190999EB00028B00 /* iPhone Send Feedback.png in Resources */ = {isa = PBXBuildFile; fileRef = C9A6FA2B190999EB00028B00 /* iPhone Send Feedback.png */; };
 		C9A6FA2E190999EB00028B00 /* iPhone Send Feedback@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9A6FA2C190999EB00028B00 /* iPhone Send Feedback@2x.png */; };
+		C9A6FA311909A40500028B00 /* iPhone Show Verses.png in Resources */ = {isa = PBXBuildFile; fileRef = C9A6FA2F1909A40500028B00 /* iPhone Show Verses.png */; };
+		C9A6FA321909A40500028B00 /* iPhone Show Verses@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9A6FA301909A40500028B00 /* iPhone Show Verses@2x.png */; };
+		C9A6FA351909A55F00028B00 /* SwipingLeftImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A6FA341909A55F00028B00 /* SwipingLeftImageView.m */; };
 		C9BCA00A17CD3FEC00196DA8 /* ReadingListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BCA00917CD3FEC00196DA8 /* ReadingListViewController.m */; };
 		C9BCA01017CD933500196DA8 /* Book.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BCA00F17CD933500196DA8 /* Book.m */; };
 		C9C324F818E1CAE5005D0BAD /* SendMailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C324F718E1CAE5005D0BAD /* SendMailTableViewCell.m */; };
@@ -98,6 +111,16 @@
 		C90A82C21901682C00FF3FB8 /* ShowTutorialTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowTutorialTableViewCell.m; sourceTree = "<group>"; };
 		C9198AFC17D94B2000077726 /* BibleTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BibleTextView.h; sourceTree = "<group>"; };
 		C9198AFD17D94B2000077726 /* BibleTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BibleTextView.m; sourceTree = "<group>"; };
+		C9221CF8190A7B54008F3C5A /* iPhone Show Verses Top.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPhone Show Verses Top.png"; sourceTree = "<group>"; };
+		C9221CF9190A7B54008F3C5A /* iPhone Show Verses Top@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPhone Show Verses Top@2x.png"; sourceTree = "<group>"; };
+		C9221CFC190A831F008F3C5A /* Touch Icon Hover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Touch Icon Hover.png"; sourceTree = "<group>"; };
+		C9221CFD190A831F008F3C5A /* Touch Icon Hover@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Touch Icon Hover@2x.png"; sourceTree = "<group>"; };
+		C9221CFE190A831F008F3C5A /* Touch Icon Pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Touch Icon Pressed.png"; sourceTree = "<group>"; };
+		C9221CFF190A831F008F3C5A /* Touch Icon Pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Touch Icon Pressed@2x.png"; sourceTree = "<group>"; };
+		C9221D04190A9171008F3C5A /* iPad Show Verses.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPad Show Verses.png"; sourceTree = "<group>"; };
+		C9221D05190A9171008F3C5A /* iPad Show Verses Top.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPad Show Verses Top.png"; sourceTree = "<group>"; };
+		C9221D06190A9171008F3C5A /* iPad Show Verses Top@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPad Show Verses Top@2x.png"; sourceTree = "<group>"; };
+		C9221D07190A9171008F3C5A /* iPad Show Verses@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPad Show Verses@2x.png"; sourceTree = "<group>"; };
 		C9256B0517DFC5D400646198 /* BookLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookLocation.h; sourceTree = "<group>"; };
 		C9256B0617DFC5D400646198 /* BookLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookLocation.m; sourceTree = "<group>"; };
 		C9451E8E183BB0D9009FAFEE /* BibleVerseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BibleVerseView.h; sourceTree = "<group>"; };
@@ -146,6 +169,10 @@
 		C9A6FA281909990200028B00 /* iPhone Settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPhone Settings@2x.png"; sourceTree = "<group>"; };
 		C9A6FA2B190999EB00028B00 /* iPhone Send Feedback.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPhone Send Feedback.png"; sourceTree = "<group>"; };
 		C9A6FA2C190999EB00028B00 /* iPhone Send Feedback@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPhone Send Feedback@2x.png"; sourceTree = "<group>"; };
+		C9A6FA2F1909A40500028B00 /* iPhone Show Verses.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPhone Show Verses.png"; sourceTree = "<group>"; };
+		C9A6FA301909A40500028B00 /* iPhone Show Verses@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPhone Show Verses@2x.png"; sourceTree = "<group>"; };
+		C9A6FA331909A55F00028B00 /* SwipingLeftImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwipingLeftImageView.h; sourceTree = "<group>"; };
+		C9A6FA341909A55F00028B00 /* SwipingLeftImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwipingLeftImageView.m; sourceTree = "<group>"; };
 		C9B3056F1816D08600EE8A94 /* Icthus.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Icthus.entitlements; sourceTree = "<group>"; };
 		C9BCA00817CD3FEC00196DA8 /* ReadingListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReadingListViewController.h; path = ../ReadingListViewController.h; sourceTree = "<group>"; };
 		C9BCA00917CD3FEC00196DA8 /* ReadingListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = ReadingListViewController.m; path = ../ReadingListViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
@@ -307,6 +334,8 @@
 				C97793E31907E12A0073A0AF /* BottomFadedImageView.m */,
 				C97793E61907F2890073A0AF /* BottomFadedImage.h */,
 				C97793E71907F2890073A0AF /* BottomFadedImage.m */,
+				C9A6FA331909A55F00028B00 /* SwipingLeftImageView.h */,
+				C9A6FA341909A55F00028B00 /* SwipingLeftImageView.m */,
 			);
 			name = Tutorial;
 			sourceTree = "<group>";
@@ -314,6 +343,18 @@
 		C97EE55619056242009655A0 /* Tutorial Images */ = {
 			isa = PBXGroup;
 			children = (
+				C9221D04190A9171008F3C5A /* iPad Show Verses.png */,
+				C9221D05190A9171008F3C5A /* iPad Show Verses Top.png */,
+				C9221D06190A9171008F3C5A /* iPad Show Verses Top@2x.png */,
+				C9221D07190A9171008F3C5A /* iPad Show Verses@2x.png */,
+				C9221CFC190A831F008F3C5A /* Touch Icon Hover.png */,
+				C9221CFD190A831F008F3C5A /* Touch Icon Hover@2x.png */,
+				C9221CFE190A831F008F3C5A /* Touch Icon Pressed.png */,
+				C9221CFF190A831F008F3C5A /* Touch Icon Pressed@2x.png */,
+				C9A6FA2F1909A40500028B00 /* iPhone Show Verses.png */,
+				C9A6FA301909A40500028B00 /* iPhone Show Verses@2x.png */,
+				C9221CF8190A7B54008F3C5A /* iPhone Show Verses Top.png */,
+				C9221CF9190A7B54008F3C5A /* iPhone Show Verses Top@2x.png */,
 				C9A6FA2B190999EB00028B00 /* iPhone Send Feedback.png */,
 				C9A6FA2C190999EB00028B00 /* iPhone Send Feedback@2x.png */,
 				C9A6FA271909990200028B00 /* iPhone Settings.png */,
@@ -555,32 +596,44 @@
 			files = (
 				C9A6FA21190996C000028B00 /* iPhone History Button.png in Resources */,
 				C981303318F5BCBB00C65310 /* IcthusPrepopulatedStore.sqlite in Resources */,
+				C9221D00190A831F008F3C5A /* Touch Icon Hover.png in Resources */,
+				C9221D09190A9171008F3C5A /* iPad Show Verses Top.png in Resources */,
 				C9A6FA261909985500028B00 /* iPhone Settings Button@2x.png in Resources */,
+				C9221D08190A9171008F3C5A /* iPad Show Verses.png in Resources */,
+				C9221CFA190A7B54008F3C5A /* iPhone Show Verses Top.png in Resources */,
 				C97EE55C19056242009655A0 /* iPad John 1.png in Resources */,
 				C97EE55E1905646E009655A0 /* iPad Settings.png in Resources */,
 				C9A6FA1E1909955F00028B00 /* iPhone Go To Button@2x.png in Resources */,
+				C9A6FA321909A40500028B00 /* iPhone Show Verses@2x.png in Resources */,
 				C9F55EE918EF622F009E685D /* HockeySDKResources.bundle in Resources */,
+				C9221CFB190A7B54008F3C5A /* iPhone Show Verses Top@2x.png in Resources */,
 				C9FF510B17CBB54700BA526E /* Main_iPad.storyboard in Resources */,
 				C97EE55B19056242009655A0 /* iPad History.png in Resources */,
 				C9F55EE818EF622F009E685D /* HockeySDK.xcconfig in Resources */,
 				C98C1A3318B6561700E4B3DF /* Akzidenz Grotesk CE Roman.ttf in Resources */,
 				C9A6FA22190996C000028B00 /* iPhone History Button@2x.png in Resources */,
+				C9221D02190A831F008F3C5A /* Touch Icon Pressed.png in Resources */,
 				C958677D18DA070C001F875B /* SettingsIcon.png in Resources */,
 				C9A6FA2A1909990200028B00 /* iPhone Settings@2x.png in Resources */,
 				C97EE55A19056242009655A0 /* iPad Chapter Picker.png in Resources */,
 				C9A6FA291909990200028B00 /* iPhone Settings.png in Resources */,
+				C9221D01190A831F008F3C5A /* Touch Icon Hover@2x.png in Resources */,
 				C958678018DA0823001F875B /* SettingsIcon.svg in Resources */,
 				C9A6FA2D190999EB00028B00 /* iPhone Send Feedback.png in Resources */,
 				C958678218DA2DA4001F875B /* SettingsIcon@2x.png in Resources */,
+				C9221D0B190A9171008F3C5A /* iPad Show Verses@2x.png in Resources */,
 				C9A6FA251909985500028B00 /* iPhone Settings Button.png in Resources */,
 				C9FF511617CBB54800BA526E /* Images.xcassets in Resources */,
 				C97793DF1907DE140073A0AF /* iPhone John 1.png in Resources */,
+				C9221D03190A831F008F3C5A /* Touch Icon Pressed@2x.png in Resources */,
 				C9A6FA2E190999EB00028B00 /* iPhone Send Feedback@2x.png in Resources */,
 				C9FF510817CBB54700BA526E /* Main_iPhone.storyboard in Resources */,
 				C9FF50FF17CBB54700BA526E /* InfoPlist.strings in Resources */,
 				C9A6FA1D1909955F00028B00 /* iPhone Go To Button.png in Resources */,
 				C95083BE190950E1002C3C93 /* iPhone John 1@2x.png in Resources */,
 				C98C1A2B18B6452200E4B3DF /* Bariol_Regular.otf in Resources */,
+				C9221D0A190A9171008F3C5A /* iPad Show Verses Top@2x.png in Resources */,
+				C9A6FA311909A40500028B00 /* iPhone Show Verses.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -629,6 +682,7 @@
 				C94A2B24181001790076926A /* TranslationViewController.m in Sources */,
 				C9FABFDA188D55AB00C3FC05 /* BooksViewController.m in Sources */,
 				C9C324F818E1CAE5005D0BAD /* SendMailTableViewCell.m in Sources */,
+				C9A6FA351909A55F00028B00 /* SwipingLeftImageView.m in Sources */,
 				C9BCA01017CD933500196DA8 /* Book.m in Sources */,
 				C97793E81907F2890073A0AF /* BottomFadedImage.m in Sources */,
 				C9FF510517CBB54700BA526E /* AppDelegate.m in Sources */,
