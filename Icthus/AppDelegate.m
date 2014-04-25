@@ -18,21 +18,32 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+    // Setup Hockey
     [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:@"b70f5fb8d6935fb9a22b9bd95004ae0f"];
     [[BITHockeyManager sharedHockeyManager] startManager];
     [[BITHockeyManager sharedHockeyManager].authenticator setIdentificationType:BITAuthenticatorIdentificationTypeWebAuth];
     [[BITHockeyManager sharedHockeyManager].authenticator authenticateInstallation];
 
+    // Subscribe to Core Data notifications
     NSNotificationCenter *dc = [NSNotificationCenter defaultCenter];
     [dc addObserver:self selector: @selector (iCloudAccountAvailabilityChanged) name: NSUbiquityIdentityDidChangeNotification object:nil];
     [dc addObserver:self selector:@selector(storesWillChange:) name:NSPersistentStoreCoordinatorStoresWillChangeNotification object:nil];
     [dc addObserver:self selector:@selector(managedObjectContextDidSave:) name:NSManagedObjectContextDidSaveNotification object:nil];
     
-    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"appHasLaunchedBefore"] == nil) {
+    // Handle first launch
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if ([defaults objectForKey:@"appHasLaunchedBefore"] == nil) {
         [self handleFirstLaunch];
     }
     else {
         [self setupControllers];
+    }
+    
+    [self.window makeKeyAndVisible];
+    
+    // Show latest version of tutorial if we haven't yet
+    if (![defaults boolForKey:@"shownTutorial"]) {
+        [self showTutorial];
     }
     
     return YES;
@@ -51,10 +62,12 @@
 - (void)handleFirstLaunch {
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     [prefs setObject:@"WEB" forKey:@"selectedTranslation"];
-    [prefs synchronize];
+    [prefs setObject:[NSNumber numberWithInt:1] forKey:@"databaseVersion"];
+    [prefs setObject:[NSNumber numberWithInt:1] forKey:@"whatsNewVersion"];
     [prefs setBool:YES forKey:@"appHasLaunchedBefore"];
-    [prefs synchronize];
     [self setupControllers];
+    [self showTutorial];
+    [prefs synchronize];
 }
 
 
@@ -72,6 +85,17 @@
     }
     
     [self.detailView setBookToLatest];
+}
+
+- (void)showTutorial {
+    NSLog(@"%@", self.window.rootViewController);
+    NSLog(@"%@", self.masterView.visibleViewController);
+    NSLog(@"%@", self.detailView);
+        IcthusTutorialPageViewController *pageViewController = [self.detailView.storyboard instantiateViewControllerWithIdentifier:@"TutorialPageViewController"];
+    [self.detailView presentViewController:pageViewController animated:YES completion:^{
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"shownTutorial"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

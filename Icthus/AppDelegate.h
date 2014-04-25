@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "ReadingViewController.h"
+#import "IcthusTutorialPageViewController.h"
 @class ReadingViewController;
 @class MasterViewController;
 
