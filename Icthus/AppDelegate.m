@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import "MasterViewController.h"
-#import <HockeySDK/HockeySDK.h>
+//#import <HockeySDK/HockeySDK.h>
 
 @implementation AppDelegate 
 
@@ -19,10 +19,10 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     // Setup Hockey
-    [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:@"b70f5fb8d6935fb9a22b9bd95004ae0f"];
-    [[BITHockeyManager sharedHockeyManager] startManager];
-    [[BITHockeyManager sharedHockeyManager].authenticator setIdentificationType:BITAuthenticatorIdentificationTypeWebAuth];
-    [[BITHockeyManager sharedHockeyManager].authenticator authenticateInstallation];
+//    [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:@"b70f5fb8d6935fb9a22b9bd95004ae0f"];
+//    [[BITHockeyManager sharedHockeyManager] startManager];
+//    [[BITHockeyManager sharedHockeyManager].authenticator setIdentificationType:BITAuthenticatorIdentificationTypeWebAuth];
+//    [[BITHockeyManager sharedHockeyManager].authenticator authenticateInstallation];
 
     // Subscribe to Core Data notifications
     NSNotificationCenter *dc = [NSNotificationCenter defaultCenter];
@@ -50,12 +50,12 @@
 }
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
-    if( [[BITHockeyManager sharedHockeyManager].authenticator handleOpenURL:url
-                                                          sourceApplication:sourceApplication
-                                                                 annotation:annotation]) {
-        return YES;
-    }
-        
+//    if( [[BITHockeyManager sharedHockeyManager].authenticator handleOpenURL:url
+//                                                          sourceApplication:sourceApplication
+//                                                                 annotation:annotation]) {
+//        return YES;
+//    }
+    
     return NO;
 }
 
