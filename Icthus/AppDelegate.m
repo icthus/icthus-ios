@@ -88,10 +88,7 @@
 }
 
 - (void)showTutorial {
-    NSLog(@"%@", self.window.rootViewController);
-    NSLog(@"%@", self.masterView.visibleViewController);
-    NSLog(@"%@", self.detailView);
-        IcthusTutorialPageViewController *pageViewController = [self.detailView.storyboard instantiateViewControllerWithIdentifier:@"TutorialPageViewController"];
+    IcthusTutorialPageViewController *pageViewController = [self.detailView.storyboard instantiateViewControllerWithIdentifier:@"TutorialPageViewController"];
     [self.detailView presentViewController:pageViewController animated:YES completion:^{
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"shownTutorial"];
         [[NSUserDefaults standardUserDefaults] synchronize];

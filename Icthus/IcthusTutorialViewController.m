@@ -48,6 +48,11 @@
         sideMargin = 12;
         topMargin = 15;
         
+        // Hack to correctly position labels on first launch
+        if (![[NSUserDefaults standardUserDefaults] boolForKey:@"shownTutorial"]) {
+            topMargin += 20;
+        }
+        
     } else {
         font = [UIFont systemFontOfSize:13];
         labelWidth = 60;
