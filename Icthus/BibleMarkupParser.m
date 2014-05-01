@@ -219,8 +219,6 @@
         length = 6;
     } else {
         NSLog(@"FATAL! lengthForMarkupElementwithAttributes encountered an unkown markup element!");
-        // TODO: don't use exit(0)
-        exit(0);
     }
     
     return length;
@@ -236,8 +234,6 @@
         length = 7;
     } else {
         NSLog(@"FATAL! lengthForMarkupElementwithAttributes encountered an unkown markup element:%@", elementName);
-        // TODO: don't use exit(0)
-        exit(0);
     }
     
     return length;
