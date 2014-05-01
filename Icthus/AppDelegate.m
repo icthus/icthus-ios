@@ -225,6 +225,8 @@
     NSPersistentStoreCoordinator *psc = _persistentStoreCoordinator;
     
     // Two Configurations: Ubiquitous and Local
+    // Ubiquitous contains all user data and is synced between devices
+    // Local contains data that cannot be recreated but is the same across all devices.
     // Ubiquitous:
     NSURL *iCloudURL = [[[NSFileManager defaultManager] URLForUbiquityContainerIdentifier:nil] URLByAppendingPathComponent:@"IcthusUbiquitousStore.sqlite"];
     
@@ -256,6 +258,10 @@
             NSLog(@"VERY BAD: Could not copy preloaded data");
             // TODO: give user an alert
         }
+        
+        // Make sure that the preloaded database and the local database aren't backed up to iCloud
+        [self addSkipBackupAttributeToItemAtURL:preloadURL];
+        [self addSkipBackupAttributeToItemAtURL:localStoreURL];
     }
     
     options = @{
@@ -276,6 +282,18 @@
 - (NSURL *)applicationDocumentsDirectory
 {
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+}
+
+- (BOOL)addSkipBackupAttributeToItemAtURL:(NSURL *)URL {
+    assert([[NSFileManager defaultManager] fileExistsAtPath: [URL path]]);
+    
+    NSError *error = nil;
+    BOOL success = [URL setResourceValue: [NSNumber numberWithBool: YES]
+                                  forKey: NSURLIsExcludedFromBackupKey error: &error];
+    if(!success){
+        NSLog(@"Error excluding %@ from backup %@", [URL lastPathComponent], error);
+    }
+    return success;
 }
 
 @end
