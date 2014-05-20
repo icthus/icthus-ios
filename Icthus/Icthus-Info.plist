@@ -38,6 +38,10 @@
 		<string>Akzidenz Grotesk CE Roman.ttf</string>
 		<string>Bariol_Regular.otf</string>
 	</array>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>fetch</string>
+	</array>
 	<key>UIMainStoryboardFile</key>
 	<string>Main_iPhone</string>
 	<key>UIMainStoryboardFile~ipad</key>

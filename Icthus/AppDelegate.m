@@ -106,6 +106,14 @@
     [self saveContext];
 }
 
+- (void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+    [[NSNotificationCenter defaultCenter] addObserverForName:@"mergedChangesFromiCloud" object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note) {
+        NSLog(@"Successfully merged iCloud data");
+        [self.detailView setBookToLatest];
+        completionHandler(UIBackgroundFetchResultNewData);
+    }];
+}
+
 - (void)saveContext
 {
     NSError *error = nil;
@@ -156,7 +164,7 @@
         
         [moc mergeChangesFromContextDidSaveNotification:notification];
         
-        NSNotification* refreshNotification = [NSNotification notificationWithName:@"underlyingDataChanged"
+        NSNotification* refreshNotification = [NSNotification notificationWithName:@"mergedChangesFromiCloud"
                                                                             object:self
                                                                           userInfo:[notification userInfo]];
         
@@ -213,9 +221,12 @@
     // Ubiquitous:
     NSURL *iCloudURL = [[[NSFileManager defaultManager] URLForUbiquityContainerIdentifier:nil] URLByAppendingPathComponent:@"IcthusUbiquitousStore.sqlite"];
     
-    if (!iCloudURL) {
+    if (iCloudURL) {
+        [[UIApplication sharedApplication] setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
+    } else {
         NSLog(@"User is not signed into iCloud. Using a local store.");
         iCloudURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"IcthusSubstitueUbiquitousStore.sqlite"];
+        [[UIApplication sharedApplication] setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalNever];
     }
 
     NSDictionary *options = @{
