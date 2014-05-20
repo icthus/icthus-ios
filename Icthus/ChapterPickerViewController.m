@@ -30,7 +30,7 @@
     
     self = [super initWithCoder: aDecoder];
     if (self) {
-        _appDel = [[UIApplication sharedApplication] delegate];
+        _appDel = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         _managedObjectContext = [_appDel managedObjectContext];
     }
     return self;
@@ -47,6 +47,12 @@
     }
     
     selectedBook = nil;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    // Set the contentOffset to the currently displayed book
+    NSIndexPath *index = [self.fetchedResultsController indexPathForObject:self.appDel.detailView.book];
+    [self.collectionView scrollToItemAtIndexPath:index atScrollPosition:UICollectionViewScrollPositionTop animated:NO];
 }
 
 - (void)didReceiveMemoryWarning
