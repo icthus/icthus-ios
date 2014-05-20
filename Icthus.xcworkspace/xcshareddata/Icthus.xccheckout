@@ -5,19 +5,19 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>748231A7-BE63-48A4-89DD-CD339AE12BE1</string>
+	<string>5E078C6A-A330-4CD9-B60D-29CFC7A694AF</string>
 	<key>IDESourceControlProjectName</key>
 	<string>Icthus</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>4FA37D09-221F-43D8-822C-381F650575D9</key>
+		<key>D6EF348D-44FF-4C2F-95B6-E7DB9C0559AF</key>
 		<string>ssh://bitbucket.org/mplorentz/icthus.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>Icthus.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>4FA37D09-221F-43D8-822C-381F650575D9</key>
+		<key>D6EF348D-44FF-4C2F-95B6-E7DB9C0559AF</key>
 		<string>..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
@@ -25,14 +25,14 @@
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>4FA37D09-221F-43D8-822C-381F650575D9</string>
+	<string>D6EF348D-44FF-4C2F-95B6-E7DB9C0559AF</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>4FA37D09-221F-43D8-822C-381F650575D9</string>
+			<string>D6EF348D-44FF-4C2F-95B6-E7DB9C0559AF</string>
 			<key>IDESourceControlWCCName</key>
 			<string>icthus</string>
 		</dict>
