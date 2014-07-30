@@ -45,6 +45,8 @@
             NSFontAttributeName: [UIFont fontWithName:@"Avenir-Roman" size:22.0f]
         };
     }
+    // TODO: Set background color of popover view controller
+    self.collectionView.backgroundColor = self.appDel.colorManager.bookBackgroundColor;
     
     selectedBook = nil;
 }

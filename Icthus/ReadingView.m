@@ -17,6 +17,7 @@
 
 @implementation ReadingView
 
+@synthesize appDel;
 @synthesize textViews;
 @synthesize frameData;
 @synthesize textRanges;
@@ -49,6 +50,7 @@ CGPoint maxContentOffset;
 
 - (void)setup {
     self.delegate = self;
+    self.appDel = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     self.alwaysBounceHorizontal = YES;
     self.directionalLockEnabled = YES;
     self.scrollsToTop = NO;
@@ -78,6 +80,7 @@ CGPoint maxContentOffset;
         [paragraphStyle setLineSpacing:14];
         NSDictionary *attributesDict = @{
             NSFontAttributeName: [UIFont fontWithName:@"AkzidenzGroteskCE-Roman"size:24],
+            NSForegroundColorAttributeName: self.appDel.colorManager.bookTextColor,
             NSParagraphStyleAttributeName: paragraphStyle,
         };
         [self setAttString:[[NSAttributedString alloc] initWithString:displayString attributes:attributesDict]];
@@ -87,6 +90,7 @@ CGPoint maxContentOffset;
         [paragraphStyle setLineSpacing:7.5f];
         NSDictionary *attributesDict = @{
             NSFontAttributeName: [UIFont fontWithName:@"AkzidenzGroteskCE-Roman"size:22],
+            NSForegroundColorAttributeName: self.appDel.colorManager.bookTextColor,
             NSParagraphStyleAttributeName: paragraphStyle,
         };
         [self setAttString:[[NSAttributedString alloc] initWithString:displayString attributes:attributesDict]];

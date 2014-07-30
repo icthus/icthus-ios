@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AppDelegate.h"
 
 @interface ChapterCollectionViewCell : UICollectionViewCell
+@property AppDelegate *appDel;
 @property (strong, nonatomic) IBOutlet UILabel *label;
 
 @end

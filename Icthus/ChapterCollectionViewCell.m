@@ -20,7 +20,9 @@
 }
 
 - (void)awakeFromNib {
-    self.label.highlightedTextColor = [UIColor colorWithWhite:0.5 alpha:1.0];
+    self.appDel = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    self.label.highlightedTextColor = self.appDel.colorManager.highlightedTextColor;
+    self.label.textColor = self.appDel.colorManager.bookTextColor;
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
         self.label.font = [UIFont fontWithName:@"Bariol-Regular" size:34.0f];
     } else {

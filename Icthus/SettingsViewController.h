@@ -12,9 +12,12 @@
 #import "IcthusTutorialPageViewController.h"
 #import "MasterViewController.h"
 #import <MessageUI/MFMailComposeViewController.h>
+@class AppDelegate;
 
 @interface SettingsViewController : UITableViewController <MFMailComposeViewControllerDelegate>
 
 - (void)presentMailViewController;
+
+@property AppDelegate *appDel;
 
 @end

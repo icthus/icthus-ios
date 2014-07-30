@@ -34,6 +34,10 @@
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
+    self.tableView.backgroundColor = self.appDel.colorManager.bookBackgroundColor;
+    self.navigationController.navigationBar.titleTextAttributes = @{
+        NSForegroundColorAttributeName: self.appDel.colorManager.titleTextColor,
+    };
 
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
         self.navigationItem.rightBarButtonItem = self.editButtonItem;
@@ -109,6 +113,8 @@
     }
     cell.textLabel.text = book.shortName;
     cell.textLabel.font = bookNameFont;
+    cell.backgroundColor = self.appDel.colorManager.bookBackgroundColor;
+    cell.textLabel.textColor = self.appDel.colorManager.bookTextColor;
     
     // Format the locationString
     NSString *locationString = [[NSString alloc] initWithFormat:@"%@:%@", location.chapter, location.verse];

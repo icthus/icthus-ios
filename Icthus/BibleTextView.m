@@ -28,6 +28,8 @@ BibleVerseView *verseView;
         self.parentView = parentView;
         self.chapters = frameInfo.chapters;
         self.verses = frameInfo.verses;
+        self.appDel = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        self.backgroundColor = self.appDel.colorManager.bookBackgroundColor;
         
         // This is all duplicate code from ReadingView->buildFrames. Make sure they stay the same or bad things will happen.
         // Build the ctFrame that we can draw when necessary
@@ -81,7 +83,7 @@ BibleVerseView *verseView;
     CGContextSetTextMatrix(context, CGAffineTransformIdentity);
     CGContextTranslateCTM(context, 0, self.bounds.size.height);
     CGContextScaleCTM(context, 1.0, -1.0);
-    
+    CGContextSetFillColorWithColor(context, [self.appDel.colorManager.bookTextColor CGColor]);
     CTFrameDraw(self.ctFrame, context);
 
 }

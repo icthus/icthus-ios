@@ -21,6 +21,8 @@
 }
 
 - (void)awakeFromNib {
+    self.appDel = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    self.label.textColor = self.appDel.colorManager.bookTextColor;
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
         self.label.font = [UIFont fontWithName:@"Bariol-Regular" size:34.0f];
     } else {

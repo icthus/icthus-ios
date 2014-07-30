@@ -22,6 +22,7 @@
 @property ReadingView *parentView;
 @property NSArray *chapters;
 @property NSArray *verses;
+@property AppDelegate *appDel;
 
 - (id)initWithFrameInfo:(BibleFrameInfo *)frameInfo andParent:(ReadingView *)parentView;
     

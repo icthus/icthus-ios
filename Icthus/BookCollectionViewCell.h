@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "Book.h"
+#import "AppDelegate.h"
 
 @interface BookCollectionViewCell : UICollectionViewCell
 
+@property AppDelegate *appDel;
 @property (strong, nonatomic) IBOutlet UILabel *label;
 @property Book *book;
 

@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "CircleLabel.h"
+#import "ColorManager.h"
+#import "AppDelegate.h"
 
 @interface BibleVerseView : UIView
 

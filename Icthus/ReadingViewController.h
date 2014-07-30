@@ -11,6 +11,7 @@
 #import "ReadingView.h"
 #import "MasterViewController.h"
 #import "Translation.h"
+#import "ColorManager.h"
 @class MasterViewController;
 @class AppDelegate;
 

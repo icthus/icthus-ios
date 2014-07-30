@@ -16,6 +16,7 @@ int gutterWidth = 70;
     CGRect frame = CGRectMake(0, 0, contentFrame.size.width + gutterWidth, contentFrame.size.height);
     self = [super initWithFrame:frame];
     if (self) {
+        ColorManager *colorManager = [(AppDelegate *)[[UIApplication sharedApplication] delegate] colorManager];
         for (int i = 0; i < length; i++) {
             CGFloat labelTop = frame.size.height - origins[i].y - lineHeight;
             CGRect labelFrame = CGRectMake(self.frame.size.width - gutterWidth, labelTop, gutterWidth, lineHeight);
@@ -41,8 +42,8 @@ int gutterWidth = 70;
             if ([verses firstObject] && [[verses firstObject] isEqualToString:@"1"]) {
                 CGRect circleFrame = CGRectOffset(labelFrame, 12, 0);
                 CircleLabel *circle = [[CircleLabel alloc] initWithTextFrame:circleFrame text:[chapters firstObject]];
-                circle.foregroundColor = [UIColor blackColor];
-                circle.backgroundColor = [UIColor colorWithRed:(0/255.0) green:(165/255.0) blue:(91/255.0) alpha:1.0];
+                circle.foregroundColor = colorManager.bookTextColor;
+                circle.backgroundColor = colorManager.tintColor;
                 [self addSubview:circle];
             } else {
                 if ([verses count] == 1) {

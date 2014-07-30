@@ -14,6 +14,7 @@
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
+@synthesize colorManager = _colorManager;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
@@ -288,6 +289,18 @@
         NSLog(@"Error excluding %@ from backup %@", [URL lastPathComponent], error);
     }
     return success;
+}
+
+#pragma mark - Properties
+- (ColorManager *)colorManager {
+    if (_colorManager == nil) {
+        _colorManager = [[ColorManager alloc] init];
+    }
+    return _colorManager;
+}
+
+- (void)setColorManager:(ColorManager *)colorManager {
+    _colorManager = colorManager;
 }
 
 @end

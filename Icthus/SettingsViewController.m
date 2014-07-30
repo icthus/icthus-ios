@@ -10,6 +10,16 @@
 
 @implementation SettingsViewController
 
+@synthesize appDel;
+
+- (void)viewDidLoad {
+    self.appDel = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    self.navigationController.navigationBar.titleTextAttributes = @{
+        NSForegroundColorAttributeName: self.appDel.colorManager.titleTextColor,
+    };
+    self.tableView.backgroundColor = self.appDel.colorManager.bookBackgroundColor;
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *selectedCell = [self.tableView cellForRowAtIndexPath:indexPath];
     if ([selectedCell class] == [SendMailTableViewCell class]) {
@@ -20,6 +30,20 @@
         [self presentViewController:pageViewController animated:YES completion:nil];
         
     }
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
+    
+    // Configure the cell...
+    [self configureCell:cell atIndexPath:indexPath];
+    
+    return cell;
+}
+
+- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+    cell.backgroundColor = self.appDel.colorManager.bookBackgroundColor;
+    cell.textLabel.textColor = self.appDel.colorManager.bookTextColor;
 }
 
 - (void)presentMailViewController {

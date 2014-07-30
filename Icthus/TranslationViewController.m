@@ -23,7 +23,7 @@ NSString *selectedTranslation;
 {
     self = [super initWithStyle:style];
     if (self) {
-        _appDel = [[UIApplication sharedApplication] delegate];
+        _appDel = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         _managedObjectContext = [_appDel managedObjectContext];
         selectedTranslation = [[NSUserDefaults standardUserDefaults] objectForKey:@"selectedTranslation"];
     }
@@ -37,7 +37,7 @@ NSString *selectedTranslation;
     self = [super initWithCoder: aDecoder];
     if (self)
     {
-        _appDel = [[UIApplication sharedApplication] delegate];
+        _appDel = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         _managedObjectContext = [_appDel managedObjectContext];
         selectedTranslation = [[NSUserDefaults standardUserDefaults] objectForKey:@"selectedTranslation"];
     }
@@ -48,6 +48,7 @@ NSString *selectedTranslation;
 {
     [super viewDidLoad];
 
+    self.tableView.backgroundColor = self.appDel.colorManager.bookBackgroundColor;
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -92,6 +93,10 @@ NSString *selectedTranslation;
         cell.accessoryType = UITableViewCellAccessoryNone;
     }
     cell.textLabel.text = [trans displayName];
+    cell.backgroundColor = self.appDel.colorManager.bookBackgroundColor;
+    cell.textLabel.textColor = self.appDel.colorManager.bookTextColor;
+    cell.tintColor = self.appDel.colorManager.tintColor;
+    // TODO: Set the cell accessory's color
     
     return cell;
 }

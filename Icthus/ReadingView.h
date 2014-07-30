@@ -10,6 +10,7 @@
 #import "BookLocation.h"
 #import "BibleMarkupParser.h"
 #import "Book.h"
+@class AppDelegate;
 
 @interface ReadingView : UIScrollView <UIScrollViewDelegate>
 
@@ -18,6 +19,7 @@
 - (void)setCurrentLocation:(BookLocation *)location;
 - (BookLocation *)saveCurrentLocation;
 
+@property (strong, nonatomic) AppDelegate *appDel;
 @property (retain, nonatomic) NSAttributedString* attString;
 @property (retain, nonatomic) NSAttributedString* sizingString;
 @property (retain, nonatomic) NSString *text;

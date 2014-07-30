@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "ReadingViewController.h"
 #import "IcthusTutorialPageViewController.h"
+#import "ColorManager.h"
 @class ReadingViewController;
 @class MasterViewController;
 
@@ -21,6 +22,7 @@
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 @property (strong, nonatomic) ReadingViewController *detailView;
 @property (strong, nonatomic) MasterViewController *masterView;
+@property (strong, nonatomic) ColorManager *colorManager;
 
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;

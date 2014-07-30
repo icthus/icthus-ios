@@ -9,20 +9,22 @@
 #import "MasterViewController.h"
 #import "DetailViewController.h"
 
-UIColor *tintColor;
-
 @implementation MasterViewController
+
+@synthesize appDel;
+
 - (void)awakeFromNib {
-    tintColor = [UIColor colorWithRed:(0/255.0) green:(165/255.0) blue:(91/255.0) alpha:1.0];
+    self.appDel = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [super awakeFromNib];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Style the nav bar
-    self.navigationBar.tintColor = tintColor;
+    ColorManager *colorManager = self.appDel.colorManager;
+    self.navigationBar.tintColor = colorManager.tintColor;
     self.navigationBar.translucent = NO;
-    self.navigationBar.barTintColor = [UIColor colorWithWhite:1.0 alpha:0.1];
+    self.navigationBar.barTintColor = colorManager.navBarColor;
     UIFont *titleFont;
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
         titleFont = [UIFont fontWithName:@"Avenir-Medium" size:22.0f];
@@ -31,7 +33,7 @@ UIColor *tintColor;
     }
     
     self.navigationController.navigationBar.titleTextAttributes = @{
-        NSForegroundColorAttributeName: [UIColor colorWithRed:(0/255.0) green:(0/255.0) blue:(0/255.0) alpha:1.0],
+        NSForegroundColorAttributeName: [UIColor greenColor],
         NSFontAttributeName: titleFont
     };
     

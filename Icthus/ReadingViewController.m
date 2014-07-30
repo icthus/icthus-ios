@@ -35,12 +35,12 @@ UIColor *tintColor;
     self.splitViewController.delegate = self;
     
     self.appDel = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    ColorManager *colorManager = self.appDel.colorManager;
 
-    tintColor = [UIColor colorWithRed:(0/255.0) green:(165/255.0) blue:(91/255.0) alpha:1.0];
     // Style the nav bar
-    self.navigationController.navigationBar.tintColor = tintColor;
-    self.navigationController.navigationBar.translucent = NO;
-    self.navigationController.navigationBar.barTintColor = [UIColor colorWithWhite:1.0 alpha:0.1];
+    self.navigationController.navigationBar.tintColor = colorManager.tintColor;
+    self.navigationController.navigationBar.translucent = colorManager.navBarTranslucency;
+    self.navigationController.navigationBar.barTintColor = colorManager.navBarColor;
     UIFont *titleFont;
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
         titleFont = [UIFont fontWithName:@"Avenir-Medium" size:22.0f];
@@ -48,16 +48,16 @@ UIColor *tintColor;
         titleFont = [UIFont fontWithName:@"Avenir-Medium" size:20.0f];
     }
     self.navigationController.navigationBar.titleTextAttributes = @{
-        NSForegroundColorAttributeName: [UIColor colorWithRed:(0/255.0) green:(0/255.0) blue:(0/255.0) alpha:1.0],
+        NSForegroundColorAttributeName: colorManager.titleTextColor,
         NSFontAttributeName: titleFont,
     };
     
     // Style the Go To button
     if (self.goToButton) {
-        self.goToButton.tintColor = tintColor;
-        [self.goToButton setTitleTextAttributes:@{
+        self.goToButton.tintColor = colorManager.tintColor;
+//        [self.goToButton setTitleTextAttributes:@{
 //            NSFontAttributeName: [UIFont fontWithName:@"Bariol-Regular" size:23.0],
-        } forState:UIControlStateNormal];
+//        } forState:UIControlStateNormal];
     }
     
     [self setBookToLatest];

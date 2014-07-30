@@ -22,6 +22,7 @@
 		C9221D0A190A9171008F3C5A /* iPad Show Verses Top@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9221D06190A9171008F3C5A /* iPad Show Verses Top@2x.png */; };
 		C9221D0B190A9171008F3C5A /* iPad Show Verses@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9221D07190A9171008F3C5A /* iPad Show Verses@2x.png */; };
 		C9256B0717DFC5D400646198 /* BookLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = C9256B0617DFC5D400646198 /* BookLocation.m */; };
+		C9431B0C195F8C8A00B4B69C /* ColorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C9431B0B195F8C8A00B4B69C /* ColorManager.m */; };
 		C9451E90183BB0D9009FAFEE /* BibleVerseView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9451E8F183BB0D9009FAFEE /* BibleVerseView.m */; };
 		C94A2B24181001790076926A /* TranslationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C94A2B23181001790076926A /* TranslationViewController.m */; };
 		C94A2B271810030E0076926A /* Translation.m in Sources */ = {isa = PBXBuildFile; fileRef = C94A2B261810030E0076926A /* Translation.m */; };
@@ -120,6 +121,8 @@
 		C9221D07190A9171008F3C5A /* iPad Show Verses@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPad Show Verses@2x.png"; sourceTree = "<group>"; };
 		C9256B0517DFC5D400646198 /* BookLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookLocation.h; sourceTree = "<group>"; };
 		C9256B0617DFC5D400646198 /* BookLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookLocation.m; sourceTree = "<group>"; };
+		C9431B0A195F8C8A00B4B69C /* ColorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorManager.h; sourceTree = "<group>"; };
+		C9431B0B195F8C8A00B4B69C /* ColorManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorManager.m; sourceTree = "<group>"; };
 		C9451E8E183BB0D9009FAFEE /* BibleVerseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BibleVerseView.h; sourceTree = "<group>"; };
 		C9451E8F183BB0D9009FAFEE /* BibleVerseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BibleVerseView.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		C94A2B22181001790076926A /* TranslationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TranslationViewController.h; sourceTree = "<group>"; };
@@ -433,6 +436,8 @@
 				C9FF511317CBB54800BA526E /* DetailViewController.m */,
 				C94A2B22181001790076926A /* TranslationViewController.h */,
 				C94A2B23181001790076926A /* TranslationViewController.m */,
+				C9431B0A195F8C8A00B4B69C /* ColorManager.h */,
+				C9431B0B195F8C8A00B4B69C /* ColorManager.m */,
 				C97793E51907E1360073A0AF /* Tutorial */,
 				C9FF510C17CBB54800BA526E /* Icthus.xcdatamodeld */,
 				C91EB47717FDB2F400645EFD /* Models */,
@@ -663,6 +668,7 @@
 				C99F2FC417CCDC01008AF602 /* ChapterPickerViewController.m in Sources */,
 				C94C254318F487DC008E9CD4 /* CollectionViewLeftFlowLayout.m in Sources */,
 				C9D071DC17DE8C2000B535ED /* ReadingView.m in Sources */,
+				C9431B0C195F8C8A00B4B69C /* ColorManager.m in Sources */,
 				C9C8E61918FFF1F700D9D66E /* IcthusTutorialPageViewController.m in Sources */,
 				C97A1AF818E5DF57001E148D /* BibleFrameInfo.m in Sources */,
 				C9E57771188484A3004CC974 /* BookCollectionViewCell.m in Sources */,

@@ -12,9 +12,11 @@
 
 @class DetailViewController;
 @class ReadingListViewController;
+@class AppDelegate;
 
 @interface MasterViewController : UINavigationController
 
+@property (strong, nonatomic) AppDelegate *appDel;
 @property (strong, nonatomic) DetailViewController *detailViewController;
 @property (strong, nonatomic) UITableViewController *settingsViewController;
 @property (strong, nonatomic) ReadingListViewController *readingListViewController;
