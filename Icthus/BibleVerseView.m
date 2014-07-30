@@ -21,6 +21,7 @@ int gutterWidth = 70;
             CGFloat labelTop = frame.size.height - origins[i].y - lineHeight;
             CGRect labelFrame = CGRectMake(self.frame.size.width - gutterWidth, labelTop, gutterWidth, lineHeight);
             UILabel *label = [[UILabel alloc] initWithFrame:labelFrame];
+            label.textColor = colorManager.bookTextColor;
             label.adjustsFontSizeToFitWidth = YES;
             
             if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {

@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
 #import "Book.h"
+#import "IcthusColorMode.h"
 
-@interface ChapterPickerViewController: UICollectionViewController <UICollectionViewDataSource, UICollectionViewDelegate>
+@interface ChapterPickerViewController: UICollectionViewController <UICollectionViewDataSource, UICollectionViewDelegate, IcthusColorMode>
 
 @property (nonatomic, strong) AppDelegate *appDel;
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
@@ -20,5 +21,8 @@
 @property (atomic) NSNumber *finishedAnimations;
 
 - (IBAction)dismissButtonPressed:(id)sender;
+- (void)subscribeToColorChangedNotification;
+- (void)unsubscribeFromColorChangedNotification;
+- (void)handleColorModeChanged;
 
 @end

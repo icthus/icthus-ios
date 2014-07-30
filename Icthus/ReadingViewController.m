@@ -10,6 +10,7 @@
 #import "ReadingView.h"
 #import "BookLocation.h"
 #import "AppDelegate.h"
+#import "IcthusColorMode.h"
 
 @interface ReadingViewController ()
 
@@ -36,8 +37,10 @@ UIColor *tintColor;
     
     self.appDel = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     ColorManager *colorManager = self.appDel.colorManager;
+    [self subscribeToColorChangedNotification];
 
     // Style the nav bar
+    self.view.backgroundColor = colorManager.bookBackgroundColor;
     self.navigationController.navigationBar.tintColor = colorManager.tintColor;
     self.navigationController.navigationBar.translucent = colorManager.navBarTranslucency;
     self.navigationController.navigationBar.barTintColor = colorManager.navBarColor;
@@ -217,6 +220,32 @@ UIColor *tintColor;
     [self.readingView saveCurrentLocation];
 }
 
+- (void)subscribeToColorChangedNotification {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleColorModeChanged) name:colorModeChangedNotification object:nil];
+}
+
+- (void)unsubscribeFromColorChangedNotification {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)handleColorModeChanged {
+    ColorManager *colorManager = self.appDel.colorManager;
+    self.view.backgroundColor = colorManager.bookBackgroundColor;
+    self.navigationController.navigationBar.tintColor = colorManager.tintColor;
+    self.navigationController.navigationBar.translucent = colorManager.navBarTranslucency;
+    self.navigationController.navigationBar.barTintColor = colorManager.navBarColor;
+    self.navigationController.navigationBar.titleTextAttributes = @{
+        NSForegroundColorAttributeName: colorManager.titleTextColor,
+    };
+    if (self.goToButton) {
+        self.goToButton.tintColor = colorManager.tintColor;
+    }
+    [self setBookToLatest];
+}
+
+- (void)dealloc {
+    [self unsubscribeFromColorChangedNotification];
+}
 
 
 @end

@@ -99,12 +99,4 @@ BibleVerseView *verseView;
     return _ctFrame;
 }
 
--(void)dealloc {
-    [verseView removeFromSuperview];
-    verseView = nil;
-    if (_ctFrame) {
-        CFRelease(_ctFrame);
-    }
-}
-
 @end

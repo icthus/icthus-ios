@@ -39,7 +39,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
+    [self subscribeToColorChangedNotification];
     if (self.navigationController && [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
         self.navigationController.navigationBar.titleTextAttributes = @{
             NSFontAttributeName: [UIFont fontWithName:@"Avenir-Roman" size:22.0f]
@@ -353,5 +353,24 @@
 
 - (IBAction)dismissButtonPressed:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+
+- (void)subscribeToColorChangedNotification {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleColorModeChanged) name:colorModeChangedNotification object:nil];
+}
+
+- (void)unsubscribeFromColorChangedNotification {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)handleColorModeChanged {
+    // TODO: Set background color of popover view controller
+    self.collectionView.backgroundColor = self.appDel.colorManager.bookBackgroundColor;
+    [self.collectionView reloadData];
+}
+
+- (void)dealloc {
+    [self unsubscribeFromColorChangedNotification];
 }
 @end

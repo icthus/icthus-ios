@@ -30,6 +30,7 @@
         [self handleFirstLaunch];
     }
     else {
+        [self checkForUserDefaultsUpgrades];
         [self setupControllers];
     }
     
@@ -48,12 +49,21 @@
     [prefs setObject:@"WEB" forKey:@"selectedTranslation"];
     [prefs setObject:[NSNumber numberWithInt:1] forKey:@"databaseVersion"];
     [prefs setObject:[NSNumber numberWithInt:1] forKey:@"whatsNewVersion"];
+    [prefs setObject:[NSNumber numberWithInt:1] forKey:@"colorManagerVersion"];
     [prefs setBool:YES forKey:@"appHasLaunchedBefore"];
+    [prefs setBool:NO  forKey:@"showDarkMode"];
     [self setupControllers];
     [self showTutorial];
     [prefs synchronize];
 }
 
+- (void)checkForUserDefaultsUpgrades {
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    if ([prefs objectForKey:@"showDarkMode"] == nil) {
+        [prefs setBool:NO forKey:@"showDarkMode"];
+    }
+    [prefs synchronize];
+}
 
 - (void)setupControllers {
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {

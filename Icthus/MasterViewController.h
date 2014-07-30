@@ -9,12 +9,13 @@
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
 #import "ReadingListViewController.h"
+#import "IcthusColorMode.h"
 
 @class DetailViewController;
 @class ReadingListViewController;
 @class AppDelegate;
 
-@interface MasterViewController : UINavigationController
+@interface MasterViewController : UINavigationController <IcthusColorMode>
 
 @property (strong, nonatomic) AppDelegate *appDel;
 @property (strong, nonatomic) DetailViewController *detailViewController;
@@ -24,5 +25,8 @@
 - (void)showSettings;
 - (void)toggleSettingsPopover;
 - (void)toggleReadingListPopover;
+- (void)subscribeToColorChangedNotification;
+- (void)unsubscribeFromColorChangedNotification;
+- (void)handleColorModeChanged;
 
 @end

@@ -34,6 +34,7 @@
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
+    [self subscribeToColorChangedNotification];
     self.tableView.backgroundColor = self.appDel.colorManager.bookBackgroundColor;
     self.navigationController.navigationBar.titleTextAttributes = @{
         NSForegroundColorAttributeName: self.appDel.colorManager.titleTextColor,
@@ -255,6 +256,25 @@
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
     [self.tableView endUpdates];
+}
+
+- (void)subscribeToColorChangedNotification {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleColorModeChanged) name:colorModeChangedNotification object:nil];
+}
+
+- (void)unsubscribeFromColorChangedNotification {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)handleColorModeChanged {
+    self.tableView.backgroundColor = self.appDel.colorManager.bookBackgroundColor;
+    self.navigationController.navigationBar.titleTextAttributes = @{
+        NSForegroundColorAttributeName: self.appDel.colorManager.titleTextColor,
+    };
+}
+
+- (void)dealloc {
+    [self unsubscribeFromColorChangedNotification];
 }
 
 /*

@@ -9,9 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
 #import "MasterViewController.h"
+#import "IcthusColorMode.h"
 @class AppDelegate;
 
-@interface ReadingListViewController : UITableViewController <NSFetchedResultsControllerDelegate>
+@interface ReadingListViewController : UITableViewController <NSFetchedResultsControllerDelegate, IcthusColorMode>
 
 @property (nonatomic, strong) AppDelegate *appDel;
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
@@ -22,5 +23,8 @@
 - (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id <NSFetchedResultsSectionInfo>)sectionInfo atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type;
 - (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath;
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller;
+- (void)subscribeToColorChangedNotification;
+- (void)unsubscribeFromColorChangedNotification;
+- (void)handleColorModeChanged;
 
 @end

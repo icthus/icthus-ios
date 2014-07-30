@@ -11,8 +11,9 @@
 #import "ReadingView.h"
 #import "BibleVerseView.h"
 #import "BibleFrameInfo.h"
+#import "IcthusColorMode.h"
 
-@interface BibleTextView : UIView {
+@interface BibleTextView : UIView <IcthusColorMode> {
     @private BibleVerseView *verseView;
 }
 
@@ -25,5 +26,8 @@
 @property AppDelegate *appDel;
 
 - (id)initWithFrameInfo:(BibleFrameInfo *)frameInfo andParent:(ReadingView *)parentView;
+- (void)subscribeToColorChangedNotification;
+- (void)unsubscribeFromColorChangedNotification;
+- (void)handleColorModeChanged;
     
 @end

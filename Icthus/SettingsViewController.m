@@ -13,6 +13,7 @@
 @synthesize appDel;
 
 - (void)viewDidLoad {
+    [self subscribeToColorChangedNotification];
     self.appDel = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     self.navigationController.navigationBar.titleTextAttributes = @{
         NSForegroundColorAttributeName: self.appDel.colorManager.titleTextColor,
@@ -29,6 +30,8 @@
         [(MasterViewController *)self.navigationController toggleSettingsPopover];
         [self presentViewController:pageViewController animated:YES completion:nil];
         
+    } else if ([selectedCell class] == [ToggleColorModeTableViewCell class]) {
+        [(ToggleColorModeTableViewCell *)selectedCell toggleDarkMode];
     }
 }
 
@@ -60,6 +63,26 @@
 - (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error {
     // Handle any errors here & check for controller's result as well
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)subscribeToColorChangedNotification {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleColorModeChanged) name:colorModeChangedNotification object:nil];
+}
+
+- (void)unsubscribeFromColorChangedNotification {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)handleColorModeChanged {
+    self.navigationController.navigationBar.titleTextAttributes = @{
+        NSForegroundColorAttributeName: self.appDel.colorManager.titleTextColor,
+    };
+    self.tableView.backgroundColor = self.appDel.colorManager.bookBackgroundColor;
+    [self.tableView reloadData];
+}
+
+- (void)dealloc {
+    [self unsubscribeFromColorChangedNotification];
 }
 
 @end

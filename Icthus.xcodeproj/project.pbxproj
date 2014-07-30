@@ -22,6 +22,7 @@
 		C9221D0A190A9171008F3C5A /* iPad Show Verses Top@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9221D06190A9171008F3C5A /* iPad Show Verses Top@2x.png */; };
 		C9221D0B190A9171008F3C5A /* iPad Show Verses@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9221D07190A9171008F3C5A /* iPad Show Verses@2x.png */; };
 		C9256B0717DFC5D400646198 /* BookLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = C9256B0617DFC5D400646198 /* BookLocation.m */; };
+		C92762E119891D8600BC4F46 /* ToggleColorModeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C92762E019891D8600BC4F46 /* ToggleColorModeTableViewCell.m */; };
 		C9431B0C195F8C8A00B4B69C /* ColorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C9431B0B195F8C8A00B4B69C /* ColorManager.m */; };
 		C9451E90183BB0D9009FAFEE /* BibleVerseView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9451E8F183BB0D9009FAFEE /* BibleVerseView.m */; };
 		C94A2B24181001790076926A /* TranslationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C94A2B23181001790076926A /* TranslationViewController.m */; };
@@ -121,6 +122,9 @@
 		C9221D07190A9171008F3C5A /* iPad Show Verses@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPad Show Verses@2x.png"; sourceTree = "<group>"; };
 		C9256B0517DFC5D400646198 /* BookLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookLocation.h; sourceTree = "<group>"; };
 		C9256B0617DFC5D400646198 /* BookLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookLocation.m; sourceTree = "<group>"; };
+		C92762DB198904A500BC4F46 /* IcthusColorMode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IcthusColorMode.h; sourceTree = "<group>"; };
+		C92762DF19891D8600BC4F46 /* ToggleColorModeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToggleColorModeTableViewCell.h; sourceTree = "<group>"; };
+		C92762E019891D8600BC4F46 /* ToggleColorModeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToggleColorModeTableViewCell.m; sourceTree = "<group>"; };
 		C9431B0A195F8C8A00B4B69C /* ColorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorManager.h; sourceTree = "<group>"; };
 		C9431B0B195F8C8A00B4B69C /* ColorManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorManager.m; sourceTree = "<group>"; };
 		C9451E8E183BB0D9009FAFEE /* BibleVerseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BibleVerseView.h; sourceTree = "<group>"; };
@@ -284,6 +288,8 @@
 			children = (
 				C9C324F618E1CAE5005D0BAD /* SendMailTableViewCell.h */,
 				C9C324F718E1CAE5005D0BAD /* SendMailTableViewCell.m */,
+				C92762DF19891D8600BC4F46 /* ToggleColorModeTableViewCell.h */,
+				C92762E019891D8600BC4F46 /* ToggleColorModeTableViewCell.m */,
 				C90A82C11901682C00FF3FB8 /* ShowTutorialTableViewCell.h */,
 				C90A82C21901682C00FF3FB8 /* ShowTutorialTableViewCell.m */,
 				C958677818D9DBE9001F875B /* SettingsViewController.h */,
@@ -438,6 +444,7 @@
 				C94A2B23181001790076926A /* TranslationViewController.m */,
 				C9431B0A195F8C8A00B4B69C /* ColorManager.h */,
 				C9431B0B195F8C8A00B4B69C /* ColorManager.m */,
+				C92762DB198904A500BC4F46 /* IcthusColorMode.h */,
 				C97793E51907E1360073A0AF /* Tutorial */,
 				C9FF510C17CBB54800BA526E /* Icthus.xcdatamodeld */,
 				C91EB47717FDB2F400645EFD /* Models */,
@@ -647,6 +654,7 @@
 			files = (
 				C97793E41907E12A0073A0AF /* BottomFadedImageView.m in Sources */,
 				C9451E90183BB0D9009FAFEE /* BibleVerseView.m in Sources */,
+				C92762E119891D8600BC4F46 /* ToggleColorModeTableViewCell.m in Sources */,
 				C94A2B271810030E0076926A /* Translation.m in Sources */,
 				C9FF511417CBB54800BA526E /* DetailViewController.m in Sources */,
 				C90A82C31901682C00FF3FB8 /* ShowTutorialTableViewCell.m in Sources */,

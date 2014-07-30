@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "IcthusColorMode.h"
 
 @interface ColorManager : NSObject
 
@@ -17,7 +18,9 @@
 @property UIColor *bookBackgroundColor;
 @property UIColor *highlightedTextColor;
 @property BOOL navBarTranslucency;
+@property BOOL isDarkModeActivated;
 
 - (id)init;
+- (void)toggleDarkMode;
 
 @end

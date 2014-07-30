@@ -15,12 +15,15 @@
 @class MasterViewController;
 @class AppDelegate;
 
-@interface ReadingViewController : UIViewController <UISplitViewControllerDelegate>
+@interface ReadingViewController : UIViewController <UISplitViewControllerDelegate, IcthusColorMode>
 - (id)initWithBook:(Book *)book;
 - (void)setBookToLatest;
 - (void)setLocation:(BookLocation *)location;
 - (void)setBook:(Book *)newBook;
 - (void)setTranslation:(Translation *)translation;
+- (void)subscribeToColorChangedNotification;
+- (void)unsubscribeFromColorChangedNotification;
+- (void)handleColorModeChanged;
 
 @property (strong, nonatomic) AppDelegate *appDel;
 @property (strong, nonatomic) NSManagedObjectContext *moc;
