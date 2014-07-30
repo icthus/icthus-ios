@@ -49,11 +49,11 @@
 }
 
 - (void)loadDarkScheme {
-    tintColor = [UIColor colorWithRed:(0/255.0) green:(165/255.0) blue:(91/255.0) alpha:1.0];
-    titleTextColor = [UIColor whiteColor];
-    navBarColor = [UIColor colorWithWhite:0.0 alpha:0.1];
-    bookTextColor  = [UIColor whiteColor];
-    bookBackgroundColor = [UIColor blackColor];
+    tintColor = [UIColor colorWithRed:(71/255.0) green:(191/255.0) blue:(70/255.0) alpha:1.0];
+    titleTextColor = [UIColor colorWithWhite:0.87 alpha:1.0];
+    navBarColor = [UIColor colorWithWhite:0.258 alpha:1.0];
+    bookTextColor  = [UIColor colorWithWhite:0.725 alpha:1.0];
+    bookBackgroundColor = [UIColor colorWithWhite:0.1294 alpha:1.0];
     highlightedTextColor = [UIColor colorWithWhite:0.5 alpha:1.0];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 }
