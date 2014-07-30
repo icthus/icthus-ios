@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "ReadingViewController.h"
 #import "IcthusTutorialPageViewController.h"
-#import "ColorManager.h"
+@class ColorManager;
 @class ReadingViewController;
 @class MasterViewController;
 

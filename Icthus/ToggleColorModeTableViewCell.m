@@ -14,15 +14,25 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        // Initialization code
+        [self setup];
     }
     return self;
 }
 
 - (void)awakeFromNib
 {
-    // Initialization code
+    [self setup];
 }
+
+- (void)setup {
+    self.colorManager = [(AppDelegate *)[[UIApplication sharedApplication] delegate] colorManager];
+    if ([self.colorManager isDarkModeActivated]) {
+        [self.textLabel setText:@"Light Mode"];
+    } else {
+        [self.textLabel setText:@"Dark Mode"];
+    }
+}
+
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
@@ -32,9 +42,8 @@
 }
 
 - (void)toggleDarkMode {
-    ColorManager *colorManager = [(AppDelegate *)[[UIApplication sharedApplication] delegate] colorManager];
-    [colorManager toggleDarkMode];
-    if ([colorManager isDarkModeActivated]) {
+    [self.colorManager toggleDarkMode];
+    if ([self.colorManager isDarkModeActivated]) {
         [self.textLabel setText:@"Light Mode"];
     } else {
         [self.textLabel setText:@"Dark Mode"];

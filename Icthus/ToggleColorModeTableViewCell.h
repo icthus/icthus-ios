@@ -14,4 +14,6 @@
 
 - (void)toggleDarkMode;
 
+@property ColorManager *colorManager;
+
 @end

@@ -42,7 +42,8 @@
     [self subscribeToColorChangedNotification];
     if (self.navigationController && [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
         self.navigationController.navigationBar.titleTextAttributes = @{
-            NSFontAttributeName: [UIFont fontWithName:@"Avenir-Roman" size:22.0f]
+            NSFontAttributeName: [UIFont fontWithName:@"Avenir-Roman" size:22.0f],
+            NSForegroundColorAttributeName: self.appDel.colorManager.titleTextColor,
         };
     }
     // TODO: Set background color of popover view controller
@@ -367,6 +368,10 @@
 - (void)handleColorModeChanged {
     // TODO: Set background color of popover view controller
     self.collectionView.backgroundColor = self.appDel.colorManager.bookBackgroundColor;
+    self.navigationController.navigationBar.titleTextAttributes = @{
+        NSFontAttributeName: [UIFont fontWithName:@"Avenir-Roman" size:22.0f],
+        NSForegroundColorAttributeName: self.appDel.colorManager.titleTextColor,
+    };
     [self.collectionView reloadData];
 }
 
