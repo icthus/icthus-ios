@@ -39,8 +39,8 @@
     // Define the tags we will include and exclude
     // TODO: handle formatting of h, mt, b tags
     // tags I'm unsure of (and can't find any examples of): milestone, generated, da, cs
-    includedTags = [[NSSet alloc] initWithArray:@[@"usfx", @"book", @"p", @"q", @"mt", @"d", @"b", @"generated", @"c", @"v", @"ve", @"qt", @"nd", @"tl", @"qs", @"qac", @"sls", @"bk", @"pn", @"k", @"ord", @"sig", @"bd", @"it", @"bdit", @"sc", @"no", @"quoteStart", @"quoteEnd", @"wj", @"wtp", @"da", @"add"]];
-    excludedTags = [[NSSet alloc] initWithArray:@[@"languageCode", @"rem", @"id", @"ide", @"h", @"rem", @"cl", @"s", @"sectionBoundary", @"cp", @"ca", @"toc", @"milestone", @"va", @"vp", @"table", @"generated", @"f", @"ef", @"fm", @"x", @"ex", @"dc", @"fig", @"description", @"catalog", @"size", @"location", @"copyright", @"caption", @"reference", @"ndx", @"w", @"wh", @"wg", @"wr", @"quoteRemind", @"ior", @"cs", @"fs", @"cl", @"//", @"ref", @"zw"]];
+    includedTags = [[NSSet alloc] initWithArray:@[@"usfx", @"book", @"p", @"q", @"mt", @"d", @"b", @"generated", @"c", @"v", @"ve", @"qt", @"nd", @"tl", @"qs", @"qac", @"sls", @"bk", @"pn", @"k", @"ord", @"sig", @"bd", @"it", @"bdit", @"sc", @"no", @"quoteStart", @"quoteEnd", @"wj", @"wtp", @"da", @"add", @"w"]];
+    excludedTags = [[NSSet alloc] initWithArray:@[@"languageCode", @"rem", @"id", @"ide", @"h", @"rem", @"cl", @"s", @"sectionBoundary", @"cp", @"ca", @"toc", @"milestone", @"va", @"vp", @"table", @"generated", @"f", @"ef", @"fm", @"x", @"ex", @"dc", @"fig", @"description", @"catalog", @"size", @"location", @"copyright", @"caption", @"reference", @"ndx", @"wh", @"wg", @"wr", @"quoteRemind", @"ior", @"cs", @"fs", @"cl", @"//", @"ref", @"zw"]];
     
     Translation *trans = [NSEntityDescription insertNewObjectForEntityForName:@"Translation" inManagedObjectContext:_context];
     [trans setCode:translationCode];
@@ -220,6 +220,14 @@
         NSLog(@"%@", [error localizedDescription]);
     } else {
         bookText = [filterSpacesWithChapterTags stringByReplacingMatchesInString:bookText options:0 range:NSMakeRange(0, [bookText length]) withTemplate:@" $1"];
+    }
+    
+    // turns ¶ symbols into new paragraphs
+    NSRegularExpression *filterParagraphSymbols = [NSRegularExpression regularExpressionWithPattern:@"¶" options:NSRegularExpressionCaseInsensitive error:&error];
+    if (error) {
+        NSLog(@"%@", [error localizedDescription]);
+    } else {
+        bookText = [filterParagraphSymbols stringByReplacingMatchesInString:bookText options:0 range:NSMakeRange(0, [bookText length]) withTemplate:@"\n\t"];
     }
     
     return bookText;

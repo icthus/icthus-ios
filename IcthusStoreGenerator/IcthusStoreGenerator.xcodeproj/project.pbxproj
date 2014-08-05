@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C948F6CF18F5A8900010DA88 /* Icthus.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C948F6CD18F5A8900010DA88 /* Icthus.xcdatamodeld */; };
+		C94EE5E919896D2300FE03AE /* KJVParser.m in Sources */ = {isa = PBXBuildFile; fileRef = C94EE5E819896D2300FE03AE /* KJVParser.m */; };
 		C981302818F5B3BC00C65310 /* ASVBookNames.xml in CopyFiles */ = {isa = PBXBuildFile; fileRef = C9F7B56418F5ABB9009462BA /* ASVBookNames.xml */; };
 		C981302918F5B3BC00C65310 /* eng-asv_usfx.xml in CopyFiles */ = {isa = PBXBuildFile; fileRef = C9F7B56818F5ABB9009462BA /* eng-asv_usfx.xml */; };
 		C981302A18F5B3BC00C65310 /* eng-kjv_usfx.xml in CopyFiles */ = {isa = PBXBuildFile; fileRef = C9F7B56F18F5ABB9009462BA /* eng-kjv_usfx.xml */; };
@@ -77,6 +78,8 @@
 
 /* Begin PBXFileReference section */
 		C948F6CE18F5A8900010DA88 /* Icthus.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Icthus.xcdatamodel; sourceTree = "<group>"; };
+		C94EE5E719896D2300FE03AE /* KJVParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJVParser.h; sourceTree = "<group>"; };
+		C94EE5E819896D2300FE03AE /* KJVParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KJVParser.m; sourceTree = "<group>"; };
 		C9A691F418F59CC100801A8B /* IcthusStoreGenerator */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = IcthusStoreGenerator; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9A691F718F59CC100801A8B /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		C9A691F918F59CC100801A8B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -227,6 +230,8 @@
 			children = (
 				C9A6920B18F5A0C400801A8B /* USFXParser.h */,
 				C9A6920C18F5A0C400801A8B /* USFXParser.m */,
+				C94EE5E719896D2300FE03AE /* KJVParser.h */,
+				C94EE5E819896D2300FE03AE /* KJVParser.m */,
 				C9A6920D18F5A0C400801A8B /* WEBUSFXParser.h */,
 				C9A6920E18F5A0C400801A8B /* WEBUSFXParser.m */,
 				C9A6920F18F5A0C400801A8B /* ASVUSFXParser.h */,
@@ -481,6 +486,7 @@
 				C9A6921A18F5A5F300801A8B /* Book.m in Sources */,
 				C9A6921318F5A0C400801A8B /* ASVUSFXParser.m in Sources */,
 				C9A6921E18F5A65000801A8B /* BookLocation.m in Sources */,
+				C94EE5E919896D2300FE03AE /* KJVParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

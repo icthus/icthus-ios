@@ -1,6 +1,7 @@
 #import "USFXParser.h"
 #import "WEBUSFXParser.h"
 #import "ASVUSFXParser.h"
+#import "KJVParser.h"
 //
 //  main.m
 //  IcthusStoreGenerator
@@ -21,9 +22,9 @@ static void instantiateBooks(NSManagedObjectContext *moc) {
     [[[ASVUSFXParser alloc] init] instantiateBooks:moc translationCode:@"ASV" displayName:@"American Standard Version" bookNamePath:ASVBookNamePath bookTextPath:ASVBookTextPath];
     
     // KJV
-//    NSString* KJVBookTextPath = [[NSBundle mainBundle] pathForResource:@"eng-kjv_usfx" ofType:@"xml"];
-//    NSString* KJVBookNamePath = [[NSBundle mainBundle] pathForResource:@"KJVBookNames" ofType:@"xml"];
-//    [[[USFXParser alloc] init] instantiateBooks:self.managedObjectContext translationCode:@"KJV" displayName:@"King James Version" bookNamePath:KJVBookNamePath bookTextPath:KJVBookTextPath];
+    NSString* KJVBookTextPath = [[NSBundle mainBundle] pathForResource:@"eng-kjv_usfx" ofType:@"xml"];
+    NSString* KJVBookNamePath = [[NSBundle mainBundle] pathForResource:@"KJVBookNames" ofType:@"xml"];
+    [[[KJVParser alloc] init] instantiateBooks:moc translationCode:@"KJV" displayName:@"King James Version" bookNamePath:KJVBookNamePath bookTextPath:KJVBookTextPath];
 }
 
 static NSManagedObjectModel *managedObjectModel()
