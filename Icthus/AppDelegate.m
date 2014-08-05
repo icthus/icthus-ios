@@ -47,7 +47,7 @@
 - (void)handleFirstLaunch {
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     [prefs setObject:@"WEB" forKey:@"selectedTranslation"];
-    [prefs setObject:[NSNumber numberWithInt:1] forKey:@"databaseVersion"];
+    [prefs setObject:[NSNumber numberWithInt:CURRENT_DATABASE_VERSION] forKey:@"databaseVersion"];
     [prefs setObject:[NSNumber numberWithInt:1] forKey:@"whatsNewVersion"];
     [prefs setObject:[NSNumber numberWithInt:1] forKey:@"colorManagerVersion"];
     [prefs setBool:YES forKey:@"appHasLaunchedBefore"];
@@ -254,19 +254,58 @@
         NSLog(@"Error adding iCloud persistent store %@", [error localizedDescription]);
     }
     
+    NSLog(@"%@", [[NSUserDefaults standardUserDefaults] objectForKey:@"databaseVersion"]);
     // Local
     NSURL *localStoreURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"IcthusLocalStore.sqlite"];
-    if (![[NSFileManager defaultManager] fileExistsAtPath:[localStoreURL path]]) {
+    if  (![[NSFileManager defaultManager] fileExistsAtPath:[localStoreURL path]]) {
         NSURL *preloadURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"IcthusPrepopulatedStore" ofType:@"sqlite"]];
-        NSError* err = nil;
+        NSError* err = [[NSError alloc] init];
         if (![[NSFileManager defaultManager] copyItemAtURL:preloadURL toURL:localStoreURL error:&err]) {
-            NSLog(@"VERY BAD: Could not copy preloaded data");
-            // TODO: give user an alert
+            NSLog(@"VERY BAD: Could not create database.");
+            [[[UIAlertView alloc] initWithTitle:@"Error" message:@"Could not create database. Please contact support@icthusapp.com if the problem persists." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil] show];
+        } else {
+            NSLog(@"Successfully created database with version %d", CURRENT_DATABASE_VERSION);
+            // Make sure that the preloaded database and the local database aren't backed up to iCloud
+            [self addSkipBackupAttributeToItemAtURL:preloadURL];
+            [self addSkipBackupAttributeToItemAtURL:localStoreURL];
+            
+            [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:CURRENT_DATABASE_VERSION] forKey:@"databaseVersion"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+        }
+    } else if ([(NSNumber *)[[NSUserDefaults standardUserDefaults] objectForKey:@"databaseVersion"] integerValue] < CURRENT_DATABASE_VERSION) {
+        NSURL *preloadURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"IcthusPrepopulatedStore" ofType:@"sqlite"]];
+        NSURL *backupURL= [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"IcthusLocalStoreBackup.sqlite"];
+        NSError* err = nil;
+        BOOL failure = NO;
+        
+        // Try to copy the prepopulated store to to the database location
+        [[NSFileManager defaultManager] moveItemAtURL:localStoreURL toURL:backupURL error:&err];
+        if (err) {
+            failure = YES;
+            NSLog(@"%@", [err localizedDescription]);
+        } else {
+            NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"IcthusLocalStore.sqlite*" options:NSRegularExpressionCaseInsensitive error:&err];
+            [self removeFiles:regex inPath:[[self applicationDocumentsDirectory] path]];
+            [[NSFileManager defaultManager] copyItemAtURL:preloadURL toURL:localStoreURL error:&err];
+            if (err) {
+                failure = YES;
+                NSLog(@"%@", [err localizedDescription]);
+                [[NSFileManager defaultManager] moveItemAtURL:backupURL toURL:localStoreURL error:&err];
+            }
         }
         
-        // Make sure that the preloaded database and the local database aren't backed up to iCloud
-        [self addSkipBackupAttributeToItemAtURL:preloadURL];
-        [self addSkipBackupAttributeToItemAtURL:localStoreURL];
+        if (failure) {
+            NSLog(@"VERY BAD: Could not upgrade to new version of database, keeping old version.");
+            [[[UIAlertView alloc] initWithTitle:@"Error" message:@"Could not upgrade database. Please contact support@icthusapp.com if the problem persists." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil] show];
+        } else {
+            NSLog(@"Successfully upgraded user from database version %@ to version %d", [[NSUserDefaults standardUserDefaults] objectForKey:@"databaseVersion"], CURRENT_DATABASE_VERSION);
+            // Make sure that the preloaded database and the local database aren't backed up to iCloud
+            [self addSkipBackupAttributeToItemAtURL:preloadURL];
+            [self addSkipBackupAttributeToItemAtURL:localStoreURL];
+            
+            [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:CURRENT_DATABASE_VERSION] forKey:@"databaseVersion"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+        }
     }
     
     options = @{
@@ -281,7 +320,7 @@
     return _persistentStoreCoordinator;
 }
 
-#pragma mark - Application's Documents directory
+#pragma mark - File Management
 
 // Returns the URL to the application's Documents directory.
 - (NSURL *)applicationDocumentsDirectory
@@ -299,6 +338,22 @@
         NSLog(@"Error excluding %@ from backup %@", [URL lastPathComponent], error);
     }
     return success;
+}
+
+- (void)removeFiles:(NSRegularExpression*)regex inPath:(NSString*)path {
+    NSDirectoryEnumerator *filesEnumerator = [[NSFileManager defaultManager] enumeratorAtPath:path];
+    
+    NSString *file;
+    NSError *error;
+    while (file = [filesEnumerator nextObject]) {
+        NSUInteger match = [regex numberOfMatchesInString:file
+                                                  options:0
+                                                    range:NSMakeRange(0, [file length])];
+        
+        if (match) {
+            [[NSFileManager defaultManager] removeItemAtPath:[path stringByAppendingPathComponent:file] error:&error];
+        }
+    }
 }
 
 #pragma mark - Properties

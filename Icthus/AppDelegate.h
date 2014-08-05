@@ -13,6 +13,8 @@
 @class ReadingViewController;
 @class MasterViewController;
 
+#define CURRENT_DATABASE_VERSION 2
+
 @interface AppDelegate : UIResponder <UIApplicationDelegate, UIAlertViewDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
