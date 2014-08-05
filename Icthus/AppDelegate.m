@@ -254,7 +254,6 @@
         NSLog(@"Error adding iCloud persistent store %@", [error localizedDescription]);
     }
     
-    NSLog(@"%@", [[NSUserDefaults standardUserDefaults] objectForKey:@"databaseVersion"]);
     // Local
     NSURL *localStoreURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"IcthusLocalStore.sqlite"];
     if  (![[NSFileManager defaultManager] fileExistsAtPath:[localStoreURL path]]) {
