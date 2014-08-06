@@ -21,8 +21,9 @@
         if ([elementName isEqualToString:@"c"]) {
             // Beginning of a Psalm
             [self.mutableBookText appendString:[NSString stringWithFormat:@"\n\nPsalm %@", [attributeDict objectForKey:@"id"]]];
-        } else if ([elementName isEqualToString:@"p"]) {
+        } else if ([elementName isEqualToString:@"p"] && ![attributeDict objectForKey:@"sfm"]) {
             // remove tab and add another newline
+            [self.mutableBookText replaceCharactersInRange:NSMakeRange([self.mutableBookText length] - 1, 1) withString:@""];
         }
     }
 }

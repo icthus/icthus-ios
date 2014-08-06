@@ -66,7 +66,7 @@ CGPoint maxContentOffset;
     }
 }
 
--(void)setText:(NSString *)text {
+- (void)setText:(NSString *)text {
     // remove the old text
     [self clearText];
     _text = text;
