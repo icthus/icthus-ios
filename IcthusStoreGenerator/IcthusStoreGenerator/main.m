@@ -75,6 +75,31 @@ static NSManagedObjectContext *managedObjectContext()
     return context;
 }
 
+static void copyPrepopulatedStore() {
+    NSString *filename = @"/IcthusPrepopulatedStore.sqlite";
+    NSString *source = [[[NSFileManager defaultManager] currentDirectoryPath] stringByAppendingString:filename];
+    NSString *destination = [[[[NSProcessInfo processInfo]environment] objectForKey:@"PREPOPULATED_STORE_DEST"] stringByAppendingString:filename];
+    NSFileManager *fm = [NSFileManager defaultManager];
+    NSError *err = nil;
+    NSLog(@"Source %@", source);
+    NSLog(@"Destination %@", destination);
+    
+    // Check to see if store file exists. If so, remove it.
+    if ([fm fileExistsAtPath:destination isDirectory:NO]) {
+        [fm removeItemAtPath:destination error:&err];
+        if (err) {
+            NSLog(@"%@", [err localizedDescription]);
+            exit(1);
+        }
+    }
+    // Copy new store file to destination.
+    [fm moveItemAtPath:source toPath:destination error:&err];
+    if (err) {
+        NSLog(@"%@", [err localizedDescription]);
+        exit(1);
+    }
+}
+
 int main(int argc, const char * argv[])
 {
 
@@ -82,6 +107,7 @@ int main(int argc, const char * argv[])
         // Create the managed object context
         NSManagedObjectContext *context = managedObjectContext();
         instantiateBooks(context);
+        copyPrepopulatedStore();
     }
     return 0;
 }

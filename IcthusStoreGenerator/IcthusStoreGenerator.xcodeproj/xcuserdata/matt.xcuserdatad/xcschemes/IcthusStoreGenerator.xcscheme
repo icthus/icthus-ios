@@ -57,6 +57,13 @@
             ReferencedContainer = "container:IcthusStoreGenerator.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <EnvironmentVariables>
+         <EnvironmentVariable
+            key = "PREPOPULATED_STORE_DEST"
+            value = "/Users/matt/dev/icthus/Icthus/"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+      </EnvironmentVariables>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
