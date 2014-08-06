@@ -305,6 +305,7 @@
     if (err) {
         failure = YES;
         NSLog(@"%@", [err localizedDescription]);
+        [[NSFileManager defaultManager] removeItemAtURL:backupURL error:&err];
     } else {
         NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"IcthusLocalStore.sqlite*" options:NSRegularExpressionCaseInsensitive error:&err];
         [self removeFiles:regex inPath:[[self applicationDocumentsDirectory] path]];
@@ -313,6 +314,11 @@
             failure = YES;
             NSLog(@"%@", [err localizedDescription]);
             [[NSFileManager defaultManager] moveItemAtURL:backupURL toURL:localStoreURL error:&err];
+        }
+        [[NSFileManager defaultManager] removeItemAtURL:backupURL error:&err];
+        if (err) {
+            failure = YES;
+            NSLog(@"%@", [err localizedDescription]);
         }
     }
     
@@ -362,6 +368,9 @@
         
         if (match) {
             [[NSFileManager defaultManager] removeItemAtPath:[path stringByAppendingPathComponent:file] error:&error];
+        }
+        if (error) {
+            NSLog(@"%@", [error localizedDescription]);
         }
     }
 }
