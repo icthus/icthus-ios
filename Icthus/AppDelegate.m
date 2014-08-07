@@ -197,6 +197,7 @@
         
         [moc performBlockAndWait:^{
             [moc setPersistentStoreCoordinator: coordinator];
+            [moc setMergePolicy:[[NSMergePolicy alloc] initWithMergeType:NSMergeByPropertyObjectTrumpMergePolicyType]];
             [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(mergeChangesFromiCloud:) name:NSPersistentStoreDidImportUbiquitousContentChangesNotification object:coordinator];
         }];
         _managedObjectContext = moc;
