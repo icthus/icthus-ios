@@ -39,7 +39,7 @@
     };
     
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-        self.readingListViewController = (ReadingListViewController *)self.topViewController;
+        self.historyViewController = (HistoryViewController *)self.topViewController;
         UIStoryboard*  sb = [UIStoryboard storyboardWithName:@"Main_iPad" bundle:nil];
         self.settingsViewController = [sb instantiateViewControllerWithIdentifier:@"SettingsViewController"];
     } else {
@@ -58,7 +58,7 @@
 }
 
 - (void)toggleReadingListPopover {
-    self.viewControllers = @[self.readingListViewController];
+    self.viewControllers = @[self.historyViewController];
     [self.splitViewController performSelector:@selector(toggleMasterVisible:) withObject:nil];
 }
 

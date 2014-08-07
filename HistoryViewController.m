@@ -6,15 +6,15 @@
 //  Copyright (c) 2013 Matthew Lorentz. All rights reserved.
 //
 
-#import "ReadingListViewController.h"
+#import "HistoryViewController.h"
 #import "ReadingViewController.h"
 #import "Book.h"
 
-@interface ReadingListViewController ()
+@interface HistoryViewController ()
 
 @end
 
-@implementation ReadingListViewController
+@implementation HistoryViewController
 @synthesize appDel = _appDel;
 
 -(id)initWithCoder:(NSCoder *)aDecoder

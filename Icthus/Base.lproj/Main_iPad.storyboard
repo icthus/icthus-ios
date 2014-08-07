@@ -413,10 +413,10 @@
             </objects>
             <point key="canvasLocation" x="-1002" y="1432"/>
         </scene>
-        <!--Reading List View Controller - History-->
+        <!--History View Controller - History-->
         <scene sceneID="1kZ-nf-t0w">
             <objects>
-                <tableViewController id="rl4-UR-Xps" customClass="ReadingListViewController" sceneMemberID="viewController">
+                <tableViewController id="rl4-UR-Xps" customClass="HistoryViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="nGs-nm-0Ic">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

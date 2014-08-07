@@ -61,7 +61,7 @@
 		C9A6FA311909A40500028B00 /* iPhone Show Verses.png in Resources */ = {isa = PBXBuildFile; fileRef = C9A6FA2F1909A40500028B00 /* iPhone Show Verses.png */; };
 		C9A6FA321909A40500028B00 /* iPhone Show Verses@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9A6FA301909A40500028B00 /* iPhone Show Verses@2x.png */; };
 		C9A6FA351909A55F00028B00 /* SwipingLeftImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A6FA341909A55F00028B00 /* SwipingLeftImageView.m */; };
-		C9BCA00A17CD3FEC00196DA8 /* ReadingListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BCA00917CD3FEC00196DA8 /* ReadingListViewController.m */; };
+		C9BCA00A17CD3FEC00196DA8 /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BCA00917CD3FEC00196DA8 /* HistoryViewController.m */; };
 		C9BCA01017CD933500196DA8 /* Book.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BCA00F17CD933500196DA8 /* Book.m */; };
 		C9C324F818E1CAE5005D0BAD /* SendMailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C324F718E1CAE5005D0BAD /* SendMailTableViewCell.m */; };
 		C9C8E61918FFF1F700D9D66E /* IcthusTutorialPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C8E61818FFF1F700D9D66E /* IcthusTutorialPageViewController.m */; };
@@ -178,8 +178,8 @@
 		C9A6FA331909A55F00028B00 /* SwipingLeftImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwipingLeftImageView.h; sourceTree = "<group>"; };
 		C9A6FA341909A55F00028B00 /* SwipingLeftImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwipingLeftImageView.m; sourceTree = "<group>"; };
 		C9B3056F1816D08600EE8A94 /* Icthus.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Icthus.entitlements; sourceTree = "<group>"; };
-		C9BCA00817CD3FEC00196DA8 /* ReadingListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReadingListViewController.h; path = ../ReadingListViewController.h; sourceTree = "<group>"; };
-		C9BCA00917CD3FEC00196DA8 /* ReadingListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = ReadingListViewController.m; path = ../ReadingListViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		C9BCA00817CD3FEC00196DA8 /* HistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HistoryViewController.h; path = ../HistoryViewController.h; sourceTree = "<group>"; };
+		C9BCA00917CD3FEC00196DA8 /* HistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = HistoryViewController.m; path = ../HistoryViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		C9BCA00E17CD933500196DA8 /* Book.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Book.h; sourceTree = "<group>"; };
 		C9BCA00F17CD933500196DA8 /* Book.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Book.m; sourceTree = "<group>"; };
 		C9C324F618E1CAE5005D0BAD /* SendMailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendMailTableViewCell.h; sourceTree = "<group>"; };
@@ -434,8 +434,8 @@
 				C958677E18DA0716001F875B /* Images */,
 				C9FABFD8188D55AB00C3FC05 /* BooksViewController.h */,
 				C9FABFD9188D55AB00C3FC05 /* BooksViewController.m */,
-				C9BCA00817CD3FEC00196DA8 /* ReadingListViewController.h */,
-				C9BCA00917CD3FEC00196DA8 /* ReadingListViewController.m */,
+				C9BCA00817CD3FEC00196DA8 /* HistoryViewController.h */,
+				C9BCA00917CD3FEC00196DA8 /* HistoryViewController.m */,
 				C9FF510F17CBB54800BA526E /* MasterViewController.h */,
 				C9FF511017CBB54800BA526E /* MasterViewController.m */,
 				C9FF511217CBB54800BA526E /* DetailViewController.h */,
@@ -682,7 +682,7 @@
 				C9E57771188484A3004CC974 /* BookCollectionViewCell.m in Sources */,
 				C9FF510E17CBB54800BA526E /* Icthus.xcdatamodeld in Sources */,
 				C958677A18D9DBE9001F875B /* SettingsViewController.m in Sources */,
-				C9BCA00A17CD3FEC00196DA8 /* ReadingListViewController.m in Sources */,
+				C9BCA00A17CD3FEC00196DA8 /* HistoryViewController.m in Sources */,
 				C9256B0717DFC5D400646198 /* BookLocation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

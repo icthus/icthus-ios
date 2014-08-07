@@ -12,7 +12,7 @@
 #import "IcthusColorMode.h"
 @class AppDelegate;
 
-@interface ReadingListViewController : UITableViewController <NSFetchedResultsControllerDelegate, IcthusColorMode>
+@interface HistoryViewController : UITableViewController <NSFetchedResultsControllerDelegate, IcthusColorMode>
 
 @property (nonatomic, strong) AppDelegate *appDel;
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
