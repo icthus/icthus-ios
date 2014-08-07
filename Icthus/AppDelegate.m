@@ -15,6 +15,7 @@
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 @synthesize colorManager = _colorManager;
+BOOL foundNewDataIniCloud;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
@@ -104,6 +105,8 @@
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    self.persistentStoreCoordinator = nil;
+    [self.detailView setBookToLatest];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
@@ -118,11 +121,24 @@
 }
 
 - (void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+    [NSTimer scheduledTimerWithTimeInterval:25 target:self selector:@selector(backgroundFetchTimedOutWithTimer:) userInfo:completionHandler repeats:NO];
+    NSLog(@"Background App Refresh: activated at %@", [NSDate date]);
+    foundNewDataIniCloud = NO;
     [[NSNotificationCenter defaultCenter] addObserverForName:@"mergedChangesFromiCloud" object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note) {
-        NSLog(@"Successfully merged iCloud data");
-        [self.detailView setBookToLatest];
-        completionHandler(UIBackgroundFetchResultNewData);
+        NSLog(@"Background App Refresh: got new data from iCloud");
+        foundNewDataIniCloud = YES;
     }];
+}
+
+- (void)backgroundFetchTimedOutWithTimer:(NSTimer *)timer {
+    void (^completionHandler)(UIBackgroundFetchResult) = (void (^)(UIBackgroundFetchResult))timer.userInfo;
+    if (foundNewDataIniCloud) {
+        completionHandler(UIBackgroundFetchResultNewData);
+        NSLog(@"Background App Refresh: timing out, successfully fetched new data");
+    } else {
+        completionHandler(UIBackgroundFetchResultNoData);
+        NSLog(@"Background App Refresh: timing out, did not fetch any data");
+    }
 }
 
 - (void)saveContext
@@ -197,7 +213,7 @@
         
         [moc performBlockAndWait:^{
             [moc setPersistentStoreCoordinator: coordinator];
-            [moc setMergePolicy:[[NSMergePolicy alloc] initWithMergeType:NSMergeByPropertyObjectTrumpMergePolicyType]];
+            [moc setMergePolicy:[[NSMergePolicy alloc] initWithMergeType:NSMergeByPropertyStoreTrumpMergePolicyType]];
             [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(mergeChangesFromiCloud:) name:NSPersistentStoreDidImportUbiquitousContentChangesNotification object:coordinator];
         }];
         _managedObjectContext = moc;
