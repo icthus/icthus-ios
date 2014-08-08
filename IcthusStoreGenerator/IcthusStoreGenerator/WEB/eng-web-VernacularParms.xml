@@ -42,7 +42,7 @@
   <scriptureBook ubsAbbreviation="MAL" parm="vernacularFullName">The Book of Malachi</scriptureBook>
   <scriptureBook ubsAbbreviation="TOB" parm="vernacularFullName">Tobit</scriptureBook>
   <scriptureBook ubsAbbreviation="JDT" parm="vernacularFullName">Judith</scriptureBook>
-  <scriptureBook ubsAbbreviation="ESG" parm="vernacularFullName">Esg</scriptureBook>
+  <scriptureBook ubsAbbreviation="ESG" parm="vernacularFullName">Esther translated from the Greek Septuagint</scriptureBook>
   <scriptureBook ubsAbbreviation="WIS" parm="vernacularFullName">The Wisdom of Solomon</scriptureBook>
   <scriptureBook ubsAbbreviation="SIR" parm="vernacularFullName">The Wisdom of Jesus the Son of Sirach, or Ecclesiasticus</scriptureBook>
   <scriptureBook ubsAbbreviation="BAR" parm="vernacularFullName">Baruch</scriptureBook>
@@ -128,7 +128,7 @@
   <scriptureBook ubsAbbreviation="MAL" parm="vernacularAbbreviatedName">Malachi</scriptureBook>
   <scriptureBook ubsAbbreviation="TOB" parm="vernacularAbbreviatedName">Tobit</scriptureBook>
   <scriptureBook ubsAbbreviation="JDT" parm="vernacularAbbreviatedName">Judith</scriptureBook>
-  <scriptureBook ubsAbbreviation="ESG" parm="vernacularAbbreviatedName">Greek Additions to Esther</scriptureBook>
+  <scriptureBook ubsAbbreviation="ESG" parm="vernacularAbbreviatedName">Esther Greek</scriptureBook>
   <scriptureBook ubsAbbreviation="WIS" parm="vernacularAbbreviatedName">Wisdom of Solomon</scriptureBook>
   <scriptureBook ubsAbbreviation="SIR" parm="vernacularAbbreviatedName">Sirach</scriptureBook>
   <scriptureBook ubsAbbreviation="BAR" parm="vernacularAbbreviatedName">Baruch</scriptureBook>
@@ -214,7 +214,7 @@
   <scriptureBook ubsAbbreviation="MAL" parm="vernacularBookAbbreviation">Mal</scriptureBook>
   <scriptureBook ubsAbbreviation="TOB" parm="vernacularBookAbbreviation">Tob</scriptureBook>
   <scriptureBook ubsAbbreviation="JDT" parm="vernacularBookAbbreviation">Jdt</scriptureBook>
-  <scriptureBook ubsAbbreviation="ESG" parm="vernacularBookAbbreviation">Greek Additions to Esther</scriptureBook>
+  <scriptureBook ubsAbbreviation="ESG" parm="vernacularBookAbbreviation">ESG</scriptureBook>
   <scriptureBook ubsAbbreviation="WIS" parm="vernacularBookAbbreviation">Wis</scriptureBook>
   <scriptureBook ubsAbbreviation="SIR" parm="vernacularBookAbbreviation">Sir</scriptureBook>
   <scriptureBook ubsAbbreviation="BAR" parm="vernacularBookAbbreviation">Bar</scriptureBook>
@@ -261,9 +261,9 @@
   <dcMeta xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://dublincore.org/schemas/xmls/qdc/2008/02/11/dc.xsd" xmlns:dc="http://purl.org/dc/elements/1.1/">
     <dc:creator>Michael Paul Johnson and many others</dc:creator>
     <dc:contributor />
-    <dc:title>World English Bible</dc:title>
+    <dc:title>World English Bible with Apocrypha/Deuterocanon</dc:title>
     <dc:description>The World English Bible is a Public Domain translation of the Holy Bible into modern English. Includes Apocrypha/Deuterocanon.</dc:description>
-    <dc:date>2013-08-25</dc:date>
+    <dc:date>2014-08-04</dc:date>
     <dc:format>digital</dc:format>
     <dc:language>eng</dc:language>
     <dc:publisher>eBible.org</dc:publisher>
@@ -285,5 +285,5 @@
   <langName>English</langName>
   <textDir>ltr</textDir>
   <hasNotes>True</hasNotes>
-  <coverTitle>World English Bible</coverTitle>
+  <coverTitle>World English Bible with Apocrypha/Deuterocanon</coverTitle>
 </vernacularParms>
