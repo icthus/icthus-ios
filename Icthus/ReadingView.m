@@ -33,6 +33,7 @@ NSString *currentChapter;
 CGPoint lastKnownContentOffset;
 NSInteger activeViewWindow = 3;
 CGRect textFrame;
+CGFloat topMargin;
 CGPoint maxContentOffset;
 
 - (id)initWithFrame:(CGRect)frame
@@ -113,6 +114,7 @@ CGPoint maxContentOffset;
     } else {
         textFrame = CGRectInset(self.bounds, 15, 0);
     }
+    topMargin = [[self.attString attribute:NSParagraphStyleAttributeName atIndex:0 effectiveRange:nil] lineSpacing];
     // Set the height of the frame to fit an arbitrary 50 lines of text
     CGFloat lineHeight = [self lineHeightForString:self.attString];
     textFrame.size.height = lineHeight * 50;
@@ -132,7 +134,7 @@ CGPoint maxContentOffset;
         
         // Save the frame info so we can instantiate this frame later.
         BibleFrameInfo *frameInfo = [[BibleFrameInfo alloc] init];
-        frameInfo.frame = CGRectMake(0, textFrame.size.height * pageIndex, self.frame.size.width, textFrame.size.height);
+        frameInfo.frame = CGRectMake(0, textFrame.size.height * pageIndex + topMargin, self.frame.size.width, textFrame.size.height);
         frameInfo.ctFrame = frame;
         frameInfo.textRange = nsFrameRange;
 
@@ -175,7 +177,7 @@ CGPoint maxContentOffset;
     );
     CGFloat lastFrameHeight = suggestedSize.height;
     CGFloat lastLineSpacing = [[self.attString attribute:NSParagraphStyleAttributeName atIndex:0 effectiveRange:nil] lineSpacing];
-    self.contentSize = CGSizeMake(textFrame.size.width, (pageIndex - 1) * textFrame.size.height + lastFrameHeight + lastLineSpacing);
+    self.contentSize = CGSizeMake(textFrame.size.width, (pageIndex - 1) * textFrame.size.height + topMargin + lastFrameHeight + lastLineSpacing);
     maxContentOffset = CGPointMake(0, self.contentSize.height - self.frame.size.height);
 }
 
@@ -188,7 +190,7 @@ CGPoint maxContentOffset;
     // find the current view
     int contentOffset = round(self.contentOffset.y);
     int height = round(textFrame.size.height);
-    int currentFrameIndex  = contentOffset / height;
+    int currentFrameIndex  = (contentOffset - topMargin) / height;
     BibleTextView *textView = [self.textViews objectAtIndex:currentFrameIndex];
     if ([textView class] == [NSNull class]) {
         NSLog(@"Fatal: getCurrentLocation failed to get a non-nil textView");
@@ -273,8 +275,8 @@ CGPoint maxContentOffset;
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     CGPoint contentOffset = scrollView.contentOffset;
     int height = round(textFrame.size.height);
-    int previousFrameIndex = roundf(lastKnownContentOffset.y) / height;
-    int currentFrameIndex  = roundf(contentOffset.y) / height;
+    int previousFrameIndex = roundf(lastKnownContentOffset.y - topMargin) / height;
+    int currentFrameIndex  = roundf(contentOffset.y - topMargin) / height;
     if (previousFrameIndex != currentFrameIndex) {
         int startActiveRange = MAX(currentFrameIndex - activeViewWindow / 2, 0);
         int endActiveRange   = MIN([self.textViews count], currentFrameIndex + activeViewWindow / 2);

@@ -190,7 +190,7 @@
     NSError *error;
     
     // Remove newlines at the beginning of the text
-    NSRegularExpression *filterNewlinesAtBeginning = [NSRegularExpression regularExpressionWithPattern:@"(<book>) *\n+(<c i=\"[0-9]+\">) *\n+" options:NSRegularExpressionCaseInsensitive error:&error];
+    NSRegularExpression *filterNewlinesAtBeginning = [NSRegularExpression regularExpressionWithPattern:@"(<book>) *\n*(<c i=\"[0-9]+\">) *\n*" options:NSRegularExpressionCaseInsensitive error:&error];
     if (error) {
         NSLog(@"%@", [error localizedDescription]);
     } else {
