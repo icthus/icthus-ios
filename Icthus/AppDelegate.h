@@ -13,7 +13,7 @@
 @class ReadingViewController;
 @class MasterViewController;
 
-#define CURRENT_DATABASE_VERSION 14
+#define CURRENT_DATABASE_VERSION 15
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate, UIAlertViewDelegate>
 
