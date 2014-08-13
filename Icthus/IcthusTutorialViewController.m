@@ -104,12 +104,12 @@
         [self.parentViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)setPageViewController:(IcthusTutorialPageViewController *)pageViewController {
+- (void)setPageViewController:(IcthusParentPageViewController *)pageViewController {
     _pageViewController = pageViewController;
     [self setupUserInterfaceElements];
 }
 
-- (IcthusTutorialPageViewController *)pageViewController {
+- (IcthusParentPageViewController *)pageViewController {
     return _pageViewController;
 }
 

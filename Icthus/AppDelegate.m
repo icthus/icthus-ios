@@ -40,6 +40,10 @@ BOOL foundNewDataIniCloud;
     // Show latest version of tutorial if we haven't yet
     if (![defaults boolForKey:@"shownTutorial"]) {
         [self showTutorial];
+    } else if ([(NSNumber *)[defaults objectForKey:@"whatsNewVersion"] integerValue] < WHATS_NEW_VERSION) {
+        [self showWhatsNew];
+        [defaults setObject:[NSNumber numberWithInt:WHATS_NEW_VERSION] forKey:@"whatsNewVersion"];
+        [defaults synchronize];
     }
     
     return YES;
@@ -49,7 +53,7 @@ BOOL foundNewDataIniCloud;
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     [prefs setObject:@"WEB" forKey:@"selectedTranslation"];
     [prefs setObject:[NSNumber numberWithInt:CURRENT_DATABASE_VERSION] forKey:@"databaseVersion"];
-    [prefs setObject:[NSNumber numberWithInt:1] forKey:@"whatsNewVersion"];
+    [prefs setObject:[NSNumber numberWithInt:WHATS_NEW_VERSION] forKey:@"whatsNewVersion"];
     [prefs setObject:[NSNumber numberWithInt:1] forKey:@"colorManagerVersion"];
     [prefs setBool:YES forKey:@"appHasLaunchedBefore"];
     [prefs setBool:NO  forKey:@"showDarkMode"];
@@ -88,6 +92,11 @@ BOOL foundNewDataIniCloud;
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"shownTutorial"];
         [[NSUserDefaults standardUserDefaults] synchronize];
     }];
+}
+
+- (void)showWhatsNew {
+    IcthusWhatsNewViewController *pageViewController = [self.detailView.storyboard instantiateViewControllerWithIdentifier:@"WhatsNewPageViewController"];
+    [self.detailView presentViewController:pageViewController animated:YES completion:nil];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

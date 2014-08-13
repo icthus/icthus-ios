@@ -9,11 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "ReadingViewController.h"
 #import "IcthusTutorialPageViewController.h"
+#import "IcthusWhatsNewViewController.h"
 @class ColorManager;
 @class ReadingViewController;
 @class MasterViewController;
 
 #define CURRENT_DATABASE_VERSION 15
+#define WHATS_NEW_VERSION 5
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate, UIAlertViewDelegate>
 

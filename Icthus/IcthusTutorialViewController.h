@@ -8,11 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "SwipingLeftImageView.h"
-@class IcthusTutorialPageViewController;
+@class IcthusParentPageViewController;
 
 @interface IcthusTutorialViewController : UIViewController
 
-@property IcthusTutorialPageViewController *pageViewController;
+@property IcthusParentPageViewController *pageViewController;
 @property BOOL isFirstPage;
 @property BOOL isLastPage;
 @property UIButton *leftButton;

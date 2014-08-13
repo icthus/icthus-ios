@@ -8,12 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "IcthusTutorialViewController.h"
+#import "IcthusParentPageViewController.h"
 
-@interface IcthusTutorialPageViewController : UIPageViewController <UIPageViewControllerDataSource>
-
-@property NSArray *tutorialViewControllers;
-
-- (void)showNextViewController;
-- (void)showPreviousViewController;
+@interface IcthusTutorialPageViewController : IcthusParentPageViewController
 
 @end
