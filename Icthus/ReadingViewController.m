@@ -66,10 +66,8 @@ UIColor *tintColor;
     [self setBookToLatest];
 }
 
-- (void)setBookToLatest {
-    // Warning: This method does not save the current book before changing books.
+- (BookLocation *)getLatestLocation {
     self.moc = self.appDel.managedObjectContext;
-    // Find the last book that was open and open to it.
     NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"BookLocation" inManagedObjectContext:self.moc];
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
     [request setEntity:entityDescription];
@@ -85,18 +83,32 @@ UIColor *tintColor;
         NSLog(@"%@", [error localizedDescription]);
     }
     if ([array count]) {
-        [self setLocation:[array firstObject]];
+        return [array firstObject];
+    } else {
+        return nil;
+    }
+    
+}
+
+- (void)setBookToLatest {
+    // Warning: This method does not save the current book before changing books.
+    self.moc = self.appDel.managedObjectContext;
+    // Find the last book that was open and open to it.
+    BookLocation *location = [self getLatestLocation];
+    if (location) {
+        [self setLocation:location];
     } else {
         // Default to Genesis 1:1
         NSFetchRequest *genesisRequest = [NSFetchRequest fetchRequestWithEntityName:@"Book"];
         NSString *translationCode = [[NSUserDefaults standardUserDefaults] objectForKey:@"selectedTranslation"];
         [genesisRequest setPredicate:[NSPredicate predicateWithFormat:@"code == %@ && translation == %@", @"GEN", translationCode]];
-        array = [self.moc executeFetchRequest:genesisRequest error:&error];
+        NSError *error;
+        NSArray *array = [self.moc executeFetchRequest:genesisRequest error:&error];
         if (error) {
             NSLog(@"%@", [error localizedDescription]);
         } else if ([array count]) {
             Book *genesis = [array firstObject];
-            BookLocation *location = [NSEntityDescription insertNewObjectForEntityForName:@"BookLocation" inManagedObjectContext:self.moc];
+            location = [NSEntityDescription insertNewObjectForEntityForName:@"BookLocation" inManagedObjectContext:self.moc];
             [location setBook:genesis chapter:1 verse:1];
             [self.moc save:&error];
             if (error) {

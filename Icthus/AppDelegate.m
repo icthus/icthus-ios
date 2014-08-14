@@ -115,7 +115,9 @@ BOOL foundNewDataIniCloud;
 {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
     self.persistentStoreCoordinator = nil;
-    [self.detailView setBookToLatest];
+    if (![[self.detailView.book getLocation] isEqual:[self.detailView getLatestLocation]]) {
+        [self.detailView setBookToLatest];
+    }
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application

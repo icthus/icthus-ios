@@ -15,7 +15,6 @@
 @interface ReadingView : UIScrollView <UIScrollViewDelegate>
 
 - (CGFloat)lineHeightForString:(NSAttributedString *)string;
-- (BookLocation *)getCurrentLocation;
 - (void)setCurrentLocation:(BookLocation *)location;
 - (BookLocation *)saveCurrentLocation;
 
