@@ -14,6 +14,7 @@
 
 -(NSString *)displayStringFromMarkup:(NSString *)markupText;
 -(void)addChapterAndVerseNumbersToFrameData:(NSArray *)frameDataArray fromMarkup:(NSString *)markupText;
+- (BookLocation *)getLocationForCharAtIndex:(int)index forText:(NSString *)markupText andBook:(Book *)book;
 -(BookLocation *)saveLocationForCharAtIndex:(int)index forText:(NSString *)markupText andBook:(Book *)book;
 -(int)getTextPositionForLocation:(BookLocation *)location inMarkup:(NSString *)markupText;
 

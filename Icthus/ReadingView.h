@@ -11,6 +11,7 @@
 #import "BibleMarkupParser.h"
 #import "Book.h"
 @class AppDelegate;
+@class VerseOverlayView;
 
 @interface ReadingView : UIScrollView <UIScrollViewDelegate>
 
@@ -29,5 +30,7 @@
 @property (retain, nonatomic) NSMutableArray* chaptersByView;
 @property (retain, nonatomic) Book *book;
 @property (retain, nonatomic) BibleMarkupParser *parser;
+@property VerseOverlayView *verseOverlayView;
+@property NSTimer *verseOverlayTimer;
 
 @end

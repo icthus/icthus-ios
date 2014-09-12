@@ -66,6 +66,7 @@
 		C9BCA00A17CD3FEC00196DA8 /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BCA00917CD3FEC00196DA8 /* HistoryViewController.m */; };
 		C9BCA01017CD933500196DA8 /* Book.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BCA00F17CD933500196DA8 /* Book.m */; };
 		C9C324F818E1CAE5005D0BAD /* SendMailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C324F718E1CAE5005D0BAD /* SendMailTableViewCell.m */; };
+		C9C64DF019A53D0400013FFD /* VerseOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C64DEE19A53D0400013FFD /* VerseOverlayView.m */; };
 		C9C8E61918FFF1F700D9D66E /* IcthusTutorialPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C8E61818FFF1F700D9D66E /* IcthusTutorialPageViewController.m */; };
 		C9D071DC17DE8C2000B535ED /* ReadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D071DB17DE8C2000B535ED /* ReadingView.m */; };
 		C9D09B5E18C7583E00AA6B67 /* CircleLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D09B5D18C7583E00AA6B67 /* CircleLabel.m */; };
@@ -190,6 +191,8 @@
 		C9BCA00F17CD933500196DA8 /* Book.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Book.m; sourceTree = "<group>"; };
 		C9C324F618E1CAE5005D0BAD /* SendMailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendMailTableViewCell.h; sourceTree = "<group>"; };
 		C9C324F718E1CAE5005D0BAD /* SendMailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendMailTableViewCell.m; sourceTree = "<group>"; };
+		C9C64DED19A53D0400013FFD /* VerseOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerseOverlayView.h; sourceTree = "<group>"; };
+		C9C64DEE19A53D0400013FFD /* VerseOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerseOverlayView.m; sourceTree = "<group>"; };
 		C9C8E61718FFF1F700D9D66E /* IcthusTutorialPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IcthusTutorialPageViewController.h; sourceTree = "<group>"; };
 		C9C8E61818FFF1F700D9D66E /* IcthusTutorialPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IcthusTutorialPageViewController.m; sourceTree = "<group>"; };
 		C9D071DA17DE8C2000B535ED /* ReadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadingView.h; sourceTree = "<group>"; };
@@ -272,6 +275,8 @@
 				C99F2FC617CCE714008AF602 /* ReadingViewController.m */,
 				C9D09B5C18C7583E00AA6B67 /* CircleLabel.h */,
 				C9D09B5D18C7583E00AA6B67 /* CircleLabel.m */,
+				C9C64DED19A53D0400013FFD /* VerseOverlayView.h */,
+				C9C64DEE19A53D0400013FFD /* VerseOverlayView.m */,
 			);
 			name = Reading;
 			sourceTree = "<group>";
@@ -686,6 +691,7 @@
 				C99F2FC717CCE714008AF602 /* ReadingViewController.m in Sources */,
 				C99F2FC417CCDC01008AF602 /* ChapterPickerViewController.m in Sources */,
 				C914C2F9199BFD8600111B99 /* IcthusWhatsNewViewController.m in Sources */,
+				C9C64DF019A53D0400013FFD /* VerseOverlayView.m in Sources */,
 				C94C254318F487DC008E9CD4 /* CollectionViewLeftFlowLayout.m in Sources */,
 				C9D071DC17DE8C2000B535ED /* ReadingView.m in Sources */,
 				C9431B0C195F8C8A00B4B69C /* ColorManager.m in Sources */,

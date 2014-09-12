@@ -14,6 +14,7 @@
 #import <CoreText/CoreText.h>
 #import "BibleFrameInfo.h"
 #import "AppDelegate.h"
+#import "VerseOverlayView.h"
 
 @implementation ReadingView
 
@@ -27,6 +28,7 @@
 @synthesize parser;
 @synthesize versesByView;
 @synthesize chaptersByView;
+@synthesize verseOverlayView;
 
 NSString *markup;
 NSString *currentChapter;
@@ -47,6 +49,7 @@ CGPoint maxContentOffset;
 
 -(void)awakeFromNib {
     [self setup];
+
 }
 
 - (void)setup {
@@ -57,6 +60,13 @@ CGPoint maxContentOffset;
     self.scrollsToTop = NO;
     parser = [[BibleMarkupParser alloc] init];
     lastKnownContentOffset = CGPointMake(0,0);
+    
+    CGFloat width = 160;
+    CGFloat height = 100;
+    CGFloat xorigin = (self.frame.size.width - width) / 2;
+    CGFloat yorigin = (self.frame.size.height - height) / 2;
+    self.verseOverlayView = [[VerseOverlayView alloc] initWithFrame:CGRectMake(xorigin, yorigin, width, height)];
+    [self addSubview:self.verseOverlayView];
 }
 
 - (void)clearText {
@@ -181,7 +191,7 @@ CGPoint maxContentOffset;
     maxContentOffset = CGPointMake(0, self.contentSize.height - self.frame.size.height);
 }
 
-- (BookLocation *)saveCurrentLocation {
+- (int)getCurrentTextPosition {
     // hack to fix a weird bug where self.book would be null on first launch on an 32-bit iPhone using iCloud.
     if (!self.book.managedObjectContext) {
         self.book = (Book *)[[(AppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext] objectWithID:self.book.objectID];
@@ -195,7 +205,7 @@ CGPoint maxContentOffset;
     if ([textView class] == [NSNull class]) {
         NSLog(@"Fatal: getCurrentLocation failed to get a non-nil textView");
     }
-
+    
     // find the origin of the current line
     CFArrayRef lines = CTFrameGetLines(textView.ctFrame);
     int originsLength = CFArrayGetCount(lines);
@@ -216,10 +226,18 @@ CGPoint maxContentOffset;
     CTLineRef line = CFArrayGetValueAtIndex(lines, i);
     CFRange lineRange = CTLineGetStringRange(line);
     NSRange textViewRange = [[frameData objectAtIndex:currentFrameIndex] textRange];
-    int location = textViewRange.location + lineRange.location + lineRange.length;
+    int textPos = (int)(textViewRange.location + lineRange.location + lineRange.length);
+    return textPos;
+}
 
-    BookLocation *bookLocation = [parser saveLocationForCharAtIndex:location forText:self.text andBook:self.book];
-    NSLog(@"ReadingView.getCurrentLocation: got location %@ %@:%@", self.book.shortName, bookLocation.chapter, bookLocation.verse);
+- (BookLocation *)getCurrentLocation {
+    BookLocation *bookLocation = [parser getLocationForCharAtIndex:[self getCurrentTextPosition] forText:self.text andBook:self.book];
+    return bookLocation;
+}
+
+- (BookLocation *)saveCurrentLocation {
+    BookLocation *bookLocation = [parser saveLocationForCharAtIndex:[self getCurrentTextPosition] forText:self.text andBook:self.book];
+    NSLog(@"ReadingView.saveCurrentLocation: got location %@ %@:%@", self.book.shortName, bookLocation.chapter, bookLocation.verse);
     return bookLocation;
 }
 
@@ -303,6 +321,15 @@ CGPoint maxContentOffset;
     }
     
     lastKnownContentOffset = scrollView.contentOffset;
+    self.verseOverlayView.frame = CGRectMake(0, contentOffset.y, 200, 100);
+    [self.verseOverlayView updateLabelWithLocation:[self getCurrentLocation]];
+    [self bringSubviewToFront:self.verseOverlayView];
+    if (self.verseOverlayView.hidden) {
+        self.verseOverlayView.hidden = NO;
+        [UIView animateWithDuration:0.5 animations:^{
+            self.verseOverlayView.alpha = 1.0;
+        }];
+    }
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
@@ -314,6 +341,12 @@ CGPoint maxContentOffset;
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     [self saveCurrentLocation];
+
+    [UIView animateWithDuration:1 animations:^{
+        self.verseOverlayView.alpha = 0.0;
+    } completion:^(BOOL finished) {
+        self.verseOverlayView.hidden = YES;
+    }];
 }
 
 - (CGFloat)lineHeightForString:(NSAttributedString *)string {
