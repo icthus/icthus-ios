@@ -53,7 +53,7 @@ CGFloat pointsMoved;
 
 - (void)userScrolledPoints:(CGFloat)points {
     pointsMoved += points;
-    NSLog(@"User scrolled %f points. Total points moved is now %f.", points, pointsMoved);
+//    NSLog(@"User scrolled %f points. Total points moved is now %f.", points, pointsMoved);
     if (pointsMoved >= self.movementSensitivity) {
         if (self.hidden) {
             [self fadeIntoView];
@@ -71,7 +71,7 @@ CGFloat pointsMoved;
 }
 
 - (void)fadeOutOfView {
-    NSLog(@"VerseOverlayView fading out");
+//    NSLog(@"VerseOverlayView fading out");
     pointsMoved = 0;
     if (!self.hidden && [self.layer.animationKeys count] == 0) {
         [UIView animateWithDuration:.2 animations:^{
