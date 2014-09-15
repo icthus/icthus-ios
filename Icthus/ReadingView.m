@@ -65,8 +65,17 @@ CGPoint maxContentOffset;
     CGFloat height = 100;
     CGFloat xorigin = (self.frame.size.width - width) / 2;
     CGFloat yorigin = (self.frame.size.height - height) / 2;
-    self.verseOverlayView = [[VerseOverlayView alloc] initWithFrame:CGRectMake(xorigin, yorigin, width, height)];
+    self.verseOverlayView = [[VerseOverlayView alloc] initWithFrame:CGRectMake(xorigin, yorigin, width, height) MovementSensitivity:self.bounds.size.height * 0.5 InTimeInterval:1];
+    self.verseOverlayView.hidden = YES;
+}
+
+- (void)addVerseOverlayViewToViewHierarchy {
+    [self.verseOverlayView reset];
     [self addSubview:self.verseOverlayView];
+}
+
+- (void)removeVerseOverlayViewFromViewHierarchy {
+    [self.verseOverlayView removeFromSuperview];
 }
 
 - (void)clearText {
@@ -320,16 +329,14 @@ CGPoint maxContentOffset;
         }
     }
     
-    lastKnownContentOffset = scrollView.contentOffset;
-    self.verseOverlayView.frame = CGRectMake(0, contentOffset.y, 200, 100);
-    [self.verseOverlayView updateLabelWithLocation:[self getCurrentLocation]];
-    [self bringSubviewToFront:self.verseOverlayView];
-    if (self.verseOverlayView.hidden) {
-        self.verseOverlayView.hidden = NO;
-        [UIView animateWithDuration:0.5 animations:^{
-            self.verseOverlayView.alpha = 1.0;
-        }];
+    if (self.verseOverlayView) {
+        self.verseOverlayView.frame = CGRectMake(0, contentOffset.y, 200, 100);
+        [self.verseOverlayView updateLabelWithLocation:[self getCurrentLocation]];
+        [self.verseOverlayView userScrolledPoints:abs(lastKnownContentOffset.y - contentOffset.y)];
+        [self bringSubviewToFront:self.verseOverlayView];
     }
+    
+    lastKnownContentOffset = scrollView.contentOffset;
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
@@ -341,12 +348,7 @@ CGPoint maxContentOffset;
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     [self saveCurrentLocation];
-
-    [UIView animateWithDuration:1 animations:^{
-        self.verseOverlayView.alpha = 0.0;
-    } completion:^(BOOL finished) {
-        self.verseOverlayView.hidden = YES;
-    }];
+    [self.verseOverlayView fadeOutOfView];
 }
 
 - (CGFloat)lineHeightForString:(NSAttributedString *)string {

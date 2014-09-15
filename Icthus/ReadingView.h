@@ -15,6 +15,8 @@
 
 @interface ReadingView : UIScrollView <UIScrollViewDelegate>
 
+- (void)addVerseOverlayViewToViewHierarchy;
+- (void)removeVerseOverlayViewFromViewHierarchy;
 - (CGFloat)lineHeightForString:(NSAttributedString *)string;
 - (void)setCurrentLocation:(BookLocation *)location;
 - (BookLocation *)saveCurrentLocation;

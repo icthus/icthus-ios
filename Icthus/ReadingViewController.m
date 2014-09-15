@@ -11,6 +11,7 @@
 #import "BookLocation.h"
 #import "AppDelegate.h"
 #import "IcthusColorMode.h"
+#import "VerseOverlayView.h"
 
 @interface ReadingViewController ()
 
@@ -176,9 +177,11 @@ UIColor *tintColor;
         if (!self.navigationController) {
             NSLog(@"navigation controller was lost");
         }
+        
         [self.readingView setBook:self.book];
         [self.readingView setText:[self.book text]];
         [self.readingView setCurrentLocation:location];
+        [self.readingView addVerseOverlayViewToViewHierarchy];
         NSLog(@"ReadingViewController: Changing book to %@ %@:%@", [self.book shortName], [location chapter], [location verse]);
     }
     
@@ -230,6 +233,12 @@ UIColor *tintColor;
         _book = (Book *)[self.moc objectWithID:self.book.objectID];
     }
     [self.readingView saveCurrentLocation];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    if (![self.readingView.verseOverlayView superview]) {
+        [self.readingView addVerseOverlayViewToViewHierarchy];
+    }
 }
 
 - (void)subscribeToColorChangedNotification {
