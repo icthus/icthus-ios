@@ -47,8 +47,8 @@ CGFloat pointsMoved;
     return self;
 }
 
-- (void)updateLabelWithLocation:(BookLocation *)location {
-    self.verseLabel.text = [NSString stringWithFormat:@"%@:%@", location.chapter, location.verse];
+- (void)updateLabelWithLocation:(BasicBookLocation *)location {
+    self.verseLabel.text = [NSString stringWithFormat:@"%d:%d", location->chapter, location->verse];
 }
 
 - (void)userScrolledPoints:(CGFloat)points {

@@ -90,7 +90,7 @@
     }
 }
 
-- (BookLocation *)getLocationForCharAtIndex:(int)index forText:(NSString *)markupText andBook:(Book *)book {
+- (BasicBookLocation *)getLocationForCharAtIndex:(int)index forText:(NSString *)markupText andBook:(Book *)book {
     [self reset];
     textPos = 0;
     neededTextPos = index;
@@ -99,13 +99,16 @@
     [parser setDelegate:self];
     gettingLocationForChar = YES;
     [parser parse];
-    BookLocation *location = [book getLocation];
-    [location updateChapter:currentChapter verse:currentVerse];
+    BasicBookLocation *location = malloc(sizeof(BasicBookLocation));
+    location->chapter = currentChapter;
+    location->verse   = currentVerse;
     return location;
 }
 
 - (BookLocation *)saveLocationForCharAtIndex:(int)index forText:(NSString *)markupText andBook:(Book *)book {
-    BookLocation *location = [self getLocationForCharAtIndex:index forText:markupText andBook:book];
+    BasicBookLocation *unmanagedLocation = [self getLocationForCharAtIndex:index forText:markupText andBook:book];
+    BookLocation *location = [book getLocation];
+    [location updateChapter:unmanagedLocation->chapter verse:unmanagedLocation->verse];
     NSManagedObjectContext *moc = location.managedObjectContext;
     NSError *error;
     [moc save:&error];

@@ -22,4 +22,10 @@
 @property (nonatomic, retain) NSDate   *lastModified;
 @property (nonatomic, retain) NSNumber *verse;
 
+struct UnmanagedBookLocationStruct {
+    int chapter;
+    int verse;
+};
+typedef struct UnmanagedBookLocationStruct BasicBookLocation;
+
 @end

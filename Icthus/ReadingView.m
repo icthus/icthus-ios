@@ -212,7 +212,7 @@ CGPoint maxContentOffset;
     int currentFrameIndex  = (contentOffset - topMargin) / height;
     BibleTextView *textView = [self.textViews objectAtIndex:currentFrameIndex];
     if ([textView class] == [NSNull class]) {
-        NSLog(@"Fatal: getCurrentLocation failed to get a non-nil textView");
+        NSLog(@"Fatal: getCurrentTextPosition failed to get a non-nil textView");
     }
     
     // find the origin of the current line
@@ -239,9 +239,8 @@ CGPoint maxContentOffset;
     return textPos;
 }
 
-- (BookLocation *)getCurrentLocation {
-    BookLocation *bookLocation = [parser getLocationForCharAtIndex:[self getCurrentTextPosition] forText:self.text andBook:self.book];
-    return bookLocation;
+- (BasicBookLocation *)getCurrentLocation {
+    return [parser getLocationForCharAtIndex:[self getCurrentTextPosition] forText:self.text andBook:self.book];
 }
 
 - (BookLocation *)saveCurrentLocation {

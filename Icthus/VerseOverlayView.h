@@ -28,7 +28,7 @@
 /* 
  Tells the VerseOverlayViewController what verse and chapter to display 
 */
-- (void)updateLabelWithLocation:(BookLocation *)location;
+- (void)updateLabelWithLocation:(BasicBookLocation *)location;
 
 /*
  Informs the VerseOverlayView how many points the user scrolled. Should be called

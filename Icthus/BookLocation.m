@@ -57,6 +57,7 @@
     [self willChangeValueForKey:@"chapter"];
     [self setPrimitiveValue:chapter forKey:@"chapter"];
     [self didChangeValueForKey:@"chapter"];
+    [self setLastModified:[NSDate date]];
 }
 
 - (NSNumber *)chapter {
