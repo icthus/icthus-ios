@@ -12,6 +12,7 @@
 @implementation Translation
 
 @dynamic code;
+@dynamic copyrightText;
 @dynamic displayName;
 
 @end

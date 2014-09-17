@@ -8,6 +8,7 @@
 
 #import "TranslationViewController.h"
 #import "Translation.h"
+#import "Icthus-Swift.h"
 
 @interface TranslationViewController ()
 
@@ -79,24 +80,21 @@ NSString *selectedTranslation;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    static NSString *CellIdentifier = @"TranslationTableViewCell";
+    TranslationTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
+        cell = [[TranslationTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
     }
     
     // Configure the cell...
     Translation *trans = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    cell.translation = trans;
     if ([[trans code] isEqualToString:selectedTranslation]) {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        [cell showCopyrightButton];
     } else {
         cell.accessoryType = UITableViewCellAccessoryNone;
     }
-    cell.textLabel.text = [trans displayName];
-    cell.backgroundColor = self.appDel.colorManager.bookBackgroundColor;
-    cell.textLabel.textColor = self.appDel.colorManager.bookTextColor;
-    cell.tintColor = self.appDel.colorManager.tintColor;
-    // TODO: Set the cell accessory's color
     
     return cell;
 }
@@ -154,10 +152,14 @@ NSString *selectedTranslation;
 
 #pragma mark - Navigation
 
-// In a story board-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([[segue identifier] isEqualToString:@"showCopyright"] &&
+        [sender class] == [CopyrightButton class] &&
+        [[segue destinationViewController] class] == [CopyrightViewController class]) {
+        ((CopyrightViewController *)segue.destinationViewController).translation = ((CopyrightButton *)sender).translation;
+    } else {
+        NSLog(@"Error: TranslationViewController could not segue to CopyrightViewController properly");
+    }
 }
 
 @end

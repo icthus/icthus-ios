@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C902F4EF17DA26410077504A /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C902F4EE17DA26410077504A /* CoreText.framework */; };
+		C904A74719C8C23000C6681E /* CopyrightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C904A74619C8C23000C6681E /* CopyrightViewController.swift */; };
 		C907AE0C1900139500245E1E /* IcthusTutorialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C907AE0B1900139500245E1E /* IcthusTutorialViewController.m */; };
 		C90A82C31901682C00FF3FB8 /* ShowTutorialTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C90A82C21901682C00FF3FB8 /* ShowTutorialTableViewCell.m */; };
 		C914C2F9199BFD8600111B99 /* IcthusWhatsNewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C914C2F8199BFD8600111B99 /* IcthusWhatsNewViewController.m */; };
@@ -24,12 +25,17 @@
 		C9221D0B190A9171008F3C5A /* iPad Show Verses@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9221D07190A9171008F3C5A /* iPad Show Verses@2x.png */; };
 		C9256B0717DFC5D400646198 /* BookLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = C9256B0617DFC5D400646198 /* BookLocation.m */; };
 		C92762E119891D8600BC4F46 /* ToggleColorModeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C92762E019891D8600BC4F46 /* ToggleColorModeTableViewCell.m */; };
+		C933D94719CA174300445B3C /* CopyrightButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C933D94619CA174300445B3C /* CopyrightButton.swift */; };
+		C934B70B19C88AB500AD14E7 /* Copyright Symbol@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C934B70A19C88AB500AD14E7 /* Copyright Symbol@2x.png */; };
+		C934B70D19C88BF000AD14E7 /* Copyright Symbol.png in Resources */ = {isa = PBXBuildFile; fileRef = C934B70C19C88BF000AD14E7 /* Copyright Symbol.png */; };
+		C934B71019C88F4100AD14E7 /* TranslationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C934B70F19C88F4100AD14E7 /* TranslationTableViewCell.swift */; };
 		C9431B0C195F8C8A00B4B69C /* ColorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C9431B0B195F8C8A00B4B69C /* ColorManager.m */; };
 		C9451E90183BB0D9009FAFEE /* BibleVerseView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9451E8F183BB0D9009FAFEE /* BibleVerseView.m */; };
 		C94A2B24181001790076926A /* TranslationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C94A2B23181001790076926A /* TranslationViewController.m */; };
 		C94A2B271810030E0076926A /* Translation.m in Sources */ = {isa = PBXBuildFile; fileRef = C94A2B261810030E0076926A /* Translation.m */; };
 		C94C254318F487DC008E9CD4 /* CollectionViewLeftFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = C94C254218F487DC008E9CD4 /* CollectionViewLeftFlowLayout.m */; };
 		C95083BE190950E1002C3C93 /* iPhone John 1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C95083BD190950E1002C3C93 /* iPhone John 1@2x.png */; };
+		C95748B919C8D8BF001E5B99 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9FF50F617CBB54700BA526E /* UIKit.framework */; };
 		C958677A18D9DBE9001F875B /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C958677918D9DBE9001F875B /* SettingsViewController.m */; };
 		C958677D18DA070C001F875B /* SettingsIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = C958677C18DA070C001F875B /* SettingsIcon.png */; };
 		C958678018DA0823001F875B /* SettingsIcon.svg in Resources */ = {isa = PBXBuildFile; fileRef = C958677F18DA0823001F875B /* SettingsIcon.svg */; };
@@ -76,7 +82,6 @@
 		C9FABFDA188D55AB00C3FC05 /* BooksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9FABFD9188D55AB00C3FC05 /* BooksViewController.m */; };
 		C9FF50F317CBB54700BA526E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9FF50F217CBB54700BA526E /* Foundation.framework */; };
 		C9FF50F517CBB54700BA526E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9FF50F417CBB54700BA526E /* CoreGraphics.framework */; };
-		C9FF50F717CBB54700BA526E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9FF50F617CBB54700BA526E /* UIKit.framework */; };
 		C9FF50F917CBB54700BA526E /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9FF50F817CBB54700BA526E /* CoreData.framework */; };
 		C9FF50FF17CBB54700BA526E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C9FF50FD17CBB54700BA526E /* InfoPlist.strings */; };
 		C9FF510117CBB54700BA526E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C9FF510017CBB54700BA526E /* main.m */; };
@@ -107,6 +112,7 @@
 
 /* Begin PBXFileReference section */
 		C902F4EE17DA26410077504A /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		C904A74619C8C23000C6681E /* CopyrightViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CopyrightViewController.swift; sourceTree = "<group>"; };
 		C907AE0A1900139500245E1E /* IcthusTutorialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IcthusTutorialViewController.h; sourceTree = "<group>"; };
 		C907AE0B1900139500245E1E /* IcthusTutorialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IcthusTutorialViewController.m; sourceTree = "<group>"; };
 		C90A82C11901682C00FF3FB8 /* ShowTutorialTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowTutorialTableViewCell.h; sourceTree = "<group>"; };
@@ -130,6 +136,11 @@
 		C92762DB198904A500BC4F46 /* IcthusColorMode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IcthusColorMode.h; sourceTree = "<group>"; };
 		C92762DF19891D8600BC4F46 /* ToggleColorModeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToggleColorModeTableViewCell.h; sourceTree = "<group>"; };
 		C92762E019891D8600BC4F46 /* ToggleColorModeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToggleColorModeTableViewCell.m; sourceTree = "<group>"; };
+		C933D94619CA174300445B3C /* CopyrightButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CopyrightButton.swift; sourceTree = "<group>"; };
+		C934B70A19C88AB500AD14E7 /* Copyright Symbol@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Copyright Symbol@2x.png"; sourceTree = "<group>"; };
+		C934B70C19C88BF000AD14E7 /* Copyright Symbol.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Copyright Symbol.png"; sourceTree = "<group>"; };
+		C934B70E19C88F4100AD14E7 /* Icthus-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Icthus-Bridging-Header.h"; sourceTree = "<group>"; };
+		C934B70F19C88F4100AD14E7 /* TranslationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TranslationTableViewCell.swift; sourceTree = "<group>"; };
 		C9431B0A195F8C8A00B4B69C /* ColorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorManager.h; sourceTree = "<group>"; };
 		C9431B0B195F8C8A00B4B69C /* ColorManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorManager.m; sourceTree = "<group>"; };
 		C9451E8E183BB0D9009FAFEE /* BibleVerseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BibleVerseView.h; sourceTree = "<group>"; };
@@ -141,6 +152,8 @@
 		C94C254118F487DC008E9CD4 /* CollectionViewLeftFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewLeftFlowLayout.h; sourceTree = "<group>"; };
 		C94C254218F487DC008E9CD4 /* CollectionViewLeftFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewLeftFlowLayout.m; sourceTree = "<group>"; };
 		C95083BD190950E1002C3C93 /* iPhone John 1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPhone John 1@2x.png"; sourceTree = "<group>"; };
+		C95748A719C8CD60001E5B99 /* Icthus 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Icthus 2.xcdatamodel"; sourceTree = "<group>"; };
+		C95748AE19C8D548001E5B99 /* Icthus 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Icthus 2.xcdatamodel"; sourceTree = "<group>"; };
 		C958677818D9DBE9001F875B /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		C958677918D9DBE9001F875B /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		C958677C18DA070C001F875B /* SettingsIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SettingsIcon.png; sourceTree = "<group>"; };
@@ -236,12 +249,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C95748B919C8D8BF001E5B99 /* UIKit.framework in Frameworks */,
 				C9F55EE118EF6212009E685D /* SystemConfiguration.framework in Frameworks */,
 				C9F55EDF18EF620A009E685D /* Security.framework in Frameworks */,
 				C902F4EF17DA26410077504A /* CoreText.framework in Frameworks */,
 				C9FF50F517CBB54700BA526E /* CoreGraphics.framework in Frameworks */,
 				C9FF50F917CBB54700BA526E /* CoreData.framework in Frameworks */,
-				C9FF50F717CBB54700BA526E /* UIKit.framework in Frameworks */,
 				C9FF50F317CBB54700BA526E /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -317,6 +330,8 @@
 				C958677F18DA0823001F875B /* SettingsIcon.svg */,
 				C958677C18DA070C001F875B /* SettingsIcon.png */,
 				C958678118DA2DA4001F875B /* SettingsIcon@2x.png */,
+				C934B70A19C88AB500AD14E7 /* Copyright Symbol@2x.png */,
+				C934B70C19C88BF000AD14E7 /* Copyright Symbol.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -443,6 +458,7 @@
 				C9FF510617CBB54700BA526E /* Main_iPhone.storyboard */,
 				C9FF510317CBB54700BA526E /* AppDelegate.h */,
 				C9FF510417CBB54700BA526E /* AppDelegate.m */,
+				C934B70E19C88F4100AD14E7 /* Icthus-Bridging-Header.h */,
 				C91EB47617FDB2DE00645EFD /* Reading */,
 				C95DAB681893F49000494256 /* Chapter Picker */,
 				C958677B18D9DBEE001F875B /* Settings */,
@@ -457,6 +473,9 @@
 				C9FF511317CBB54800BA526E /* DetailViewController.m */,
 				C94A2B22181001790076926A /* TranslationViewController.h */,
 				C94A2B23181001790076926A /* TranslationViewController.m */,
+				C934B70F19C88F4100AD14E7 /* TranslationTableViewCell.swift */,
+				C933D94619CA174300445B3C /* CopyrightButton.swift */,
+				C904A74619C8C23000C6681E /* CopyrightViewController.swift */,
 				C9431B0A195F8C8A00B4B69C /* ColorManager.h */,
 				C9431B0B195F8C8A00B4B69C /* ColorManager.m */,
 				C92762DB198904A500BC4F46 /* IcthusColorMode.h */,
@@ -598,6 +617,7 @@
 				C9A6FA21190996C000028B00 /* iPhone History Button.png in Resources */,
 				C9221D00190A831F008F3C5A /* Touch Icon Hover.png in Resources */,
 				C9221D09190A9171008F3C5A /* iPad Show Verses Top.png in Resources */,
+				C934B70B19C88AB500AD14E7 /* Copyright Symbol@2x.png in Resources */,
 				C9A6FA261909985500028B00 /* iPhone Settings Button@2x.png in Resources */,
 				C9221D08190A9171008F3C5A /* iPad Show Verses.png in Resources */,
 				C9221CFA190A7B54008F3C5A /* iPhone Show Verses Top.png in Resources */,
@@ -631,6 +651,7 @@
 				C95083BE190950E1002C3C93 /* iPhone John 1@2x.png in Resources */,
 				C98C1A2B18B6452200E4B3DF /* Bariol_Regular.otf in Resources */,
 				C9221D0A190A9171008F3C5A /* iPad Show Verses Top@2x.png in Resources */,
+				C934B70D19C88BF000AD14E7 /* Copyright Symbol.png in Resources */,
 				C9A6FA311909A40500028B00 /* iPhone Show Verses.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -690,6 +711,7 @@
 				C973A687199BE4F5003FE888 /* IcthusParentPageViewController.m in Sources */,
 				C99F2FC717CCE714008AF602 /* ReadingViewController.m in Sources */,
 				C99F2FC417CCDC01008AF602 /* ChapterPickerViewController.m in Sources */,
+				C933D94719CA174300445B3C /* CopyrightButton.swift in Sources */,
 				C914C2F9199BFD8600111B99 /* IcthusWhatsNewViewController.m in Sources */,
 				C9C64DF019A53D0400013FFD /* VerseOverlayView.m in Sources */,
 				C94C254318F487DC008E9CD4 /* CollectionViewLeftFlowLayout.m in Sources */,
@@ -697,7 +719,9 @@
 				C9431B0C195F8C8A00B4B69C /* ColorManager.m in Sources */,
 				C9C8E61918FFF1F700D9D66E /* IcthusTutorialPageViewController.m in Sources */,
 				C97A1AF818E5DF57001E148D /* BibleFrameInfo.m in Sources */,
+				C904A74719C8C23000C6681E /* CopyrightViewController.swift in Sources */,
 				C9E57771188484A3004CC974 /* BookCollectionViewCell.m in Sources */,
+				C934B71019C88F4100AD14E7 /* TranslationTableViewCell.swift in Sources */,
 				C9FF510E17CBB54800BA526E /* Icthus.xcdatamodeld in Sources */,
 				C958677A18D9DBE9001F875B /* SettingsViewController.m in Sources */,
 				C9BCA00A17CD3FEC00196DA8 /* HistoryViewController.m in Sources */,
@@ -834,6 +858,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Icthus/Icthus.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -841,8 +866,11 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Icthus/Icthus-Prefix.pch";
 				INFOPLIST_FILE = "Icthus/Icthus-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = Icthus;
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Icthus/Icthus-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -852,6 +880,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Icthus/Icthus.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
@@ -859,8 +888,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Icthus/Icthus-Prefix.pch";
 				INFOPLIST_FILE = "Icthus/Icthus-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = Icthus;
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Icthus/Icthus-Bridging-Header.h";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -941,9 +972,11 @@
 		C9FF510C17CBB54800BA526E /* Icthus.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				C95748A719C8CD60001E5B99 /* Icthus 2.xcdatamodel */,
 				C9FF510D17CBB54800BA526E /* Icthus.xcdatamodel */,
+				C95748AE19C8D548001E5B99 /* Icthus 2.xcdatamodel */,
 			);
-			currentVersion = C9FF510D17CBB54800BA526E /* Icthus.xcdatamodel */;
+			currentVersion = C95748A719C8CD60001E5B99 /* Icthus 2.xcdatamodel */;
 			path = Icthus.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

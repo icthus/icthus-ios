@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C948F6CF18F5A8900010DA88 /* Icthus.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C948F6CD18F5A8900010DA88 /* Icthus.xcdatamodeld */; };
+		C933D94519C9E1AA00445B3C /* Icthus.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C933D94219C9E1AA00445B3C /* Icthus.xcdatamodeld */; };
+		C949A11419C8D99F00565BBF /* Translation.m in Sources */ = {isa = PBXBuildFile; fileRef = C949A10F19C8D99F00565BBF /* Translation.m */; };
+		C949A11519C8D99F00565BBF /* Book.m in Sources */ = {isa = PBXBuildFile; fileRef = C949A11119C8D99F00565BBF /* Book.m */; };
+		C949A11619C8D99F00565BBF /* BookLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = C949A11319C8D99F00565BBF /* BookLocation.m */; };
 		C94EE5E919896D2300FE03AE /* KJVParser.m in Sources */ = {isa = PBXBuildFile; fileRef = C94EE5E819896D2300FE03AE /* KJVParser.m */; };
 		C981302818F5B3BC00C65310 /* ASVBookNames.xml in CopyFiles */ = {isa = PBXBuildFile; fileRef = C9F7B56418F5ABB9009462BA /* ASVBookNames.xml */; };
 		C981302918F5B3BC00C65310 /* eng-asv_usfx.xml in CopyFiles */ = {isa = PBXBuildFile; fileRef = C9F7B56818F5ABB9009462BA /* eng-asv_usfx.xml */; };
@@ -22,9 +25,6 @@
 		C9A6921118F5A0C400801A8B /* USFXParser.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A6920C18F5A0C400801A8B /* USFXParser.m */; };
 		C9A6921218F5A0C400801A8B /* WEBUSFXParser.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A6920E18F5A0C400801A8B /* WEBUSFXParser.m */; };
 		C9A6921318F5A0C400801A8B /* ASVUSFXParser.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A6921018F5A0C400801A8B /* ASVUSFXParser.m */; };
-		C9A6921918F5A5F300801A8B /* Translation.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A6921618F5A5F300801A8B /* Translation.m */; };
-		C9A6921A18F5A5F300801A8B /* Book.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A6921818F5A5F300801A8B /* Book.m */; };
-		C9A6921E18F5A65000801A8B /* BookLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A6921D18F5A65000801A8B /* BookLocation.m */; };
 		C9F7B58E18F5AF98009462BA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9F7B58D18F5AF98009462BA /* Cocoa.framework */; };
 		C9F7B59818F5AF98009462BA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C9F7B59618F5AF98009462BA /* InfoPlist.strings */; };
 		C9F7B59A18F5AF98009462BA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F7B59918F5AF98009462BA /* main.m */; };
@@ -77,7 +77,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		C948F6CE18F5A8900010DA88 /* Icthus.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Icthus.xcdatamodel; sourceTree = "<group>"; };
+		C933D94319C9E1AA00445B3C /* Icthus 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Icthus 2.xcdatamodel"; sourceTree = "<group>"; };
+		C933D94419C9E1AA00445B3C /* Icthus.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Icthus.xcdatamodel; sourceTree = "<group>"; };
+		C949A10E19C8D99F00565BBF /* Translation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Translation.h; path = ../../Icthus/Translation.h; sourceTree = "<group>"; };
+		C949A10F19C8D99F00565BBF /* Translation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Translation.m; path = ../../Icthus/Translation.m; sourceTree = "<group>"; };
+		C949A11019C8D99F00565BBF /* Book.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Book.h; path = ../../Icthus/Book.h; sourceTree = "<group>"; };
+		C949A11119C8D99F00565BBF /* Book.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Book.m; path = ../../Icthus/Book.m; sourceTree = "<group>"; };
+		C949A11219C8D99F00565BBF /* BookLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BookLocation.h; path = ../../Icthus/BookLocation.h; sourceTree = "<group>"; };
+		C949A11319C8D99F00565BBF /* BookLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BookLocation.m; path = ../../Icthus/BookLocation.m; sourceTree = "<group>"; };
 		C94EE5E719896D2300FE03AE /* KJVParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJVParser.h; sourceTree = "<group>"; };
 		C94EE5E819896D2300FE03AE /* KJVParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KJVParser.m; sourceTree = "<group>"; };
 		C9A691F418F59CC100801A8B /* IcthusStoreGenerator */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = IcthusStoreGenerator; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -92,12 +99,6 @@
 		C9A6920E18F5A0C400801A8B /* WEBUSFXParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WEBUSFXParser.m; sourceTree = "<group>"; };
 		C9A6920F18F5A0C400801A8B /* ASVUSFXParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASVUSFXParser.h; sourceTree = "<group>"; };
 		C9A6921018F5A0C400801A8B /* ASVUSFXParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASVUSFXParser.m; sourceTree = "<group>"; };
-		C9A6921518F5A5F300801A8B /* Translation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Translation.h; sourceTree = "<group>"; };
-		C9A6921618F5A5F300801A8B /* Translation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Translation.m; sourceTree = "<group>"; };
-		C9A6921718F5A5F300801A8B /* Book.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Book.h; sourceTree = "<group>"; };
-		C9A6921818F5A5F300801A8B /* Book.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Book.m; sourceTree = "<group>"; };
-		C9A6921C18F5A65000801A8B /* BookLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookLocation.h; sourceTree = "<group>"; };
-		C9A6921D18F5A65000801A8B /* BookLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookLocation.m; sourceTree = "<group>"; };
 		C9F7B56418F5ABB9009462BA /* ASVBookNames.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ASVBookNames.xml; sourceTree = "<group>"; };
 		C9F7B56518F5ABB9009462BA /* copr.htm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = copr.htm; sourceTree = "<group>"; };
 		C9F7B56618F5ABB9009462BA /* eng-asv-VernacularAdditional.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "eng-asv-VernacularAdditional.xml"; sourceTree = "<group>"; };
@@ -173,6 +174,7 @@
 		C9A691EB18F59CC100801A8B = {
 			isa = PBXGroup;
 			children = (
+				C933D94219C9E1AA00445B3C /* Icthus.xcdatamodeld */,
 				C9A691FB18F59CC100801A8B /* IcthusStoreGenerator */,
 				C9F7B59318F5AF98009462BA /* IcthusStoreGeneratorApplication */,
 				C9F7B5B118F5AF98009462BA /* IcthusStoreGeneratorApplicationTests */,
@@ -210,7 +212,6 @@
 				C9A6921B18F5A5FA00801A8B /* Models */,
 				C9A6921418F5A0CD00801A8B /* Parsers */,
 				C9A691FC18F59CC100801A8B /* main.m */,
-				C948F6CD18F5A8900010DA88 /* Icthus.xcdatamodeld */,
 				C9A6920318F59CC100801A8B /* IcthusStoreGenerator.1 */,
 				C9A691FE18F59CC100801A8B /* Supporting Files */,
 			);
@@ -243,12 +244,12 @@
 		C9A6921B18F5A5FA00801A8B /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				C9A6921C18F5A65000801A8B /* BookLocation.h */,
-				C9A6921D18F5A65000801A8B /* BookLocation.m */,
-				C9A6921518F5A5F300801A8B /* Translation.h */,
-				C9A6921618F5A5F300801A8B /* Translation.m */,
-				C9A6921718F5A5F300801A8B /* Book.h */,
-				C9A6921818F5A5F300801A8B /* Book.m */,
+				C949A10E19C8D99F00565BBF /* Translation.h */,
+				C949A10F19C8D99F00565BBF /* Translation.m */,
+				C949A11019C8D99F00565BBF /* Book.h */,
+				C949A11119C8D99F00565BBF /* Book.m */,
+				C949A11219C8D99F00565BBF /* BookLocation.h */,
+				C949A11319C8D99F00565BBF /* BookLocation.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -480,12 +481,12 @@
 			files = (
 				C9A6921118F5A0C400801A8B /* USFXParser.m in Sources */,
 				C9A6921218F5A0C400801A8B /* WEBUSFXParser.m in Sources */,
-				C9A6921918F5A5F300801A8B /* Translation.m in Sources */,
-				C948F6CF18F5A8900010DA88 /* Icthus.xcdatamodeld in Sources */,
 				C9A691FD18F59CC100801A8B /* main.m in Sources */,
-				C9A6921A18F5A5F300801A8B /* Book.m in Sources */,
+				C949A11419C8D99F00565BBF /* Translation.m in Sources */,
+				C933D94519C9E1AA00445B3C /* Icthus.xcdatamodeld in Sources */,
 				C9A6921318F5A0C400801A8B /* ASVUSFXParser.m in Sources */,
-				C9A6921E18F5A65000801A8B /* BookLocation.m in Sources */,
+				C949A11619C8D99F00565BBF /* BookLocation.m in Sources */,
+				C949A11519C8D99F00565BBF /* Book.m in Sources */,
 				C94EE5E919896D2300FE03AE /* KJVParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -753,13 +754,15 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		C948F6CD18F5A8900010DA88 /* Icthus.xcdatamodeld */ = {
+		C933D94219C9E1AA00445B3C /* Icthus.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				C948F6CE18F5A8900010DA88 /* Icthus.xcdatamodel */,
+				C933D94319C9E1AA00445B3C /* Icthus 2.xcdatamodel */,
+				C933D94419C9E1AA00445B3C /* Icthus.xcdatamodel */,
 			);
-			currentVersion = C948F6CE18F5A8900010DA88 /* Icthus.xcdatamodel */;
-			path = Icthus.xcdatamodeld;
+			currentVersion = C933D94319C9E1AA00445B3C /* Icthus 2.xcdatamodel */;
+			name = Icthus.xcdatamodeld;
+			path = IcthusStoreGenerator/Icthus.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

@@ -13,6 +13,7 @@
 @interface Translation : NSManagedObject
 
 @property (nonatomic, retain) NSString * code;
+@property (nonatomic, retain) NSString * copyrightText;
 @property (nonatomic, retain) NSString * displayName;
 
 @end
