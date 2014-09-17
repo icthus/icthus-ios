@@ -26,8 +26,6 @@
 		C9256B0717DFC5D400646198 /* BookLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = C9256B0617DFC5D400646198 /* BookLocation.m */; };
 		C92762E119891D8600BC4F46 /* ToggleColorModeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C92762E019891D8600BC4F46 /* ToggleColorModeTableViewCell.m */; };
 		C933D94719CA174300445B3C /* CopyrightButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C933D94619CA174300445B3C /* CopyrightButton.swift */; };
-		C934B70B19C88AB500AD14E7 /* Copyright Symbol@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C934B70A19C88AB500AD14E7 /* Copyright Symbol@2x.png */; };
-		C934B70D19C88BF000AD14E7 /* Copyright Symbol.png in Resources */ = {isa = PBXBuildFile; fileRef = C934B70C19C88BF000AD14E7 /* Copyright Symbol.png */; };
 		C934B71019C88F4100AD14E7 /* TranslationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C934B70F19C88F4100AD14E7 /* TranslationTableViewCell.swift */; };
 		C9431B0C195F8C8A00B4B69C /* ColorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C9431B0B195F8C8A00B4B69C /* ColorManager.m */; };
 		C9451E90183BB0D9009FAFEE /* BibleVerseView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9451E8F183BB0D9009FAFEE /* BibleVerseView.m */; };
@@ -137,8 +135,6 @@
 		C92762DF19891D8600BC4F46 /* ToggleColorModeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToggleColorModeTableViewCell.h; sourceTree = "<group>"; };
 		C92762E019891D8600BC4F46 /* ToggleColorModeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToggleColorModeTableViewCell.m; sourceTree = "<group>"; };
 		C933D94619CA174300445B3C /* CopyrightButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CopyrightButton.swift; sourceTree = "<group>"; };
-		C934B70A19C88AB500AD14E7 /* Copyright Symbol@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Copyright Symbol@2x.png"; sourceTree = "<group>"; };
-		C934B70C19C88BF000AD14E7 /* Copyright Symbol.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Copyright Symbol.png"; sourceTree = "<group>"; };
 		C934B70E19C88F4100AD14E7 /* Icthus-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Icthus-Bridging-Header.h"; sourceTree = "<group>"; };
 		C934B70F19C88F4100AD14E7 /* TranslationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TranslationTableViewCell.swift; sourceTree = "<group>"; };
 		C9431B0A195F8C8A00B4B69C /* ColorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorManager.h; sourceTree = "<group>"; };
@@ -330,8 +326,6 @@
 				C958677F18DA0823001F875B /* SettingsIcon.svg */,
 				C958677C18DA070C001F875B /* SettingsIcon.png */,
 				C958678118DA2DA4001F875B /* SettingsIcon@2x.png */,
-				C934B70A19C88AB500AD14E7 /* Copyright Symbol@2x.png */,
-				C934B70C19C88BF000AD14E7 /* Copyright Symbol.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -480,10 +474,9 @@
 				C9431B0B195F8C8A00B4B69C /* ColorManager.m */,
 				C92762DB198904A500BC4F46 /* IcthusColorMode.h */,
 				C97793E51907E1360073A0AF /* Tutorial */,
-				C9FF510C17CBB54800BA526E /* Icthus.xcdatamodeld */,
 				C91EB47717FDB2F400645EFD /* Models */,
 				C9FF50FB17CBB54700BA526E /* Supporting Files */,
-				C9FF513317CBFBE900BA526E /* Core Data Source Files */,
+				C9FF513317CBFBE900BA526E /* Core Data */,
 				C9B96E2718EC31B30069249B /* Parsers */,
 			);
 			path = Icthus;
@@ -520,12 +513,13 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		C9FF513317CBFBE900BA526E /* Core Data Source Files */ = {
+		C9FF513317CBFBE900BA526E /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
+				C9FF510C17CBB54800BA526E /* Icthus.xcdatamodeld */,
 				C98EDE0B1912F4C900AF419A /* IcthusPrepopulatedStore.sqlite */,
 			);
-			name = "Core Data Source Files";
+			name = "Core Data";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -617,7 +611,6 @@
 				C9A6FA21190996C000028B00 /* iPhone History Button.png in Resources */,
 				C9221D00190A831F008F3C5A /* Touch Icon Hover.png in Resources */,
 				C9221D09190A9171008F3C5A /* iPad Show Verses Top.png in Resources */,
-				C934B70B19C88AB500AD14E7 /* Copyright Symbol@2x.png in Resources */,
 				C9A6FA261909985500028B00 /* iPhone Settings Button@2x.png in Resources */,
 				C9221D08190A9171008F3C5A /* iPad Show Verses.png in Resources */,
 				C9221CFA190A7B54008F3C5A /* iPhone Show Verses Top.png in Resources */,
@@ -651,7 +644,6 @@
 				C95083BE190950E1002C3C93 /* iPhone John 1@2x.png in Resources */,
 				C98C1A2B18B6452200E4B3DF /* Bariol_Regular.otf in Resources */,
 				C9221D0A190A9171008F3C5A /* iPad Show Verses Top@2x.png in Resources */,
-				C934B70D19C88BF000AD14E7 /* Copyright Symbol.png in Resources */,
 				C9A6FA311909A40500028B00 /* iPhone Show Verses.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

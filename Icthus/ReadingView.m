@@ -328,12 +328,16 @@ CGPoint maxContentOffset;
         }
     }
     
+    // Update the verseOverlayView
     if (self.verseOverlayView) {
         self.verseOverlayView.frame = CGRectMake(0, contentOffset.y, 200, 100);
         [self.verseOverlayView updateLabelWithLocation:[self getCurrentLocation]];
         [self.verseOverlayView userScrolledPoints:abs(lastKnownContentOffset.y - contentOffset.y)];
         [self bringSubviewToFront:self.verseOverlayView];
     }
+    
+    // Dirty the NSUserActivity
+    self.appDel.detailView.userActivity.needsSave = YES;
     
     lastKnownContentOffset = scrollView.contentOffset;
 }

@@ -64,6 +64,10 @@ UIColor *tintColor;
 //        } forState:UIControlStateNormal];
     }
     
+    // Start the NSUserActivity
+    self.userActivity = [[NSUserActivity alloc] initWithActivityType:@"com.MattLorentz.Icthus.Reading"];
+    self.userActivity.title = @"Reading";
+    [self.userActivity becomeCurrent];
     [self setBookToLatest];
 }
 
@@ -264,8 +268,18 @@ UIColor *tintColor;
     [self setBookToLatest];
 }
 
+- (void)updateUserActivityState:(NSUserActivity *)activity {
+    BasicBookLocation *location = [self.readingView getCurrentLocation];
+    activity.userInfo = @{
+                          @"bookCode": self.book.code,
+                          @"chapter": [NSNumber numberWithInt:location->chapter],
+                          @"verse": [NSNumber numberWithInt:location->verse],
+                          };
+}
+
 - (void)dealloc {
     [self unsubscribeFromColorChangedNotification];
+    [self.userActivity invalidate];
 }
 
 

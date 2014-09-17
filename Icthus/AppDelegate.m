@@ -152,18 +152,48 @@ BOOL foundNewDataIniCloud;
     }
 }
 
-- (void)saveContext
-{
-    NSError *error = nil;
-    NSManagedObjectContext *managedObjectContext = self.managedObjectContext;
-    if (managedObjectContext != nil) {
-        if ([managedObjectContext hasChanges] && ![managedObjectContext save:&error]) {
-             // Replace this implementation with code to handle the error appropriately.
-             // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. 
-            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-            abort();
-        } 
+#pragma mark - Handoff
+
+- (BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray *))restorationHandler {
+
+    NSDictionary *info = userActivity.userInfo;
+    NSString *bookCode = [info objectForKey:@"bookCode"];
+    NSNumber *chapter = [info objectForKey:@"chapter"];
+    NSNumber *verse = [info objectForKey:@"verse"];
+    if (bookCode && chapter && verse) {
+        
+        // Fetch the book based on the bookCode
+        NSFetchRequest *genesisRequest = [NSFetchRequest fetchRequestWithEntityName:@"Book"];
+        NSString *translationCode = [[NSUserDefaults standardUserDefaults] objectForKey:@"selectedTranslation"];
+        [genesisRequest setPredicate:[NSPredicate predicateWithFormat:@"code == %@ && translation == %@", bookCode, translationCode]];
+        NSError *error;
+        NSArray *array = [self.managedObjectContext executeFetchRequest:genesisRequest error:&error];
+        if (error || ![array count]) {
+            NSLog(@"%@", [error localizedDescription]);
+            return NO;
+        }
+        Book *book = [array firstObject];
+        
+        // Create a new BookLocation to show the user
+        BookLocation *location = [NSEntityDescription insertNewObjectForEntityForName:@"BookLocation" inManagedObjectContext:self.managedObjectContext];
+        [location setBook:book chapter:[chapter intValue] verse:[verse intValue]];
+        [self.managedObjectContext save:&error];
+        if (error) {
+            NSLog(@"%@", [error localizedDescription]);
+            return NO;
+        }
+    
+        // Show the latest BookLocation
+        [self.detailView setLocation:location];
+        
+        return YES;
+    } else {
+        return NO;
     }
+}
+
+- (BOOL)application:(UIApplication *)application willContinueUserActivityWithType:(NSString *)userActivityType {
+    return YES;
 }
 
 #pragma mark - Core Data stack
@@ -208,6 +238,20 @@ BOOL foundNewDataIniCloud;
         
         [[NSNotificationCenter defaultCenter] postNotification:refreshNotification];
     }];
+}
+
+- (void)saveContext
+{
+    NSError *error = nil;
+    NSManagedObjectContext *managedObjectContext = self.managedObjectContext;
+    if (managedObjectContext != nil) {
+        if ([managedObjectContext hasChanges] && ![managedObjectContext save:&error]) {
+             // Replace this implementation with code to handle the error appropriately.
+             // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. 
+            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+            abort();
+        } 
+    }
 }
 
 // Returns the managed object context for the application.
