@@ -328,13 +328,14 @@ CGPoint maxContentOffset;
         }
     }
     
+    // Uncomment this to enable the VerseOverlayView updating
     // Update the verseOverlayView
-    if (self.verseOverlayView) {
-        self.verseOverlayView.frame = CGRectMake(0, contentOffset.y, 200, 100);
-        [self.verseOverlayView updateLabelWithLocation:[self getCurrentLocation]];
-        [self.verseOverlayView userScrolledPoints:abs(lastKnownContentOffset.y - contentOffset.y)];
-        [self bringSubviewToFront:self.verseOverlayView];
-    }
+    //if (self.verseOverlayView) {
+    //    self.verseOverlayView.frame = CGRectMake(0, contentOffset.y, 200, 100);
+    //    [self.verseOverlayView updateLabelWithLocation:[self getCurrentLocation]];
+    //    [self.verseOverlayView userScrolledPoints:abs(lastKnownContentOffset.y - contentOffset.y)];
+    //    [self bringSubviewToFront:self.verseOverlayView];
+    //}
     
     // Dirty the NSUserActivity
     self.appDel.detailView.userActivity.needsSave = YES;
@@ -351,7 +352,8 @@ CGPoint maxContentOffset;
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     [self saveCurrentLocation];
-    [self.verseOverlayView fadeOutOfView];
+    // Uncomment this to enable the VerseOverlayView
+    //[self.verseOverlayView fadeOutOfView];
 }
 
 - (CGFloat)lineHeightForString:(NSAttributedString *)string {
