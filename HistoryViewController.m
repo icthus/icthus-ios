@@ -94,8 +94,16 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSManagedObject *object = [[self fetchedResultsController] objectAtIndexPath:indexPath];
-    [_appDel.detailView setLocation:(BookLocation *)object];
+    BookLocation *location = (BookLocation *)[[self fetchedResultsController] objectAtIndexPath:indexPath];
+    [location setLastModified:[NSDate date]];
+    NSManagedObjectContext *moc = location.managedObjectContext;
+    NSError *error;
+    [moc save:&error];
+    if (error) {
+        NSLog(@"%@", [error localizedDescription]);
+    }
+    
+    [_appDel.detailView setLocation:(BookLocation *)location];    
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
         [self.navigationController popToRootViewControllerAnimated:YES];
     }

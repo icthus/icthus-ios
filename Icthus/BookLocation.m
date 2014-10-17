@@ -13,7 +13,7 @@
 @synthesize book = _book;
 @synthesize bookCode = _bookCode;
 @synthesize chapter = _chapter;
-@synthesize lastModified;
+@synthesize lastModified = _lastModified;
 @synthesize verse = _verse;
 
 - (void) awakeFromInsert {
@@ -81,6 +81,20 @@
     verse = [self primitiveValueForKey:@"verse"];
     [self didAccessValueForKey:@"verse"];
     return verse;
+}
+
+- (void)setLastModified:(NSDate *)lastModified {
+    [self willChangeValueForKey:@"lastModified"];
+    [self setPrimitiveValue:lastModified forKey:@"lastModified"];
+    [self didChangeValueForKey:@"lastModified"];
+}
+
+- (NSDate *)lastModified {
+    NSDate *lastModified;
+    [self willAccessValueForKey:@"lastModified"];
+    lastModified = [self primitiveValueForKey:@"lastModified"];
+    [self didAccessValueForKey:@"lastModified"];
+    return lastModified;
 }
 
 @end
