@@ -338,7 +338,9 @@ CGPoint maxContentOffset;
     //}
     
     // Dirty the NSUserActivity
-    self.appDel.detailView.userActivity.needsSave = YES;
+    if(NSClassFromString(@"NSUserActivity")) {
+        self.appDel.detailView.userActivity.needsSave = YES;
+    }
     
     lastKnownContentOffset = scrollView.contentOffset;
 }

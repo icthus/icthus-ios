@@ -65,10 +65,12 @@ UIColor *tintColor;
     }
     
     // Start the NSUserActivity
-    self.userActivity = [[NSUserActivity alloc] initWithActivityType:@"com.MattLorentz.Icthus.Reading"];
-    self.userActivity.title = @"Reading";
-    [self.userActivity becomeCurrent];
-    [self setBookToLatest];
+    if(NSClassFromString(@"NSUserActivity")) {
+        self.userActivity = [[NSUserActivity alloc] initWithActivityType:@"com.MattLorentz.Icthus.Reading"];
+        self.userActivity.title = @"Reading";
+        [self.userActivity becomeCurrent];
+        [self setBookToLatest];
+    }
 }
 
 - (BookLocation *)getLatestLocation {
