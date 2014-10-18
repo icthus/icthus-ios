@@ -52,7 +52,9 @@
     selectedBook = nil;
 }
 
-- (void)viewWillAppear:(BOOL)animated {
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    
     // Set the contentOffset to the currently displayed book
     NSIndexPath *index = [self.fetchedResultsController indexPathForObject:self.appDel.detailView.book];
     [self.collectionView scrollToItemAtIndexPath:index atScrollPosition:UICollectionViewScrollPositionTop animated:NO];
