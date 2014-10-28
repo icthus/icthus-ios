@@ -23,6 +23,7 @@
 @synthesize selectedBook;
 @synthesize selectedChapter;
 @synthesize finishedAnimations;
+BOOL isFirstTimeViewDidLayoutSubviews;
 
 -(id)initWithCoder:(NSCoder *)aDecoder
 {
@@ -40,6 +41,7 @@
     [super viewDidLoad];
     
     [self subscribeToColorChangedNotification];
+    isFirstTimeViewDidLayoutSubviews = YES;
     if (self.navigationController && [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
         self.navigationController.navigationBar.titleTextAttributes = @{
             NSFontAttributeName: [UIFont fontWithName:@"Avenir-Roman" size:22.0f],
@@ -55,9 +57,12 @@
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
     
-    // Set the contentOffset to the currently displayed book
-    NSIndexPath *index = [self.fetchedResultsController indexPathForObject:self.appDel.detailView.book];
-    [self.collectionView scrollToItemAtIndexPath:index atScrollPosition:UICollectionViewScrollPositionTop animated:NO];
+    if (isFirstTimeViewDidLayoutSubviews) {
+        // Set the contentOffset to the currently displayed book
+        NSIndexPath *index = [self.fetchedResultsController indexPathForObject:self.appDel.detailView.book];
+        [self.collectionView scrollToItemAtIndexPath:index atScrollPosition:UICollectionViewScrollPositionTop animated:NO];
+        isFirstTimeViewDidLayoutSubviews = NO;
+    }
 }
 
 - (void)didReceiveMemoryWarning
