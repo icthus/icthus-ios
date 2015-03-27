@@ -16,11 +16,16 @@
 - (id) initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     if (self) {
+        [self setup];
     }
     return self;
 }
 
 - (void)awakeFromNib {
+    [self setup];
+}
+
+- (void)setup {
     self.appDel = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     self.label.textColor = self.appDel.colorManager.bookTextColor;
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {

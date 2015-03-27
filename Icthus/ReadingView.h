@@ -21,6 +21,8 @@
 - (void)setCurrentLocation:(BookLocation *)location;
 - (BookLocation *)saveCurrentLocation;
 - (BasicBookLocation *)getCurrentLocation;
+- (void)buildFrames;
+- (void)redrawText;
 
 @property (strong, nonatomic) AppDelegate *appDel;
 @property (retain, nonatomic) NSAttributedString* attString;

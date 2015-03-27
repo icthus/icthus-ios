@@ -94,31 +94,45 @@ CGPoint maxContentOffset;
     // parse the markup
     NSString *displayString = [parser displayStringFromMarkup:text];
 
-    // set up the formatting
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-        NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle defaultParagraphStyle] mutableCopy];
-        [paragraphStyle setLineSpacing:14];
-        NSDictionary *attributesDict = @{
-            NSFontAttributeName: [UIFont fontWithName:@"AkzidenzGroteskCE-Roman"size:24],
-            NSForegroundColorAttributeName: self.appDel.colorManager.bookTextColor,
-            NSParagraphStyleAttributeName: paragraphStyle,
-        };
-        [self setAttString:[[NSAttributedString alloc] initWithString:displayString attributes:attributesDict]];
-        [self setSizingString:[[NSAttributedString alloc] initWithString:@"Foo" attributes:attributesDict]];
-    } else {
-        NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle defaultParagraphStyle] mutableCopy];
-        [paragraphStyle setLineSpacing:7.5f];
-        NSDictionary *attributesDict = @{
-            NSFontAttributeName: [UIFont fontWithName:@"AkzidenzGroteskCE-Roman"size:22],
-            NSForegroundColorAttributeName: self.appDel.colorManager.bookTextColor,
-            NSParagraphStyleAttributeName: paragraphStyle,
-        };
-        [self setAttString:[[NSAttributedString alloc] initWithString:displayString attributes:attributesDict]];
-        [self setSizingString:[[NSAttributedString alloc] initWithString:@"Foo" attributes:attributesDict]];
-    }
+    NSDictionary *attributesDict = [self getAttributedStringAttributes];
+    [self setAttString:[[NSAttributedString alloc] initWithString:displayString attributes:attributesDict]];
+    [self setSizingString:[[NSAttributedString alloc] initWithString:@"Foo" attributes:attributesDict]];
         
     // build the subviews
     [self buildFrames];
+}
+
+- (void)redrawText {
+    [self clearText];
+    [self buildFrames];
+    CGPoint contentOffset = self.contentOffset;
+    int height = round(textFrame.size.height);
+    int currentFrameIndex  = roundf(contentOffset.y - topMargin) / height;
+    [self redrawTextViews:currentFrameIndex];
+}
+
+- (NSDictionary *)getAttributedStringAttributes {
+    NSDictionary *attributesDict;
+    
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+        NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle defaultParagraphStyle] mutableCopy];
+        [paragraphStyle setLineSpacing:14];
+        attributesDict = @{
+                             NSFontAttributeName: [UIFont fontWithName:@"AkzidenzGroteskCE-Roman"size:24],
+                             NSForegroundColorAttributeName: self.appDel.colorManager.bookTextColor,
+                             NSParagraphStyleAttributeName: paragraphStyle,
+                         };
+    } else {
+        NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle defaultParagraphStyle] mutableCopy];
+        [paragraphStyle setLineSpacing:7.5f];
+        attributesDict = @{
+                             NSFontAttributeName: [UIFont fontWithName:@"AkzidenzGroteskCE-Roman"size:22],
+                             NSForegroundColorAttributeName: self.appDel.colorManager.bookTextColor,
+                             NSParagraphStyleAttributeName: paragraphStyle,
+                         };
+    }
+    
+    return attributesDict;
 }
 
 - (void)buildFrames {
@@ -127,6 +141,8 @@ CGPoint maxContentOffset;
     self.textRanges = [NSMutableArray array];
     self.chaptersByView = [NSMutableArray array];
     self.versesByView = [NSMutableArray array];
+    // The problem is the self.frame is not expanded to fill the superview until just before viewWillAppear.
+    NSLog(@"ReadingView width: %f", self.frame.size.width);
     
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
         textFrame = CGRectInset(self.bounds, 50, 0);
@@ -212,7 +228,8 @@ CGPoint maxContentOffset;
     int currentFrameIndex  = (contentOffset - topMargin) / height;
     BibleTextView *textView = [self.textViews objectAtIndex:currentFrameIndex];
     if ([textView class] == [NSNull class]) {
-        NSLog(@"Fatal: getCurrentTextPosition failed to get a non-nil textView");
+        NSLog(@"Error: getCurrentTextPosition failed to get a non-nil textView");
+        return 0;
     }
     
     // find the origin of the current line
@@ -298,34 +315,38 @@ CGPoint maxContentOffset;
     }
 }
 
+- (void)redrawTextViews:(int)currentFrameIndex {
+    int startActiveRange = MAX(currentFrameIndex - activeViewWindow / 2, 0);
+    int endActiveRange   = MIN([self.textViews count], currentFrameIndex + activeViewWindow / 2);
+    NSRange activeRange = NSMakeRange(startActiveRange, endActiveRange - startActiveRange + 1);
+    
+    for (int i = 0; i < [self.textViews count]; i++) {
+        BibleTextView *textView = [self.textViews objectAtIndex:i];
+        if (NSLocationInRange(i, activeRange)) {
+            if ([textView class] == [NSNull class]) {
+                // if the view is null, create it
+                BibleTextView *textView = [[BibleTextView alloc] initWithFrameInfo:[frameData objectAtIndex:i] andParent:self];
+                [self addSubview:textView];
+                [self.textViews replaceObjectAtIndex:i withObject:textView];
+            }
+        } else {
+            // if we are not in the range of active views, make sure this view is null
+            if ([textView class] != [NSNull class]) {
+                [textView removeFromSuperview];
+                textView = nil;
+                [self.textViews replaceObjectAtIndex:i withObject:[NSNull null]];
+            }
+        }
+    }
+}
+
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     CGPoint contentOffset = scrollView.contentOffset;
     int height = round(textFrame.size.height);
     int previousFrameIndex = roundf(lastKnownContentOffset.y - topMargin) / height;
     int currentFrameIndex  = roundf(contentOffset.y - topMargin) / height;
     if (previousFrameIndex != currentFrameIndex) {
-        int startActiveRange = MAX(currentFrameIndex - activeViewWindow / 2, 0);
-        int endActiveRange   = MIN([self.textViews count], currentFrameIndex + activeViewWindow / 2);
-        NSRange activeRange = NSMakeRange(startActiveRange, endActiveRange - startActiveRange + 1);
-        
-        for (int i = 0; i < [self.textViews count]; i++) {
-            BibleTextView *textView = [self.textViews objectAtIndex:i];
-            if (NSLocationInRange(i, activeRange)) {
-                if ([textView class] == [NSNull class]) {
-                    // if the view is null, create it
-                    BibleTextView *textView = [[BibleTextView alloc] initWithFrameInfo:[frameData objectAtIndex:i] andParent:self];
-                    [self addSubview:textView];
-                    [self.textViews replaceObjectAtIndex:i withObject:textView];
-                }
-            } else {
-                // if we are not in the range of active views, make sure this view is null
-                if ([textView class] != [NSNull class]) {
-                    [textView removeFromSuperview];
-                    textView = nil;
-                    [self.textViews replaceObjectAtIndex:i withObject:[NSNull null]];
-                }
-            }
-        }
+        [self redrawTextViews:currentFrameIndex];
     }
     
     // Uncomment this to enable the VerseOverlayView updating

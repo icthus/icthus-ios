@@ -13,6 +13,7 @@
 		C90A82C31901682C00FF3FB8 /* ShowTutorialTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C90A82C21901682C00FF3FB8 /* ShowTutorialTableViewCell.m */; };
 		C914C2F9199BFD8600111B99 /* IcthusWhatsNewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C914C2F8199BFD8600111B99 /* IcthusWhatsNewViewController.m */; };
 		C9198AFE17D94B2000077726 /* BibleTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9198AFD17D94B2000077726 /* BibleTextView.m */; };
+		C91F85301AC4FBD0002BA96F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C91F852F1AC4FBD0002BA96F /* Images.xcassets */; };
 		C9221CFA190A7B54008F3C5A /* iPhone Show Verses Top.png in Resources */ = {isa = PBXBuildFile; fileRef = C9221CF8190A7B54008F3C5A /* iPhone Show Verses Top.png */; };
 		C9221CFB190A7B54008F3C5A /* iPhone Show Verses Top@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9221CF9190A7B54008F3C5A /* iPhone Show Verses Top@2x.png */; };
 		C9221D00190A831F008F3C5A /* Touch Icon Hover.png in Resources */ = {isa = PBXBuildFile; fileRef = C9221CFC190A831F008F3C5A /* Touch Icon Hover.png */; };
@@ -89,7 +90,6 @@
 		C9FF510E17CBB54800BA526E /* Icthus.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C9FF510C17CBB54800BA526E /* Icthus.xcdatamodeld */; };
 		C9FF511117CBB54800BA526E /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9FF511017CBB54800BA526E /* MasterViewController.m */; };
 		C9FF511417CBB54800BA526E /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9FF511317CBB54800BA526E /* DetailViewController.m */; };
-		C9FF511617CBB54800BA526E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9FF511517CBB54800BA526E /* Images.xcassets */; };
 		C9FF511D17CBB54800BA526E /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9FF511C17CBB54800BA526E /* XCTest.framework */; };
 		C9FF511E17CBB54800BA526E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9FF50F217CBB54700BA526E /* Foundation.framework */; };
 		C9FF511F17CBB54800BA526E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9FF50F617CBB54700BA526E /* UIKit.framework */; };
@@ -119,6 +119,7 @@
 		C914C2F8199BFD8600111B99 /* IcthusWhatsNewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IcthusWhatsNewViewController.m; sourceTree = "<group>"; };
 		C9198AFC17D94B2000077726 /* BibleTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BibleTextView.h; sourceTree = "<group>"; };
 		C9198AFD17D94B2000077726 /* BibleTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BibleTextView.m; sourceTree = "<group>"; };
+		C91F852F1AC4FBD0002BA96F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C9221CF8190A7B54008F3C5A /* iPhone Show Verses Top.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPhone Show Verses Top.png"; sourceTree = "<group>"; };
 		C9221CF9190A7B54008F3C5A /* iPhone Show Verses Top@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPhone Show Verses Top@2x.png"; sourceTree = "<group>"; };
 		C9221CFC190A831F008F3C5A /* Touch Icon Hover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Touch Icon Hover.png"; sourceTree = "<group>"; };
@@ -232,7 +233,6 @@
 		C9FF511017CBB54800BA526E /* MasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
 		C9FF511217CBB54800BA526E /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		C9FF511317CBB54800BA526E /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
-		C9FF511517CBB54800BA526E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C9FF511B17CBB54800BA526E /* IcthusTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IcthusTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9FF511C17CBB54800BA526E /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		C9FF512517CBB54800BA526E /* IcthusTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "IcthusTests-Info.plist"; sourceTree = "<group>"; };
@@ -321,8 +321,8 @@
 		C958677E18DA0716001F875B /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				C91F852F1AC4FBD0002BA96F /* Images.xcassets */,
 				C97EE55619056242009655A0 /* Tutorial Images */,
-				C9FF511517CBB54800BA526E /* Images.xcassets */,
 				C958677F18DA0823001F875B /* SettingsIcon.svg */,
 				C958677C18DA070C001F875B /* SettingsIcon.png */,
 				C958678118DA2DA4001F875B /* SettingsIcon@2x.png */,
@@ -634,8 +634,8 @@
 				C958678218DA2DA4001F875B /* SettingsIcon@2x.png in Resources */,
 				C9221D0B190A9171008F3C5A /* iPad Show Verses@2x.png in Resources */,
 				C9A6FA251909985500028B00 /* iPhone Settings Button.png in Resources */,
-				C9FF511617CBB54800BA526E /* Images.xcassets in Resources */,
 				C97793DF1907DE140073A0AF /* iPhone John 1.png in Resources */,
+				C91F85301AC4FBD0002BA96F /* Images.xcassets in Resources */,
 				C9221D03190A831F008F3C5A /* Touch Icon Pressed@2x.png in Resources */,
 				C9A6FA2E190999EB00028B00 /* iPhone Send Feedback@2x.png in Resources */,
 				C9FF510817CBB54700BA526E /* Main_iPhone.storyboard in Resources */,
@@ -849,7 +849,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-1";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Icthus/Icthus.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -858,7 +858,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Icthus/Icthus-Prefix.pch";
 				INFOPLIST_FILE = "Icthus/Icthus-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = Icthus;
 				PROVISIONING_PROFILE = "";
@@ -872,7 +872,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-1";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Icthus/Icthus.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -881,7 +881,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Icthus/Icthus-Prefix.pch";
 				INFOPLIST_FILE = "Icthus/Icthus-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = Icthus;
 				PROVISIONING_PROFILE = "";

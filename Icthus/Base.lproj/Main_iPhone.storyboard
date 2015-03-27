@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A361c" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="rS3-R9-Ivy">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="rS3-R9-Ivy">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
     </dependencies>
     <scenes>
         <!--Master View Controller-->
@@ -148,7 +148,7 @@
                                 <rect key="frame" x="1" y="64" width="319" height="43"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="319" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Leviticus" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Usy-PB-Ln2">
@@ -161,7 +161,7 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <gestureRecognizers/>
-                                <size key="customSize" width="319" height="43"/>
+                                <size key="customSize" width="320" height="43"/>
                                 <connections>
                                     <outlet property="label" destination="Usy-PB-Ln2" id="zxZ-oj-4th"/>
                                 </connections>
@@ -222,8 +222,8 @@
             <objects>
                 <viewController storyboardIdentifier="WhatsNewPageViewController" id="uzg-lO-DQa" customClass="IcthusWhatsNewViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="CMx-Ui-b2L"/>
-                        <viewControllerLayoutGuide type="bottom" id="8Ti-9H-AIp"/>
+                        <viewControllerLayoutGuide type="top" id="WnE-ZG-eQH"/>
+                        <viewControllerLayoutGuide type="bottom" id="vQG-Kx-Gay"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="jRX-Bl-eia">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -240,8 +240,8 @@
             <objects>
                 <viewController storyboardIdentifier="WhatsNewPage1" id="HpI-pL-3IT" customClass="IcthusTutorialViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="KBh-Jw-qEi"/>
-                        <viewControllerLayoutGuide type="bottom" id="1Yy-Nk-aJx"/>
+                        <viewControllerLayoutGuide type="top" id="ykd-wb-EdA"/>
+                        <viewControllerLayoutGuide type="bottom" id="voX-XO-BeW"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="KQf-mX-Dls">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -291,8 +291,8 @@
             <objects>
                 <viewController storyboardIdentifier="TutorialPage1" id="OxW-Qg-5bE" customClass="IcthusTutorialViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="wC0-0c-FQu"/>
-                        <viewControllerLayoutGuide type="bottom" id="Mu2-Ho-24q"/>
+                        <viewControllerLayoutGuide type="top" id="4Pr-Mm-rnA"/>
+                        <viewControllerLayoutGuide type="bottom" id="JEK-un-8wF"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="lCC-8C-vL2">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -330,8 +330,8 @@
             <objects>
                 <viewController storyboardIdentifier="TutorialPage2" id="kYR-M2-fu9" customClass="IcthusTutorialViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="bFx-jv-Xr2"/>
-                        <viewControllerLayoutGuide type="bottom" id="6uo-0s-5uW"/>
+                        <viewControllerLayoutGuide type="top" id="O0T-W0-9JG"/>
+                        <viewControllerLayoutGuide type="bottom" id="IuI-I2-cOI"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="XZk-im-yiX">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
@@ -367,8 +367,8 @@
             <objects>
                 <viewController storyboardIdentifier="TutorialPage3" id="vBW-FB-Lty" customClass="IcthusTutorialViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="l9B-TY-Uca"/>
-                        <viewControllerLayoutGuide type="bottom" id="KG1-49-y9j"/>
+                        <viewControllerLayoutGuide type="top" id="bpV-oW-t05"/>
+                        <viewControllerLayoutGuide type="bottom" id="qHd-t5-gfX"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="fkm-hR-ykO">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
@@ -398,8 +398,8 @@
             <objects>
                 <viewController storyboardIdentifier="TutorialPage4" id="HP3-md-8Jp" customClass="IcthusTutorialViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="P6y-hj-okx"/>
-                        <viewControllerLayoutGuide type="bottom" id="zzb-yA-XJb"/>
+                        <viewControllerLayoutGuide type="top" id="XuR-jn-f0A"/>
+                        <viewControllerLayoutGuide type="bottom" id="zK8-Mq-NGb"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="na4-eD-hAK">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
@@ -429,8 +429,8 @@
             <objects>
                 <viewController storyboardIdentifier="TutorialPage5" id="pCy-tc-qJb" customClass="IcthusTutorialViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="116-l0-8is"/>
-                        <viewControllerLayoutGuide type="bottom" id="aOq-jX-lzb"/>
+                        <viewControllerLayoutGuide type="top" id="Sn4-kg-pP4"/>
+                        <viewControllerLayoutGuide type="bottom" id="Kc8-Dc-Qfb"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="xy0-VU-aBs">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
@@ -460,8 +460,8 @@
             <objects>
                 <viewController storyboardIdentifier="TutorialPage6" id="GyL-4j-WCY" customClass="IcthusTutorialViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="ohT-0B-j8r"/>
-                        <viewControllerLayoutGuide type="bottom" id="hc2-94-vd6"/>
+                        <viewControllerLayoutGuide type="top" id="6sy-kb-x3c"/>
+                        <viewControllerLayoutGuide type="bottom" id="yjW-qC-6gu"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="91V-7Z-mLZ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
@@ -508,22 +508,14 @@
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="World English Bible" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qb7-br-4fc">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="World English Bible" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qb7-br-4fc">
                                             <rect key="frame" x="18" y="15" width="149" height="21"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" priority="250" constant="149" id="ZNN-cA-roq"/>
-                                                <constraint firstAttribute="height" constant="21" id="dWd-Yi-Bs5"/>
-                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aQP-JG-bhi" customClass="CopyrightButton" customModule="Icthus" customModuleProvider="target">
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aQP-JG-bhi" customClass="CopyrightButton" customModule="Icthus" customModuleProvider="target">
                                             <rect key="frame" x="170" y="14" width="28" height="23"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="28" id="4j1-kJ-88g"/>
-                                                <constraint firstAttribute="height" constant="23" id="CER-px-yiC"/>
-                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                             <state key="normal">
                                                 <string key="title" base64-UTF8="YES">
@@ -536,13 +528,6 @@ A8KpA
                                             </connections>
                                         </button>
                                     </subviews>
-                                    <constraints>
-                                        <constraint firstItem="aQP-JG-bhi" firstAttribute="leading" secondItem="qb7-br-4fc" secondAttribute="trailing" constant="3" id="CTo-82-oXA"/>
-                                        <constraint firstItem="aQP-JG-bhi" firstAttribute="top" secondItem="48h-hK-Lfu" secondAttribute="topMargin" constant="6" id="KYp-yi-lng"/>
-                                        <constraint firstItem="qb7-br-4fc" firstAttribute="leading" secondItem="48h-hK-Lfu" secondAttribute="leadingMargin" constant="10" id="e5r-Nk-8we"/>
-                                        <constraint firstItem="aQP-JG-bhi" firstAttribute="bottom" secondItem="48h-hK-Lfu" secondAttribute="bottomMargin" constant="2" id="fNf-Sd-crj"/>
-                                        <constraint firstAttribute="centerY" secondItem="qb7-br-4fc" secondAttribute="centerY" constant="-3" id="iOU-ct-sWb"/>
-                                    </constraints>
                                 </tableViewCellContentView>
                                 <color key="tintColor" red="0.0" green="0.64705882349999999" blue="0.35686274509999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
@@ -567,8 +552,8 @@ A8KpA
             <objects>
                 <viewController id="b0S-Rk-dDr" customClass="CopyrightViewController" customModule="Icthus" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="nyh-LD-RGk"/>
-                        <viewControllerLayoutGuide type="bottom" id="xgD-Fo-Mo2"/>
+                        <viewControllerLayoutGuide type="top" id="E6E-IO-vRI"/>
+                        <viewControllerLayoutGuide type="bottom" id="1es-jX-R97"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="3kl-xo-wU1">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -586,18 +571,24 @@ A8KpA
             <objects>
                 <viewController id="ibv-lJ-hHP" customClass="ReadingViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="tVB-bX-FEc"/>
-                        <viewControllerLayoutGuide type="bottom" id="xGc-ZF-cBq"/>
+                        <viewControllerLayoutGuide type="top" id="7tM-8r-pqi"/>
+                        <viewControllerLayoutGuide type="bottom" id="f4Q-5m-HeN"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="crp-56-jro">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K5V-bj-KpE" customClass="ReadingView">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K5V-bj-KpE" customClass="ReadingView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="f4Q-5m-HeN" firstAttribute="top" secondItem="K5V-bj-KpE" secondAttribute="bottom" id="4lb-QG-e1q"/>
+                            <constraint firstItem="K5V-bj-KpE" firstAttribute="top" secondItem="7tM-8r-pqi" secondAttribute="bottom" id="JbD-jN-wMi"/>
+                            <constraint firstAttribute="trailing" secondItem="K5V-bj-KpE" secondAttribute="trailing" id="LHj-nU-7m6"/>
+                            <constraint firstItem="K5V-bj-KpE" firstAttribute="leading" secondItem="crp-56-jro" secondAttribute="leading" id="bhP-Yd-gwd"/>
+                        </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" id="ky5-FA-OfL">

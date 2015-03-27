@@ -230,7 +230,13 @@ UIColor *tintColor;
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewDidLayoutSubviews {
+    NSLog(@"ReadingViewController width: %f", self.view.frame.size.width);
+    [self.readingView redrawText];
+}
+
 - (void)viewWillAppear:(BOOL)animated {
+
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
