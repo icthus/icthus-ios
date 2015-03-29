@@ -91,17 +91,24 @@ BOOL isFirstTimeViewDidLayoutSubviews;
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    CGFloat viewWidth = self.view.frame.size.width;
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
         if ([self isBookAtIndexPath:indexPath]) {
-            return CGSizeMake(293, 54);
+            return CGSizeMake(viewWidth, 54);
         } else {
-            return CGSizeMake(56, 54);
+            CGFloat idealCellWidth = 56;
+            int cellsPerRow = floor(viewWidth / idealCellWidth);
+            CGFloat cellWidth = idealCellWidth + (fmod(viewWidth, idealCellWidth) / cellsPerRow);
+            return CGSizeMake(cellWidth, 54);
         }
     } else {
         if ([self isBookAtIndexPath:indexPath]) {
-            return CGSizeMake(319, 42);
+            return CGSizeMake(viewWidth, 42);
         } else {
-            return CGSizeMake(56, 42);
+            CGFloat idealCellWidth = 56;
+            int cellsPerRow = floor(viewWidth / idealCellWidth);
+            CGFloat cellWidth = idealCellWidth + (fmod(viewWidth, idealCellWidth) / cellsPerRow);
+            return CGSizeMake(cellWidth, 42);
         }
     }
 }

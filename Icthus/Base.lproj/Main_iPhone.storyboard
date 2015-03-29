@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Master View Controller-->
@@ -508,13 +509,16 @@
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="World English Bible" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qb7-br-4fc">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="World English Bible" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qb7-br-4fc">
                                             <rect key="frame" x="18" y="15" width="149" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="21" id="Sd5-Oy-8XX"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aQP-JG-bhi" customClass="CopyrightButton" customModule="Icthus" customModuleProvider="target">
+                                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aQP-JG-bhi" customClass="CopyrightButton" customModule="Icthus" customModuleProvider="target">
                                             <rect key="frame" x="170" y="14" width="28" height="23"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                             <state key="normal">
@@ -528,6 +532,13 @@ A8KpA
                                             </connections>
                                         </button>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="centerY" secondItem="aQP-JG-bhi" secondAttribute="centerY" constant="-3.75" id="3xy-7s-l4D"/>
+                                        <constraint firstItem="aQP-JG-bhi" firstAttribute="leading" secondItem="qb7-br-4fc" secondAttribute="trailing" constant="3" id="G8Q-Iu-AzZ"/>
+                                        <constraint firstItem="qb7-br-4fc" firstAttribute="leading" secondItem="48h-hK-Lfu" secondAttribute="leadingMargin" constant="10" id="N5Z-1M-brW"/>
+                                        <constraint firstAttribute="centerY" secondItem="qb7-br-4fc" secondAttribute="centerY" constant="-3.75" id="Zy4-NV-s2M"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="aQP-JG-bhi" secondAttribute="trailing" constant="75" id="rNK-bw-fQj"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <color key="tintColor" red="0.0" green="0.64705882349999999" blue="0.35686274509999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
