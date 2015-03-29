@@ -51,4 +51,15 @@
     self.selectionStyle = UITableViewCellSelectionStyleNone;
 }
 
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    
+    // Fixes a bug in iOS 7 where the cell separator will disappear
+    for (UIView *subview in self.contentView.superview.subviews) {
+        if ([NSStringFromClass(subview.class) hasSuffix:@"SeparatorView"]) {
+            subview.hidden = NO;
+        }
+    }
+}
+
 @end
