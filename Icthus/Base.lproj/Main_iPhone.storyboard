@@ -310,14 +310,14 @@
                                 <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="iPhone John 1.png" translatesAutoresizingMaskIntoConstraints="NO" id="kW3-EY-m7V">
-                                <rect key="frame" x="0.0" y="155" width="320" height="375"/>
-                                <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            </imageView>
                             <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="tbd-mY-wGS">
                                 <rect key="frame" x="141" y="531" width="39" height="37"/>
                                 <color key="pageIndicatorTintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </pageControl>
+                            <imageView userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="iPhone John 1.png" translatesAutoresizingMaskIntoConstraints="NO" id="kW3-EY-m7V">
+                                <rect key="frame" x="0.0" y="155" width="320" height="375"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -509,8 +509,8 @@
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="World English Bible" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qb7-br-4fc">
-                                            <rect key="frame" x="18" y="15" width="149" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="World English Bible" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qb7-br-4fc">
+                                            <rect key="frame" x="18" y="15" width="148.5" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="Sd5-Oy-8XX"/>
                                             </constraints>
@@ -518,8 +518,11 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aQP-JG-bhi" customClass="CopyrightButton" customModule="Icthus" customModuleProvider="target">
-                                            <rect key="frame" x="170" y="14" width="28" height="23"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aQP-JG-bhi" customClass="CopyrightButton" customModule="Icthus" customModuleProvider="target">
+                                            <rect key="frame" x="169" y="6" width="30" height="38"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="30" id="wdd-Ck-rAY"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                             <state key="normal">
                                                 <string key="title" base64-UTF8="YES">
@@ -537,7 +540,6 @@ A8KpA
                                         <constraint firstItem="aQP-JG-bhi" firstAttribute="leading" secondItem="qb7-br-4fc" secondAttribute="trailing" constant="3" id="G8Q-Iu-AzZ"/>
                                         <constraint firstItem="qb7-br-4fc" firstAttribute="leading" secondItem="48h-hK-Lfu" secondAttribute="leadingMargin" constant="10" id="N5Z-1M-brW"/>
                                         <constraint firstAttribute="centerY" secondItem="qb7-br-4fc" secondAttribute="centerY" constant="-3.75" id="Zy4-NV-s2M"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="aQP-JG-bhi" secondAttribute="trailing" constant="75" id="rNK-bw-fQj"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="tintColor" red="0.0" green="0.64705882349999999" blue="0.35686274509999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
