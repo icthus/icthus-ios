@@ -29,6 +29,7 @@ class TranslationTableViewCell: UITableViewCell {
     }
     
     override func awakeFromNib() {
+        super.awakeFromNib()
         setup()
     }
     
@@ -38,7 +39,7 @@ class TranslationTableViewCell: UITableViewCell {
         let colors = appDel.colorManager
         
         backgroundColor = colors.bookBackgroundColor
-        textLabel?.textColor = colors.bookTextColor
+        translationNameLabel.textColor = colors.bookTextColor
         tintColor = colors.tintColor
         
         copyrightButton.hidden = true
