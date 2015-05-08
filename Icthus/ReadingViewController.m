@@ -24,6 +24,7 @@
 @synthesize masterPopover;
 @synthesize chapterPickerPopover;
 UIColor *tintColor;
+CGRect previousFrame;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -231,7 +232,10 @@ UIColor *tintColor;
 }
 
 - (void)viewDidLayoutSubviews {
-    [self.readingView redrawText];
+    if (!CGRectEqualToRect(previousFrame, self.view.frame)) {
+        [self.readingView redrawText];
+        previousFrame = self.view.frame;
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
