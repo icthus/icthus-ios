@@ -231,7 +231,6 @@ UIColor *tintColor;
 }
 
 - (void)viewDidLayoutSubviews {
-    NSLog(@"ReadingViewController width: %f", self.view.frame.size.width);
     [self.readingView redrawText];
 }
 

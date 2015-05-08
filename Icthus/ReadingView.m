@@ -142,7 +142,6 @@ CGPoint maxContentOffset;
     self.chaptersByView = [NSMutableArray array];
     self.versesByView = [NSMutableArray array];
     // The problem is the self.frame is not expanded to fill the superview until just before viewWillAppear.
-    NSLog(@"ReadingView width: %f", self.frame.size.width);
     
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
         textFrame = CGRectInset(self.bounds, 50, 0);
