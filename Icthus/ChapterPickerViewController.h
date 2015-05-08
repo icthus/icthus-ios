@@ -11,7 +11,7 @@
 #import "Book.h"
 #import "IcthusColorMode.h"
 
-@interface ChapterPickerViewController: UICollectionViewController <UICollectionViewDataSource, UICollectionViewDelegate, IcthusColorMode>
+@interface ChapterPickerViewController: UICollectionViewController <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, IcthusColorMode>
 
 @property (nonatomic, strong) AppDelegate *appDel;
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;

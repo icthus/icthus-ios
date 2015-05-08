@@ -8,7 +8,7 @@
 
 #import "CollectionViewLeftFlowLayout.h"
 
-const NSInteger kMaxCellSpacing = 10;
+const NSInteger kMaxCellSpacing = 0;
 
 @implementation CollectionViewLeftFlowLayout
 

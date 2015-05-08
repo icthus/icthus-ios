@@ -50,7 +50,7 @@ BOOL isFirstTimeViewDidLayoutSubviews;
     }
     // TODO: Set background color of popover view controller
     self.collectionView.backgroundColor = self.appDel.colorManager.bookBackgroundColor;
-    
+
     selectedBook = nil;
 }
 
@@ -98,7 +98,7 @@ BOOL isFirstTimeViewDidLayoutSubviews;
         } else {
             CGFloat idealCellWidth = 56;
             int cellsPerRow = floor(viewWidth / idealCellWidth);
-            CGFloat cellWidth = idealCellWidth + (fmod(viewWidth, idealCellWidth) / cellsPerRow);
+            CGFloat cellWidth = idealCellWidth + (fmod(viewWidth, idealCellWidth) / cellsPerRow) - 0.001;
             return CGSizeMake(cellWidth, 54);
         }
     } else {
@@ -107,14 +107,10 @@ BOOL isFirstTimeViewDidLayoutSubviews;
         } else {
             CGFloat idealCellWidth = 56;
             int cellsPerRow = floor(viewWidth / idealCellWidth);
-            CGFloat cellWidth = idealCellWidth + (fmod(viewWidth, idealCellWidth) / cellsPerRow);
+            CGFloat cellWidth = idealCellWidth + (fmod(viewWidth, idealCellWidth) / cellsPerRow) - 0.001;
             return CGSizeMake(cellWidth, 42);
         }
     }
-}
-
-- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
-    return 0;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {

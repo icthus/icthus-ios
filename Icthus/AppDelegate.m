@@ -75,6 +75,8 @@ BOOL foundNewDataIniCloud;
         UISplitViewController *splitViewController = (UISplitViewController *)self.window.rootViewController;
         [self setDetailView:(ReadingViewController *)[[splitViewController.viewControllers lastObject] topViewController]];
         [self setMasterView:(MasterViewController *)[splitViewController.viewControllers firstObject]];
+        splitViewController.delegate = self.detailView;
+        splitViewController.preferredDisplayMode = UISplitViewControllerDisplayModePrimaryHidden;
 
         // Call UISplitViewControllerDelegate method again so that bar button items work. Hack.
         [self.detailView splitViewController:splitViewController willHideViewController:nil withBarButtonItem:nil forPopoverController:self.detailView.masterPopover];

@@ -174,7 +174,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="56" height="42"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mvc-s8-IAd">
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mvc-s8-IAd">
                                             <rect key="frame" x="0.0" y="0.0" width="56" height="42"/>
                                             <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="31"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -183,6 +183,12 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <constraints>
+                                    <constraint firstAttribute="trailingMargin" secondItem="Mvc-s8-IAd" secondAttribute="trailing" constant="-8" id="Rqv-6R-jo4"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="Mvc-s8-IAd" secondAttribute="bottom" constant="-8" id="Wbf-KF-mcd"/>
+                                    <constraint firstItem="Mvc-s8-IAd" firstAttribute="leading" secondItem="DWT-TC-lOf" secondAttribute="leadingMargin" constant="-8" id="iE0-73-kk8"/>
+                                    <constraint firstItem="Mvc-s8-IAd" firstAttribute="top" secondItem="DWT-TC-lOf" secondAttribute="topMargin" constant="-8" id="lGJ-cX-Ms9"/>
+                                </constraints>
                                 <size key="customSize" width="56" height="42"/>
                                 <connections>
                                     <outlet property="label" destination="Mvc-s8-IAd" id="GMu-lh-1dE"/>

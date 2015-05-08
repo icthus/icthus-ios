@@ -20,6 +20,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     // Style the nav bar
     [self subscribeToColorChangedNotification];
     ColorManager *colorManager = self.appDel.colorManager;

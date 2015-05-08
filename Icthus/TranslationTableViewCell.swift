@@ -35,7 +35,7 @@ class TranslationTableViewCell: UITableViewCell {
     
     func setup() {
         /* Style the cell */
-        let appDel = UIApplication.sharedApplication().delegate as AppDelegate
+        let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
         let colors = appDel.colorManager
         
         backgroundColor = colors.bookBackgroundColor
