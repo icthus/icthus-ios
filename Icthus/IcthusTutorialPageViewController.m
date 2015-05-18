@@ -30,7 +30,15 @@
                              ];
     }
     
+    // Make sure that this PageViewController is presented in portrait
+    NSNumber *value = [NSNumber numberWithInt:UIInterfaceOrientationPortrait];
+    [[UIDevice currentDevice] setValue:value forKey:@"orientation"];
+    
     [super viewDidLoad];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+
 }
 
 @end
