@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C9006AED1B0B750C004417EF /* SwipingLeftImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9006AEC1B0B750C004417EF /* SwipingLeftImageView.swift */; };
+		C9006AEF1B0B75A7004417EF /* AnimatedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9006AEE1B0B75A7004417EF /* AnimatedImageView.swift */; };
 		C902F4EF17DA26410077504A /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C902F4EE17DA26410077504A /* CoreText.framework */; };
 		C904A74719C8C23000C6681E /* CopyrightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C904A74619C8C23000C6681E /* CopyrightViewController.swift */; };
 		C907AE0C1900139500245E1E /* IcthusTutorialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C907AE0B1900139500245E1E /* IcthusTutorialViewController.m */; };
@@ -67,7 +69,6 @@
 		C9A6FA2E190999EB00028B00 /* iPhone Send Feedback@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9A6FA2C190999EB00028B00 /* iPhone Send Feedback@2x.png */; };
 		C9A6FA311909A40500028B00 /* iPhone Show Verses.png in Resources */ = {isa = PBXBuildFile; fileRef = C9A6FA2F1909A40500028B00 /* iPhone Show Verses.png */; };
 		C9A6FA321909A40500028B00 /* iPhone Show Verses@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9A6FA301909A40500028B00 /* iPhone Show Verses@2x.png */; };
-		C9A6FA351909A55F00028B00 /* SwipingLeftImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A6FA341909A55F00028B00 /* SwipingLeftImageView.m */; };
 		C9BCA00A17CD3FEC00196DA8 /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BCA00917CD3FEC00196DA8 /* HistoryViewController.m */; };
 		C9BCA01017CD933500196DA8 /* Book.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BCA00F17CD933500196DA8 /* Book.m */; };
 		C9C324F818E1CAE5005D0BAD /* SendMailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C324F718E1CAE5005D0BAD /* SendMailTableViewCell.m */; };
@@ -109,6 +110,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C9006AEC1B0B750C004417EF /* SwipingLeftImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipingLeftImageView.swift; sourceTree = "<group>"; };
+		C9006AEE1B0B75A7004417EF /* AnimatedImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedImageView.swift; sourceTree = "<group>"; };
 		C902F4EE17DA26410077504A /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		C904A74619C8C23000C6681E /* CopyrightViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CopyrightViewController.swift; sourceTree = "<group>"; };
 		C907AE0A1900139500245E1E /* IcthusTutorialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IcthusTutorialViewController.h; sourceTree = "<group>"; };
@@ -192,8 +195,6 @@
 		C9A6FA2C190999EB00028B00 /* iPhone Send Feedback@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPhone Send Feedback@2x.png"; sourceTree = "<group>"; };
 		C9A6FA2F1909A40500028B00 /* iPhone Show Verses.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPhone Show Verses.png"; sourceTree = "<group>"; };
 		C9A6FA301909A40500028B00 /* iPhone Show Verses@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPhone Show Verses@2x.png"; sourceTree = "<group>"; };
-		C9A6FA331909A55F00028B00 /* SwipingLeftImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwipingLeftImageView.h; sourceTree = "<group>"; };
-		C9A6FA341909A55F00028B00 /* SwipingLeftImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwipingLeftImageView.m; sourceTree = "<group>"; };
 		C9B3056F1816D08600EE8A94 /* Icthus.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Icthus.entitlements; sourceTree = "<group>"; };
 		C9BCA00817CD3FEC00196DA8 /* HistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HistoryViewController.h; path = ../HistoryViewController.h; sourceTree = "<group>"; };
 		C9BCA00917CD3FEC00196DA8 /* HistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = HistoryViewController.m; path = ../HistoryViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
@@ -360,8 +361,8 @@
 				C97793E31907E12A0073A0AF /* BottomFadedImageView.m */,
 				C97793E61907F2890073A0AF /* BottomFadedImage.h */,
 				C97793E71907F2890073A0AF /* BottomFadedImage.m */,
-				C9A6FA331909A55F00028B00 /* SwipingLeftImageView.h */,
-				C9A6FA341909A55F00028B00 /* SwipingLeftImageView.m */,
+				C9006AEC1B0B750C004417EF /* SwipingLeftImageView.swift */,
+				C9006AEE1B0B75A7004417EF /* AnimatedImageView.swift */,
 			);
 			name = Tutorial;
 			sourceTree = "<group>";
@@ -683,6 +684,7 @@
 				C97793E41907E12A0073A0AF /* BottomFadedImageView.m in Sources */,
 				C9451E90183BB0D9009FAFEE /* BibleVerseView.m in Sources */,
 				C92762E119891D8600BC4F46 /* ToggleColorModeTableViewCell.m in Sources */,
+				C9006AED1B0B750C004417EF /* SwipingLeftImageView.swift in Sources */,
 				C94A2B271810030E0076926A /* Translation.m in Sources */,
 				C9FF511417CBB54800BA526E /* DetailViewController.m in Sources */,
 				C90A82C31901682C00FF3FB8 /* ShowTutorialTableViewCell.m in Sources */,
@@ -694,7 +696,6 @@
 				C94A2B24181001790076926A /* TranslationViewController.m in Sources */,
 				C9FABFDA188D55AB00C3FC05 /* BooksViewController.m in Sources */,
 				C9C324F818E1CAE5005D0BAD /* SendMailTableViewCell.m in Sources */,
-				C9A6FA351909A55F00028B00 /* SwipingLeftImageView.m in Sources */,
 				C9BCA01017CD933500196DA8 /* Book.m in Sources */,
 				C97793E81907F2890073A0AF /* BottomFadedImage.m in Sources */,
 				C9FF510517CBB54700BA526E /* AppDelegate.m in Sources */,
@@ -706,6 +707,7 @@
 				C933D94719CA174300445B3C /* CopyrightButton.swift in Sources */,
 				C914C2F9199BFD8600111B99 /* IcthusWhatsNewViewController.m in Sources */,
 				C9C64DF019A53D0400013FFD /* VerseOverlayView.m in Sources */,
+				C9006AEF1B0B75A7004417EF /* AnimatedImageView.swift in Sources */,
 				C94C254318F487DC008E9CD4 /* CollectionViewLeftFlowLayout.m in Sources */,
 				C9D071DC17DE8C2000B535ED /* ReadingView.m in Sources */,
 				C9431B0C195F8C8A00B4B69C /* ColorManager.m in Sources */,
@@ -854,6 +856,7 @@
 				CODE_SIGN_ENTITLEMENTS = Icthus/Icthus.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEFINES_MODULE = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Icthus/Icthus-Prefix.pch";
@@ -877,6 +880,7 @@
 				CODE_SIGN_ENTITLEMENTS = Icthus/Icthus.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEFINES_MODULE = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Icthus/Icthus-Prefix.pch";

@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SwipingLeftImageView.h"
 @class IcthusParentPageViewController;
+@class SwipingLeftImageView;
 
 @interface IcthusTutorialViewController : UIViewController
 
@@ -17,7 +17,9 @@
 @property BOOL isLastPage;
 @property UIButton *leftButton;
 @property UIButton *rightButton;
-@property (strong, nonatomic) IBOutlet SwipingLeftImageView *animatedImage;
+
+// Couldn't figure out how to forward declare a Swift protocol so I had to use the implementation class here.
+@property IBOutlet SwipingLeftImageView *animatedImage;
 
 - (void)dismissParentViewController;
 

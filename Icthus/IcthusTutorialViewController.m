@@ -7,6 +7,7 @@
 //
 
 #import "IcthusTutorialViewController.h"
+#import "Icthus-Swift.h"
 
 @implementation IcthusTutorialViewController
 
@@ -19,13 +20,13 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     if (self.animatedImage) {
-        [self.animatedImage startSwipeAnimations];
+        [self.animatedImage startAnimation];
     }
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     if (self.animatedImage) {
-        [self.animatedImage stopSwipeAnimations];
+        [self.animatedImage stopAnimation];
     }
 }
 
