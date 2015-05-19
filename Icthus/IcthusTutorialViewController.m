@@ -46,8 +46,8 @@
         font = [UIFont systemFontOfSize:17];
         labelWidth = 60;
         labelHeight = 21;
-        sideMargin = 12;
-        topMargin = 15;
+        sideMargin = 17;
+        topMargin = 30;
         
         // Hack to correctly position labels on first launch
         if (![[NSUserDefaults standardUserDefaults] boolForKey:@"shownTutorial"]) {
@@ -58,8 +58,8 @@
         font = [UIFont systemFontOfSize:13];
         labelWidth = 60;
         labelHeight = 21;
-        sideMargin = 12;
-        topMargin = 30;
+        sideMargin = 15;
+        topMargin = 26;
     }
     
     // Create the right side button;
