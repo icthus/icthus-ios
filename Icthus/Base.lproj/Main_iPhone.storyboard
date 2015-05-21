@@ -352,28 +352,28 @@
                         <viewControllerLayoutGuide type="bottom" id="IuI-I2-cOI"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="XZk-im-yiX">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="iPhone Show Verses.png" translatesAutoresizingMaskIntoConstraints="NO" id="Hzy-4D-z2A" customClass="SwipingLeftImageView" customModule="Icthus" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="123" width="320" height="396"/>
+                            <imageView userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="750" verticalCompressionResistancePriority="250" image="iPhone Show Verses.png" translatesAutoresizingMaskIntoConstraints="NO" id="Hzy-4D-z2A" customClass="SwipingLeftImageView" customModule="Icthus" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="170" width="320" height="398"/>
                                 <color key="backgroundColor" red="0.90196079015731812" green="0.90196079015731812" blue="0.90196079015731812" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="320" id="Wb3-2t-qKY"/>
                                 </constraints>
                             </imageView>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ycv-xD-HPT" userLabel="Cover View">
-                                <rect key="frame" x="320" y="123" width="0.0" height="396"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ycv-xD-HPT" userLabel="Cover View">
+                                <rect key="frame" x="320" y="170" width="0.0" height="398"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Swipe to the left to reveal verse numbers." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tTG-Gs-BwB">
-                                <rect key="frame" x="17" y="56" width="287" height="0.0"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe to the left to reveal verse numbers." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tTG-Gs-BwB">
+                                <rect key="frame" x="17" y="56" width="287" height="47"/>
                                 <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.64705882349999999" blue="0.35686274509999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="iPhone Show Verses Top.png" translatesAutoresizingMaskIntoConstraints="NO" id="frB-PT-sI2">
-                                <rect key="frame" x="0.0" y="78" width="320" height="45"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iPhone Show Verses Top.png" translatesAutoresizingMaskIntoConstraints="NO" id="frB-PT-sI2">
+                                <rect key="frame" x="0.0" y="125" width="320" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="2Zw-7N-Ugn"/>
                                     <constraint firstAttribute="width" constant="320" id="3Fo-S8-Wvd"/>
@@ -383,7 +383,6 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="ycv-xD-HPT" firstAttribute="top" secondItem="frB-PT-sI2" secondAttribute="bottom" id="1AY-gs-Sjq"/>
-                            <constraint firstItem="IuI-I2-cOI" firstAttribute="top" secondItem="Hzy-4D-z2A" secondAttribute="bottom" priority="250" id="3Xt-hO-04e"/>
                             <constraint firstItem="frB-PT-sI2" firstAttribute="top" secondItem="tTG-Gs-BwB" secondAttribute="bottom" constant="22" id="EjQ-Xb-xHy"/>
                             <constraint firstAttribute="centerX" secondItem="tTG-Gs-BwB" secondAttribute="centerX" id="Noh-Sm-AIh"/>
                             <constraint firstItem="ycv-xD-HPT" firstAttribute="leading" secondItem="Hzy-4D-z2A" secondAttribute="leading" constant="320" id="P8c-BJ-tWU"/>
@@ -392,11 +391,11 @@
                             <constraint firstItem="IuI-I2-cOI" firstAttribute="top" secondItem="ycv-xD-HPT" secondAttribute="bottom" id="h2m-tk-0Px"/>
                             <constraint firstAttribute="centerX" secondItem="frB-PT-sI2" secondAttribute="centerX" id="hzK-Cr-Y01"/>
                             <constraint firstItem="Hzy-4D-z2A" firstAttribute="top" secondItem="frB-PT-sI2" secondAttribute="bottom" id="nuW-E9-AiB"/>
+                            <constraint firstItem="IuI-I2-cOI" firstAttribute="top" secondItem="Hzy-4D-z2A" secondAttribute="bottom" id="sWw-Q1-U0c"/>
                             <constraint firstItem="tTG-Gs-BwB" firstAttribute="top" secondItem="XZk-im-yiX" secondAttribute="top" constant="56" id="tg7-M0-fek"/>
                             <constraint firstAttribute="trailingMargin" secondItem="tTG-Gs-BwB" secondAttribute="trailing" id="zHE-9e-xvm"/>
                         </constraints>
                     </view>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" barStyle="black" translucent="NO"/>
                     <connections>
                         <outlet property="animatedImage" destination="Hzy-4D-z2A" id="EbM-Xl-ars"/>
                     </connections>
@@ -624,8 +623,8 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aQP-JG-bhi" customClass="CopyrightButton" customModule="Icthus" customModuleProvider="target">
-                                            <rect key="frame" x="169" y="6" width="30" height="38"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aQP-JG-bhi" customClass="CopyrightButton" customModule="Icthus" customModuleProvider="target">
+                                            <rect key="frame" x="170" y="6" width="30" height="38"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="30" id="wdd-Ck-rAY"/>
                                             </constraints>

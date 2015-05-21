@@ -35,21 +35,6 @@ import UIKit
     // drag distance should be just enough to display the verses
     private var dragDistance : CGFloat = 60
     
-    override init(image: UIImage!) {
-        super.init(image: image)
-        setup()
-    }
-    
-    override init(image: UIImage!, highlightedImage: UIImage?) {
-        super.init(image: image, highlightedImage: highlightedImage)
-        setup()
-    }
-    
-    required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        setup()
-    }
-    
     private func setup() {
         // create the touchIcon
         touchIconHovering = UIImageView(image: UIImage(named:touchIconHoveringName))
@@ -64,6 +49,7 @@ import UIKit
     }
 
     func startAnimation() {
+        setup()
         shouldAnimate = true
         self.addSubview(touchIconHovering!)
         self.addSubview(touchIconPressed!)
