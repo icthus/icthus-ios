@@ -1,26 +1,27 @@
 //
-//  BibleTextView.m
+//  BibleTextViewOld.m
 //  Icthus
 //
 //  Created by Matthew Lorentz on 9/5/13.
 //  Copyright (c) 2013 Matthew Lorentz. All rights reserved.
 //
 
-#import "BibleTextView.h"
-#import "ReadingView.h"
-#import "BibleVerseView.h"
+#import "BibleTextViewOld.h"
+#import "Icthus-Swift.h"
+#import "BibleVerseViewOld.h"
 #import <CoreText/CoreText.h>
+#import "ReadingViewOld.h"
 
-@implementation BibleTextView
+@implementation BibleTextViewOld
 
-BibleVerseView *verseView;
+BibleVerseViewOld *verseView;
 @synthesize ctFrame = _ctFrame;
 @synthesize textRange = _textRange;
 @synthesize parentView = _parentView;
 @synthesize chapters = _chapters;
 @synthesize verses = _verses;
 
-- (id)initWithFrameInfo:(BibleFrameInfo *)frameInfo andParent:(ReadingView *)parentView {
+- (id)initWithFrameInfo:(BibleFrameInfo *)frameInfo andParent:(ReadingScrollView *)parentView {
     self = [super initWithFrame:frameInfo.frame];
     if (self) {
         self.opaque = NO;
@@ -31,7 +32,7 @@ BibleVerseView *verseView;
         self.appDel = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         self.backgroundColor = self.appDel.colorManager.bookBackgroundColor;
         
-        // This is all duplicate code from ReadingView->buildFrames. Make sure they stay the same or bad things will happen.
+        // This is all duplicate code from ReadingScrollView->buildFrames. Make sure they stay the same or bad things will happen.
         // Build the ctFrame that we can draw when necessary
         NSAttributedString *attString = [self.parentView.attString attributedSubstringFromRange:self.textRange];
         CGRect textFrame;
@@ -50,7 +51,7 @@ BibleVerseView *verseView;
         CGPathAddRect(path, NULL, textFrame);
         CTFrameRef ctframe = CTFramesetterCreateFrame(framesetter, CFRangeMake(0, 0), path, NULL);
         [self setCtFrame:ctframe];
-        // TODO: Fix this so that we are not just duplicating the ctFrame made in ReadingView.buildFrames();
+        // TODO: Fix this so that we are not just duplicating the ctFrame made in ReadingScrollView.buildFrames();
 //        [self setCtFrame:frameInfo.ctFrame];
         
         [self refreshVerseView];
@@ -63,7 +64,7 @@ BibleVerseView *verseView;
         [verseView removeFromSuperview];
     }
     
-    // make the BibleVerseView
+    // make the BibleVerseViewOld
     if ([self.chapters count] && [self.verses count]) {
         CFArrayRef lines = CTFrameGetLines(self.ctFrame);
         int length = CFArrayGetCount(lines);
@@ -71,7 +72,7 @@ BibleVerseView *verseView;
         CTFrameGetLineOrigins(self.ctFrame, CFRangeMake(0, 0), origins);
         CGFloat lineHeight = [self.parentView.sizingString boundingRectWithSize:CGSizeMake(self.frame.size.width, self.frame.size.height) options:0 context:nil].size.height;
         
-        verseView = [[BibleVerseView alloc] initWithContentFrame:self.frame verses:self.verses chapters:self.chapters andLineOrigins:origins withLength:length andLineHeight:lineHeight];
+        verseView = [[BibleVerseViewOld alloc] initWithContentFrame:self.frame verses:self.verses chapters:self.chapters andLineOrigins:origins withLength:length andLineHeight:lineHeight];
         [self addSubview:verseView];
     }
 }

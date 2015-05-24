@@ -9,6 +9,7 @@
 #import "TranslationViewController.h"
 #import "Translation.h"
 #import "Icthus-Swift.h"
+#import "ColorManager.h"
 
 @interface TranslationViewController ()
 

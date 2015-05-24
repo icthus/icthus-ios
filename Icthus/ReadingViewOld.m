@@ -1,14 +1,14 @@
 //
-//  ReadingView.m
+//  ReadingViewOld.m
 //  Icthus
 //
 //  Created by Matthew Lorentz on 9/9/13.
 //  Copyright (c) 2013 Matthew Lorentz. All rights reserved.
 //
 
-#import "ReadingView.h"
-#import "BibleTextView.h"
-#import "BibleVerseView.h"
+#import "ReadingViewOld.h"
+#import "BibleTextViewOld.h"
+#import "BibleVerseViewOld.h"
 #import "BibleMarkupParser.h"
 #import "BookLocation.h"
 #import <CoreText/CoreText.h>
@@ -16,7 +16,7 @@
 #import "AppDelegate.h"
 #import "VerseOverlayView.h"
 
-@implementation ReadingView
+@implementation ReadingViewOld
 
 @synthesize appDel;
 @synthesize textViews;
@@ -79,7 +79,7 @@ CGPoint maxContentOffset;
 }
 
 - (void)clearText {
-    for (BibleTextView *view in self.textViews) {
+    for (BibleTextViewOld *view in self.textViews) {
         if (![view isEqual:[NSNull null]]) {
             [view removeFromSuperview];
         }
@@ -225,7 +225,7 @@ CGPoint maxContentOffset;
     int contentOffset = round(self.contentOffset.y);
     int height = round(textFrame.size.height);
     int currentFrameIndex  = (contentOffset - topMargin) / height;
-    BibleTextView *textView = [self.textViews objectAtIndex:currentFrameIndex];
+    BibleTextViewOld *textView = [self.textViews objectAtIndex:currentFrameIndex];
     if ([textView class] == [NSNull class]) {
         NSLog(@"Error: getCurrentTextPosition failed to get a non-nil textView");
         return 0;
@@ -261,7 +261,7 @@ CGPoint maxContentOffset;
 
 - (BookLocation *)saveCurrentLocation {
     BookLocation *bookLocation = [parser saveLocationForCharAtIndex:[self getCurrentTextPosition] forText:self.text andBook:self.book];
-    NSLog(@"ReadingView.saveCurrentLocation: got location %@ %@:%@", self.book.shortName, bookLocation.chapter, bookLocation.verse);
+    NSLog(@"ReadingViewOld.saveCurrentLocation: got location %@ %@:%@", self.book.shortName, bookLocation.chapter, bookLocation.verse);
     return bookLocation;
 }
 
@@ -279,7 +279,7 @@ CGPoint maxContentOffset;
             }
         }
 
-        BibleTextView *textView = [[BibleTextView alloc] initWithFrameInfo:[frameData objectAtIndex:i] andParent:self];
+        BibleTextViewOld *textView = [[BibleTextViewOld alloc] initWithFrameInfo:[frameData objectAtIndex:i] andParent:self];
         [self addSubview:textView];
         [self.textViews replaceObjectAtIndex:i withObject:textView];
 
@@ -320,11 +320,11 @@ CGPoint maxContentOffset;
     NSRange activeRange = NSMakeRange(startActiveRange, endActiveRange - startActiveRange + 1);
     
     for (int i = 0; i < [self.textViews count]; i++) {
-        BibleTextView *textView = [self.textViews objectAtIndex:i];
+        BibleTextViewOld *textView = [self.textViews objectAtIndex:i];
         if (NSLocationInRange(i, activeRange)) {
             if ([textView class] == [NSNull class]) {
                 // if the view is null, create it
-                BibleTextView *textView = [[BibleTextView alloc] initWithFrameInfo:[frameData objectAtIndex:i] andParent:self];
+                BibleTextViewOld *textView = [[BibleTextViewOld alloc] initWithFrameInfo:[frameData objectAtIndex:i] andParent:self];
                 [self addSubview:textView];
                 [self.textViews replaceObjectAtIndex:i withObject:textView];
             }
@@ -359,7 +359,8 @@ CGPoint maxContentOffset;
     
     // Dirty the NSUserActivity
     if(NSClassFromString(@"NSUserActivity")) {
-        self.appDel.detailView.userActivity.needsSave = YES;
+//        TODO: Reimplement userActivity for ReadingViewController
+//        self.appDel.detailView.userActivity.needsSave = YES;
     }
     
     lastKnownContentOffset = scrollView.contentOffset;

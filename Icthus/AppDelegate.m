@@ -8,6 +8,9 @@
 
 #import "AppDelegate.h"
 #import "MasterViewController.h"
+#import "Icthus-Swift.h"
+#import "BookLocation.h"
+#import "ColorManager.h"
 
 @implementation AppDelegate 
 
@@ -30,6 +33,7 @@ BOOL foundNewDataIniCloud;
     if ([defaults objectForKey:@"appHasLaunchedBefore"] == nil) {
         [self handleFirstLaunch];
     }
+    // Check for upgrades and setup initial view
     else {
         [self checkForUserDefaultsUpgrades];
         [self setupControllers];
@@ -75,17 +79,16 @@ BOOL foundNewDataIniCloud;
         UISplitViewController *splitViewController = (UISplitViewController *)self.window.rootViewController;
         [self setDetailView:(ReadingViewController *)[[splitViewController.viewControllers lastObject] topViewController]];
         [self setMasterView:(MasterViewController *)[splitViewController.viewControllers firstObject]];
-        splitViewController.delegate = self.detailView;
+        // TODO: Set up BibleSplitViewControllerDelegate
+//        splitViewController.delegate = self.detailView;
         splitViewController.preferredDisplayMode = UISplitViewControllerDisplayModePrimaryHidden;
 
         // Call UISplitViewControllerDelegate method again so that bar button items work. Hack.
-        [self.detailView splitViewController:splitViewController willHideViewController:nil withBarButtonItem:nil forPopoverController:self.detailView.masterPopover];
+//        [self.detailView splitViewController:splitViewController willHideViewController:nil withBarButtonItem:nil forPopoverController:self.detailView.masterPopover];
     } else {
         [self setMasterView:(MasterViewController *)self.window.rootViewController];
         [self setDetailView:(ReadingViewController *)self.masterView.topViewController];
     }
-    
-    [self.detailView setBookToLatest];
 }
 
 - (void)showTutorial {
@@ -117,9 +120,6 @@ BOOL foundNewDataIniCloud;
 {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
     self.persistentStoreCoordinator = nil;
-    if (![[self.detailView.book getLocation] isEqual:[self.detailView getLatestLocation]]) {
-        [self.detailView setBookToLatest];
-    }
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application

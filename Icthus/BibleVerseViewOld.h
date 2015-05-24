@@ -1,5 +1,5 @@
 //
-//  BibleVerseView.h
+//  BibleVerseViewOld.h
 //  Icthus
 //
 //  Created by Matthew Lorentz on 11/13/13.
@@ -11,7 +11,7 @@
 #import "ColorManager.h"
 #import "AppDelegate.h"
 
-@interface BibleVerseView : UIView
+@interface BibleVerseViewOld : UIView
 
 -(id)initWithContentFrame:(CGRect)contentFrame verses:(NSArray *)versesByLine chapters:(NSArray *)chaptersByLine andLineOrigins:(CGPoint[])origins withLength:(int)length andLineHeight:(CGFloat)lineHeight;
 

@@ -1,5 +1,5 @@
 //
-//  BibleTextView.h
+//  BibleTextViewOld.h
 //  Icthus
 //
 //  Created by Matthew Lorentz on 9/5/13.
@@ -8,24 +8,24 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreText/CoreText.h>
-#import "ReadingView.h"
-#import "BibleVerseView.h"
+#import "BibleVerseViewOld.h"
 #import "BibleFrameInfo.h"
 #import "IcthusColorMode.h"
+@class ReadingViewOld;
 
-@interface BibleTextView : UIView <IcthusColorMode> {
-    @private BibleVerseView *verseView;
+@interface BibleTextViewOld : UIView <IcthusColorMode> {
+    @private BibleVerseViewOld *verseView;
 }
 
 @property (nonatomic, strong) NSAttributedString *attString;
 @property CTFrameRef ctFrame;
 @property NSRange textRange;
-@property ReadingView *parentView;
+@property ReadingViewOld *parentView;
 @property NSArray *chapters;
 @property NSArray *verses;
 @property AppDelegate *appDel;
 
-- (id)initWithFrameInfo:(BibleFrameInfo *)frameInfo andParent:(ReadingView *)parentView;
+- (id)initWithFrameInfo:(BibleFrameInfo *)frameInfo andParent:(ReadingViewOld *)parentView;
 - (void)subscribeToColorChangedNotification;
 - (void)unsubscribeFromColorChangedNotification;
 - (void)handleColorModeChanged;

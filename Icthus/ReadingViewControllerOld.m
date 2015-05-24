@@ -1,23 +1,23 @@
 //
-//  ReadingViewController.m
+//  ReadingViewControllerOld.m
 //  Icthus
 //
 //  Created by Matthew Lorentz on 8/27/13.
 //  Copyright (c) 2013 Matthew Lorentz. All rights reserved.
 //
 
-#import "ReadingViewController.h"
-#import "ReadingView.h"
+#import "ReadingViewControllerOld.h"
+#import "ReadingViewOld.h"
 #import "BookLocation.h"
 #import "AppDelegate.h"
 #import "IcthusColorMode.h"
 #import "VerseOverlayView.h"
 
-@interface ReadingViewController ()
+@interface ReadingViewControllerOld ()
 
 @end
 
-@implementation ReadingViewController
+@implementation ReadingViewControllerOld
 
 @synthesize appDel;
 @synthesize book = _book;
@@ -185,11 +185,11 @@ CGRect previousFrame;
             NSLog(@"navigation controller was lost");
         }
         
-        [self.readingView setBook:self.book];
-        [self.readingView setText:[self.book text]];
-        [self.readingView setCurrentLocation:location];
-        [self.readingView addVerseOverlayViewToViewHierarchy];
-        NSLog(@"ReadingViewController: Changing book to %@ %@:%@", [self.book shortName], [location chapter], [location verse]);
+        [self.ReadingViewOld setBook:self.book];
+        [self.ReadingViewOld setText:[self.book text]];
+        [self.ReadingViewOld setCurrentLocation:location];
+        [self.ReadingViewOld addVerseOverlayViewToViewHierarchy];
+        NSLog(@"ReadingViewControllerOld: Changing book to %@ %@:%@", [self.book shortName], [location chapter], [location verse]);
     }
     
     if (self.masterPopover != nil) {
@@ -233,7 +233,7 @@ CGRect previousFrame;
 
 - (void)viewDidLayoutSubviews {
     if (!CGRectEqualToRect(previousFrame, self.view.frame)) {
-        [self.readingView redrawText];
+        [self.ReadingViewOld redrawText];
         previousFrame = self.view.frame;
     }
 }
@@ -247,12 +247,12 @@ CGRect previousFrame;
     if (!self.book.managedObjectContext) {
         _book = (Book *)[self.moc objectWithID:self.book.objectID];
     }
-    [self.readingView saveCurrentLocation];
+    [self.ReadingViewOld saveCurrentLocation];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    if (![self.readingView.verseOverlayView superview]) {
-        [self.readingView addVerseOverlayViewToViewHierarchy];
+    if (![self.ReadingViewOld.verseOverlayView superview]) {
+        [self.ReadingViewOld addVerseOverlayViewToViewHierarchy];
     }
 }
 
@@ -280,7 +280,7 @@ CGRect previousFrame;
 }
 
 - (void)updateUserActivityState:(NSUserActivity *)activity {
-    BasicBookLocation *location = [self.readingView getCurrentLocation];
+    BasicBookLocation *location = [self.ReadingViewOld getCurrentLocation];
     activity.userInfo = @{
                           @"bookCode": self.book.code,
                           @"chapter": [NSNumber numberWithInt:location->chapter],

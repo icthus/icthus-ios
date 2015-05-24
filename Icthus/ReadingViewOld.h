@@ -1,5 +1,5 @@
 //
-//  ReadingView.h
+//  ReadingViewOld.h
 //  Icthus
 //
 //  Created by Matthew Lorentz on 9/9/13.
@@ -13,7 +13,7 @@
 @class AppDelegate;
 @class VerseOverlayView;
 
-@interface ReadingView : UIScrollView <UIScrollViewDelegate>
+@interface ReadingViewOld : UIScrollView <UIScrollViewDelegate>
 
 - (void)addVerseOverlayViewToViewHierarchy;
 - (void)removeVerseOverlayViewFromViewHierarchy;

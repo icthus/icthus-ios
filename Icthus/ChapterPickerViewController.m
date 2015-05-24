@@ -8,10 +8,11 @@
 
 #import "ChapterPickerViewController.h"
 #import "Book.h"
-#import "ReadingViewController.h"
+#import "Icthus-Swift.h"
 #import "BookCollectionViewCell.h"
 #import "ChapterCollectionViewCell.h"
 #import "BookLocation.h"
+#import "ColorManager.h"
 
 @interface ChapterPickerViewController()
 
@@ -59,7 +60,7 @@ BOOL isFirstTimeViewDidLayoutSubviews;
     
     if (isFirstTimeViewDidLayoutSubviews) {
         // Set the contentOffset to the currently displayed book
-        NSIndexPath *index = [self.fetchedResultsController indexPathForObject:self.appDel.detailView.book];
+        NSIndexPath *index = [self.fetchedResultsController indexPathForObject:self.appDel.detailView.currentBook];
         [self.collectionView scrollToItemAtIndexPath:index atScrollPosition:UICollectionViewScrollPositionTop animated:NO];
         isFirstTimeViewDidLayoutSubviews = NO;
     }
@@ -213,7 +214,7 @@ BOOL isFirstTimeViewDidLayoutSubviews;
     NSRange chapterRange = [self getChapterRange];
     self.selectedChapter = [chapterIndexPath item] - chapterRange.location + 1;
     BookLocation *location = [selectedBook setLocationChapter:selectedChapter verse:1];
-    [_appDel.detailView setLocation:location];
+    _appDel.detailView.location = location;
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
         [self dismissViewControllerAnimated:YES completion:nil];
     }

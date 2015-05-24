@@ -15,6 +15,7 @@
 @class HistoryViewController;
 @class AppDelegate;
 
+
 @interface MasterViewController : UINavigationController <IcthusColorMode>
 
 @property (strong, nonatomic) AppDelegate *appDel;

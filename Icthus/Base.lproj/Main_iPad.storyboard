@@ -12,12 +12,12 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="5lW-fh-OjA" kind="relationship" relationship="rootViewController" id="ol2-b6-6n4"/>
+                        <segue destination="5lW-fh-OjA" kind="relationship" relationship="rootViewController" id="Ywn-3z-Beb"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WPb-il-srY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="193" y="2014"/>
+            <point key="canvasLocation" x="221" y="2106"/>
         </scene>
         <!--Icthus Tutorial Page View Controller-->
         <scene sceneID="Dxl-Ib-oOd">
@@ -207,13 +207,13 @@
         <!--Reading View Controller-->
         <scene sceneID="09X-wh-w3R">
             <objects>
-                <viewController id="5lW-fh-OjA" customClass="ReadingViewController" sceneMemberID="viewController">
+                <viewController id="5lW-fh-OjA" customClass="ReadingViewController" customModule="Icthus" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="aTV-tD-Pwn"/>
                         <viewControllerLayoutGuide type="bottom" id="CQe-kz-xjv"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="C4T-3F-a0u" customClass="ReadingView">
-                        <rect key="frame" x="0.0" y="64" width="768" height="960"/>
+                    <view key="view" contentMode="scaleToFill" id="C4T-3F-a0u" customClass="ReadingScrollView" customModule="Icthus" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="960"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -229,13 +229,12 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="goToButton" destination="5pZ-Xs-0Gc" id="paO-8N-3Rh"/>
-                        <outlet property="readingView" destination="C4T-3F-a0u" id="D66-WA-kHt"/>
+                        <outlet property="readingScrollView" destination="C4T-3F-a0u" id="ntS-tH-fYD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E4p-H1-CIC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1082" y="2014"/>
+            <point key="canvasLocation" x="1062" y="2090"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Kcn-Lu-Oq6">
@@ -507,7 +506,7 @@ A8KpA
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ye2-sx-aP0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1186" y="988"/>
+            <point key="canvasLocation" x="1102" y="964"/>
         </scene>
         <!--Chapter Picker View Controller-->
         <scene sceneID="YHM-67-ugM">

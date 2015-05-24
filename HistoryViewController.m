@@ -7,8 +7,9 @@
 //
 
 #import "HistoryViewController.h"
-#import "ReadingViewController.h"
+#import "Icthus-Swift.h"
 #import "Book.h"
+#import "ColorManager.h"
 
 @interface HistoryViewController ()
 

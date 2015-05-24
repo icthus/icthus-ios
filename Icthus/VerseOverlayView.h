@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ReadingView.h"
+#import "ReadingViewOld.h"
 #import "BookLocation.h"
 
 @interface VerseOverlayView : UIView

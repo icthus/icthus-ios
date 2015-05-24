@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ReadingViewController.h"
 #import "IcthusTutorialPageViewController.h"
 #import "IcthusWhatsNewViewController.h"
 @class ColorManager;

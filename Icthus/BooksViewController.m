@@ -8,7 +8,7 @@
 
 #import "BooksViewController.h"
 #import "Book.h"
-#import "ReadingViewController.h"
+#import "Icthus-Swift.h"
 
 @interface BooksViewController ()
 
@@ -78,7 +78,8 @@
     if ([[segue identifier] isEqualToString:@"showBook"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         NSManagedObject *object = [[self fetchedResultsController] objectAtIndexPath:indexPath];
-        [(ReadingViewController *)[segue destinationViewController] setBook:(Book *)object];
+        ReadingViewController *readingViewController = [segue destinationViewController];
+        readingViewController.currentBook = (Book *)object;
     }
 }
 

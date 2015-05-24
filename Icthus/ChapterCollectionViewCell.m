@@ -7,6 +7,7 @@
 //
 
 #import "ChapterCollectionViewCell.h"
+#import "ColorManager.h"
 
 @implementation ChapterCollectionViewCell
 

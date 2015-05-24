@@ -7,6 +7,7 @@
 //
 
 #import "BookCollectionViewCell.h"
+#import "ColorManager.h"
 
 @implementation BookCollectionViewCell
 

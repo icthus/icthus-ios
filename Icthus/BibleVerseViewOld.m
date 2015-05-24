@@ -1,14 +1,14 @@
 //
-//  BibleVerseView.m
+//  BibleVerseViewOld.m
 //  Icthus
 //
 //  Created by Matthew Lorentz on 11/13/13.
 //  Copyright (c) 2013 Matthew Lorentz. All rights reserved.
 //
 
-#import "BibleVerseView.h"
+#import "BibleVerseViewOld.h"
 
-@implementation BibleVerseView
+@implementation BibleVerseViewOld
 int gutterWidth = 70;
 
 -(id)initWithContentFrame:(CGRect)contentFrame verses:(NSArray *)versesByLine chapters:(NSArray *)chaptersByLine andLineOrigins:(CGPoint[])origins withLength:(int)length andLineHeight:(CGFloat)lineHeight {
@@ -30,7 +30,7 @@ int gutterWidth = 70;
                 label.font = [UIFont fontWithName:@"AkzidenzGroteskCE-Roman" size:20];
             }
             
-            // align the baseline with the BibleTextView text
+            // align the baseline with the BibleTextViewOld text
             CGRect newFrame = label.frame;
             newFrame.origin.y -= label.font.descender;
             label.frame = newFrame;
