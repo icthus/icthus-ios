@@ -233,8 +233,10 @@ CGRect previousFrame;
 
 - (void)viewDidLayoutSubviews {
     if (!CGRectEqualToRect(previousFrame, self.view.frame)) {
+        [self.readingView saveCurrentLocation];
         [self.readingView redrawText];
         previousFrame = self.view.frame;
+        [self setBookToLatest];
     }
 }
 
