@@ -9,3 +9,4 @@
 #import "BibleVerseViewOld.h"
 #import "Book.h"
 #import "BookLocation.h"
+#import "BibleMarkupParser.h"

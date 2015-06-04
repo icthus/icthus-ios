@@ -15,4 +15,22 @@
 @dynamic copyrightText;
 @dynamic displayName;
 
+-(Book *)getBookWithCode:(NSString *)bookCode {
+    if (bookCode != nil) {
+        NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Book"];
+        [request setPredicate:[NSPredicate predicateWithFormat:@"code == %@ && translation == %@", bookCode, self.code]];
+        NSError *error;
+        NSArray *array = [self.managedObjectContext executeFetchRequest:request error:&error];
+        if (error) {
+            NSLog(@"%@", [error localizedDescription]);
+            return nil;
+        } else {
+            Book *book = [array firstObject];
+            return book;
+        }
+    } else {
+        return nil;
+    }
+}
+
 @end

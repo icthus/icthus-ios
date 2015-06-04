@@ -9,13 +9,20 @@
 import Foundation
 
 class ReadingScrollView: UIScrollView {
-    var textViewMetadata: Array<BibleTextViewMetadata> = []
+    private var textViewMetadata: Array<BibleTextViewMetadata> = []
     
     override func awakeFromNib() {
     
     }
     
-    func redraw() {
+    func redraw(metadata: Array<BibleTextViewMetadata>, book: Book) {
+        textViewMetadata = metadata
+        let metadatum = metadata[0]
         
+        var text = ReadingStyleManager.attributedStringFromString(BibleMarkupParser().displayStringFromMarkup(book.text))
+        let textView = UITextView(frame: metadatum.frame)
+        textView.attributedText = text
+        textView.editable = false
+        self.addSubview(textView)
     }
 }

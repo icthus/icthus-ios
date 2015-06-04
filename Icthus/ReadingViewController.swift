@@ -9,13 +9,30 @@
 import Foundation
 
 class ReadingViewController: UIViewController {
-    var appDel: AppDelegate
-    var moc: NSManagedObjectContext
-    @IBOutlet var readingScrollView: ReadingScrollView!
-    var frameForMetadata: CGRect?
-    var textViewMetadata: Array<BibleTextViewMetadata> = []
-    var translation: Translation?
-    var location: BookLocation?
+    
+    // MARK: Properties
+    @IBOutlet private var readingScrollView: ReadingScrollView!
+    private var appDel: AppDelegate
+    private var moc: NSManagedObjectContext
+    private var frameForMetadata: CGRect?
+    private var textViewMetadata: Array<BibleTextViewMetadata> = []
+    
+    var translation: Translation? {
+        didSet {
+            if let actualBook = currentBook {
+                // TODO: Present error message that current book does not exist in this translation
+                currentBook = translation?.getBookWithCode(actualBook.code)
+                refreshText()
+            }
+        }
+    }
+    
+    var location: BookLocation? {
+        didSet {
+            currentBook = location?.book
+            refreshText()
+        }
+    }
     
     private var _book: Book?
     var currentBook: Book? {
@@ -29,10 +46,11 @@ class ReadingViewController: UIViewController {
         
         set(newBook) {
             _book = newBook
-            reloadText()
+            refreshText()
         }
     }
     
+    // MARK: Initializers
     required init(coder aDecoder: NSCoder) {
         appDel = UIApplication.sharedApplication().delegate as! AppDelegate
         moc = appDel.managedObjectContext!
@@ -45,16 +63,24 @@ class ReadingViewController: UIViewController {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
     
+    // MARK: View Lifecycle
     override func viewDidLayoutSubviews() {
+        // If the frame changes, reload text
         if (frameForMetadata != self.view.frame) {
-            reloadText()
+            refreshText()
         }
     }
     
-    func createTextViewMetadataWithFrame(frame: CGRect, book: Book) -> (Array<BibleTextViewMetadata>) {
-        return []
+    func refreshText() {
+        // If we have a book, generate metadata and hand it to the readingScrollView for drawing
+        if let actualBook = self.currentBook {
+            frameForMetadata = self.view.frame
+            textViewMetadata = BibleTextViewMetadataGenerator.generateWithFrame(view.frame, book: actualBook)
+            readingScrollView.redraw(textViewMetadata, book: actualBook)
+        }
     }
     
+    // MARK: Helper Functions
     func getDefaultBook() -> Book? {
         let genesisRequest = NSFetchRequest(entityName: "Book")
         let translationCode: String = NSUserDefaults.standardUserDefaults().objectForKey("selectedTranslation") as! String
@@ -69,15 +95,6 @@ class ReadingViewController: UIViewController {
             return result[0]
         } else {
             return nil
-        }
-    }
-    
-    func reloadText() {
-        if let actualBook = self.currentBook {
-            readingScrollView.textViewMetadata = createTextViewMetadataWithFrame(view.frame, book: actualBook)
-            
-            frameForMetadata = self.view.frame
-            readingScrollView.redraw()
         }
     }
 }

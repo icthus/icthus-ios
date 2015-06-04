@@ -26,6 +26,8 @@
 		C9221D09190A9171008F3C5A /* iPad Show Verses Top.png in Resources */ = {isa = PBXBuildFile; fileRef = C9221D05190A9171008F3C5A /* iPad Show Verses Top.png */; };
 		C9221D0A190A9171008F3C5A /* iPad Show Verses Top@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9221D06190A9171008F3C5A /* iPad Show Verses Top@2x.png */; };
 		C9221D0B190A9171008F3C5A /* iPad Show Verses@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9221D07190A9171008F3C5A /* iPad Show Verses@2x.png */; };
+		C922F0721B1F681800CF6CF0 /* ReadingStyleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C922F0711B1F681800CF6CF0 /* ReadingStyleManager.swift */; };
+		C922F0741B1F78B200CF6CF0 /* BibleTextViewMetadataGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C922F0731B1F78B200CF6CF0 /* BibleTextViewMetadataGenerator.swift */; };
 		C9256B0717DFC5D400646198 /* BookLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = C9256B0617DFC5D400646198 /* BookLocation.m */; };
 		C92762E119891D8600BC4F46 /* ToggleColorModeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C92762E019891D8600BC4F46 /* ToggleColorModeTableViewCell.m */; };
 		C933D94719CA174300445B3C /* CopyrightButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C933D94619CA174300445B3C /* CopyrightButton.swift */; };
@@ -138,6 +140,8 @@
 		C9221D05190A9171008F3C5A /* iPad Show Verses Top.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPad Show Verses Top.png"; sourceTree = "<group>"; };
 		C9221D06190A9171008F3C5A /* iPad Show Verses Top@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPad Show Verses Top@2x.png"; sourceTree = "<group>"; };
 		C9221D07190A9171008F3C5A /* iPad Show Verses@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPad Show Verses@2x.png"; sourceTree = "<group>"; };
+		C922F0711B1F681800CF6CF0 /* ReadingStyleManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadingStyleManager.swift; sourceTree = "<group>"; };
+		C922F0731B1F78B200CF6CF0 /* BibleTextViewMetadataGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BibleTextViewMetadataGenerator.swift; sourceTree = "<group>"; };
 		C9256B0517DFC5D400646198 /* BookLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookLocation.h; sourceTree = "<group>"; };
 		C9256B0617DFC5D400646198 /* BookLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookLocation.m; sourceTree = "<group>"; };
 		C92762DB198904A500BC4F46 /* IcthusColorMode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IcthusColorMode.h; sourceTree = "<group>"; };
@@ -292,8 +296,10 @@
 				C9D071DB17DE8C2000B535ED /* ReadingViewOld.m */,
 				C9DA11A71B0F9DF000055A13 /* BibleTextView.swift */,
 				C9DA11A31B0F9B4700055A13 /* BibleTextViewMetadata.swift */,
+				C922F0731B1F78B200CF6CF0 /* BibleTextViewMetadataGenerator.swift */,
 				C9DA11A51B0F9D4A00055A13 /* BibleVerseView.swift */,
 				C9DA119F1B0F97D300055A13 /* ReadingViewController.swift */,
+				C922F0711B1F681800CF6CF0 /* ReadingStyleManager.swift */,
 				C955CDDE1B0FD2AA00AC96D7 /* BibleSplitViewDelegate.swift */,
 				C9DA11A11B0F97E400055A13 /* ReadingScrollView.swift */,
 				C9D09B5C18C7583E00AA6B67 /* CircleLabel.h */,
@@ -710,6 +716,7 @@
 				C95DAB6B18940D6D00494256 /* ChapterCollectionViewCell.m in Sources */,
 				C9D09B5E18C7583E00AA6B67 /* CircleLabel.m in Sources */,
 				C9198AFE17D94B2000077726 /* BibleTextViewOld.m in Sources */,
+				C922F0741B1F78B200CF6CF0 /* BibleTextViewMetadataGenerator.swift in Sources */,
 				C94A2B24181001790076926A /* TranslationViewController.m in Sources */,
 				C9FABFDA188D55AB00C3FC05 /* BooksViewController.m in Sources */,
 				C9C324F818E1CAE5005D0BAD /* SendMailTableViewCell.m in Sources */,
@@ -726,6 +733,7 @@
 				C914C2F9199BFD8600111B99 /* IcthusWhatsNewViewController.m in Sources */,
 				C9C64DF019A53D0400013FFD /* VerseOverlayView.m in Sources */,
 				C9006AEF1B0B75A7004417EF /* AnimatedImageView.swift in Sources */,
+				C922F0721B1F681800CF6CF0 /* ReadingStyleManager.swift in Sources */,
 				C94C254318F487DC008E9CD4 /* CollectionViewLeftFlowLayout.m in Sources */,
 				C9D071DC17DE8C2000B535ED /* ReadingViewOld.m in Sources */,
 				C9431B0C195F8C8A00B4B69C /* ColorManager.m in Sources */,

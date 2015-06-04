@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="rS3-R9-Ivy">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="rS3-R9-Ivy">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -687,7 +687,7 @@ A8KpA
         <!--Reading View Controller-->
         <scene sceneID="sJ8-ag-o0I">
             <objects>
-                <viewController id="ibv-lJ-hHP" customClass="ReadingViewController" sceneMemberID="viewController">
+                <viewController id="ibv-lJ-hHP" customClass="ReadingViewController" customModule="Icthus" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7tM-8r-pqi"/>
                         <viewControllerLayoutGuide type="bottom" id="f4Q-5m-HeN"/>
@@ -721,6 +721,9 @@ A8KpA
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="readingScrollView" destination="K5V-bj-KpE" id="qoF-y2-vFU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ngv-Cf-AEE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
