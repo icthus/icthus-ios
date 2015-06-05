@@ -21,7 +21,7 @@ BibleVerseViewOld *verseView;
 @synthesize chapters = _chapters;
 @synthesize verses = _verses;
 
-- (id)initWithFrameInfo:(BibleFrameInfo *)frameInfo andParent:(ReadingScrollView *)parentView {
+- (id)initWithFrameInfo:(BibleFrameInfo *)frameInfo andParent:(ReadingView *)parentView {
     self = [super initWithFrame:frameInfo.frame];
     if (self) {
         self.opaque = NO;

@@ -212,7 +212,7 @@
                         <viewControllerLayoutGuide type="top" id="aTV-tD-Pwn"/>
                         <viewControllerLayoutGuide type="bottom" id="CQe-kz-xjv"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="C4T-3F-a0u" customClass="ReadingScrollView" customModule="Icthus" customModuleProvider="target">
+                    <view key="view" contentMode="scaleToFill" id="C4T-3F-a0u" customClass="ReadingView" customModule="Icthus" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="960"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -229,7 +229,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="readingScrollView" destination="C4T-3F-a0u" id="ntS-tH-fYD"/>
+                        <outlet property="readingView" destination="C4T-3F-a0u" id="yk1-St-Ddl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E4p-H1-CIC" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -640,6 +640,23 @@ A8KpA
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zZG-mG-ht4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3795" y="1313"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="q7f-l4-bPm">
+            <objects>
+                <viewController id="Kbw-OC-OtL" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gZi-I4-Jg4"/>
+                        <viewControllerLayoutGuide type="bottom" id="wg6-Hp-MUm"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="5Ds-cv-Gld">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WcN-Md-gdS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
         </scene>
     </scenes>
     <resources>

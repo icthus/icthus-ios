@@ -7,5 +7,22 @@
 //
 
 class BibleTextView: UITextView {
+    let metadata: BibleTextViewMetadata
+    
+    init(metadata: BibleTextViewMetadata, book: Book) {
+        self.metadata = metadata
+        super.init(frame: metadata.frame, textContainer:nil)
+        
+        
+        var displayString: NSString = BibleMarkupParser().displayStringFromMarkup(book.text)
+        displayString = displayString.substringWithRange(metadata.textRange)
+        var text = ReadingStyleManager.attributedStringFromString(displayString as String)
+        self.attributedText = text
+        self.editable = false
+    }
+
+    required init(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
 }

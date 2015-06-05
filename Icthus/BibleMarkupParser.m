@@ -9,8 +9,7 @@
 #import "BibleMarkupParser.h"
 #import "BookLocation.h"
 #import "AppDelegate.h"
-#import "BibleFrameInfo.h"
-
+#import "Icthus-Swift.h"
 
 @implementation BibleMarkupParser
 {
@@ -63,8 +62,19 @@
     findingVersesAndChaptersForString = YES;
     
     frameData = frameDataArray;
+    
+    for (BibleTextViewMetadata *frameInfo in frameData) {
+        NSUInteger length = frameInfo.lineRanges.count;
+        frameInfo.chapters = [[NSMutableArray alloc] initWithCapacity:length];
+        frameInfo.verses   = [[NSMutableArray alloc] initWithCapacity:length];
+        for (int i = 0; i < length; i++) {
+            [frameInfo.chapters addObject:[[NSMutableArray alloc] init]];
+            [frameInfo.verses   addObject:[[NSMutableArray alloc] init]];
+        }
+    }
+    
     if ([frameData count] > 0) {
-        BibleFrameInfo *frameInfo = [frameData firstObject];
+        BibleTextViewMetadata *frameInfo = [frameData firstObject];
         frameCount = [frameData count];
         lineCount = [frameInfo.lineRanges count];
         displayStringRange = [[frameInfo.lineRanges firstObject] rangeValue];
@@ -155,7 +165,7 @@
         if ([elementName isEqualToString:@"v"]) {
             NSString *i = [attributeDict objectForKey:@"i"];
             if ([i length]) {
-                NSMutableArray *versesForLine = [[(BibleFrameInfo *)[frameData objectAtIndex:frameIndex] verses] objectAtIndex:lineIndex];
+                NSMutableArray *versesForLine = [[(BibleTextViewMetadata *)[frameData objectAtIndex:frameIndex] verses] objectAtIndex:lineIndex];
                 [versesForLine addObject:i];
             }
         }
@@ -168,7 +178,7 @@
         }
         
         if ([elementName isEqualToString:@"v"] || [elementName isEqualToString:@"c"]) {
-            NSMutableArray *chaptersForLine = [[(BibleFrameInfo *)[frameData objectAtIndex:frameIndex] chapters] objectAtIndex:lineIndex];
+            NSMutableArray *chaptersForLine = [[(BibleTextViewMetadata *)[frameData objectAtIndex:frameIndex] chapters] objectAtIndex:lineIndex];
             [chaptersForLine addObject:[NSString stringWithFormat:@"%d", currentChapter]];
         }
     }
@@ -202,7 +212,7 @@
                 }
                 lineCount = [[[frameData objectAtIndex:frameIndex] lineRanges] count];
             }
-            BibleFrameInfo *frameInfo = [frameData objectAtIndex:frameIndex];
+            BibleTextViewMetadata *frameInfo = [frameData objectAtIndex:frameIndex];
             displayStringRange = [[frameInfo.lineRanges objectAtIndex:lineIndex] rangeValue];
         }
     }

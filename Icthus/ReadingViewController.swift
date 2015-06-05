@@ -11,7 +11,7 @@ import Foundation
 class ReadingViewController: UIViewController {
     
     // MARK: Properties
-    @IBOutlet private var readingScrollView: ReadingScrollView!
+    @IBOutlet private var readingView: ReadingView!
     private var appDel: AppDelegate
     private var moc: NSManagedObjectContext
     private var frameForMetadata: CGRect?
@@ -72,11 +72,11 @@ class ReadingViewController: UIViewController {
     }
     
     func refreshText() {
-        // If we have a book, generate metadata and hand it to the readingScrollView for drawing
+        // If we have a book, generate metadata and hand it to the readingView for drawing
         if let actualBook = self.currentBook {
             frameForMetadata = self.view.frame
             textViewMetadata = BibleTextViewMetadataGenerator.generateWithFrame(view.frame, book: actualBook)
-            readingScrollView.redraw(textViewMetadata, book: actualBook)
+            readingView.redraw(textViewMetadata, book: actualBook)
         }
     }
     

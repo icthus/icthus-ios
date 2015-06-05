@@ -692,21 +692,10 @@ A8KpA
                         <viewControllerLayoutGuide type="top" id="7tM-8r-pqi"/>
                         <viewControllerLayoutGuide type="bottom" id="f4Q-5m-HeN"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="crp-56-jro">
+                    <view key="view" contentMode="scaleToFill" id="crp-56-jro" customClass="ReadingView" customModule="Icthus" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K5V-bj-KpE" customClass="ReadingScrollView" customModule="Icthus" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
-                            </scrollView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="f4Q-5m-HeN" firstAttribute="top" secondItem="K5V-bj-KpE" secondAttribute="bottom" id="4lb-QG-e1q"/>
-                            <constraint firstItem="K5V-bj-KpE" firstAttribute="top" secondItem="7tM-8r-pqi" secondAttribute="bottom" id="JbD-jN-wMi"/>
-                            <constraint firstAttribute="trailing" secondItem="K5V-bj-KpE" secondAttribute="trailing" id="LHj-nU-7m6"/>
-                            <constraint firstItem="K5V-bj-KpE" firstAttribute="leading" secondItem="crp-56-jro" secondAttribute="leading" id="bhP-Yd-gwd"/>
-                        </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" id="ky5-FA-OfL">
@@ -722,7 +711,7 @@ A8KpA
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="readingScrollView" destination="K5V-bj-KpE" id="qoF-y2-vFU"/>
+                        <outlet property="readingView" destination="crp-56-jro" id="n0U-Bq-TaS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ngv-Cf-AEE" userLabel="First Responder" sceneMemberID="firstResponder"/>

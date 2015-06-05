@@ -8,16 +8,18 @@
 
 import Foundation
 
-class BibleTextViewMetadata {
+class BibleTextViewMetadata: NSObject {
     var frame: CGRect
     var textRange: NSRange
-    var chapters: Array<Array<Int>>
-    var verses: Array<Array<Int>>
+    var chapters: NSMutableArray
+    var verses: NSMutableArray
+    var lineRanges: Array<NSRange>
     
-    init(frame: CGRect, textRange: NSRange, chapters: Array<Array<Int>>, verses: Array<Array<Int>>) {
+    init(frame: CGRect, textRange: NSRange, lineRanges: Array<NSRange>) {
         self.frame = frame
         self.textRange = textRange
-        self.chapters = chapters
-        self.verses = verses
+        self.lineRanges = lineRanges
+        self.chapters = NSMutableArray()
+        self.verses = NSMutableArray()
     }
 }
