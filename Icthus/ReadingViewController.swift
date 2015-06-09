@@ -64,10 +64,17 @@ class ReadingViewController: UIViewController {
     }
     
     // MARK: View Lifecycle
+    override func viewDidLoad() {
+        edgesForExtendedLayout = UIRectEdge.All
+    }
+    
     override func viewDidLayoutSubviews() {
         // If the frame changes, reload text
         if (frameForMetadata != self.view.frame) {
+            self.readingView.frame = self.view.frame
             refreshText()
+            println(self.view.frame)
+            println(self.readingView.frame)
         }
     }
     
@@ -75,7 +82,7 @@ class ReadingViewController: UIViewController {
         // If we have a book, generate metadata and hand it to the readingView for drawing
         if let actualBook = self.currentBook {
             frameForMetadata = self.view.frame
-            textViewMetadata = BibleTextViewMetadataGenerator.generateWithFrame(view.frame, book: actualBook)
+            textViewMetadata = BibleTextViewMetadataGenerator.generateWithFrame(self.view.frame, book: actualBook)
             readingView.redraw(textViewMetadata, book: actualBook)
         }
     }

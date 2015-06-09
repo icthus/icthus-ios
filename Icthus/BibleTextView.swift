@@ -19,10 +19,13 @@ class BibleTextView: UITextView {
         var text = ReadingStyleManager.attributedStringFromString(displayString as String)
         self.attributedText = text
         self.editable = false
+        self.bounces = false
+        self.scrollEnabled = false
+        self.layer.borderWidth = 1
+        self.textContainerInset = UIEdgeInsetsZero;
     }
 
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
 }

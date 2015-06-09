@@ -13,7 +13,7 @@ class ReadingView: UIView, UIScrollViewDelegate {
     private var textViews: Array<BibleTextView?> = []
     private var currentBook: Book?
     private var lastFrameIndex = 0
-    private let numberOfFramesToShow = 7
+    private let numberOfFramesToShow = 15
     private var scrollView: UIScrollView
     
     required init(coder aDecoder: NSCoder) {
@@ -23,10 +23,17 @@ class ReadingView: UIView, UIScrollViewDelegate {
     
     private var currentFrameIndex: Int {
         get {
-            // We assume that all textView frames are the same except for the last one.
             if textViewMetadata.count > 0 {
-                let frameHeight = textViewMetadata[0].frame.height
-                return Int(floor(scrollView.contentOffset.y / frameHeight))
+                var yPos: CGFloat = 0
+                var index = 0
+                for datum in textViewMetadata {
+                    yPos += datum.frame.size.height
+                    if yPos >= self.scrollView.contentOffset.y {
+                        break
+                    }
+                    index++
+                }
+                return index
             } else {
                 return 0
             }
@@ -43,6 +50,10 @@ class ReadingView: UIView, UIScrollViewDelegate {
         self.addSubview(scrollView)
     }
     
+    override func layoutSubviews() {
+        scrollView.frame = self.frame
+    }
+    
     func redraw(metadata: Array<BibleTextViewMetadata>, book: Book, location: BookLocation? = nil) {
         textViewMetadata = metadata
         textViews = Array<BibleTextView?>(count: metadata.count, repeatedValue: nil)
@@ -55,6 +66,7 @@ class ReadingView: UIView, UIScrollViewDelegate {
         if let actualLocation = location {
             self.showLocation(actualLocation)
         } else {
+//            scrollView.contentOffset = CGPoint(x: 0, y: self.frame.origin.y - scrollView.contentInset.top)
             scrollView.contentOffset = self.frame.origin
         }
         
@@ -90,6 +102,9 @@ class ReadingView: UIView, UIScrollViewDelegate {
     }
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
+        println("contentOffset: \(scrollView.contentOffset.y)")
+        println("self.frame: \(self.frame)")
+        println("self.scrollView.frame: \(scrollView.frame)")
         if currentFrameIndex != lastFrameIndex {
             addAndRemoveTextViews()
         }

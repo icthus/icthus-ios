@@ -687,15 +687,27 @@ A8KpA
         <!--Reading View Controller-->
         <scene sceneID="sJ8-ag-o0I">
             <objects>
-                <viewController id="ibv-lJ-hHP" customClass="ReadingViewController" customModule="Icthus" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController extendedLayoutIncludesOpaqueBars="YES" id="ibv-lJ-hHP" customClass="ReadingViewController" customModule="Icthus" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7tM-8r-pqi"/>
                         <viewControllerLayoutGuide type="bottom" id="f4Q-5m-HeN"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="crp-56-jro" customClass="ReadingView" customModule="Icthus" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                    <view key="view" contentMode="scaleToFill" id="crp-56-jro">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W2d-6V-Mtx" customClass="ReadingView" customModule="Icthus" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="W2d-6V-Mtx" firstAttribute="leading" secondItem="crp-56-jro" secondAttribute="leading" id="12T-z4-XX3"/>
+                            <constraint firstItem="W2d-6V-Mtx" firstAttribute="top" secondItem="7tM-8r-pqi" secondAttribute="bottom" id="QM6-00-LRc"/>
+                            <constraint firstItem="f4Q-5m-HeN" firstAttribute="top" secondItem="W2d-6V-Mtx" secondAttribute="bottom" id="YIN-ga-MW6"/>
+                            <constraint firstAttribute="trailing" secondItem="W2d-6V-Mtx" secondAttribute="trailing" id="xhP-oc-RU1"/>
+                        </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" id="ky5-FA-OfL">
@@ -711,12 +723,12 @@ A8KpA
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="readingView" destination="crp-56-jro" id="n0U-Bq-TaS"/>
+                        <outlet property="readingView" destination="W2d-6V-Mtx" id="duw-2d-BhT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ngv-Cf-AEE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="437" y="64"/>
+            <point key="canvasLocation" x="437" y="70"/>
         </scene>
         <!--History-->
         <scene sceneID="GW3-gE-bzx">
