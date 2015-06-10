@@ -64,17 +64,11 @@ class ReadingViewController: UIViewController {
     }
     
     // MARK: View Lifecycle
-    override func viewDidLoad() {
-        edgesForExtendedLayout = UIRectEdge.All
-    }
-    
     override func viewDidLayoutSubviews() {
+        println("viewDidLayoutSubviews \(self.view.frame)")
         // If the frame changes, reload text
         if (frameForMetadata != self.view.frame) {
-            self.readingView.frame = self.view.frame
             refreshText()
-            println(self.view.frame)
-            println(self.readingView.frame)
         }
     }
     
@@ -82,7 +76,9 @@ class ReadingViewController: UIViewController {
         // If we have a book, generate metadata and hand it to the readingView for drawing
         if let actualBook = self.currentBook {
             frameForMetadata = self.view.frame
-            textViewMetadata = BibleTextViewMetadataGenerator.generateWithFrame(self.view.frame, book: actualBook)
+            // For some awful reason the frame of this view controller has an origin of (0, 64). I can't figure out how to fix it in the storyboard so I'm doing this.
+            let adjustedFrame = CGRect(origin: CGPoint(x: 0, y: 0), size: self.view.frame.size)
+            textViewMetadata = BibleTextViewMetadataGenerator.generateWithFrame(adjustedFrame, book: actualBook)
             readingView.redraw(textViewMetadata, book: actualBook)
         }
     }

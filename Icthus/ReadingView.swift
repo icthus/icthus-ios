@@ -43,6 +43,8 @@ class ReadingView: UIView, UIScrollViewDelegate {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        self.frame = CGRectOffset(self.frame, 64, 0)
+        
         // Configure the scrollView
         scrollView = UIScrollView(frame: self.frame)
         scrollView.delegate = self
@@ -66,7 +68,6 @@ class ReadingView: UIView, UIScrollViewDelegate {
         if let actualLocation = location {
             self.showLocation(actualLocation)
         } else {
-//            scrollView.contentOffset = CGPoint(x: 0, y: self.frame.origin.y - scrollView.contentInset.top)
             scrollView.contentOffset = self.frame.origin
         }
         
@@ -102,9 +103,6 @@ class ReadingView: UIView, UIScrollViewDelegate {
     }
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
-        println("contentOffset: \(scrollView.contentOffset.y)")
-        println("self.frame: \(self.frame)")
-        println("self.scrollView.frame: \(scrollView.frame)")
         if currentFrameIndex != lastFrameIndex {
             addAndRemoveTextViews()
         }

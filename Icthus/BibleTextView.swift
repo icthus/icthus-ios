@@ -21,7 +21,6 @@ class BibleTextView: UITextView {
         self.editable = false
         self.bounces = false
         self.scrollEnabled = false
-        self.layer.borderWidth = 1
         self.textContainerInset = UIEdgeInsetsZero;
     }
 

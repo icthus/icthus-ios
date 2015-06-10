@@ -26,6 +26,11 @@ class BibleTextViewMetadataGenerator: NSObject {
                 // recreate the sizing view with just the text that will fit
                 sizingView = UITextView(frame: sizingFrame)
                 sizingView.attributedText = remainingText
+                let textThatFits = remainingText.mutableString.substringWithRange(NSMakeRange(0, visibleTextRange.length))
+                sizingView.attributedText = ReadingStyleManager.attributedStringFromString(textThatFits)
+                sizingView.textContainerInset = UIEdgeInsetsZero;
+                sizingView.sizeToFit()
+                sizingFrame = CGRect(origin: sizingFrame.origin, size: CGSizeMake(sizingFrame.size.width, sizingView.frame.size.height))
                 
                 // Loop through each line and compute the range
                 var lineRanges = Array<NSRange>()
@@ -34,37 +39,12 @@ class BibleTextViewMetadataGenerator: NSObject {
                     var lineRange = NSRange()
                     sizingView.layoutManager.lineFragmentRectForGlyphAtIndex(indexOfFirstGlyphOnLine, effectiveRange: &lineRange)
                     lineRanges.append(lineRange)
-//                    var lineString = remainingText.string as NSString
-//                    println("\(lineString.substringWithRange(lineRange))")
                     indexOfFirstGlyphOnLine += lineRange.length
                 }
                 
-//                println("\(remainingText.string.substringToIndex(advance(remainingText.string.startIndex, visibleTextRange.length)))")
-//                println("---------------------------------------------------------")
-                
-                // create a frame that fits our visibleTextRange
-
-                let textThatFits = remainingText.mutableString.substringWithRange(NSMakeRange(0, visibleTextRange.length))
-                sizingView.attributedText = ReadingStyleManager.attributedStringFromString(textThatFits)
-                sizingView.textContainerInset = UIEdgeInsetsZero;
-//                println("height before sizeToFit \(sizingFrame)")
-                
-                sizingView.sizeToFit()
-                sizingFrame = CGRect(origin: sizingFrame.origin, size: CGSizeMake(sizingFrame.size.width, sizingView.frame.size.height))
-//                println("Frame after sizeToFit = \(sizingView.frame)")
-//
-//                let rect = sizingView.textContainer.layoutManager?.usedRectForTextContainer(sizingView.textContainer)
-//                println("length of textThatFits = \(count(textThatFits))")
-//                let inset = sizingView.textContainerInset
-//                let fittingSize = UIEdgeInsetsInsetRect(rect!, inset).size;
-//
-//                println("height after sizeToFit \(fittingSize)")
-                
-                // create the metada object and prepare the remainingText and sizingFrame for the next iteration.
                 metadata.append(
                     BibleTextViewMetadata(
                         frame: sizingFrame,
-//                        frame: sizingFrame,
                         textRange: NSMakeRange(globalLocation, visibleTextRange.length),
                         lineRanges: lineRanges
                     )
