@@ -215,19 +215,7 @@
                     <view key="view" contentMode="scaleToFill" id="C4T-3F-a0u">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="960"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="07M-wS-2Pj" customClass="ReadingView" customModule="Icthus" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="960"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="07M-wS-2Pj" firstAttribute="top" secondItem="aTV-tD-Pwn" secondAttribute="bottom" id="6eQ-74-ngN"/>
-                            <constraint firstItem="CQe-kz-xjv" firstAttribute="top" secondItem="07M-wS-2Pj" secondAttribute="bottom" id="Yfs-Ge-EXf"/>
-                            <constraint firstItem="07M-wS-2Pj" firstAttribute="leading" secondItem="C4T-3F-a0u" secondAttribute="leading" id="dCO-yk-UjJ"/>
-                            <constraint firstAttribute="trailing" secondItem="07M-wS-2Pj" secondAttribute="trailing" id="uK6-0z-GcY"/>
-                        </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <toolbarItems/>
@@ -240,9 +228,6 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <outlet property="readingView" destination="07M-wS-2Pj" id="L1G-SY-B98"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E4p-H1-CIC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
