@@ -67,23 +67,16 @@ class BibleTextView: UITextView {
         }
     }
     
-    func getOffsetForLocation(location: BookLocation, textView: BibleTextView) -> CGPoint? {
-        var i = 0
-        for i; i < metadata.lineRanges.count; i++ {
-            let lineRange = metadata.lineRanges[i]
-            let chapters = metadata.chapters[i] as! NSMutableArray
-            let verses = metadata.verses[i]as! NSMutableArray
-            
-            if chapters.containsObject(location.chapter) &&
-                verses.containsObject(location.verse) {
-                let beginningOfDocument = textView.beginningOfDocument
-                let startOfRange = textView.positionFromPosition(beginningOfDocument, offset: lineRange.location)
-                let endOfRange = textView.positionFromPosition(startOfRange!, offset: lineRange.length)
-                let textRange = textView.textRangeFromPosition(startOfRange, toPosition: endOfRange)
-                let boundingRect = textView.firstRectForRange(textRange)
-                let viewOrigin = textView.frame.origin
-                    return CGPoint(x: viewOrigin.x + boundingRect.origin.x, y: viewOrigin.y + boundingRect.origin.y)
-            }
+    func getOffsetForLocation(location: BookLocation) -> CGPoint? {
+        let lineNumber = metadata.getLineNumberForLocation(location)
+        if let actualLineNumber = lineNumber {
+            let lineRange = metadata.lineRanges[actualLineNumber]
+            let startOfRange = positionFromPosition(beginningOfDocument, offset: lineRange.location)
+            let endOfRange = positionFromPosition(startOfRange!, offset: lineRange.length)
+            let textRange = textRangeFromPosition(startOfRange, toPosition: endOfRange)
+            let boundingRect = firstRectForRange(textRange)
+            let viewOrigin = frame.origin
+            return CGPoint(x: viewOrigin.x + boundingRect.origin.x, y: viewOrigin.y + boundingRect.origin.y)
         }
         
         return nil

@@ -177,7 +177,7 @@
             }
         }
         
-        if ([elementName isEqualToString:@"v"] || [elementName isEqualToString:@"c"]) {
+        if ([elementName isEqualToString:@"v"]) {
             NSMutableArray *chaptersForLine = [[(BibleTextViewMetadata *)[frameData objectAtIndex:frameIndex] chapters] objectAtIndex:lineIndex];
             [chaptersForLine addObject:[NSString stringWithFormat:@"%d", currentChapter]];
         }

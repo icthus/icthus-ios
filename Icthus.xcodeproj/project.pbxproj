@@ -84,6 +84,7 @@
 		C9DA11A81B0F9DF000055A13 /* BibleTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DA11A71B0F9DF000055A13 /* BibleTextView.swift */; };
 		C9E57771188484A3004CC974 /* BookCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E57770188484A3004CC974 /* BookCollectionViewCell.m */; };
 		C9EB337A1B2F22A100554D68 /* BibleTextViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EB33791B2F22A100554D68 /* BibleTextViewManager.swift */; };
+		C9EB337C1B2F6EFE00554D68 /* ReadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EB337B1B2F6EFE00554D68 /* ReadingView.swift */; };
 		C9F55EDF18EF620A009E685D /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9F55EDE18EF6209009E685D /* Security.framework */; };
 		C9F55EE118EF6212009E685D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9F55EE018EF6212009E685D /* SystemConfiguration.framework */; };
 		C9FABFDA188D55AB00C3FC05 /* BooksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9FABFD9188D55AB00C3FC05 /* BooksViewController.m */; };
@@ -225,6 +226,7 @@
 		C9E5776F188484A3004CC974 /* BookCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookCollectionViewCell.h; sourceTree = "<group>"; };
 		C9E57770188484A3004CC974 /* BookCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookCollectionViewCell.m; sourceTree = "<group>"; };
 		C9EB33791B2F22A100554D68 /* BibleTextViewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BibleTextViewManager.swift; sourceTree = "<group>"; };
+		C9EB337B1B2F6EFE00554D68 /* ReadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadingView.swift; sourceTree = "<group>"; };
 		C9F55EDE18EF6209009E685D /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		C9F55EE018EF6212009E685D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		C9FABFD8188D55AB00C3FC05 /* BooksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BooksViewController.h; sourceTree = "<group>"; };
@@ -298,6 +300,7 @@
 				C9DA11A31B0F9B4700055A13 /* BibleTextViewMetadata.swift */,
 				C922F0731B1F78B200CF6CF0 /* BibleTextViewMetadataGenerator.swift */,
 				C9DA11A51B0F9D4A00055A13 /* BibleVerseView.swift */,
+				C9EB337B1B2F6EFE00554D68 /* ReadingView.swift */,
 				C9DA119F1B0F97D300055A13 /* ReadingViewController.swift */,
 				C922F0711B1F681800CF6CF0 /* ReadingStyleManager.swift */,
 				C955CDDE1B0FD2AA00AC96D7 /* BibleSplitViewDelegate.swift */,
@@ -730,6 +733,7 @@
 				C99F2FC417CCDC01008AF602 /* ChapterPickerViewController.m in Sources */,
 				C933D94719CA174300445B3C /* CopyrightButton.swift in Sources */,
 				C914C2F9199BFD8600111B99 /* IcthusWhatsNewViewController.m in Sources */,
+				C9EB337C1B2F6EFE00554D68 /* ReadingView.swift in Sources */,
 				C9C64DF019A53D0400013FFD /* VerseOverlayView.m in Sources */,
 				C9006AEF1B0B75A7004417EF /* AnimatedImageView.swift in Sources */,
 				C922F0721B1F681800CF6CF0 /* ReadingStyleManager.swift in Sources */,

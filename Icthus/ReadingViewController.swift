@@ -26,15 +26,22 @@ class ReadingViewController: UIViewController, UIScrollViewDelegate {
             if let actualBook = currentBook {
                 // TODO: Present error message that current book does not exist in this translation
                 currentBook = translation?.getBookWithCode(actualBook.code)
-                refreshText()
+                refreshTextWithLocation(actualBook.getLocation())
             }
         }
     }
     
+    private var _location: BookLocation?
     var location: BookLocation? {
-        didSet {
-            currentBook = location?.book
-            refreshText()
+        get {
+            return _location
+        }
+        set(newLocation) {
+            _location = newLocation
+            if let actualLocation = newLocation {
+                _book = actualLocation.book
+                refreshTextWithLocation(actualLocation)
+            }
         }
     }
     
@@ -50,7 +57,7 @@ class ReadingViewController: UIViewController, UIScrollViewDelegate {
         
         set(newBook) {
             _book = newBook
-            refreshText()
+            refreshTextWithLocation(newBook?.getLocation())
         }
     }
     
@@ -76,16 +83,18 @@ class ReadingViewController: UIViewController, UIScrollViewDelegate {
     
     // MARK: View Lifecycle
     override func viewDidLoad() {
-        scrollView = UIScrollView(frame: self.view.frame)
+        scrollView.frame = CGRect(origin: CGPoint(x: 0, y: 0), size: self.view.frame.size)
         scrollView.delegate = self
         scrollView.scrollsToTop = false
         self.view.addSubview(scrollView)
     }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         // If the frame changes, reload text
         if (frameForMetadata != self.view.frame) {
-            refreshText()
+            scrollView.frame = CGRect(origin: CGPoint(x: 0, y: 0), size: self.view.frame.size)
+            refreshTextWithLocation(currentBook?.getLocation())
         }
     }
     
@@ -94,12 +103,12 @@ class ReadingViewController: UIViewController, UIScrollViewDelegate {
         saveLocation()
     }
     
-    func refreshText() {
+    func refreshTextWithLocation(location: BookLocation?) {
         // If we have a book, generate metadata and hand it to the textViewManager for drawing
         if let actualBook = self.currentBook {
             frameForMetadata = self.view.frame
             textViewMetadata = BibleTextViewMetadataGenerator.generateWithRecommendedSize(frameForMetadata!.size, book: actualBook)
-            redraw(textViewMetadata, book: actualBook)
+            redraw(textViewMetadata, book: actualBook, location: location)
         }
     }
     
@@ -141,11 +150,13 @@ class ReadingViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func redraw(metadata: Array<BibleTextViewMetadata>, book: Book, location: BookLocation? = nil) {
+        // TODO: redraw with latest location
         textViewMetadata = metadata
+        self.clearTextViews()
         textViews = Array<BibleTextView?>(count: metadata.count, repeatedValue: nil)
         
         // Set the content size of the scroll view
-        let contentHeight = textViewMetadata.reduce(self.scrollView.superview!.frame.origin.y) { $0 + $1.frame.size.height }
+        let contentHeight = textViewMetadata.reduce(scrollView.frame.origin.y) { $0 + $1.frame.size.height }
         scrollView.contentSize = CGSizeMake(self.view.frame.size.width, contentHeight)
         
         if let actualLocation = location {
@@ -159,25 +170,48 @@ class ReadingViewController: UIViewController, UIScrollViewDelegate {
     
     private func showLocation(location: BookLocation) {
         // Find the metadatum that contains this location.
-        var i = 0
-        for i; i < textViewMetadata.count; i++ {
-            let metadatum = textViewMetadata[i]
-            if NSLocationInRange(location.chapter.integerValue, metadatum.chapterRange).boolValue &&
-                NSLocationInRange(location.verse.integerValue, metadatum.verseRange).boolValue {
-                break
+        if let metadatum = textViewMetadata.filter({$0.containsLocation(location)}).first {
+            let textView = BibleTextView(metadata: metadatum, book: location.book)
+            let offset = textView.getOffsetForLocation(location)
+            if let actualOffset = offset {
+                self.scrollView.contentOffset = actualOffset
             }
+        } else {
+            println("Warning: Could not find a BibleTextViewMetadata to display location \(location.book.shortName) \(location.chapter):\(location.verse)")
         }
         
-        // Find the correct line to show
-        let metadatum = textViewMetadata[i]
-        let textView = BibleTextView(metadata: metadatum, book: location.book)
-        let offset = textView.getOffsetForLocation(location, textView: textView)
-        if let actualOffset = offset {
-            self.scrollView.contentOffset = actualOffset
-        }
     }
     
     func saveLocation() {
+        // Find the textView currently being viewed
+        var position: CGFloat = 0
+        var i = 0;
+        for i = 0; i < textViewMetadata.count; i++ {
+            var metadatum = textViewMetadata[i]
+            if scrollView.contentOffset.y < position + metadatum.frame.size.height {
+                break;
+            }
+            position += metadatum.frame.size.height
+        }
+        
+        if textViews.count < 1 {
+            return
+        }
+        
+        let currentTextView = textViews[i]
+        if let textView = currentTextView {
+            // Get the text position of the first character of the first line that's in view
+            let firstLineLocation = scrollView.contentOffset.y - position
+            let charPosition = textView.closestPositionToPoint(CGPoint(x: scrollView.frame.origin.x, y: firstLineLocation))
+            let charIndex = textView.offsetFromPosition(textView.beginningOfDocument, toPosition: charPosition)
+            if let book = currentBook {
+                _location = BibleMarkupParser().saveLocationForCharAtIndex(Int32(charIndex), forText: book.text, andBook: book)
+                println("Saved location \(currentBook?.shortName) \(location?.chapter):\(location?.verse)")
+            }
+        } else {
+            println("Warning: location could not be saved because the BibleTextView at the current location is not instantiated.")
+        }
+        
     }
     
     private func addAndRemoveTextViews() {
@@ -199,6 +233,11 @@ class ReadingViewController: UIViewController, UIScrollViewDelegate {
         }
     }
     
+    private func clearTextViews() {
+        textViews.map() { $0?.removeFromSuperview() }
+        textViews = Array<BibleTextView>()
+    }
+    
     private func textViewWithIndexShouldBeInstantiated(textViewIndex: Int) -> Bool {
         let margin = numberOfFramesToShow / 2
         return abs(currentFrameIndex - textViewIndex) <= margin
@@ -208,5 +247,13 @@ class ReadingViewController: UIViewController, UIScrollViewDelegate {
         if currentFrameIndex != lastFrameIndex {
             addAndRemoveTextViews()
         }
+    }
+    
+    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+        saveLocation()
+    }
+    
+    func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        saveLocation()
     }
 }
