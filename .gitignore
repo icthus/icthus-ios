@@ -26,6 +26,10 @@
 #
 #########################
 
+Icthus.xcworkspace/xcshareddata/Icthus.xccheckout
+Icthus/Archive.zip
+Icthus/IcthusPrepopulatedStore.sqlite-*
+
 #####
 # OS X temporary files that should never be committed
 #
