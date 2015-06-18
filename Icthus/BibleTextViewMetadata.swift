@@ -15,44 +15,6 @@ class BibleTextViewMetadata: NSObject {
     var verses: NSMutableArray
     var lineRanges: Array<NSRange>
     
-//    var chapterRange: NSRange {
-//        get {
-//            var firstChapter: Int? = nil
-//            var lastChapter: Int? = nil
-//            for list in chapters {
-//                if let chapterList = list as? NSMutableArray {
-//                    for chapter in chapterList {
-//                        if let intChapter = (chapter as? String)?.toInt() {
-//                            if firstChapter == nil {
-//                                firstChapter = intChapter
-//                                lastChapter = intChapter
-//                            }
-//                            if intChapter > lastChapter {
-//                                lastChapter = intChapter
-//                            }
-//                        }
-//                    }
-//                }
-//            }
-//            
-//            if let actualFirstChapter = firstChapter, let actualLastChapter = lastChapter {
-//                return NSMakeRange(actualFirstChapter, actualLastChapter - actualFirstChapter)
-//            } else {
-//                return NSRange(location: 0, length: 0)
-//            }
-//        }
-//    }
-//    
-//    var verseRange: NSRange {
-//        get {
-//            if let firstVerse = (verses.firstObject?.firstObject as? String)?.toInt(),
-//                let lastVerse = (verses.lastObject?.lastObject as? String)?.toInt() {
-//                    return NSMakeRange(firstVerse, lastVerse - firstVerse)
-//            }
-//            return NSRange(location: 0, length: 0)
-//        }
-//    }
-    
     init(frame: CGRect, textRange: NSRange, lineRanges: Array<NSRange>) {
         self.frame = frame
         self.textRange = textRange

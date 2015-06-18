@@ -77,7 +77,8 @@
         BibleTextViewMetadata *frameInfo = [frameData firstObject];
         frameCount = [frameData count];
         lineCount = [frameInfo.lineRanges count];
-        displayStringRange = [[frameInfo.lineRanges firstObject] rangeValue];
+        NSRange relativeLineRange = [[frameInfo.lineRanges objectAtIndex:lineIndex] rangeValue];
+        displayStringRange = NSMakeRange(frameInfo.textRange.location + relativeLineRange.location, relativeLineRange.length);
     }
     NSData *data = [markupText dataUsingEncoding:NSUTF8StringEncoding];
     NSXMLParser *parser = [[NSXMLParser alloc] initWithData:data];
@@ -213,7 +214,8 @@
                 lineCount = [[[frameData objectAtIndex:frameIndex] lineRanges] count];
             }
             BibleTextViewMetadata *frameInfo = [frameData objectAtIndex:frameIndex];
-            displayStringRange = [[frameInfo.lineRanges objectAtIndex:lineIndex] rangeValue];
+            NSRange relativeLineRange = [[frameInfo.lineRanges objectAtIndex:lineIndex] rangeValue];
+            displayStringRange = NSMakeRange(frameInfo.textRange.location + relativeLineRange.location, relativeLineRange.length);
         }
     }
 }
