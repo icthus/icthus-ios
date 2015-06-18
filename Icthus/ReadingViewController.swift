@@ -10,6 +10,77 @@ import Foundation
 
 class ReadingViewController: UIViewController, UIScrollViewDelegate {
     
+    enum ReadingViewState {
+        case statusQuo
+        case frameChanged(ReadingViewController, Book)
+        case bookChanged(ReadingViewController, Book, BookLocation?)
+        case translationChanged(ReadingViewController, Translation)
+        case locationChanged(ReadingViewController, BookLocation)
+        case needsNewMetadata(ReadingViewController, Book, BookLocation?)
+        case needsLatestLocation(ReadingViewController, Book, BookLocation?, [BibleTextViewMetadata])
+        case needsTextViewsCleared(ReadingViewController, Book, BookLocation, [BibleTextViewMetadata])
+        case needsContentOffset(ReadingViewController, Book, BookLocation, [BibleTextViewMetadata])
+        case needsTextViewsCreated(ReadingViewController, [BibleTextViewMetadata])
+        
+        func presentText() {
+            switch self {
+                
+            case .statusQuo:
+                return
+                
+            case .frameChanged(let vc, let book):
+                vc.saveLocation()
+                let location = vc._location
+                ReadingViewState.needsNewMetadata(vc, book, nil).presentText()
+                
+            case .bookChanged(let vc, let book, let location):
+                ReadingViewState.needsNewMetadata(vc, book, location).presentText()
+                
+            case .translationChanged(let vc, let translation):
+                let currentBook = vc.currentBook
+                if let actualBook = currentBook {
+                    let newBook = translation.getBookWithCode(actualBook.code)
+                    vc._book = newBook
+                    ReadingViewState.bookChanged(vc, newBook, nil).presentText()
+                }
+                
+            case .locationChanged(let vc, let location):
+                if vc.currentBook?.code == location.bookCode {
+                    ReadingViewState.needsContentOffset(vc, location.book, location, vc.textViewMetadata).presentText()
+                } else {
+                    vc._book = location.book
+                    ReadingViewState.bookChanged(vc, location.book, location).presentText()
+                }
+                
+            case .needsNewMetadata(let vc, let book, let location):
+                let metadata = vc.getMetadataForCurrentFrame()
+                vc.textViewMetadata = metadata
+                ReadingViewState.needsLatestLocation(vc, book, location, metadata).presentText()
+                
+            case .needsLatestLocation(let vc, let book, var location, let metadata):
+                if location == nil {
+                    location = book.getLocation()
+                }
+                ReadingViewState.needsTextViewsCleared(vc, book, location!, metadata).presentText()
+                
+            case .needsTextViewsCleared(let vc, let book, let location, let metadata):
+                vc.clearTextViews()
+                vc.textViews = Array<BibleTextView?>(count: metadata.count, repeatedValue: nil)
+                ReadingViewState.needsContentOffset(vc, book, location, metadata).presentText()
+                
+            case .needsContentOffset(let vc, let book, let location, let metadata):
+                let contentHeight = metadata.reduce(vc.scrollView.frame.origin.y) { $0 + $1.frame.size.height }
+                vc.scrollView.contentSize = CGSizeMake(vc.view.frame.size.width, contentHeight)
+                vc.showLocation(location)
+                ReadingViewState.needsTextViewsCreated(vc, metadata).presentText()
+                
+            case .needsTextViewsCreated(let vc, let metadata):
+                vc.addAndRemoveTextViews()
+                ReadingViewState.statusQuo.presentText()
+            }
+        }
+    }
+    
     //////////////////////////////////////////////////
     // MARK: Public Properties
     //////////////////////////////////////////////////
@@ -25,29 +96,24 @@ class ReadingViewController: UIViewController, UIScrollViewDelegate {
         
         set(newBook) {
             _book = newBook
-            refreshTextWithLocation(newBook?.getLocation())
+            if let actualBook = newBook {
+                ReadingViewState.bookChanged(self, actualBook, nil).presentText()
+            }
         }
     }
     
     var location: BookLocation? {
-        get {
-            return _location
-        }
-        set(newLocation) {
-            _location = newLocation
-            if let actualLocation = newLocation {
-                _book = actualLocation.book
-                refreshTextWithLocation(actualLocation)
+        didSet {
+            if let actualLocation = location {
+                ReadingViewState.locationChanged(self, actualLocation).presentText()
             }
         }
     }
     
     var translation: Translation? {
         didSet {
-            if let actualBook = currentBook {
-                // TODO: Present error message that current book does not exist in this translation
-                currentBook = translation?.getBookWithCode(actualBook.code)
-                refreshTextWithLocation(actualBook.getLocation())
+            if let actualTranslation = translation {
+                ReadingViewState.translationChanged(self, actualTranslation).presentText()
             }
         }
     }
@@ -59,6 +125,7 @@ class ReadingViewController: UIViewController, UIScrollViewDelegate {
     private var appDel: AppDelegate
     private var moc: NSManagedObjectContext
     private var frameForMetadata: CGRect?
+    private var bookForMetadata: Book?
     private var textViewMetadata: Array<BibleTextViewMetadata> = []
     private var textViewManager: BibleTextViewManager
     private var textViews: Array<BibleTextView?> = []
@@ -105,7 +172,9 @@ class ReadingViewController: UIViewController, UIScrollViewDelegate {
         // If the frame changes, reload text
         if (frameForMetadata != self.view.frame) {
             scrollView.frame = CGRect(origin: CGPoint(x: 0, y: 0), size: self.view.frame.size)
-            refreshTextWithLocation(currentBook?.getLocation())
+            if let book = currentBook {
+                ReadingViewState.frameChanged(self, book).presentText()
+            }
         }
     }
     
@@ -140,7 +209,7 @@ class ReadingViewController: UIViewController, UIScrollViewDelegate {
             let offset = textView.getOffsetForLocation(location)
             if let actualOffset = offset {
                 let maxY = scrollView.contentSize.height - scrollView.frame.height
-                self.scrollView.contentOffset = CGPoint(x: actualOffset.x, y: min(actualOffset.y, maxY))
+                self.scrollView.contentOffset = CGPoint(x: textView.frame.origin.x, y: min(actualOffset.y, maxY))
             }
         } else {
             println("Warning: Could not find a BibleTextViewMetadata to display location \(location.book.shortName) \(location.chapter):\(location.verse)")
@@ -185,44 +254,20 @@ class ReadingViewController: UIViewController, UIScrollViewDelegate {
     // MARK: Presenting Text
     //////////////////////////////////////////////////
     
-    func getMetadataForCurrentFrame() -> [BibleTextViewMetadata] {
-        if let actualBook = self.currentBook {
-            frameForMetadata = self.view.frame
+    private func getMetadataForCurrentFrame() -> [BibleTextViewMetadata] {
+        if let oldFrame = frameForMetadata where CGRectEqualToRect(self.view.frame, oldFrame) && currentBook?.objectID == bookForMetadata?.objectID {
+                return textViewMetadata
+        }
+        
+        if let actualBook = currentBook {
+            frameForMetadata = view.frame
+            bookForMetadata = currentBook
             return BibleTextViewMetadataGenerator.generateWithRecommendedSize(frameForMetadata!.size, book: actualBook)
         } else {
             return [BibleTextViewMetadata]()
         }
     }
     
-    func refreshTextWithLocation(location: BookLocation?) {
-        // If we have a book, generate metadata and hand it to the textViewManager for drawing
-        if let actualBook = self.currentBook {
-            frameForMetadata = self.view.frame
-            textViewMetadata = BibleTextViewMetadataGenerator.generateWithRecommendedSize(frameForMetadata!.size, book: actualBook)
-            redraw(textViewMetadata, book: actualBook, location: location)
-        }
-    }
-    
-    func redraw(metadata: Array<BibleTextViewMetadata>, book: Book, location: BookLocation? = nil) {
-        // TODO: redraw with latest location
-        textViewMetadata = metadata
-        self.clearTextViews()
-        textViews = Array<BibleTextView?>(count: metadata.count, repeatedValue: nil)
-        
-        // Set the content size of the scroll view
-        let contentHeight = textViewMetadata.reduce(scrollView.frame.origin.y) { $0 + $1.frame.size.height }
-        scrollView.contentSize = CGSizeMake(self.view.frame.size.width, contentHeight)
-        
-        if let actualLocation = location {
-            self.showLocation(actualLocation)
-        } else {
-            scrollView.contentOffset = scrollView.frame.origin
-        }
-        
-        self.addAndRemoveTextViews()
-    }
-    
-
     
     private func addAndRemoveTextViews() {
         // loop through all text views and instantiate the ones close to the current one and destroy all others
