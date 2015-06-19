@@ -27,18 +27,8 @@ enum ReadingViewStateMachine {
             return
             
         case .sizeChanged(let vc, let book, let newSize):
-            // Save the location so we can restore it
-            let location = ReadingViewController.saveLocationWithOffset(
-                vc.scrollView.contentOffset,
-                metadata: vc.textViewMetadata,
-                textViews: vc.textViews,
-                book: book
-            )
-            // Give the view controller the latest location
-            vc._location = location
             vc.scrollView.frame.size = newSize
-            
-            ReadingViewStateMachine.needsNewMetadata(vc, book, newSize, location).continuation()
+            ReadingViewStateMachine.needsNewMetadata(vc, book, newSize, nil).continuation()
             
         case .bookChanged(let vc, let book, let location):
             ReadingViewStateMachine.needsNewMetadata(vc, book, vc.view.frame.size, location).continuation()
@@ -65,6 +55,7 @@ enum ReadingViewStateMachine {
                     size,
                     book: book
                 )
+                vc.generatedMetadataWithSize(size, book: book)
             } else {
                 metadata = vc.textViewMetadata
             }

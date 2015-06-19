@@ -229,6 +229,11 @@ class ReadingViewController: UIViewController, UIScrollViewDelegate {
         
     }
     
+    func generatedMetadataWithSize(size: CGSize, book: Book) {
+        sizeForMetadata = size
+        bookForMetadata = book
+    }
+    
     func addAndRemoveTextViews() {
         // loop through all text views and instantiate the ones close to the current one and destroy all others
         for i in 0..<textViewMetadata.count {

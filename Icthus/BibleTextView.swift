@@ -20,11 +20,11 @@ class BibleTextView: UITextView {
     
     static func configureTextView(textView: UITextView, text: String) {
         let attributedText = ReadingStyleManager.attributedStringFromString(text)
-        textView.attributedText = attributedText
         textView.editable = false
         textView.bounces = false
         textView.scrollEnabled = false
         textView.textContainerInset = UIEdgeInsetsZero;
+        textView.attributedText = attributedText
     }
     
     static func truncateAndResizeTextView(textView: UITextView) -> (CGRect, NSRange) {
