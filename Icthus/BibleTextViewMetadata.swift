@@ -32,8 +32,8 @@ class BibleTextViewMetadata: NSObject {
             if let chaptersForLine = self.chapters[i] as? NSMutableArray,
                 let versesForLine = self.verses[i] as? NSMutableArray {
                     for var j = 0; j < versesForLine.count; j++ {
-                        if let chapterNumber = (chaptersForLine[j] as? String)?.toInt(),
-                            let verseNumber = (versesForLine[j] as? String)?.toInt() {
+                        if let chapterNumber = Int((chaptersForLine[j] as? String)!),
+                            let verseNumber = Int(((versesForLine[j] as? String))!) {
                                 if chapterNumber == location.chapter && verseNumber == location.verse {
                                     return i
                                 }

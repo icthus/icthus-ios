@@ -71,6 +71,7 @@
 		C9A6FA2E190999EB00028B00 /* iPhone Send Feedback@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9A6FA2C190999EB00028B00 /* iPhone Send Feedback@2x.png */; };
 		C9A6FA311909A40500028B00 /* iPhone Show Verses.png in Resources */ = {isa = PBXBuildFile; fileRef = C9A6FA2F1909A40500028B00 /* iPhone Show Verses.png */; };
 		C9A6FA321909A40500028B00 /* iPhone Show Verses@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9A6FA301909A40500028B00 /* iPhone Show Verses@2x.png */; };
+		C9B1DDE81B34AD640065A53F /* ReadingViewStateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B1DDE71B34AD640065A53F /* ReadingViewStateMachine.swift */; };
 		C9BCA00A17CD3FEC00196DA8 /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BCA00917CD3FEC00196DA8 /* HistoryViewController.m */; };
 		C9BCA01017CD933500196DA8 /* Book.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BCA00F17CD933500196DA8 /* Book.m */; };
 		C9C324F818E1CAE5005D0BAD /* SendMailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C324F718E1CAE5005D0BAD /* SendMailTableViewCell.m */; };
@@ -204,6 +205,7 @@
 		C9A6FA2C190999EB00028B00 /* iPhone Send Feedback@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPhone Send Feedback@2x.png"; sourceTree = "<group>"; };
 		C9A6FA2F1909A40500028B00 /* iPhone Show Verses.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPhone Show Verses.png"; sourceTree = "<group>"; };
 		C9A6FA301909A40500028B00 /* iPhone Show Verses@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPhone Show Verses@2x.png"; sourceTree = "<group>"; };
+		C9B1DDE71B34AD640065A53F /* ReadingViewStateMachine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadingViewStateMachine.swift; sourceTree = "<group>"; };
 		C9B3056F1816D08600EE8A94 /* Icthus.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Icthus.entitlements; sourceTree = "<group>"; };
 		C9BCA00817CD3FEC00196DA8 /* HistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HistoryViewController.h; path = ../HistoryViewController.h; sourceTree = "<group>"; };
 		C9BCA00917CD3FEC00196DA8 /* HistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = HistoryViewController.m; path = ../HistoryViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
@@ -302,6 +304,7 @@
 				C9DA11A51B0F9D4A00055A13 /* BibleVerseView.swift */,
 				C9EB337B1B2F6EFE00554D68 /* ReadingView.swift */,
 				C9DA119F1B0F97D300055A13 /* ReadingViewController.swift */,
+				C9B1DDE71B34AD640065A53F /* ReadingViewStateMachine.swift */,
 				C922F0711B1F681800CF6CF0 /* ReadingStyleManager.swift */,
 				C955CDDE1B0FD2AA00AC96D7 /* BibleSplitViewDelegate.swift */,
 				C9EB33791B2F22A100554D68 /* BibleTextViewManager.swift */,
@@ -590,6 +593,7 @@
 		C9FF50E717CBB54700BA526E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Matthew Lorentz";
 				TargetAttributes = {
@@ -726,6 +730,7 @@
 				C9BCA01017CD933500196DA8 /* Book.m in Sources */,
 				C97793E81907F2890073A0AF /* BottomFadedImage.m in Sources */,
 				C9FF510517CBB54700BA526E /* AppDelegate.m in Sources */,
+				C9B1DDE81B34AD640065A53F /* ReadingViewStateMachine.swift in Sources */,
 				C9FF510117CBB54700BA526E /* main.m in Sources */,
 				C907AE0C1900139500245E1E /* IcthusTutorialViewController.m in Sources */,
 				C9DA11A81B0F9DF000055A13 /* BibleTextView.swift in Sources */,

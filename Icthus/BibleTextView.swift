@@ -71,9 +71,13 @@ class BibleTextView: UITextView {
         let lineNumber = metadata.getLineNumberForLocation(location)
         if let actualLineNumber = lineNumber {
             let lineRange = metadata.lineRanges[actualLineNumber]
-            let startOfRange = positionFromPosition(beginningOfDocument, offset: lineRange.location)
-            let endOfRange = positionFromPosition(startOfRange!, offset: lineRange.length)
-            let textRange = textRangeFromPosition(startOfRange, toPosition: endOfRange)
+            let optionalStartOfRange = positionFromPosition(beginningOfDocument, offset: lineRange.location)
+            guard let startOfRange = optionalStartOfRange else { return nil }
+            let optionalEndOfRange = positionFromPosition(startOfRange, offset: lineRange.length)
+            guard let endOfRange = optionalEndOfRange else { return nil }
+            
+            let optionalTextRange = textRangeFromPosition(startOfRange, toPosition: endOfRange)
+            guard let textRange = optionalTextRange else { return nil }
             let boundingRect = firstRectForRange(textRange)
             let viewOrigin = frame.origin
             return CGPoint(x: viewOrigin.x + boundingRect.origin.x, y: viewOrigin.y + boundingRect.origin.y)
