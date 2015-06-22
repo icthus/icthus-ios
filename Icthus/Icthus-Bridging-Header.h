@@ -6,7 +6,7 @@
 #import "AppDelegate.h"
 #import "ColorManager.h"
 #import "BibleFrameInfo.h"
-#import "BibleVerseViewOld.h"
+#import "BibleVerseView.h"
 #import "Book.h"
 #import "BookLocation.h"
 #import "BibleMarkupParser.h"

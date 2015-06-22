@@ -33,7 +33,7 @@
 		C933D94719CA174300445B3C /* CopyrightButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C933D94619CA174300445B3C /* CopyrightButton.swift */; };
 		C934B71019C88F4100AD14E7 /* TranslationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C934B70F19C88F4100AD14E7 /* TranslationTableViewCell.swift */; };
 		C9431B0C195F8C8A00B4B69C /* ColorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C9431B0B195F8C8A00B4B69C /* ColorManager.m */; };
-		C9451E90183BB0D9009FAFEE /* BibleVerseViewOld.m in Sources */ = {isa = PBXBuildFile; fileRef = C9451E8F183BB0D9009FAFEE /* BibleVerseViewOld.m */; };
+		C9451E90183BB0D9009FAFEE /* BibleVerseView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9451E8F183BB0D9009FAFEE /* BibleVerseView.m */; };
 		C94A2B24181001790076926A /* TranslationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C94A2B23181001790076926A /* TranslationViewController.m */; };
 		C94A2B271810030E0076926A /* Translation.m in Sources */ = {isa = PBXBuildFile; fileRef = C94A2B261810030E0076926A /* Translation.m */; };
 		C94C254318F487DC008E9CD4 /* CollectionViewLeftFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = C94C254218F487DC008E9CD4 /* CollectionViewLeftFlowLayout.m */; };
@@ -81,7 +81,6 @@
 		C9D09B5E18C7583E00AA6B67 /* CircleLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D09B5D18C7583E00AA6B67 /* CircleLabel.m */; };
 		C9DA11A01B0F97D300055A13 /* ReadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DA119F1B0F97D300055A13 /* ReadingViewController.swift */; };
 		C9DA11A41B0F9B4700055A13 /* BibleTextViewMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DA11A31B0F9B4700055A13 /* BibleTextViewMetadata.swift */; };
-		C9DA11A61B0F9D4A00055A13 /* BibleVerseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DA11A51B0F9D4A00055A13 /* BibleVerseView.swift */; };
 		C9DA11A81B0F9DF000055A13 /* BibleTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DA11A71B0F9DF000055A13 /* BibleTextView.swift */; };
 		C9E57771188484A3004CC974 /* BookCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9E57770188484A3004CC974 /* BookCollectionViewCell.m */; };
 		C9EB337A1B2F22A100554D68 /* BibleTextViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EB33791B2F22A100554D68 /* BibleTextViewManager.swift */; };
@@ -154,8 +153,8 @@
 		C934B70F19C88F4100AD14E7 /* TranslationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TranslationTableViewCell.swift; sourceTree = "<group>"; };
 		C9431B0A195F8C8A00B4B69C /* ColorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorManager.h; sourceTree = "<group>"; };
 		C9431B0B195F8C8A00B4B69C /* ColorManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorManager.m; sourceTree = "<group>"; };
-		C9451E8E183BB0D9009FAFEE /* BibleVerseViewOld.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BibleVerseViewOld.h; sourceTree = "<group>"; };
-		C9451E8F183BB0D9009FAFEE /* BibleVerseViewOld.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BibleVerseViewOld.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		C9451E8E183BB0D9009FAFEE /* BibleVerseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BibleVerseView.h; sourceTree = "<group>"; };
+		C9451E8F183BB0D9009FAFEE /* BibleVerseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BibleVerseView.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		C94A2B22181001790076926A /* TranslationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TranslationViewController.h; sourceTree = "<group>"; };
 		C94A2B23181001790076926A /* TranslationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TranslationViewController.m; sourceTree = "<group>"; };
 		C94A2B251810030E0076926A /* Translation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Translation.h; sourceTree = "<group>"; };
@@ -223,7 +222,6 @@
 		C9D09B5D18C7583E00AA6B67 /* CircleLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleLabel.m; sourceTree = "<group>"; };
 		C9DA119F1B0F97D300055A13 /* ReadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadingViewController.swift; sourceTree = "<group>"; };
 		C9DA11A31B0F9B4700055A13 /* BibleTextViewMetadata.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BibleTextViewMetadata.swift; sourceTree = "<group>"; };
-		C9DA11A51B0F9D4A00055A13 /* BibleVerseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BibleVerseView.swift; sourceTree = "<group>"; };
 		C9DA11A71B0F9DF000055A13 /* BibleTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BibleTextView.swift; sourceTree = "<group>"; };
 		C9E5776F188484A3004CC974 /* BookCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookCollectionViewCell.h; sourceTree = "<group>"; };
 		C9E57770188484A3004CC974 /* BookCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookCollectionViewCell.m; sourceTree = "<group>"; };
@@ -292,8 +290,8 @@
 			children = (
 				C97A1AF618E5DF57001E148D /* BibleFrameInfo.h */,
 				C97A1AF718E5DF57001E148D /* BibleFrameInfo.m */,
-				C9451E8E183BB0D9009FAFEE /* BibleVerseViewOld.h */,
-				C9451E8F183BB0D9009FAFEE /* BibleVerseViewOld.m */,
+				C9451E8E183BB0D9009FAFEE /* BibleVerseView.h */,
+				C9451E8F183BB0D9009FAFEE /* BibleVerseView.m */,
 				C9198AFC17D94B2000077726 /* BibleTextViewOld.h */,
 				C9198AFD17D94B2000077726 /* BibleTextViewOld.m */,
 				C9D071DA17DE8C2000B535ED /* ReadingViewOld.h */,
@@ -301,7 +299,6 @@
 				C9DA11A71B0F9DF000055A13 /* BibleTextView.swift */,
 				C9DA11A31B0F9B4700055A13 /* BibleTextViewMetadata.swift */,
 				C922F0731B1F78B200CF6CF0 /* BibleTextViewMetadataGenerator.swift */,
-				C9DA11A51B0F9D4A00055A13 /* BibleVerseView.swift */,
 				C9EB337B1B2F6EFE00554D68 /* ReadingView.swift */,
 				C9DA119F1B0F97D300055A13 /* ReadingViewController.swift */,
 				C9B1DDE71B34AD640065A53F /* ReadingViewStateMachine.swift */,
@@ -709,9 +706,8 @@
 			files = (
 				C9DA11A41B0F9B4700055A13 /* BibleTextViewMetadata.swift in Sources */,
 				C97793E41907E12A0073A0AF /* BottomFadedImageView.m in Sources */,
-				C9DA11A61B0F9D4A00055A13 /* BibleVerseView.swift in Sources */,
 				C955CDDF1B0FD2AA00AC96D7 /* BibleSplitViewDelegate.swift in Sources */,
-				C9451E90183BB0D9009FAFEE /* BibleVerseViewOld.m in Sources */,
+				C9451E90183BB0D9009FAFEE /* BibleVerseView.m in Sources */,
 				C92762E119891D8600BC4F46 /* ToggleColorModeTableViewCell.m in Sources */,
 				C9006AED1B0B750C004417EF /* SwipingLeftImageView.swift in Sources */,
 				C94A2B271810030E0076926A /* Translation.m in Sources */,

@@ -8,13 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreText/CoreText.h>
-#import "BibleVerseViewOld.h"
+#import "BibleVerseView.h"
 #import "BibleFrameInfo.h"
 #import "IcthusColorMode.h"
 @class ReadingViewOld;
 
 @interface BibleTextViewOld : UIView <IcthusColorMode> {
-    @private BibleVerseViewOld *verseView;
+    @private BibleVerseView *verseView;
 }
 
 @property (nonatomic, strong) NSAttributedString *attString;

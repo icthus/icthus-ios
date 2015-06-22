@@ -14,13 +14,15 @@ class BibleTextViewMetadata: NSObject {
     var chapters: NSMutableArray
     var verses: NSMutableArray
     var lineRanges: Array<NSRange>
+    var lineOrigins: Array<CGPoint>
     
-    init(frame: CGRect, textRange: NSRange, lineRanges: Array<NSRange>) {
+    init(frame: CGRect, textRange: NSRange, lineRanges: Array<NSRange>, lineOrigins: Array<CGPoint>) {
         self.frame = frame
         self.textRange = textRange
-        self.lineRanges = lineRanges
         self.chapters = NSMutableArray()
         self.verses = NSMutableArray()
+        self.lineRanges = lineRanges
+        self.lineOrigins = lineOrigins
     }
     
     func containsLocation(location: BookLocation) -> Bool {

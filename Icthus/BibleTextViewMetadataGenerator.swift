@@ -24,20 +24,15 @@ class BibleTextViewMetadataGenerator: NSObject {
             (fittingFrame, visibleTextRange) = BibleTextView.truncateAndResizeTextView(sizingView)
             
             // Figure out the range of characters for each line
-            var lineRanges = Array<NSRange>()
-            var indexOfFirstGlyphOnLine = 0
-            while indexOfFirstGlyphOnLine < visibleTextRange.length {
-                var lineRange = NSRange()
-                sizingView.layoutManager.lineFragmentRectForGlyphAtIndex(indexOfFirstGlyphOnLine, effectiveRange: &lineRange)
-                lineRanges.append(lineRange)
-                indexOfFirstGlyphOnLine += lineRange.length
-            }
+            let lineRanges = sizingView.getLineRanges()
+            let lineOrigins = sizingView.getLineOrigins()
             
             metadata.append(
                 BibleTextViewMetadata(
                     frame: CGRect(origin: sizingFrame.origin, size: fittingFrame.size),
                     textRange: NSMakeRange(globalLocation, visibleTextRange.length),
-                    lineRanges: lineRanges
+                    lineRanges: lineRanges,
+                    lineOrigins: lineOrigins
                 )
             )
             

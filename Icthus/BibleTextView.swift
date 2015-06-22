@@ -16,6 +16,8 @@ class BibleTextView: UITextView {
         var displayString: NSString = BibleMarkupParser().displayStringFromMarkup(book.text)
         displayString = displayString.substringWithRange(metadata.textRange)
         BibleTextView.configureTextView(self, text: displayString as String)
+        let verseView = createVerseView()
+        addSubview(verseView)
     }
     
     static func configureTextView(textView: UITextView, text: String) {
@@ -23,6 +25,7 @@ class BibleTextView: UITextView {
         textView.editable = false
         textView.bounces = false
         textView.scrollEnabled = false
+        textView.clipsToBounds = false
         textView.textContainerInset = UIEdgeInsetsZero;
         textView.attributedText = attributedText
         textView.textContainerInset = ReadingStyleManager.readingViewInset()
@@ -85,5 +88,38 @@ class BibleTextView: UITextView {
         }
         
         return nil
+    }
+    
+    private func createVerseView() -> BibleVerseView {
+        let lineHeight: CGFloat = frame.height / CGFloat(metadata.lineOrigins.count)
+        let origins = metadata.lineOrigins.map { NSValue(CGPoint: $0) }
+        return BibleVerseView(contentFrame: frame, verses: metadata.verses as [AnyObject], chapters: metadata.chapters as [AnyObject], lineOrigins: origins, andLineHeight: lineHeight)
+    }
+    
+}
+
+extension UITextView {
+    func getLineRanges() -> [NSRange] {
+        var lineRanges = Array<NSRange>()
+        var indexOfFirstGlyphOnLine = 0
+        while indexOfFirstGlyphOnLine < attributedText.length {
+            var lineRange = NSRange()
+            layoutManager.lineFragmentRectForGlyphAtIndex(indexOfFirstGlyphOnLine, effectiveRange: &lineRange)
+            lineRanges.append(lineRange)
+            indexOfFirstGlyphOnLine += lineRange.length
+        }
+        return lineRanges
+    }
+    
+    func getLineOrigins() -> [CGPoint] {
+        var origins = [CGPoint]()
+        var indexOfFirstGlyphOnLine = 0
+        while indexOfFirstGlyphOnLine < attributedText.length {
+            var lineRange = NSRange()
+            let boundingRect = layoutManager.lineFragmentRectForGlyphAtIndex(indexOfFirstGlyphOnLine, effectiveRange: &lineRange)
+            origins.append(boundingRect.origin)
+            indexOfFirstGlyphOnLine += lineRange.length
+        }
+        return origins
     }
 }

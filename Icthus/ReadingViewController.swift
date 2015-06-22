@@ -112,6 +112,7 @@ class ReadingViewController: UIViewController, UIScrollViewDelegate {
         scrollView.frame = CGRect(origin: CGPoint(x: 0, y: 0), size: self.view.frame.size)
         scrollView.delegate = self
         scrollView.scrollsToTop = false
+        scrollView.alwaysBounceHorizontal = true
         self.view.addSubview(scrollView)
     }
     

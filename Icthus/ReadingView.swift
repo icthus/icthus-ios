@@ -16,9 +16,16 @@ class ReadingView: UIView, UIScrollViewDelegate {
     private let numberOfFramesToShow = 15
     private var scrollView: UIScrollView
     
+    override init(frame: CGRect) {
+        scrollView = UIScrollView()
+        super.init(frame: frame)
+        setupScrollView(scrollView)
+    }
+    
     required init(coder aDecoder: NSCoder) {
         scrollView = UIScrollView()
         super.init(coder: aDecoder)
+        setupScrollView(scrollView)
     }
     
     private var currentFrameIndex: Int {
@@ -41,14 +48,19 @@ class ReadingView: UIView, UIScrollViewDelegate {
     }
     
     override func awakeFromNib() {
+        scrollView = UIScrollView()
         super.awakeFromNib()
+        setupScrollView(scrollView)
         
         self.frame = CGRectOffset(self.frame, 64, 0)
-        
-        // Configure the scrollView
-        scrollView = UIScrollView(frame: self.frame)
+    }
+    
+    // Mutating
+    func setupScrollView(scrollView: UIScrollView) {
         scrollView.delegate = self
         scrollView.scrollsToTop = false
+        scrollView.alwaysBounceHorizontal = true
+        scrollView.alwaysBounceVertical = true
         self.addSubview(scrollView)
     }
     

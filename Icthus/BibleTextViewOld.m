@@ -8,13 +8,13 @@
 
 #import "BibleTextViewOld.h"
 #import "Icthus-Swift.h"
-#import "BibleVerseViewOld.h"
+#import "BibleVerseView.h"
 #import <CoreText/CoreText.h>
 #import "ReadingViewOld.h"
 
 @implementation BibleTextViewOld
 
-BibleVerseViewOld *verseView;
+BibleVerseView *verseView;
 @synthesize ctFrame = _ctFrame;
 @synthesize textRange = _textRange;
 @synthesize parentView = _parentView;
@@ -72,7 +72,7 @@ BibleVerseViewOld *verseView;
         CTFrameGetLineOrigins(self.ctFrame, CFRangeMake(0, 0), origins);
         CGFloat lineHeight = [self.parentView.sizingString boundingRectWithSize:CGSizeMake(self.frame.size.width, self.frame.size.height) options:0 context:nil].size.height;
         
-        verseView = [[BibleVerseViewOld alloc] initWithContentFrame:self.frame verses:self.verses chapters:self.chapters andLineOrigins:origins withLength:length andLineHeight:lineHeight];
+//        verseView = [[BibleVerseViewOld alloc] initWithContentFrame:self.frame verses:self.verses chapters:self.chapters andLineOrigins:origins withLength:length andLineHeight:lineHeight];
         [self addSubview:verseView];
     }
 }

@@ -8,7 +8,7 @@
 
 #import "ReadingViewOld.h"
 #import "BibleTextViewOld.h"
-#import "BibleVerseViewOld.h"
+#import "BibleVerseView.h"
 #import "BibleMarkupParser.h"
 #import "BookLocation.h"
 #import <CoreText/CoreText.h>
