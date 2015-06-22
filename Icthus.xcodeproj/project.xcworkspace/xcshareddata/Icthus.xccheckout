@@ -10,29 +10,29 @@
 	<string>Icthus</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>D6EF348D-44FF-4C2F-95B6-E7DB9C0559AF</key>
-		<string>ssh://bitbucket.org/mplorentz/icthus.git</string>
+		<key>D163C9B3582C2E2C4F0E5DDE6171CB226C90FF75</key>
+		<string>github.com:icthus/icthus-ios.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>Icthus.xcodeproj/project.xcworkspace</string>
+	<string>Icthus.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>D6EF348D-44FF-4C2F-95B6-E7DB9C0559AF</key>
+		<key>D163C9B3582C2E2C4F0E5DDE6171CB226C90FF75</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>ssh://bitbucket.org/mplorentz/icthus.git</string>
+	<string>github.com:icthus/icthus-ios.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>D6EF348D-44FF-4C2F-95B6-E7DB9C0559AF</string>
+	<string>D163C9B3582C2E2C4F0E5DDE6171CB226C90FF75</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>D6EF348D-44FF-4C2F-95B6-E7DB9C0559AF</string>
+			<string>D163C9B3582C2E2C4F0E5DDE6171CB226C90FF75</string>
 			<key>IDESourceControlWCCName</key>
 			<string>icthus</string>
 		</dict>

@@ -22,7 +22,6 @@ class BibleTextViewMetadataGenerator: NSObject {
             // Create a view and figure out how much text it will hold
             sizingView = BibleTextView.createTextViewWithText(remainingText as String, frame: sizingFrame)
             (fittingFrame, visibleTextRange) = BibleTextView.truncateAndResizeTextView(sizingView)
-            sizingFrame = CGRect(origin: sizingFrame.origin, size: fittingFrame.size)
             
             // Figure out the range of characters for each line
             var lineRanges = Array<NSRange>()
@@ -36,7 +35,7 @@ class BibleTextViewMetadataGenerator: NSObject {
             
             metadata.append(
                 BibleTextViewMetadata(
-                    frame: sizingFrame,
+                    frame: CGRect(origin: sizingFrame.origin, size: fittingFrame.size),
                     textRange: NSMakeRange(globalLocation, visibleTextRange.length),
                     lineRanges: lineRanges
                 )
@@ -44,7 +43,7 @@ class BibleTextViewMetadataGenerator: NSObject {
             
             remainingText = remainingText.stringByReplacingCharactersInRange(NSMakeRange(0, visibleTextRange.length), withString: "")
             globalLocation += visibleTextRange.length
-            sizingFrame = CGRectOffset(sizingFrame, 0.0, sizingFrame.height)
+            sizingFrame = CGRectOffset(sizingFrame, 0.0, fittingFrame.height)
         }
         
         parser.addChapterAndVerseNumbersToFrameData(metadata, fromMarkup: book.text)

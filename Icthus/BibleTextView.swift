@@ -25,6 +25,7 @@ class BibleTextView: UITextView {
         textView.scrollEnabled = false
         textView.textContainerInset = UIEdgeInsetsZero;
         textView.attributedText = attributedText
+        textView.textContainerInset = ReadingStyleManager.readingViewInset()
     }
     
     static func truncateAndResizeTextView(textView: UITextView) -> (CGRect, NSRange) {
@@ -54,7 +55,7 @@ class BibleTextView: UITextView {
         let bounds = textView.bounds
         let origin = CGPoint(x: 10, y: 10) // default UITextView margins
 //        let visibleStartRange = textView.characterRangeAtPoint(origin)
-        let visibleEndRange = textView.characterRangeAtPoint(CGPointMake(CGRectGetMaxX(bounds), CGRectGetMaxY(bounds)))
+        let visibleEndRange = textView.characterRangeAtPoint(CGPointMake(CGRectGetMaxX(textView.frame), CGRectGetMaxY(textView.frame)))
         
 //        if let visibleStart = visibleStartRange?.start, let visibleEnd = visibleEndRange?.end {
         if let visibleEnd = visibleEndRange?.end {
