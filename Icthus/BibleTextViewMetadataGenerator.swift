@@ -14,7 +14,7 @@ class BibleTextViewMetadataGenerator: NSObject {
         var globalLocation = 0
         var sizingFrame = CGRect(origin: CGPoint(x: 0, y: 0), size: size)
         var fittingFrame: CGRect
-        var sizingView: UITextView
+        var sizingView: BibleTextView
         var metadata: Array<BibleTextViewMetadata> = []
         var visibleTextRange: NSRange
         

@@ -7,6 +7,7 @@
 //
 
 #import "BibleVerseView.h"
+#import "Icthus-Swift.h"
 
 @implementation BibleVerseView
 int gutterWidth = 70;
@@ -25,10 +26,11 @@ int gutterWidth = 70;
             label.textColor = colorManager.bookTextColor;
             label.adjustsFontSizeToFitWidth = YES;
             
+            NSString *fontName = ReadingStyleManager.verseFontName;
             if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-                label.font = [UIFont fontWithName:@"AkzidenzGroteskCE-Roman" size:22];
+                label.font = [UIFont fontWithName:fontName size:ReadingStyleManager.horizontalRegularVerseTextSize];
             } else {
-                label.font = [UIFont fontWithName:@"AkzidenzGroteskCE-Roman" size:20];
+                label.font = [UIFont fontWithName:fontName size:ReadingStyleManager.horizontalCompactVerseTextSize];
             }
             
             // align the baseline with the BibleTextViewOld text
@@ -66,14 +68,5 @@ int gutterWidth = 70;
     }
     return self;
 }
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
 
 @end

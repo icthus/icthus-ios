@@ -202,7 +202,7 @@ class ReadingViewController: UIViewController, UIScrollViewDelegate {
             let optionalRelativeCharPosition = textView.closestPositionToPoint(CGPoint(x: textView.frame.origin.x, y: firstLineLocation))
             guard let relativeCharPosition = optionalRelativeCharPosition else { return nil }
             let relativeCharIndex = textView.offsetFromPosition(textView.beginningOfDocument, toPosition: relativeCharPosition)
-            let charIndex = textView.metadata.textRange.location + relativeCharIndex
+            let charIndex = textView.metadata!.textRange.location + relativeCharIndex
             
             let location = BibleMarkupParser().saveLocationForCharAtIndex(Int32(charIndex), forText: book.text, andBook: book)
             print("Saved location \(book.shortName) \(location?.chapter):\(location?.verse)")

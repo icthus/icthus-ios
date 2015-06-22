@@ -9,12 +9,15 @@
 class ReadingStyleManager: NSObject {
     
     static let readingFontName = "AkzidenzGroteskCE-Roman"
+    static let verseFontName = "AkzidenzGroteskCE-Roman"
     
     static let horizontalCompactBookTextSize: CGFloat = 22.0
+    static let horizontalCompactVerseTextSize: CGFloat = 20.0
     static let horizontalCompactLineSpacing: CGFloat = 1.25
     static let horizontalCompactReadingMargins: CGFloat = 7
     
     static let horizontalRegularBookTextSize: CGFloat = 24.0
+    static let horizontalRegularVerseTextSize: CGFloat = 22.0
     static let horizontalRegularLineSpacing: CGFloat = 1.25
     static let horizontalRegularReadingMargins: CGFloat = 15
     
