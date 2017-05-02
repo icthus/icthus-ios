@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 #import "MasterViewController.h"
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
 
 @implementation AppDelegate 
 
@@ -18,6 +20,8 @@
 BOOL foundNewDataIniCloud;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    [Fabric with:@[[Crashlytics class]]];
     
     // Subscribe to Core Data notifications
     NSNotificationCenter *dc = [NSNotificationCenter defaultCenter];

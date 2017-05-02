@@ -81,6 +81,8 @@
 		C9F55EE118EF6212009E685D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9F55EE018EF6212009E685D /* SystemConfiguration.framework */; };
 		C9FABFDA188D55AB00C3FC05 /* BooksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9FABFD9188D55AB00C3FC05 /* BooksViewController.m */; };
 		C9FEB4541EB827F600FAB96A /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9FEB4531EB827F600FAB96A /* Launch Screen.storyboard */; };
+		C9FEB4581EB8306100FAB96A /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9FEB4561EB8306100FAB96A /* Fabric.framework */; };
+		C9FEB4591EB8306100FAB96A /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9FEB4571EB8306100FAB96A /* Crashlytics.framework */; };
 		C9FF50F317CBB54700BA526E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9FF50F217CBB54700BA526E /* Foundation.framework */; };
 		C9FF50F517CBB54700BA526E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9FF50F417CBB54700BA526E /* CoreGraphics.framework */; };
 		C9FF50F917CBB54700BA526E /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9FF50F817CBB54700BA526E /* CoreData.framework */; };
@@ -218,6 +220,8 @@
 		C9FABFD8188D55AB00C3FC05 /* BooksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BooksViewController.h; sourceTree = "<group>"; };
 		C9FABFD9188D55AB00C3FC05 /* BooksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BooksViewController.m; sourceTree = "<group>"; };
 		C9FEB4531EB827F600FAB96A /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		C9FEB4561EB8306100FAB96A /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		C9FEB4571EB8306100FAB96A /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		C9FF50EF17CBB54700BA526E /* Icthus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Icthus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9FF50F217CBB54700BA526E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C9FF50F417CBB54700BA526E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -249,8 +253,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				C95748B919C8D8BF001E5B99 /* UIKit.framework in Frameworks */,
+				C9FEB4591EB8306100FAB96A /* Crashlytics.framework in Frameworks */,
 				C9F55EE118EF6212009E685D /* SystemConfiguration.framework in Frameworks */,
 				C9F55EDF18EF620A009E685D /* Security.framework in Frameworks */,
+				C9FEB4581EB8306100FAB96A /* Fabric.framework in Frameworks */,
 				C902F4EF17DA26410077504A /* CoreText.framework in Frameworks */,
 				C9FF50F517CBB54700BA526E /* CoreGraphics.framework in Frameworks */,
 				C9FF50F917CBB54700BA526E /* CoreData.framework in Frameworks */,
@@ -435,6 +441,8 @@
 		C9FF50F117CBB54700BA526E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C9FEB4561EB8306100FAB96A /* Fabric.framework */,
+				C9FEB4571EB8306100FAB96A /* Crashlytics.framework */,
 				C9F55EE018EF6212009E685D /* SystemConfiguration.framework */,
 				C9F55EDE18EF6209009E685D /* Security.framework */,
 				C902F4EE17DA26410077504A /* CoreText.framework */,
@@ -536,7 +544,7 @@
 				C9FF50EB17CBB54700BA526E /* Sources */,
 				C9FF50EC17CBB54700BA526E /* Frameworks */,
 				C9FF50ED17CBB54700BA526E /* Resources */,
-				C9F55EDD18EF61DC009E685D /* Run Hockey BuildAgent */,
+				C9FEB4551EB8303000FAB96A /* Fabric */,
 			);
 			buildRules = (
 			);
@@ -666,19 +674,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		C9F55EDD18EF61DC009E685D /* Run Hockey BuildAgent */ = {
+		C9FEB4551EB8303000FAB96A /* Fabric */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Run Hockey BuildAgent";
+			name = Fabric;
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "FILE=\"${SRCROOT}/HockeySDK-iOS/BuildAgent\"\nif [ -f \"$FILE\" ]; then\n\"$FILE\"\nfi";
+			shellScript = "./Fabric.framework/run 6c31860b662278eaecc17498c00d7f97ce238104 36297cce0204dae8ac39870415aa6eed39bc240077e2b820d725660f18b4219e";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -863,7 +871,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Icthus/Icthus-Prefix.pch";
 				INFOPLIST_FILE = "Icthus/Icthus-Info.plist";
@@ -888,7 +899,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Icthus/Icthus-Prefix.pch";
 				INFOPLIST_FILE = "Icthus/Icthus-Info.plist";
