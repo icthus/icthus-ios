@@ -80,6 +80,7 @@
 		C9F55EDF18EF620A009E685D /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9F55EDE18EF6209009E685D /* Security.framework */; };
 		C9F55EE118EF6212009E685D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9F55EE018EF6212009E685D /* SystemConfiguration.framework */; };
 		C9FABFDA188D55AB00C3FC05 /* BooksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9FABFD9188D55AB00C3FC05 /* BooksViewController.m */; };
+		C9FEB4541EB827F600FAB96A /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9FEB4531EB827F600FAB96A /* Launch Screen.storyboard */; };
 		C9FF50F317CBB54700BA526E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9FF50F217CBB54700BA526E /* Foundation.framework */; };
 		C9FF50F517CBB54700BA526E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9FF50F417CBB54700BA526E /* CoreGraphics.framework */; };
 		C9FF50F917CBB54700BA526E /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9FF50F817CBB54700BA526E /* CoreData.framework */; };
@@ -216,6 +217,7 @@
 		C9F55EE018EF6212009E685D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		C9FABFD8188D55AB00C3FC05 /* BooksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BooksViewController.h; sourceTree = "<group>"; };
 		C9FABFD9188D55AB00C3FC05 /* BooksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BooksViewController.m; sourceTree = "<group>"; };
+		C9FEB4531EB827F600FAB96A /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		C9FF50EF17CBB54700BA526E /* Icthus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Icthus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9FF50F217CBB54700BA526E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C9FF50F417CBB54700BA526E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -486,6 +488,7 @@
 		C9FF50FB17CBB54700BA526E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C9FEB4531EB827F600FAB96A /* Launch Screen.storyboard */,
 				C98C1A3218B6561700E4B3DF /* Akzidenz Grotesk CE Roman.ttf */,
 				C9FF50FC17CBB54700BA526E /* Icthus-Info.plist */,
 				C98C1A2A18B6452200E4B3DF /* Bariol_Regular.otf */,
@@ -640,6 +643,7 @@
 				C97793DF1907DE140073A0AF /* iPhone John 1.png in Resources */,
 				C91F85301AC4FBD0002BA96F /* Images.xcassets in Resources */,
 				C9221D03190A831F008F3C5A /* Touch Icon Pressed@2x.png in Resources */,
+				C9FEB4541EB827F600FAB96A /* Launch Screen.storyboard in Resources */,
 				C9A6FA2E190999EB00028B00 /* iPhone Send Feedback@2x.png in Resources */,
 				C9FF510817CBB54700BA526E /* Main_iPhone.storyboard in Resources */,
 				C9FF50FF17CBB54700BA526E /* InfoPlist.strings in Resources */,
