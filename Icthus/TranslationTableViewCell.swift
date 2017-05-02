@@ -24,7 +24,7 @@ class TranslationTableViewCell: UITableViewCell {
         setup()
     }
 
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
@@ -35,19 +35,19 @@ class TranslationTableViewCell: UITableViewCell {
     
     func setup() {
         /* Style the cell */
-        let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
+        let appDel = UIApplication.shared.delegate as! AppDelegate
         let colors = appDel.colorManager
         
-        backgroundColor = colors.bookBackgroundColor
-        translationNameLabel.textColor = colors.bookTextColor
-        tintColor = colors.tintColor
+        backgroundColor = colors?.bookBackgroundColor
+        translationNameLabel.textColor = colors?.bookTextColor
+        tintColor = colors?.tintColor
         
-        copyrightButton.hidden = true
+        copyrightButton.isHidden = true
     }
     
     func showCopyrightButton() {
         if (translation != nil && translation?.copyrightText != nil) {
-            self.copyrightButton.hidden = false
+            self.copyrightButton.isHidden = false
         }
     }
 }

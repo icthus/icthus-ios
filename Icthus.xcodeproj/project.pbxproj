@@ -573,6 +573,7 @@
 				TargetAttributes = {
 					C9FF50EE17CBB54700BA526E = {
 						DevelopmentTeam = S2FZ788KSW;
+						LastSwiftMigration = 0830;
 						SystemCapabilities = {
 							com.apple.iCloud = {
 								enabled = 1;
@@ -580,6 +581,7 @@
 						};
 					};
 					C9FF511A17CBB54800BA526E = {
+						LastSwiftMigration = 0830;
 						TestTargetID = C9FF50EE17CBB54700BA526E;
 					};
 				};
@@ -867,6 +869,7 @@
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Icthus/Icthus-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -890,6 +893,7 @@
 				PRODUCT_NAME = Icthus;
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Icthus/Icthus-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -911,6 +915,7 @@
 				);
 				INFOPLIST_FILE = "IcthusTests/IcthusTests-Info.plist";
 				PRODUCT_NAME = IcthusTests;
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -929,6 +934,7 @@
 				GCC_PREFIX_HEADER = "Icthus/Icthus-Prefix.pch";
 				INFOPLIST_FILE = "IcthusTests/IcthusTests-Info.plist";
 				PRODUCT_NAME = IcthusTests;
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
