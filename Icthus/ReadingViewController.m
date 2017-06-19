@@ -35,6 +35,8 @@ CGRect previousFrame;
 }
 
 -(void)awakeFromNib {
+    [super awakeFromNib];
+    
     self.splitViewController.delegate = self;
     
     self.appDel = (AppDelegate *)[[UIApplication sharedApplication] delegate];
