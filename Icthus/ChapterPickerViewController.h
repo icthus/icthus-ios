@@ -19,10 +19,11 @@
 @property (strong, atomic) Book *selectedBook;
 @property (nonatomic) NSUInteger selectedChapter;
 @property (atomic) NSNumber *finishedAnimations;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *dismissButton;
 
-- (IBAction)dismissButtonPressed:(id)sender;
 - (void)subscribeToColorChangedNotification;
 - (void)unsubscribeFromColorChangedNotification;
 - (void)handleColorModeChanged;
+
 
 @end

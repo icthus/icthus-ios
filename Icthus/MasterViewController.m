@@ -28,7 +28,7 @@
     self.navigationBar.translucent = colorManager.navBarTranslucency;
     self.navigationBar.barTintColor = colorManager.navBarColor;
     UIFont *titleFont;
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+    if (self.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassRegular) {
         titleFont = [UIFont fontWithName:@"Avenir-Medium" size:22.0f];
     } else {
         titleFont = [UIFont fontWithName:@"Avenir-Medium" size:20.0f];
@@ -39,7 +39,7 @@
         NSFontAttributeName: titleFont
     };
     
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+    if (self.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassRegular) {
         self.historyViewController = (HistoryViewController *)self.topViewController;
         UIStoryboard*  sb = [UIStoryboard storyboardWithName:@"Main_iPad" bundle:nil];
         self.settingsViewController = [sb instantiateViewControllerWithIdentifier:@"SettingsViewController"];

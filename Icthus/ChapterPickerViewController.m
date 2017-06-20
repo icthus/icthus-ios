@@ -92,7 +92,7 @@ BOOL isFirstTimeViewDidLayoutSubviews;
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     CGFloat viewWidth = self.view.frame.size.width;
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+    if (self.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassRegular) {
         if ([self isBookAtIndexPath:indexPath]) {
             return CGSizeMake(viewWidth, 54);
         } else {
@@ -202,6 +202,10 @@ BOOL isFirstTimeViewDidLayoutSubviews;
     }
 }
 
+- (IBAction)unwindToReadingViewController:(UIStoryboardSegue *)segue {
+    
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"showChapter"]) {
         [self updateLocationAndShowChapter];
@@ -214,10 +218,7 @@ BOOL isFirstTimeViewDidLayoutSubviews;
     self.selectedChapter = [chapterIndexPath item] - chapterRange.location + 1;
     BookLocation *location = [selectedBook setLocationChapter:selectedChapter verse:1];
     [_appDel.detailView setLocation:location];
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        [self dismissViewControllerAnimated:YES completion:nil];
-    }
-    
+    [self performSegueWithIdentifier:@"unwindToReadingViewController" sender:self];
 }
 
 /*
@@ -360,10 +361,6 @@ BOOL isFirstTimeViewDidLayoutSubviews;
     if (![[self.collectionView visibleCells] containsObject:cell] || selectedBookPath.item == numberOfBooks - 1) {
         [self.collectionView scrollToItemAtIndexPath:selectedBookPath atScrollPosition:UICollectionViewScrollPositionTop animated:YES];
     }
-}
-
-- (IBAction)dismissButtonPressed:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 

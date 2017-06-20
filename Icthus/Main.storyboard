@@ -5,8 +5,14 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.14"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Avenir.ttc">
+            <string>Avenir-Roman</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Master View Controller-->
         <scene sceneID="hFM-b7-VnP">
@@ -51,15 +57,126 @@
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" id="o3S-j4-WS4">
                         <barButtonItem key="leftBarButtonItem" title="History" id="OI4-VD-BZz"/>
-                        <barButtonItem key="rightBarButtonItem" title="Go To" id="UKf-CA-QVB"/>
+                        <barButtonItem key="rightBarButtonItem" title="Go To" id="UKf-CA-QVB">
+                            <connections>
+                                <action selector="goToButtonPressed:" destination="3gh-zs-bIy" id="VkJ-4t-Qib"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="readingView" destination="tMa-b2-iRT" id="hsp-sf-auT"/>
+                        <segue destination="8oa-Qv-Wzx" kind="presentation" identifier="showChapterPickerModally" id="lil-eT-qcp"/>
+                        <segue destination="uRp-7A-dh3" kind="popoverPresentation" identifier="showChapterPickerAsPopover" popoverAnchorBarButtonItem="UKf-CA-QVB" id="0EC-Qj-oD0">
+                            <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                        </segue>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y0F-jB-Ste" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="435" y="-218"/>
+            <point key="canvasLocation" x="872" y="-128"/>
+        </scene>
+        <!--Master View Controller-->
+        <scene sceneID="jY8-zQ-tJf">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="8oa-Qv-Wzx" customClass="MasterViewController" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="lOS-bq-oQo">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="uRp-7A-dh3" kind="relationship" relationship="rootViewController" id="5sA-lS-c8e"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RVl-On-TRj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1883" y="318"/>
+        </scene>
+        <!--Choose Chapter-->
+        <scene sceneID="T4j-JN-l1l">
+            <objects>
+                <collectionViewController autoresizesArchivedViewToFullSize="NO" id="uRp-7A-dh3" customClass="ChapterPickerViewController" sceneMemberID="viewController">
+                    <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="Cbm-aV-TXt">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <collectionViewLayout key="collectionViewLayout" id="VMO-iB-4qN" customClass="CollectionViewLeftFlowLayout"/>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="BookCollectionViewCell" reuseIdentifier="BookCollectionViewCell" id="dOk-Pj-VW9" customClass="BookCollectionViewCell">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Leviticus" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z1K-bd-yWb">
+                                            <rect key="frame" x="20" y="1" width="258" height="42"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="24"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </view>
+                                <gestureRecognizers/>
+                                <size key="customSize" width="320" height="43"/>
+                                <connections>
+                                    <outlet property="label" destination="Z1K-bd-yWb" id="cVi-R9-b7Q"/>
+                                </connections>
+                            </collectionViewCell>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="ChapterCollectionViewCell" reuseIdentifier="ChapterCollectionViewCell" id="Z3M-GY-hLn" customClass="ChapterCollectionViewCell">
+                                <rect key="frame" x="330" y="0.66666666666666663" width="56" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="56" height="42"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SMW-tI-9ph">
+                                            <rect key="frame" x="0.0" y="0.0" width="56" height="42"/>
+                                            <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="31"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="trailingMargin" secondItem="SMW-tI-9ph" secondAttribute="trailing" constant="-8" id="FaH-lV-8he"/>
+                                    <constraint firstItem="SMW-tI-9ph" firstAttribute="leading" secondItem="Z3M-GY-hLn" secondAttribute="leadingMargin" constant="-8" id="JNy-Yt-5P5"/>
+                                    <constraint firstItem="SMW-tI-9ph" firstAttribute="top" secondItem="Z3M-GY-hLn" secondAttribute="topMargin" constant="-8" id="JSq-NK-tDv"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="SMW-tI-9ph" secondAttribute="bottom" constant="-8" id="Zs9-Ee-KIW"/>
+                                </constraints>
+                                <size key="customSize" width="56" height="42"/>
+                                <connections>
+                                    <outlet property="label" destination="SMW-tI-9ph" id="RyL-LE-eFX"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="uRp-7A-dh3" id="kRF-qe-gyc"/>
+                            <outlet property="delegate" destination="uRp-7A-dh3" id="IHK-h1-0TC"/>
+                        </connections>
+                    </collectionView>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Choose Chapter" id="KZO-Fp-nf3">
+                        <barButtonItem key="rightBarButtonItem" title="Dismiss" id="8oR-8e-qlM">
+                            <connections>
+                                <segue destination="2Vr-Pl-Czr" kind="unwind" identifier="unwindToReadingViewController" unwindAction="unwindToReadingViewController:" id="iWK-8F-Uhd"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="collectionView" destination="Cbm-aV-TXt" id="PGq-Ib-GdJ"/>
+                        <outlet property="dismissButton" destination="8oR-8e-qlM" id="kSH-ne-kir"/>
+                        <segue destination="2Vr-Pl-Czr" kind="unwind" unwindAction="unwindToReadingViewController:" id="bYc-4h-OlC"/>
+                    </connections>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="d6x-M4-ncw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="2Vr-Pl-Czr" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="2768" y="-72"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="5sA-lS-c8e"/>
+    </inferredMetricsTieBreakers>
 </document>

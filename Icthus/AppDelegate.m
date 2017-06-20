@@ -43,7 +43,7 @@ BOOL foundNewDataIniCloud;
     
     // Show latest version of tutorial if we haven't yet
     if (![defaults boolForKey:@"shownTutorial"]) {
-        [self showTutorial];
+//        [self showTutorial];
     } else if ([(NSNumber *)[defaults objectForKey:@"whatsNewVersion"] integerValue] < WHATS_NEW_VERSION) {
         [self showWhatsNew];
         [defaults setObject:[NSNumber numberWithInt:WHATS_NEW_VERSION] forKey:@"whatsNewVersion"];
@@ -62,7 +62,7 @@ BOOL foundNewDataIniCloud;
     [prefs setBool:YES forKey:@"appHasLaunchedBefore"];
     [prefs setBool:NO  forKey:@"showDarkMode"];
     [self setupControllers];
-    [self showTutorial];
+//    [self showTutorial];
     [prefs synchronize];
 }
 
@@ -76,6 +76,7 @@ BOOL foundNewDataIniCloud;
 
 - (void)setupControllers {
     ReadingViewController *readingViewController = (ReadingViewController *)[[(UINavigationController *)self.window.rootViewController childViewControllers] firstObject];
+    [self setDetailView:readingViewController];
     [readingViewController setBookToLatest];
 }
 

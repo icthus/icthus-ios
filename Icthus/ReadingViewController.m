@@ -281,6 +281,14 @@ CGRect previousFrame;
     [self setBookToLatest];
 }
 
+- (IBAction)goToButtonPressed:(id)sender {
+    if (self.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassRegular) {
+        [self performSegueWithIdentifier:@"showChapterPickerAsPopover" sender:self];
+    } else {
+        [self performSegueWithIdentifier:@"showChapterPickerModally" sender:self];
+    }
+}
+
 - (void)updateUserActivityState:(NSUserActivity *)activity {
     BasicBookLocation *location = [self.readingView getCurrentLocation];
     activity.userInfo = @{
@@ -288,6 +296,17 @@ CGRect previousFrame;
                           @"chapter": [NSNumber numberWithInt:location->chapter],
                           @"verse": [NSNumber numberWithInt:location->verse],
                           };
+}
+
+- (BOOL)canPerformUnwindSegueAction:(SEL)action fromViewController:(UIViewController *)fromViewController withSender:(id)sender {
+    if (action == @selector(unwindToReadingViewController:)) {
+        return YES;
+    } else {
+        return NO;
+    }
+}
+
+- (void)unwindToReadingViewController:(UIStoryboardSegue *)segue {
 }
 
 - (void)dealloc {

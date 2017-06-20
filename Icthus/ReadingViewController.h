@@ -25,6 +25,7 @@
 - (void)subscribeToColorChangedNotification;
 - (void)unsubscribeFromColorChangedNotification;
 - (void)handleColorModeChanged;
+- (IBAction)goToButtonPressed:(id)sender;
 
 @property (strong, nonatomic) AppDelegate *appDel;
 @property (strong, nonatomic) NSManagedObjectContext *moc;

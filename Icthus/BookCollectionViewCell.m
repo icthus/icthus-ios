@@ -28,7 +28,7 @@
 - (void)setup {
     self.appDel = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     self.label.textColor = self.appDel.colorManager.bookTextColor;
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+    if (self.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassRegular) {
         self.label.font = [UIFont fontWithName:@"Bariol-Regular" size:34.0f];
     } else {
         self.label.font = [UIFont fontWithName:@"Bariol-Regular" size:28.0f];
