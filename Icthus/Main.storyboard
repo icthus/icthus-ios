@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.17" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="h56-yn-LiX">
+    <device id="retina5_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.14"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Master View Controller-->
+        <scene sceneID="hFM-b7-VnP">
+            <objects>
+                <navigationController id="h56-yn-LiX" customClass="MasterViewController" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="3mq-35-7ef">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="3gh-zs-bIy" kind="relationship" relationship="rootViewController" id="6zy-3y-Nbz"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EES-jT-och" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-490" y="-218"/>
+        </scene>
+        <!--Reading View Controller-->
+        <scene sceneID="A5x-rO-DjT">
+            <objects>
+                <viewController id="3gh-zs-bIy" customClass="ReadingViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cah-81-p1g"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ho1-b2-5xW"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="do8-5i-ALk">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tMa-b2-iRT" customClass="ReadingView">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="tMa-b2-iRT" firstAttribute="leading" secondItem="do8-5i-ALk" secondAttribute="leading" id="9yV-Tb-OxY"/>
+                            <constraint firstItem="Ho1-b2-5xW" firstAttribute="top" secondItem="tMa-b2-iRT" secondAttribute="bottom" id="STi-rK-wwD"/>
+                            <constraint firstAttribute="trailing" secondItem="tMa-b2-iRT" secondAttribute="trailing" id="fKK-Qi-WBT"/>
+                            <constraint firstItem="tMa-b2-iRT" firstAttribute="top" secondItem="cah-81-p1g" secondAttribute="bottom" id="h9W-dO-gh0"/>
+                        </constraints>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <navigationItem key="navigationItem" id="o3S-j4-WS4">
+                        <barButtonItem key="leftBarButtonItem" title="History" id="OI4-VD-BZz"/>
+                        <barButtonItem key="rightBarButtonItem" title="Go To" id="UKf-CA-QVB"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="readingView" destination="tMa-b2-iRT" id="hsp-sf-auT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="y0F-jB-Ste" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="435" y="-218"/>
+        </scene>
+    </scenes>
+</document>

@@ -37,8 +37,6 @@ CGRect previousFrame;
 -(void)awakeFromNib {
     [super awakeFromNib];
     
-    self.splitViewController.delegate = self;
-    
     self.appDel = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     ColorManager *colorManager = self.appDel.colorManager;
     [self subscribeToColorChangedNotification];
@@ -49,7 +47,7 @@ CGRect previousFrame;
     self.navigationController.navigationBar.translucent = colorManager.navBarTranslucency;
     self.navigationController.navigationBar.barTintColor = colorManager.navBarColor;
     UIFont *titleFont;
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+    if (self.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassRegular) {
         titleFont = [UIFont fontWithName:@"Avenir-Medium" size:22.0f];
     } else {
         titleFont = [UIFont fontWithName:@"Avenir-Medium" size:20.0f];

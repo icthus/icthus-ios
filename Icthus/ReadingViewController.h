@@ -15,7 +15,7 @@
 @class MasterViewController;
 @class AppDelegate;
 
-@interface ReadingViewController : UIViewController <UISplitViewControllerDelegate, IcthusColorMode>
+@interface ReadingViewController : UIViewController <IcthusColorMode>
 - (id)initWithBook:(Book *)book;
 - (BookLocation *)getLatestLocation; // Gets the latest location from the database, not necessarily what ReadingView is displaying.
 - (void)setBookToLatest;

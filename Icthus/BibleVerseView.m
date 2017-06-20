@@ -24,7 +24,7 @@ int gutterWidth = 70;
             label.textColor = colorManager.bookTextColor;
             label.adjustsFontSizeToFitWidth = YES;
             
-            if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+            if (self.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassRegular) {
                 label.font = [UIFont fontWithName:@"AkzidenzGroteskCE-Roman" size:22];
             } else {
                 label.font = [UIFont fontWithName:@"AkzidenzGroteskCE-Roman" size:20];

@@ -114,7 +114,7 @@ CGPoint maxContentOffset;
 - (NSDictionary *)getAttributedStringAttributes {
     NSDictionary *attributesDict;
     
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+    if (self.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassRegular) {
         NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle defaultParagraphStyle] mutableCopy];
         [paragraphStyle setLineSpacing:14];
         attributesDict = @{
@@ -143,7 +143,7 @@ CGPoint maxContentOffset;
     self.versesByView = [NSMutableArray array];
     // The problem is the self.frame is not expanded to fill the superview until just before viewWillAppear.
     
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+    if (self.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassRegular) {
         textFrame = CGRectInset(self.bounds, 50, 0);
     } else {
         textFrame = CGRectInset(self.bounds, 15, 0);

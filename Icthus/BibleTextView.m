@@ -35,7 +35,7 @@ BibleVerseView *verseView;
         // Build the ctFrame that we can draw when necessary
         NSAttributedString *attString = [self.parentView.attString attributedSubstringFromRange:self.textRange];
         CGRect textFrame;
-        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+        if (self.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassRegular) {
             textFrame = CGRectInset(self.bounds, 50, 0);
         } else {
             textFrame = CGRectInset(self.bounds, 15, 0);

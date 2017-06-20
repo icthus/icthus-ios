@@ -35,7 +35,7 @@ CGFloat pointsMoved;
         [self addSubview:blurredBackground];
 
         UILabel *label = [[UILabel alloc] initWithFrame:frame];
-        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+        if (self.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassRegular) {
             label.font = [UIFont fontWithName:@"AkzidenzGroteskCE-Roman" size:44];
         } else {
             label.font = [UIFont fontWithName:@"AkzidenzGroteskCE-Roman" size:40];
