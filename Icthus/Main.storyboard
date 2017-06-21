@@ -44,6 +44,10 @@
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tMa-b2-iRT" customClass="ReadingView">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="960"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="4kt-5n-3ue" appends="YES" id="O5I-oy-KIE"/>
+                                </connections>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -76,6 +80,12 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y0F-jB-Ste" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <screenEdgePanGestureRecognizer minimumNumberOfTouches="1" id="4kt-5n-3ue" userLabel="Swipe From Left Gesture Recognizer">
+                    <rectEdge key="edges" left="YES"/>
+                    <connections>
+                        <action selector="userSwipedFromLeftEdge:" destination="3gh-zs-bIy" id="fFn-2V-0C5"/>
+                    </connections>
+                </screenEdgePanGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="872" y="-128"/>
         </scene>
@@ -264,8 +274,10 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u44-nv-sfd" userLabel="TapToDismissArea">
                                 <rect key="frame" x="321" y="0.0" width="447" height="1024"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="US9-Sv-PL7" appends="YES" id="gc5-d0-3nx"/>
+                                    <outletCollection property="gestureRecognizers" destination="Wqg-wP-o6g" appends="YES" id="T4B-Io-2yo"/>
                                 </connections>
                             </view>
                         </subviews>
@@ -322,6 +334,11 @@
                         <segue destination="8pk-vJ-VBD" kind="unwind" identifier="unwindToReadingViewController" unwindAction="unwindToReadingViewController:" id="wF0-Qj-eHX"/>
                     </connections>
                 </tapGestureRecognizer>
+                <swipeGestureRecognizer direction="left" id="Wqg-wP-o6g">
+                    <connections>
+                        <segue destination="8pk-vJ-VBD" kind="unwind" unwindAction="unwindToReadingViewController:" id="DuU-S1-2iv"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1901.449275362319" y="-904.07608695652186"/>
         </scene>

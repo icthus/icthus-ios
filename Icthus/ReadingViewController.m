@@ -309,6 +309,10 @@ CGRect previousFrame;
     }
 }
 
+- (IBAction)userSwipedFromLeftEdge:(id)sender {
+    [self performSegueWithIdentifier:@"showHistoryFromLeft" sender:self];
+}
+
 - (void)updateUserActivityState:(NSUserActivity *)activity {
     BasicBookLocation *location = [self.readingView getCurrentLocation];
     activity.userInfo = @{
