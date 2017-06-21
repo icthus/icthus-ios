@@ -90,16 +90,6 @@ CGPoint maxContentOffset;
     // remove the old text
     [self clearText];
     _text = text;
-    
-    // parse the markup
-    NSString *displayString = [parser displayStringFromMarkup:text];
-
-    NSDictionary *attributesDict = [self getAttributedStringAttributes];
-    [self setAttString:[[NSAttributedString alloc] initWithString:displayString attributes:attributesDict]];
-    [self setSizingString:[[NSAttributedString alloc] initWithString:@"Foo" attributes:attributesDict]];
-        
-    // build the subviews
-    [self buildFrames];
 }
 
 - (void)redrawText {
@@ -111,10 +101,10 @@ CGPoint maxContentOffset;
     [self redrawTextViews:currentFrameIndex];
 }
 
-- (NSDictionary *)getAttributedStringAttributes {
+- (NSDictionary *)getAttributedStringAttributesForHorizontalSizeClass:(UIUserInterfaceSizeClass)sizeClass {
     NSDictionary *attributesDict;
     
-    if (self.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassRegular) {
+    if (sizeClass == UIUserInterfaceSizeClassRegular) {
         NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle defaultParagraphStyle] mutableCopy];
         [paragraphStyle setLineSpacing:14];
         attributesDict = @{
@@ -143,7 +133,13 @@ CGPoint maxContentOffset;
     self.versesByView = [NSMutableArray array];
     // The problem is the self.frame is not expanded to fill the superview until just before viewWillAppear.
     
-    if (self.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassRegular) {
+    // parse the markup
+    NSString *displayString = [parser displayStringFromMarkup:self.text];
+    NSDictionary *attributesDict = [self getAttributedStringAttributesForHorizontalSizeClass:self.horizontalSizeClass];
+    [self setAttString:[[NSAttributedString alloc] initWithString:displayString attributes:attributesDict]];
+    [self setSizingString:[[NSAttributedString alloc] initWithString:@"Foo" attributes:attributesDict]];
+    
+    if (self.horizontalSizeClass == UIUserInterfaceSizeClassRegular) {
         textFrame = CGRectInset(self.bounds, 50, 0);
     } else {
         textFrame = CGRectInset(self.bounds, 15, 0);
@@ -278,8 +274,9 @@ CGPoint maxContentOffset;
                 break;
             }
         }
-
-        BibleTextView *textView = [[BibleTextView alloc] initWithFrameInfo:[frameData objectAtIndex:i] andParent:self];
+        
+        // TODO: Use ReadingViewController.sizeClass here
+        BibleTextView *textView = [[BibleTextView alloc] initWithFrameInfo:[frameData objectAtIndex:i] horizontalSizeClass:self.horizontalSizeClass andParent:self];
         [self addSubview:textView];
         [self.textViews replaceObjectAtIndex:i withObject:textView];
 
@@ -324,7 +321,7 @@ CGPoint maxContentOffset;
         if (NSLocationInRange(i, activeRange)) {
             if ([textView class] == [NSNull class]) {
                 // if the view is null, create it
-                BibleTextView *textView = [[BibleTextView alloc] initWithFrameInfo:[frameData objectAtIndex:i] andParent:self];
+                BibleTextView *textView = [[BibleTextView alloc] initWithFrameInfo:[frameData objectAtIndex:i] horizontalSizeClass:self.horizontalSizeClass andParent:self];
                 [self addSubview:textView];
                 [self.textViews replaceObjectAtIndex:i withObject:textView];
             }

@@ -20,7 +20,7 @@ BibleVerseView *verseView;
 @synthesize chapters = _chapters;
 @synthesize verses = _verses;
 
-- (id)initWithFrameInfo:(BibleFrameInfo *)frameInfo andParent:(ReadingView *)parentView {
+- (id)initWithFrameInfo:(BibleFrameInfo *)frameInfo horizontalSizeClass:(UIUserInterfaceSizeClass)sizeClass andParent:(ReadingView *)parentView {
     self = [super initWithFrame:frameInfo.frame];
     if (self) {
         self.opaque = NO;
@@ -35,7 +35,7 @@ BibleVerseView *verseView;
         // Build the ctFrame that we can draw when necessary
         NSAttributedString *attString = [self.parentView.attString attributedSubstringFromRange:self.textRange];
         CGRect textFrame;
-        if (self.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassRegular) {
+        if (sizeClass == UIUserInterfaceSizeClassRegular) {
             textFrame = CGRectInset(self.bounds, 50, 0);
         } else {
             textFrame = CGRectInset(self.bounds, 15, 0);

@@ -25,7 +25,7 @@
 @property NSArray *verses;
 @property AppDelegate *appDel;
 
-- (id)initWithFrameInfo:(BibleFrameInfo *)frameInfo andParent:(ReadingView *)parentView;
+- (id)initWithFrameInfo:(BibleFrameInfo *)frameInfo horizontalSizeClass:(UIUserInterfaceSizeClass)sizeClass andParent:(ReadingView *)parentView;
 - (void)subscribeToColorChangedNotification;
 - (void)unsubscribeFromColorChangedNotification;
 - (void)handleColorModeChanged;

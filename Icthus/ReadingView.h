@@ -28,6 +28,7 @@
 @property (retain, nonatomic) NSAttributedString* attString;
 @property (retain, nonatomic) NSAttributedString* sizingString;
 @property (retain, nonatomic) NSString *text;
+@property (nonatomic) UIUserInterfaceSizeClass horizontalSizeClass;
 @property (retain, nonatomic) NSMutableArray* textViews;
 @property (retain, nonatomic) NSMutableArray* frameData;
 @property (retain, nonatomic) NSMutableArray* textRanges;

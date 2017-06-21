@@ -187,6 +187,8 @@ CGRect previousFrame;
         
         [self.readingView setBook:self.book];
         [self.readingView setText:[self.book text]];
+        [self.readingView setHorizontalSizeClass:self.traitCollection.horizontalSizeClass];
+        [self.readingView buildFrames];
         [self.readingView setCurrentLocation:location];
         [self.readingView addVerseOverlayViewToViewHierarchy];
         NSLog(@"ReadingViewController: Changing book to %@ %@:%@", [self.book shortName], [location chapter], [location verse]);
@@ -234,6 +236,7 @@ CGRect previousFrame;
 - (void)viewDidLayoutSubviews {
     if (!CGRectEqualToRect(previousFrame, self.view.frame)) {
         [self.readingView saveCurrentLocation];
+        [self.readingView setHorizontalSizeClass:self.traitCollection.horizontalSizeClass];
         [self.readingView redrawText];
         previousFrame = self.view.frame;
         [self setBookToLatest];
