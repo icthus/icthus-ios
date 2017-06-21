@@ -245,6 +245,11 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="320" id="yHM-Eb-Viv"/>
                                 </constraints>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <exclude reference="yHM-Eb-Viv"/>
+                                    </mask>
+                                </variation>
                                 <connections>
                                     <segue destination="Mc1-sM-70J" kind="embed" id="4WN-ax-6UE"/>
                                 </connections>
@@ -268,16 +273,46 @@
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="u44-nv-sfd" firstAttribute="leading" secondItem="C5a-tt-npl" secondAttribute="trailing" id="0K0-6O-QFy"/>
-                            <constraint firstItem="C5a-tt-npl" firstAttribute="leading" secondItem="kNe-0m-8fF" secondAttribute="trailing" id="GOO-iD-Ynr"/>
+                            <constraint firstItem="X1E-12-jUp" firstAttribute="top" secondItem="kNe-0m-8fF" secondAttribute="bottom" id="8ct-ls-Unh"/>
+                            <constraint firstItem="X1E-12-jUp" firstAttribute="top" secondItem="kNe-0m-8fF" secondAttribute="bottom" id="8dr-ld-AbY"/>
+                            <constraint firstItem="kNe-0m-8fF" firstAttribute="leading" secondItem="oQ1-mF-pyy" secondAttribute="leading" id="NHv-FK-Qbg"/>
                             <constraint firstItem="X1E-12-jUp" firstAttribute="top" secondItem="C5a-tt-npl" secondAttribute="bottom" id="OZS-j8-jS3"/>
                             <constraint firstItem="u44-nv-sfd" firstAttribute="top" secondItem="oQ1-mF-pyy" secondAttribute="top" id="QFC-9U-Lqy"/>
                             <constraint firstItem="C5a-tt-npl" firstAttribute="top" secondItem="9St-RK-vKs" secondAttribute="bottom" id="Tov-Q1-0Mu"/>
                             <constraint firstAttribute="trailing" secondItem="u44-nv-sfd" secondAttribute="trailing" id="cHV-Xa-s7m"/>
+                            <constraint firstItem="C5a-tt-npl" firstAttribute="leading" secondItem="kNe-0m-8fF" secondAttribute="trailing" id="dIl-Oq-rhm"/>
                             <constraint firstItem="kNe-0m-8fF" firstAttribute="leading" secondItem="oQ1-mF-pyy" secondAttribute="leading" id="fpk-et-DCD"/>
+                            <constraint firstAttribute="trailing" secondItem="kNe-0m-8fF" secondAttribute="trailing" id="hby-HU-8vK"/>
                             <constraint firstAttribute="bottom" secondItem="u44-nv-sfd" secondAttribute="bottom" id="jQe-R6-LFL"/>
                             <constraint firstItem="kNe-0m-8fF" firstAttribute="top" secondItem="oQ1-mF-pyy" secondAttribute="top" id="sCE-cM-ln0"/>
                             <constraint firstItem="X1E-12-jUp" firstAttribute="top" secondItem="kNe-0m-8fF" secondAttribute="bottom" id="sM0-j8-gH6"/>
+                            <constraint firstItem="kNe-0m-8fF" firstAttribute="top" secondItem="oQ1-mF-pyy" secondAttribute="top" id="yw2-el-Tpq"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="NHv-FK-Qbg"/>
+                                <exclude reference="hby-HU-8vK"/>
+                                <exclude reference="yw2-el-Tpq"/>
+                                <exclude reference="8ct-ls-Unh"/>
+                                <exclude reference="8dr-ld-AbY"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <exclude reference="C5a-tt-npl"/>
+                                <exclude reference="u44-nv-sfd"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="NHv-FK-Qbg"/>
+                                <exclude reference="fpk-et-DCD"/>
+                                <include reference="hby-HU-8vK"/>
+                                <exclude reference="sCE-cM-ln0"/>
+                                <include reference="yw2-el-Tpq"/>
+                                <include reference="8ct-ls-Unh"/>
+                                <exclude reference="8dr-ld-AbY"/>
+                                <exclude reference="sM0-j8-gH6"/>
+                            </mask>
+                        </variation>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ssk-hk-glu" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -288,7 +323,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1902" y="-904"/>
+            <point key="canvasLocation" x="1901.449275362319" y="-904.07608695652186"/>
         </scene>
         <!--Master View Controller-->
         <scene sceneID="efb-il-DIJ">
