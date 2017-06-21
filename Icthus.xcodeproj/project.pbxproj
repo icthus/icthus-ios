@@ -44,6 +44,7 @@
 		C958678218DA2DA4001F875B /* SettingsIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C958678118DA2DA4001F875B /* SettingsIcon@2x.png */; };
 		C95DAB6B18940D6D00494256 /* ChapterCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C95DAB6A18940D6D00494256 /* ChapterCollectionViewCell.m */; };
 		C973A687199BE4F5003FE888 /* IcthusParentPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C973A686199BE4F5003FE888 /* IcthusParentPageViewController.m */; };
+		C9776C2D1EFAD46E0071C632 /* SlideFromLeftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9776C2C1EFAD46E0071C632 /* SlideFromLeftViewController.swift */; };
 		C97793DF1907DE140073A0AF /* iPhone John 1.png in Resources */ = {isa = PBXBuildFile; fileRef = C97793DE1907DE140073A0AF /* iPhone John 1.png */; };
 		C97793E41907E12A0073A0AF /* BottomFadedImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = C97793E31907E12A0073A0AF /* BottomFadedImageView.m */; };
 		C97793E81907F2890073A0AF /* BottomFadedImage.m in Sources */ = {isa = PBXBuildFile; fileRef = C97793E71907F2890073A0AF /* BottomFadedImage.m */; };
@@ -54,6 +55,7 @@
 		C97EE55E1905646E009655A0 /* iPad Settings.png in Resources */ = {isa = PBXBuildFile; fileRef = C97EE55D1905646E009655A0 /* iPad Settings.png */; };
 		C98C1A2B18B6452200E4B3DF /* Bariol_Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = C98C1A2A18B6452200E4B3DF /* Bariol_Regular.otf */; };
 		C98C1A3318B6561700E4B3DF /* Akzidenz Grotesk CE Roman.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C98C1A3218B6561700E4B3DF /* Akzidenz Grotesk CE Roman.ttf */; };
+		C98E22F81EFABC3400F9E615 /* SlideFromLeftPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98E22F71EFABC3400F9E615 /* SlideFromLeftPresentationController.swift */; };
 		C98EDE0C1912F5E200AF419A /* IcthusPrepopulatedStore.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = C98EDE0B1912F4C900AF419A /* IcthusPrepopulatedStore.sqlite */; };
 		C99C73FA17DFA61B00DBF0E2 /* BibleMarkupParser.m in Sources */ = {isa = PBXBuildFile; fileRef = C99C73F917DFA61B00DBF0E2 /* BibleMarkupParser.m */; };
 		C99F2FC417CCDC01008AF602 /* ChapterPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C99F2FC317CCDC01008AF602 /* ChapterPickerViewController.m */; };
@@ -168,6 +170,7 @@
 		C95DAB6A18940D6D00494256 /* ChapterCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChapterCollectionViewCell.m; sourceTree = "<group>"; };
 		C973A685199BE4F5003FE888 /* IcthusParentPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IcthusParentPageViewController.h; sourceTree = "<group>"; };
 		C973A686199BE4F5003FE888 /* IcthusParentPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IcthusParentPageViewController.m; sourceTree = "<group>"; };
+		C9776C2C1EFAD46E0071C632 /* SlideFromLeftViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideFromLeftViewController.swift; sourceTree = "<group>"; };
 		C97793DE1907DE140073A0AF /* iPhone John 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPhone John 1.png"; sourceTree = "<group>"; };
 		C97793E21907E12A0073A0AF /* BottomFadedImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BottomFadedImageView.h; sourceTree = "<group>"; };
 		C97793E31907E12A0073A0AF /* BottomFadedImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BottomFadedImageView.m; sourceTree = "<group>"; };
@@ -181,6 +184,7 @@
 		C97EE55D1905646E009655A0 /* iPad Settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPad Settings.png"; sourceTree = "<group>"; };
 		C98C1A2A18B6452200E4B3DF /* Bariol_Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Bariol_Regular.otf; sourceTree = "<group>"; };
 		C98C1A3218B6561700E4B3DF /* Akzidenz Grotesk CE Roman.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Akzidenz Grotesk CE Roman.ttf"; sourceTree = "<group>"; };
+		C98E22F71EFABC3400F9E615 /* SlideFromLeftPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideFromLeftPresentationController.swift; sourceTree = "<group>"; };
 		C98EDE0B1912F4C900AF419A /* IcthusPrepopulatedStore.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = IcthusPrepopulatedStore.sqlite; sourceTree = "<group>"; };
 		C99C73F817DFA61B00DBF0E2 /* BibleMarkupParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = BibleMarkupParser.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		C99C73F917DFA61B00DBF0E2 /* BibleMarkupParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BibleMarkupParser.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
@@ -487,6 +491,8 @@
 				C9431B0A195F8C8A00B4B69C /* ColorManager.h */,
 				C9431B0B195F8C8A00B4B69C /* ColorManager.m */,
 				C92762DB198904A500BC4F46 /* IcthusColorMode.h */,
+				C98E22F71EFABC3400F9E615 /* SlideFromLeftPresentationController.swift */,
+				C9776C2C1EFAD46E0071C632 /* SlideFromLeftViewController.swift */,
 				C97793E51907E1360073A0AF /* Tutorial */,
 				C91EB47717FDB2F400645EFD /* Models */,
 				C9FF50FB17CBB54700BA526E /* Supporting Files */,
@@ -735,6 +741,8 @@
 				C9E57771188484A3004CC974 /* BookCollectionViewCell.m in Sources */,
 				C934B71019C88F4100AD14E7 /* TranslationTableViewCell.swift in Sources */,
 				C9FF510E17CBB54800BA526E /* Icthus.xcdatamodeld in Sources */,
+				C9776C2D1EFAD46E0071C632 /* SlideFromLeftViewController.swift in Sources */,
+				C98E22F81EFABC3400F9E615 /* SlideFromLeftPresentationController.swift in Sources */,
 				C958677A18D9DBE9001F875B /* SettingsViewController.m in Sources */,
 				C9BCA00A17CD3FEC00196DA8 /* HistoryViewController.m in Sources */,
 				C9256B0717DFC5D400646198 /* BookLocation.m in Sources */,

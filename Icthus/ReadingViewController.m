@@ -12,6 +12,7 @@
 #import "AppDelegate.h"
 #import "IcthusColorMode.h"
 #import "VerseOverlayView.h"
+#import "Icthus-Swift.h"
 
 @interface ReadingViewController ()
 
@@ -219,6 +220,22 @@ CGRect previousFrame;
     if ([[segue identifier] isEqualToString:@"showChapterPickerPopover"]) {
         self.chapterPickerPopover = [(UIStoryboardPopoverSegue *)segue popoverController];
     }
+    if ([[segue identifier] isEqualToString:@"showHistoryFromLeft"]) {
+        [self setModalPresentationStyle:UIModalPresentationOverCurrentContext];
+        UIViewController *destination = segue.destinationViewController;
+        [destination setModalPresentationStyle:UIModalPresentationOverCurrentContext];
+        destination.transitioningDelegate = self;
+    }
+}
+
+- (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source {
+    return [[SlideFromLeftPresentationController alloc] init];
+}
+
+- (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed {
+     SlideFromLeftPresentationController *animator = [[SlideFromLeftPresentationController alloc] init];
+    [animator setPresenting:false];
+    return animator;
 }
 
 - (void)viewDidLoad

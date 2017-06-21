@@ -108,9 +108,7 @@
     }
     
     [_appDel.detailView setLocation:(BookLocation *)location];    
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        [self.navigationController popToRootViewControllerAnimated:YES];
-    }
+    [self performSegueWithIdentifier:@"unwindToReadingViewController" sender:self];
 }
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
@@ -149,6 +147,9 @@
         BookLocation *location = (BookLocation *)[[self fetchedResultsController] objectAtIndexPath:indexPath];
         [(ReadingViewController *)[segue destinationViewController] setLocation:location];
     }
+}
+
+- (IBAction)unwindToReadingViewController:(UIStoryboardSegue *)segue {
 }
 
 - (NSFetchedResultsController *)fetchedResultsController
