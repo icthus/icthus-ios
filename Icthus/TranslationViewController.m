@@ -105,11 +105,7 @@ NSString *selectedTranslation;
     [[NSUserDefaults standardUserDefaults] setObject:selectedTranslation forKey:@"selectedTranslation"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     [self.appDel.detailView setTranslation:trans];
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-        [self.navigationController popViewControllerAnimated:YES];
-    } else {
-        [self.navigationController popToRootViewControllerAnimated:YES];
-    }
+    [self performSegueWithIdentifier:@"unwindToReadingViewController" sender:self];
 }
 
 - (NSFetchedResultsController *)fetchedResultsController

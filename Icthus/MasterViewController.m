@@ -49,9 +49,6 @@
     }
 }
 
-- (void)showSettings {
-    [self pushViewController:self.settingsViewController animated:YES];
-}
 
 - (void)toggleSettingsPopover {
     self.viewControllers = @[self.settingsViewController];

@@ -40,12 +40,15 @@
         NSForegroundColorAttributeName: self.appDel.colorManager.titleTextColor,
     };
 
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+    if (self.presentingViewController.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassRegular) {
         self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    } else {
+    } else {        
         UIImage *settingsIcon = [UIImage imageNamed:@"SettingsIcon"];
-        UIBarButtonItem *settingsButton = [[UIBarButtonItem alloc] initWithImage:settingsIcon style:UIBarButtonItemStylePlain target:self.appDel.masterView action:@selector(showSettings)];
+        UIBarButtonItem *settingsButton = [[UIBarButtonItem alloc] initWithImage:settingsIcon style:UIBarButtonItemStylePlain target:self action:@selector(settingsButtonTapped)];
         self.navigationItem.rightBarButtonItem = settingsButton;
+        
+        UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(backButtonTapped)];
+        self.navigationItem.leftBarButtonItem = backButton;
     }
 }
 
@@ -149,7 +152,12 @@
     }
 }
 
-- (IBAction)unwindToReadingViewController:(UIStoryboardSegue *)segue {
+- (void)settingsButtonTapped {
+    [self performSegueWithIdentifier:@"showSettings" sender:self];
+}
+
+- (void)backButtonTapped {
+    [self performSegueWithIdentifier:@"unwindToReadingViewController" sender:self];
 }
 
 - (NSFetchedResultsController *)fetchedResultsController

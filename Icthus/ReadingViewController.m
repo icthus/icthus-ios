@@ -16,6 +16,8 @@
 
 @interface ReadingViewController ()
 
+@property UIBarButtonItem *settingsButton;
+
 @end
 
 @implementation ReadingViewController
@@ -220,7 +222,7 @@ CGRect previousFrame;
     if ([[segue identifier] isEqualToString:@"showChapterPickerPopover"]) {
         self.chapterPickerPopover = [(UIStoryboardPopoverSegue *)segue popoverController];
     }
-    if ([[segue identifier] isEqualToString:@"showHistoryFromLeft"]) {
+    if ([[segue identifier] isEqualToString:@"showHistoryFromLeft"] || [[segue identifier] isEqualToString:@"showSettingsFromLeft"]) {
         [self setModalPresentationStyle:UIModalPresentationOverCurrentContext];
         UIViewController *destination = segue.destinationViewController;
         [destination setModalPresentationStyle:UIModalPresentationOverCurrentContext];
@@ -258,6 +260,23 @@ CGRect previousFrame;
         previousFrame = self.view.frame;
         [self setBookToLatest];
     }
+    
+    // Set up the nav bar
+    if (self.settingsButton == nil) {
+        UIImage *settingsIcon = [UIImage imageNamed:@"SettingsIcon"];
+        self.settingsButton = [[UIBarButtonItem alloc] initWithImage:settingsIcon style:UIBarButtonItemStylePlain target:self action:@selector(settingsButtonTapped)];
+    }
+    
+    // Remove the Settings button
+    NSMutableArray<UIBarButtonItem *> *leftBarButtonItems = [[NSMutableArray alloc] initWithArray:self.navigationItem.leftBarButtonItems];
+    [leftBarButtonItems removeObject:self.settingsButton];
+    
+    // Add it back if we have space
+    if (self.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassRegular) {
+        [leftBarButtonItems insertObject:self.settingsButton atIndex:0];
+    }
+    
+    [self.navigationItem setLeftBarButtonItems:leftBarButtonItems];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -309,6 +328,10 @@ CGRect previousFrame;
     }
 }
 
+- (void)settingsButtonTapped {
+    [self performSegueWithIdentifier:@"showSettingsFromLeft" sender:self];
+}
+
 - (IBAction)userSwipedFromLeftEdge:(id)sender {
     [self performSegueWithIdentifier:@"showHistoryFromLeft" sender:self];
 }
@@ -330,7 +353,7 @@ CGRect previousFrame;
     }
 }
 
-- (void)unwindToReadingViewController:(UIStoryboardSegue *)segue {
+- (IBAction)unwindToReadingViewController:(UIStoryboardSegue *)segue {
 }
 
 - (void)dealloc {

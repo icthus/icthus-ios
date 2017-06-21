@@ -202,9 +202,6 @@ BOOL isFirstTimeViewDidLayoutSubviews;
     }
 }
 
-- (IBAction)unwindToReadingViewController:(UIStoryboardSegue *)segue {
-}
-
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"showChapter"]) {
         [self updateLocationAndShowChapter];
