@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.14"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -709,7 +710,7 @@ A8KpA
                         <viewControllerLayoutGuide type="top" id="7tM-8r-pqi"/>
                         <viewControllerLayoutGuide type="bottom" id="f4Q-5m-HeN"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="crp-56-jro">
+                    <view key="view" contentMode="scaleToFill" misplaced="YES" id="crp-56-jro">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>

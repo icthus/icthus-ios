@@ -7,26 +7,29 @@
 //
 
 #import "IcthusTutorialPageViewController.h"
+#import "AppDelegate.h"
 
 @implementation IcthusTutorialPageViewController
 
 - (void)viewDidLoad {
+    
+    
     // Set up the pages
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+    if ([(AppDelegate *)[[UIApplication sharedApplication] delegate] window].rootViewController.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassRegular) {
         self.pages = @[
-                             [self.storyboard instantiateViewControllerWithIdentifier:@"TutorialPage1"],
-                             [self.storyboard instantiateViewControllerWithIdentifier:@"TutorialPage2"],
-                             [self.storyboard instantiateViewControllerWithIdentifier:@"TutorialPage3"],
-                             [self.storyboard instantiateViewControllerWithIdentifier:@"TutorialPage4"],
+                             [self.storyboard instantiateViewControllerWithIdentifier:@"RegularTutorialPage1"],
+                             [self.storyboard instantiateViewControllerWithIdentifier:@"RegularTutorialPage2"],
+                             [self.storyboard instantiateViewControllerWithIdentifier:@"RegularTutorialPage3"],
+                             [self.storyboard instantiateViewControllerWithIdentifier:@"RegularTutorialPage4"],
                              ];
     } else {
         self.pages = @[
-                             [self.storyboard instantiateViewControllerWithIdentifier:@"TutorialPage1"],
-                             [self.storyboard instantiateViewControllerWithIdentifier:@"TutorialPage2"],
-                             [self.storyboard instantiateViewControllerWithIdentifier:@"TutorialPage3"],
-                             [self.storyboard instantiateViewControllerWithIdentifier:@"TutorialPage4"],
-                             [self.storyboard instantiateViewControllerWithIdentifier:@"TutorialPage5"],
-                             [self.storyboard instantiateViewControllerWithIdentifier:@"TutorialPage6"],
+                             [self.storyboard instantiateViewControllerWithIdentifier:@"CompactTutorialPage1"],
+                             [self.storyboard instantiateViewControllerWithIdentifier:@"CompactTutorialPage2"],
+                             [self.storyboard instantiateViewControllerWithIdentifier:@"CompactTutorialPage3"],
+                             [self.storyboard instantiateViewControllerWithIdentifier:@"CompactTutorialPage4"],
+                             [self.storyboard instantiateViewControllerWithIdentifier:@"CompactTutorialPage5"],
+                             [self.storyboard instantiateViewControllerWithIdentifier:@"CompactTutorialPage6"],
                              ];
     }
     

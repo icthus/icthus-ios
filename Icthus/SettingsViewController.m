@@ -27,8 +27,15 @@
         [self presentMailViewController];
         [selectedCell setSelected:NO];
     } else if ([selectedCell class] == [ShowTutorialTableViewCell class]) {
-        IcthusTutorialPageViewController *pageViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"TutorialPageViewController"];
-        [(MasterViewController *)self.navigationController toggleSettingsPopover];
+        
+        IcthusTutorialPageViewController *pageViewController;
+        
+        if (self.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassRegular) {
+            pageViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"RegularTutorialPageViewController"];
+        } else {
+            pageViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"CompactTutorialPageViewController"];
+        }
+        
         [self presentViewController:pageViewController animated:YES completion:nil];
         
     } else if ([selectedCell class] == [ToggleColorModeTableViewCell class]) {
