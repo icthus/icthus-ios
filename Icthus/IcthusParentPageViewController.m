@@ -51,7 +51,14 @@
     } else if (index >= [self.pages count] - 1) {
         return nil;
     } else {
-        return [self.pages objectAtIndex:index + 1];
+        IcthusTutorialViewController *controller = [self.pages objectAtIndex:index + 1];
+        
+        // Let this view controller know that it is the last page.
+        if ([self.pages count] == index + 2) {
+            [controller setIsLastPage:YES];
+        }
+        
+        return controller;
     }
 }
 

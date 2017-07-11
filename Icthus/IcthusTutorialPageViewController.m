@@ -15,33 +15,42 @@
     
     
     // Set up the pages
-    if ([(AppDelegate *)[[UIApplication sharedApplication] delegate] window].rootViewController.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassRegular) {
+    if ([(AppDelegate *)[[UIApplication sharedApplication] delegate] window].rootViewController.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassCompact || [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
         self.pages = @[
-                             [self.storyboard instantiateViewControllerWithIdentifier:@"RegularTutorialPage1"],
-                             [self.storyboard instantiateViewControllerWithIdentifier:@"RegularTutorialPage2"],
-                             [self.storyboard instantiateViewControllerWithIdentifier:@"RegularTutorialPage3"],
-                             [self.storyboard instantiateViewControllerWithIdentifier:@"RegularTutorialPage4"],
-                             ];
+                       
+                         [self.storyboard instantiateViewControllerWithIdentifier:@"CompactTutorialPage1"],
+                         [self.storyboard instantiateViewControllerWithIdentifier:@"CompactTutorialPage2"],
+                         [self.storyboard instantiateViewControllerWithIdentifier:@"CompactTutorialPage3"],
+                         [self.storyboard instantiateViewControllerWithIdentifier:@"CompactTutorialPage4"],
+                         [self.storyboard instantiateViewControllerWithIdentifier:@"CompactTutorialPage5"],
+                         [self.storyboard instantiateViewControllerWithIdentifier:@"CompactTutorialPage6"],
+                     ];
     } else {
         self.pages = @[
-                             [self.storyboard instantiateViewControllerWithIdentifier:@"CompactTutorialPage1"],
-                             [self.storyboard instantiateViewControllerWithIdentifier:@"CompactTutorialPage2"],
-                             [self.storyboard instantiateViewControllerWithIdentifier:@"CompactTutorialPage3"],
-                             [self.storyboard instantiateViewControllerWithIdentifier:@"CompactTutorialPage4"],
-                             [self.storyboard instantiateViewControllerWithIdentifier:@"CompactTutorialPage5"],
-                             [self.storyboard instantiateViewControllerWithIdentifier:@"CompactTutorialPage6"],
-                             ];
+                         [self.storyboard instantiateViewControllerWithIdentifier:@"RegularTutorialPage1"],
+                         [self.storyboard instantiateViewControllerWithIdentifier:@"RegularTutorialPage2"],
+                         [self.storyboard instantiateViewControllerWithIdentifier:@"RegularTutorialPage3"],
+                         [self.storyboard instantiateViewControllerWithIdentifier:@"RegularTutorialPage4"],
+                     ];
     }
-    
-    // Make sure that this PageViewController is presented in portrait
-    NSNumber *value = [NSNumber numberWithInt:UIInterfaceOrientationPortrait];
-    [[UIDevice currentDevice] setValue:value forKey:@"orientation"];
+
     
     [super viewDidLoad];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    NSNumber *value = [NSNumber numberWithInt:UIInterfaceOrientationPortrait];
+    [[UIDevice currentDevice] setValue:value forKey:@"orientation"];
+}
 
+- (BOOL)shouldAutorotate {
+    return NO;
+}
+
+-(NSUInteger)supportedInterfaceOrientations {
+    return UIInterfaceOrientationMaskPortrait;
 }
 
 @end

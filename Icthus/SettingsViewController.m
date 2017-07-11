@@ -36,8 +36,6 @@
             pageViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"CompactTutorialPageViewController"];
         }
         
-        [self presentViewController:pageViewController animated:YES completion:nil];
-        
     } else if ([selectedCell class] == [ToggleColorModeTableViewCell class]) {
         [(ToggleColorModeTableViewCell *)selectedCell toggleDarkMode];
     }
