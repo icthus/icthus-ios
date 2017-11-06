@@ -12,7 +12,7 @@ class TranslationTableViewCell: UITableViewCell {
     
     @IBOutlet weak var copyrightButton: CopyrightButton!
     @IBOutlet weak var translationNameLabel: UILabel!
-    var translation : Translation? {
+    @objc var translation : Translation? {
         didSet {
             translationNameLabel.text = translation?.displayName
             copyrightButton.translation = translation
@@ -45,7 +45,7 @@ class TranslationTableViewCell: UITableViewCell {
         copyrightButton.isHidden = true
     }
     
-    func showCopyrightButton() {
+    @objc func showCopyrightButton() {
         if (translation != nil && translation?.copyrightText != nil) {
             self.copyrightButton.isHidden = false
         }
