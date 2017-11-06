@@ -92,8 +92,6 @@
 		C9FF50FF17CBB54700BA526E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C9FF50FD17CBB54700BA526E /* InfoPlist.strings */; };
 		C9FF510117CBB54700BA526E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C9FF510017CBB54700BA526E /* main.m */; };
 		C9FF510517CBB54700BA526E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C9FF510417CBB54700BA526E /* AppDelegate.m */; };
-		C9FF510817CBB54700BA526E /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9FF510617CBB54700BA526E /* Main_iPhone.storyboard */; };
-		C9FF510B17CBB54700BA526E /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9FF510917CBB54700BA526E /* Main_iPad.storyboard */; };
 		C9FF510E17CBB54800BA526E /* Icthus.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C9FF510C17CBB54800BA526E /* Icthus.xcdatamodeld */; };
 		C9FF511117CBB54800BA526E /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9FF511017CBB54800BA526E /* MasterViewController.m */; };
 		C9FF511417CBB54800BA526E /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9FF511317CBB54800BA526E /* DetailViewController.m */; };
@@ -239,8 +237,6 @@
 		C9FF510217CBB54700BA526E /* Icthus-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Icthus-Prefix.pch"; sourceTree = "<group>"; };
 		C9FF510317CBB54700BA526E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C9FF510417CBB54700BA526E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		C9FF510717CBB54700BA526E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
-		C9FF510A17CBB54700BA526E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
 		C9FF510D17CBB54800BA526E /* Icthus.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Icthus.xcdatamodel; sourceTree = "<group>"; };
 		C9FF510F17CBB54800BA526E /* MasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
 		C9FF511017CBB54800BA526E /* MasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
@@ -466,8 +462,6 @@
 			children = (
 				C9B3056F1816D08600EE8A94 /* Icthus.entitlements */,
 				C90570021EF8700900148D9A /* Main.storyboard */,
-				C9FF510917CBB54700BA526E /* Main_iPad.storyboard */,
-				C9FF510617CBB54700BA526E /* Main_iPhone.storyboard */,
 				C9FF510317CBB54700BA526E /* AppDelegate.h */,
 				C9FF510417CBB54700BA526E /* AppDelegate.m */,
 				C934B70E19C88F4100AD14E7 /* Icthus-Bridging-Header.h */,
@@ -643,7 +637,6 @@
 				C9A6FA321909A40500028B00 /* iPhone Show Verses@2x.png in Resources */,
 				C90570031EF8700900148D9A /* Main.storyboard in Resources */,
 				C9221CFB190A7B54008F3C5A /* iPhone Show Verses Top@2x.png in Resources */,
-				C9FF510B17CBB54700BA526E /* Main_iPad.storyboard in Resources */,
 				C97EE55B19056242009655A0 /* iPad History.png in Resources */,
 				C98C1A3318B6561700E4B3DF /* Akzidenz Grotesk CE Roman.ttf in Resources */,
 				C9A6FA22190996C000028B00 /* iPhone History Button@2x.png in Resources */,
@@ -663,7 +656,6 @@
 				C9221D03190A831F008F3C5A /* Touch Icon Pressed@2x.png in Resources */,
 				C9FEB4541EB827F600FAB96A /* Launch Screen.storyboard in Resources */,
 				C9A6FA2E190999EB00028B00 /* iPhone Send Feedback@2x.png in Resources */,
-				C9FF510817CBB54700BA526E /* Main_iPhone.storyboard in Resources */,
 				C9FF50FF17CBB54700BA526E /* InfoPlist.strings in Resources */,
 				C9A6FA1D1909955F00028B00 /* iPhone Go To Button.png in Resources */,
 				C95083BE190950E1002C3C93 /* iPhone John 1@2x.png in Resources */,
@@ -774,22 +766,6 @@
 				C9FF50FE17CBB54700BA526E /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		C9FF510617CBB54700BA526E /* Main_iPhone.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C9FF510717CBB54700BA526E /* Base */,
-			);
-			name = Main_iPhone.storyboard;
-			sourceTree = "<group>";
-		};
-		C9FF510917CBB54700BA526E /* Main_iPad.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C9FF510A17CBB54700BA526E /* Base */,
-			);
-			name = Main_iPad.storyboard;
 			sourceTree = "<group>";
 		};
 		C9FF512617CBB54800BA526E /* InfoPlist.strings */ = {
