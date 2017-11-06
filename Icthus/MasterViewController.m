@@ -41,10 +41,10 @@
     
     if (self.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassRegular) {
         self.historyViewController = (HistoryViewController *)self.topViewController;
-        UIStoryboard*  sb = [UIStoryboard storyboardWithName:@"Main_iPad" bundle:nil];
+        UIStoryboard*  sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         self.settingsViewController = [sb instantiateViewControllerWithIdentifier:@"SettingsViewController"];
     } else {
-        UIStoryboard*  sb = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle:nil];
+        UIStoryboard*  sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         self.settingsViewController = [sb instantiateViewControllerWithIdentifier:@"SettingsViewController"];
     }
 }
