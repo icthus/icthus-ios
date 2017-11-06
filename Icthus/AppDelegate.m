@@ -42,13 +42,13 @@ BOOL foundNewDataIniCloud;
     [self.window makeKeyAndVisible];
     
     // Show latest version of tutorial if we haven't yet
-    if (![defaults boolForKey:@"shownTutorial"]) {
+//    if (![defaults boolForKey:@"shownTutorial"]) {
 //        [self showTutorial];
-    } else if ([(NSNumber *)[defaults objectForKey:@"whatsNewVersion"] integerValue] < WHATS_NEW_VERSION) {
-        [self showWhatsNew];
-        [defaults setObject:[NSNumber numberWithInt:WHATS_NEW_VERSION] forKey:@"whatsNewVersion"];
-        [defaults synchronize];
-    }
+//    } else if ([(NSNumber *)[defaults objectForKey:@"whatsNewVersion"] integerValue] < WHATS_NEW_VERSION) {
+//        [self showWhatsNew];
+//        [defaults setObject:[NSNumber numberWithInt:WHATS_NEW_VERSION] forKey:@"whatsNewVersion"];
+//        [defaults synchronize];
+//    }
     
     return YES;
 }
